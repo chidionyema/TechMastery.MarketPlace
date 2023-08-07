@@ -1,0 +1,7 @@
+2023-08-06 22:48:03.787 +01:00 [INF] Now listening on: http://localhost:61474
+2023-08-06 22:48:03.816 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-08-06 22:48:03.816 +01:00 [INF] Hosting environment: Development
+2023-08-06 22:48:03.816 +01:00 [INF] Content root path: /Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api
+2023-08-06 22:48:08.333 +01:00 [WRN] Failed to determine the https port for redirect.
+2023-08-06 22:48:08.412 +01:00 [INF] HTTP GET / responded 404 in 0.6740 ms
+2023-08-06 22:48:09.060 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 0.2064 ms

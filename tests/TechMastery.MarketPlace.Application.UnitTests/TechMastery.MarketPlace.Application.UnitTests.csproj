@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<IsPackable>false</IsPackable>
+		<UserSecretsId>1bc88d9a-e881-4581-b61d-6b5040c0ac61</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
+		<PackageReference Include="xunit" Version="2.5.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+
+		<PackageReference Include="Moq" Version="4.18.4" />
+		<PackageReference Include="Shouldly" Version="4.2.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.9" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Features\" />
+	  <None Remove="Features\ProductListing\" />
+	  <None Remove="Features\ProductListing\Commands\" />
+	  <None Remove="Features\ProductListing\Commands\Create\" />
+	  <None Remove="Base\" />
+	  <None Remove="Features\Checkout\" />
+	  <None Remove="Features\Orders\" />
+	  <None Remove="Features\Checkout\Commands\" />
+	  <None Remove="Features\Orders\Commands\" />
+	  <None Remove="Builders\" />
+	  <None Remove="Fakes\" />
+	  <None Remove="appsettings.json" />
+	  <None Remove="appsettings.Development.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Features\" />
+	  <Folder Include="Features\ProductListing\" />
+	  <Folder Include="Features\ProductListing\Commands\" />
+	  <Folder Include="Features\ProductListing\Commands\Create\" />
+	  <Folder Include="Base\" />
+	  <Folder Include="Features\Checkout\" />
+	  <Folder Include="Features\Orders\" />
+	  <Folder Include="Features\Checkout\Commands\" />
+	  <Folder Include="Features\Orders\Commands\" />
+	  <Folder Include="Builders\" />
+	  <Folder Include="Fakes\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Persistence\TechMastery.MarketPlace.Persistence.csproj" />
+	  <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
+	  <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="appsettings.json" Condition="'$(ExcludeConfigFilesFromBuildOutput)'!='true'">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="appsettings.Development.json" Condition="'$(ExcludeConfigFilesFromBuildOutput)'!='true'">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,84 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="FluentValidation" Version="11.6.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+		<!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />-->
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+		<PackageReference Include="System.Security.Claims" Version="4.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Features\ProductListing\" />
+	  <None Remove="Features\ProductListing\Commands\" />
+	  <None Remove="Features\ProductListing\Queries\" />
+	  <None Remove="Microsoft.AspNetCore.Http" />
+	  <None Remove="Services\" />
+	  <None Remove="Azure.Storage.Blobs" />
+	  <None Remove="Microsoft.Extensions.Configuration" />
+	  <None Remove="System.Security.Claims" />
+	  <None Remove="Features\ProductListing\Queries\GetBestSelling\GetBestSelling\" />
+	  <None Remove="Features\ProductListing\Queries\GetLatest\" />
+	  <None Remove="Features\ProductListing\Queries\GetLatest %28copy%29\" />
+	  <None Remove="Features\ProductListing\Queries\GetByCategory %28copy%29\" />
+	  <None Remove="Features\ProductListing\ViewModels\" />
+	  <None Remove="Models\Search\" />
+	  <None Remove="Features\Checkout\" />
+	  <None Remove="Models\Payment\" />
+	  <None Remove="Models\Payment\Stripe\" />
+	  <None Remove="Features\Checkout\Commands\" />
+	  <None Remove="Features\ProductListing\Dto\" />
+	  <None Remove="Features\Checkout\Dto\" />
+	  <None Remove="Features\Checkout\Queries\" />
+	  <None Remove="Features\Checkout\ViewModel\" />
+	  <None Remove="Features\Orders\" />
+	  <None Remove="Features\Orders\Dto\" />
+	  <None Remove="Features\Orders\Queries\" />
+	  <None Remove="Features\Orders\ViewModel\" />
+	  <None Remove="Features\Orders\Queries\GetByCartId\" />
+	  <None Remove="Features\Orders\Queries\GetByOrderId\" />
+	  <None Remove="Features\ProductListing\Queries\GetByCategory\" />
+	  <None Remove="BackgroundServices\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	  <Folder Include="Features\ProductListing\" />
+	  <Folder Include="Features\ProductListing\Commands\" />
+	  <Folder Include="Features\ProductListing\Queries\" />
+	  <Folder Include="Features\ProductListing\Queries\GetLatest\" />
+	  <Folder Include="Features\ProductListing\ViewModels\" />
+	  <Folder Include="Models\Search\" />
+	  <Folder Include="Features\Checkout\" />
+	  <Folder Include="Models\Payment\" />
+	  <Folder Include="Models\Payment\Stripe\" />
+	  <Folder Include="Features\Checkout\Commands\" />
+	  <Folder Include="Features\ProductListing\Dto\" />
+	  <Folder Include="Features\Checkout\Dto\" />
+	  <Folder Include="Features\Checkout\Queries\" />
+	  <Folder Include="Features\Checkout\ViewModel\" />
+	  <Folder Include="Features\Orders\" />
+	  <Folder Include="Features\Orders\Dto\" />
+	  <Folder Include="Features\Orders\Queries\" />
+	  <Folder Include="Features\Orders\ViewModel\" />
+	  <Folder Include="Features\Orders\Queries\GetByCartId\" />
+	  <Folder Include="Features\Orders\Queries\GetByOrderId\" />
+	  <Folder Include="Features\ProductListing\Queries\GetByCategory\" />
+	  <Folder Include="BackgroundServices\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.Marketplace.Domain.csproj" />
+	</ItemGroup>
+</Project>

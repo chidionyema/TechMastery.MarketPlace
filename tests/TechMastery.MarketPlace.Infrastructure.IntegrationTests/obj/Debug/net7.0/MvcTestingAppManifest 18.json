@@ -1,0 +1,8 @@
+{
+  "TechMastery.MarketPlace.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Api",
+  "TechMastery.MarketPlace.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Application",
+  "TechMastery.Marketplace.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Domain",
+  "TechMastery.MarketPlace.Identity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Identity",
+  "TechMastery.MarketPlace.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Infrastructure",
+  "TechMastery.MarketPlace.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/TechMastery.MarketPlace.Persistence"
+}
