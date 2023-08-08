@@ -76,7 +76,7 @@
           "Microsoft.AspNetCore.DataProtection.Extensions": "7.0.0.0",
           "Microsoft.AspNetCore.Diagnostics.Abstractions": "7.0.0.0",
           "Microsoft.AspNetCore.Diagnostics": "7.0.0.0",
-          "Microsoft.AspNetCore.Diagnostics.HealthChecks": "7.0.0.0",
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks.Reference": "7.0.0.0",
           "Microsoft.AspNetCore": "7.0.0.0",
           "Microsoft.AspNetCore.HostFiltering": "7.0.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "7.0.0.0",
@@ -1403,6 +1403,14 @@
         },
         "compile": {
           "lib/net7.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
+          "Microsoft.Extensions.Options": "7.0.1",
+          "Microsoft.Net.Http.Headers": "2.2.0"
         }
       },
       "Microsoft.AspNetCore.Http/2.2.2": {
@@ -4906,6 +4914,7 @@
         "dependencies": {
           "MediatR": "12.1.1",
           "Microsoft.AspNetCore.Authentication.Google": "7.0.9",
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.8",
           "Serilog": "3.0.1",
           "Serilog.AspNetCore": "7.0.0",
@@ -5159,7 +5168,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Diagnostics.HealthChecks/7.0.0.0": {
+      "Microsoft.AspNetCore.Diagnostics.HealthChecks.Reference/7.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Diagnostics.HealthChecks.dll": {}
         },
@@ -7407,6 +7416,13 @@
       "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.9",
       "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.9.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RNmdLy9yncTprony49cuwhyTKoROpVflGM+pKlHA1671F00QUsjoY1Oi6xoa9XsUrfRDRYlxbt2CHYCMLzMh7Q==",
+      "path": "microsoft.aspnetcore.diagnostics.healthchecks/2.2.0",
+      "hashPath": "microsoft.aspnetcore.diagnostics.healthchecks.2.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Http/2.2.2": {
       "type": "package",
       "serviceable": true,
@@ -9414,7 +9430,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Diagnostics.HealthChecks/7.0.0.0": {
+    "Microsoft.AspNetCore.Diagnostics.HealthChecks.Reference/7.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

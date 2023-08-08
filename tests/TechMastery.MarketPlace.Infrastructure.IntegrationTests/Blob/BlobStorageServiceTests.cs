@@ -53,7 +53,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         {
             var containerName = "test";
             var blobName = "sample.zip"; // Change to your zip file name
-            var filePath = "nextjs-13-fundamentals.zip"; // Change to the actual path of your zip file
+            var filePath = "test.zip"; // Change to the actual path of your zip file
 
             // Read the zip file content as a stream
             using (var stream = File.OpenRead(filePath))

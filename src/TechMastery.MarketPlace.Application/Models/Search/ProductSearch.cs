@@ -2,10 +2,10 @@
 {
     public class ProductSearch
     {
-        public Guid ProductListingId { get; set; }
-        public required string Title { get; set; }
-        public required string Description { get; set; }
-        public required string Category { get; set; }
+        public Guid ProductId { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string? Category { get; set; }
         public decimal Price { get; set; }
     }
 }

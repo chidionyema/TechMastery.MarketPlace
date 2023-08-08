@@ -1,10 +1,10 @@
 ﻿namespace TechMastery.MarketPlace.Application.Models.Search
 {
-    public class SearchRequest
+    public class ProductSearchRequest
     {
-        public required string Query { get; set; }
-        public required string Category { get; set; }
-        public required string SortBy { get; set; }
+        public string? Query { get; set; }
+        public string? Category { get; set; }
+        public string? SortBy { get; set; }
         public decimal? MinPrice { get; set; }
         public decimal? MaxPrice { get; set; }
         public int PageNumber { get; set; }

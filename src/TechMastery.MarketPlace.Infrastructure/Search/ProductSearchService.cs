@@ -1,19 +1,31 @@
-﻿using Nest;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Nest;
+using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 using TechMastery.MarketPlace.Application.Models.Search;
+
 namespace TechMastery.MarketPlace.Infrastructure.Search
 {
-    public class ProductSearchService
+    public class ProductSearchService : IProductSearchService
     {
-        private readonly ElasticClient _elasticClient;
+        private readonly ILogger<ProductSearchService> _logger;
+        private readonly IElasticClient _elasticClient;
+        private readonly string _indexName;
 
-        public ProductSearchService(ElasticClient elasticClient) { 
-            _elasticClient = elasticClient;
+        public ProductSearchService(ILogger<ProductSearchService> logger, IElasticClient elasticClient, string indexName)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _elasticClient = elasticClient ?? throw new ArgumentNullException(nameof(elasticClient));
+            _indexName = indexName ?? throw new ArgumentNullException(nameof(indexName));
         }
 
-        public List<ProductSearch> SearchProducts(Application.Models.Search.SearchRequest request)
+        public List<ProductSearch> SearchProducts(ProductSearchRequest request)
         {
             var searchResponse = _elasticClient.Search<ProductSearch>(s => s
-                .Index("products")
+                .Index(_indexName)
                 .Query(q => BuildQuery(request))
                 .Sort(sort => BuildSort(request))
                 .From(request.PageNumber)
@@ -23,12 +35,12 @@ namespace TechMastery.MarketPlace.Infrastructure.Search
             return searchResponse.Documents.ToList();
         }
 
-        public void IndexProducts(List<ProductSearch> products)
+        public async Task IndexProducts(List<ProductSearch> products)
         {
-            _elasticClient.IndexMany(products, "products");
+            await _elasticClient.IndexManyAsync(products, _indexName);
         }
 
-        private QueryContainer BuildQuery(Application.Models.Search.SearchRequest request)
+        private QueryContainer BuildQuery(ProductSearchRequest request)
         {
             var query = new BoolQuery();
 
@@ -36,7 +48,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Search
             {
                 query.Must.Append(new MultiMatchQuery
                 {
-                    Fields = Infer.Field<ProductSearch>(f => f.Title),
+                    Fields = new[] { Infer.Field<ProductSearch>(f => f.Title), Infer.Field<ProductSearch>(f => f.Description) },
                     Query = request.Query
                 });
             }
@@ -59,7 +71,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Search
             return query;
         }
 
-        private SortDescriptor<ProductSearch> BuildSort(Application.Models.Search.SearchRequest request)
+        private SortDescriptor<ProductSearch> BuildSort(ProductSearchRequest request)
         {
             var sortDescriptor = new SortDescriptor<ProductSearch>();
 
@@ -68,8 +80,9 @@ namespace TechMastery.MarketPlace.Infrastructure.Search
                 sortDescriptor.Ascending(p => p.Price);
             }
 
+            // You can add more sorting criteria based on request.SortBy here...
+
             return sortDescriptor;
         }
     }
 }
-

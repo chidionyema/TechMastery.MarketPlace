@@ -30,32 +30,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Features\" />
-	  <None Remove="Features\ProductListing\" />
-	  <None Remove="Features\ProductListing\Commands\" />
-	  <None Remove="Features\ProductListing\Commands\Create\" />
-	  <None Remove="Base\" />
-	  <None Remove="Features\Checkout\" />
-	  <None Remove="Features\Orders\" />
-	  <None Remove="Features\Checkout\Commands\" />
-	  <None Remove="Features\Orders\Commands\" />
-	  <None Remove="Builders\" />
-	  <None Remove="Fakes\" />
 	  <None Remove="appsettings.json" />
 	  <None Remove="appsettings.Development.json" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Features\" />
-	  <Folder Include="Features\ProductListing\" />
-	  <Folder Include="Features\ProductListing\Commands\" />
-	  <Folder Include="Features\ProductListing\Commands\Create\" />
-	  <Folder Include="Base\" />
-	  <Folder Include="Features\Checkout\" />
-	  <Folder Include="Features\Orders\" />
-	  <Folder Include="Features\Checkout\Commands\" />
-	  <Folder Include="Features\Orders\Commands\" />
-	  <Folder Include="Builders\" />
-	  <Folder Include="Fakes\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Persistence\TechMastery.MarketPlace.Persistence.csproj" />
