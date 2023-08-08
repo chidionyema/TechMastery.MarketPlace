@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=my_db_user
+      - POSTGRES_PASSWORD=my_db_password
+      - POSTGRES_DB=my_db_name
+
+  azure-blob-emulator:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azure-blob-emulator
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    environment:
+      - AZURITE_ACCOUNT=myaccount
+      - AZURITE_ACCOUNT_KEY=myaccountkey
+      - AZURITE_BLOB_PORT=10000
+      - AZURITE_QUEUE_PORT=10001
+      - AZURITE_TABLE_PORT=10002
