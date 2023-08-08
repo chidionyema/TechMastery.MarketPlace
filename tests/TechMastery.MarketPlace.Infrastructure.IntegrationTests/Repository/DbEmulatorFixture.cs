@@ -13,12 +13,12 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {
     public class DbEmulatorFixture : IAsyncLifetime
     {
-        private readonly string _connectionString;
-        private readonly DockerClient _dockerClient;
-        private readonly string _dockerContainerId;
+        private string _connectionString;
+        private DockerClient _dockerClient;
+        private string _dockerContainerId;
         public ApplicationDbContext DbContext { get; private set; }
 
-        public DbEmulatorFixture()
+        public async Task InitializeAsync()
         {
             _dockerClient = new DockerClientConfiguration(new Uri("unix:///var/run/docker.sock"))
                 .CreateClient();
@@ -67,7 +67,12 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             DbContext.Database.Migrate();
         }
 
-        // Rest of the code...
+        public async Task DisposeAsync()
+        {
+            _dockerClient.Containers.StopContainerAsync(_dockerContainerId, new ContainerStopParameters()).Wait();
+            _dockerClient.Containers.RemoveContainerAsync(_dockerContainerId, new ContainerRemoveParameters()).Wait();
+            DbContext?.Dispose();
+        }
 
         private void StopAndRemoveExistingContainer()
         {
@@ -104,21 +109,14 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             }
         }
 
-        public async Task InitializeAsync()
-        {
-            // Initialization logic here, if needed
-        }
-
-        public async Task DisposeAsync()
-        {
-            _dockerClient.Containers.StopContainerAsync(_dockerContainerId, new ContainerStopParameters()).Wait();
-            _dockerClient.Containers.RemoveContainerAsync(_dockerContainerId, new ContainerRemoveParameters()).Wait();
-            DbContext?.Dispose();
-        }
-
         public ProductRepository CreateProductRepository()
         {
             return new ProductRepository(DbContext);
+        }
+
+        public CategoryRepository CreateCategoryRepository()
+        {
+            return new CategoryRepository(DbContext);
         }
     }
 
