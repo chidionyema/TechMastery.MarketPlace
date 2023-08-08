@@ -17408,6 +17408,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoFixture >= 4.18.0",
+      "Docker.DotNet >= 3.125.15",
       "MediatR >= 12.1.1",
       "Microsoft.AspNetCore.Mvc.Testing >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.9",
@@ -17415,6 +17416,7 @@
       "Microsoft.NET.Test.Sdk >= 17.7.0",
       "Moq >= 4.18.4",
       "NEST >= 7.17.5",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.4",
       "Respawn >= 6.1.0",
       "Shouldly >= 4.2.1",
       "Stripe.net >= 41.27.0",
@@ -17475,6 +17477,10 @@
             "target": "Package",
             "version": "[4.18.0, )"
           },
+          "Docker.DotNet": {
+            "target": "Package",
+            "version": "[3.125.15, )"
+          },
           "MediatR": {
             "target": "Package",
             "version": "[12.1.1, )"
@@ -17504,6 +17510,10 @@
           "NEST": {
             "target": "Package",
             "version": "[7.17.5, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[7.0.4, )"
           },
           "Respawn": {
             "target": "Package",

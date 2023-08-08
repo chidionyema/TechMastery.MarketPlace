@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4Raqzp6ghBdvIiconFPPjT+YbhWnB1xgvUqv4mBFmOj4F3LgDt3e4z+sqtv6qZZwjmN4zPL6PUdJ/vICG9yOdQ==",
+  "dgSpecHash": "12AqjQpLWcjRVMEKXJtXpS1bEL8hwms2vNm2jQw/HnkBi6X4toPF6CJsqmKTrNZBu8DGa+8SHp5k1pcZNyIJsw==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/TechMastery.MarketPlace.Infrastructure.IntegrationTests.csproj",
   "expectedPackageFiles": [

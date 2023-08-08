@@ -643,6 +643,10 @@
               "target": "Package",
               "version": "[4.18.0, )"
             },
+            "Docker.DotNet": {
+              "target": "Package",
+              "version": "[3.125.15, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -672,6 +676,10 @@
             "NEST": {
               "target": "Package",
               "version": "[7.17.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
             },
             "Respawn": {
               "target": "Package",

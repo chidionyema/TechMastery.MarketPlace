@@ -1,53 +1,56 @@
-﻿using AutoFixture;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Persistence.Repositories;
 using Xunit;
 
-namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests.Repository
+namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {
-    public class ProductListingRepositoryTests : IntegrationTestFixture, IDisposable
+    [Collection("DbEmulatorCollection")]
+    public class ProductListingRepositoryTests
     {
         private readonly ProductRepository _repository;
-        private readonly Fixture _fixture;
+        private readonly DbEmulatorFixture _dbfixture;
 
-        public ProductListingRepositoryTests() : base()
+        public ProductListingRepositoryTests(DbEmulatorFixture dbfixture)
         {
-            _repository = CreateProductListingRepository();
-            _fixture = new Fixture();
-            _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            _dbfixture = dbfixture;
+            _repository = _dbfixture.CreateProductRepository();
         }
 
         [Fact]
         public async Task AddProductListing_ShouldInsertProductListingWithComplexRelationships()
         {
             // Arrange
-            var productListing = _fixture.Build<Product>()
-                .Without(pl => pl.ProductId)
-                .Create();
+            var categoryId = Guid.NewGuid();
+            var product = new Product(categoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+                "Test License", "Test Owner", "Test Purpose");
 
             // Act
-            var createdProductListing = await _repository.AddAsync(productListing);
+            var createdProductListing = await _repository.AddAsync(product);
 
             // Assert
             Assert.NotNull(createdProductListing);
             Assert.NotEqual(Guid.Empty, createdProductListing.ProductId);
             // Perform additional assertions
-
         }
 
         [Fact]
         public async Task UpdateProductListing_ShouldUpdateProductListingAndRelationships()
         {
             // Arrange
-            var existingProductListing = _fixture.Create<Product>();
+            var categoryId = Guid.NewGuid();
+            var existingProductListing = new Product(categoryId, "Existing Product", "Existing Description", "demo.com", 100.0m,
+                "Existing License", "Existing Owner", "Existing Purpose");
             await _repository.AddAsync(existingProductListing);
 
             // Fetch the existing entity from the database
             var retrievedProductListing = await _repository.GetByIdAsync(existingProductListing.ProductId);
 
             // Apply the updates to the retrieved entity
-            retrievedProductListing.SetName ("Updated Product Listing");
-            retrievedProductListing.SetDescription ("Updated description");
+            retrievedProductListing.SetName("Updated Product Listing");
+            retrievedProductListing.SetDescription("Updated description");
             // Apply other updates to the retrieved entity
 
             // Act
@@ -61,66 +64,70 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests.Repository
             // Perform additional assertions
         }
 
-
         [Fact]
         public async Task GetProductListingById_ShouldReturnCorrectProductListing()
         {
             // Arrange
-            var productListing = _fixture.Create<Product>();
-            await _repository.AddAsync(productListing);
+            var categoryId = Guid.NewGuid();
+            var product = new Product(categoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+                "Test License", "Test Owner", "Test Purpose");
+            await _repository.AddAsync(product);
 
             // Act
-            var retrievedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var retrievedProductListing = await _repository.GetByIdAsync(product.ProductId);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
             // Perform additional assertions
-
         }
 
         [Fact]
         public async Task GetProductListingWithRelationships_ShouldReturnProductListingWithAllRelatedEntities()
         {
             // Arrange
-            var productListing = _fixture.Create<Product>();
-            await _repository.AddAsync(productListing);
+            var categoryId = Guid.NewGuid();
+            var product = new Product(categoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+                "Test License", "Test Owner", "Test Purpose");
+            await _repository.AddAsync(product);
 
             // Act
-            var retrievedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var retrievedProductListing = await _repository.GetByIdAsync(product.ProductId);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
             // Perform additional assertions
-
         }
 
         [Fact]
         public async Task DeleteProductListing_ShouldDeleteProductListingAndCascadeDeleteRelationships()
         {
             // Arrange
-            var productListing = _fixture.Create<Product>();
-            await _repository.AddAsync(productListing);
+            var categoryId = Guid.NewGuid();
+            var product = new Product(categoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+                "Test License", "Test Owner", "Test Purpose");
+            await _repository.AddAsync(product);
 
             // Act
-            await _repository.DeleteAsync(productListing);
+            await _repository.DeleteAsync(product);
 
             // Assert
-            var deletedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var deletedProductListing = await _repository.GetByIdAsync(product.ProductId);
             Assert.Null(deletedProductListing);
             // Perform additional assertions
         }
-
-        // Additional tests for querying, pagination, sorting, etc.
 
         [Fact]
         public async Task GetAllProductListings_ShouldReturnAllProductListings()
         {
             // Arrange
-            var productListing1 = _fixture.Create<Product>();
-            await _repository.AddAsync(productListing1);
+            var categoryId = Guid.NewGuid();
+            var product1 = new Product(categoryId, "Test Product 1", "Test Description 1", "demo1.com", 100.0m,
+                "Test License 1", "Test Owner 1", "Test Purpose 1");
+            await _repository.AddAsync(product1);
 
-            var productListing2 = _fixture.Create<Product>();
-            await _repository.AddAsync(productListing2);
+            var product2 = new Product(categoryId, "Test Product 2", "Test Description 2", "demo2.com", 200.0m,
+                "Test License 2", "Test Owner 2", "Test Purpose 2");
+            await _repository.AddAsync(product2);
 
             // Act
             var productListings = await _repository.ListAllAsync();
@@ -129,13 +136,14 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests.Repository
             Assert.NotNull(productListings);
             Assert.Equal(2, productListings.Count);
             // Perform additional assertions
-
         }
+
+        // Additional tests for querying, pagination, sorting, etc.
 
         // teardown
         public void Dispose()
         {
-            DisposeContext();
+            Dispose();
         }
     }
 }
