@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TechMastery.MarketPlace.Infrastructure.Blob;
 using Nest;
+using MassTransit;
 
 namespace TechMastery.MarketPlace.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace TechMastery.MarketPlace.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
              Uri elasticsearchUri = new Uri(configuration["Elasticsearch:Uri"]!);
@@ -20,7 +22,6 @@ namespace TechMastery.MarketPlace.Infrastructure
             var elasticClient = new ElasticClient(settings);
             services.AddSingleton(elasticClient);
             services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IBlobStorageService, BlobStorageService>();
             services.AddTransient<IPaymentService>(sp =>
             {
                 var stripeSecretKey = configuration["Stripe:SecretKey"]; // Replace "Stripe:SecretKey" with your configuration key
@@ -35,13 +36,13 @@ namespace TechMastery.MarketPlace.Infrastructure
             switch (providerType)
             {
                 case StorageProviderType.AwsS3:
-                    services.AddSingleton<IStorageProvider, AwsS3StorageProvider>();
+                    services.AddSingleton<IStorageProvider, S3StorageProvider>();
                     break;
                 case StorageProviderType.AzureBlobStorage:
                     services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
                     break;
                 case StorageProviderType.Both:
-                    services.AddSingleton<IStorageProvider, AwsS3StorageProvider>();
+                    services.AddSingleton<IStorageProvider, S3StorageProvider>();
                     services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
                     break;
                 default:

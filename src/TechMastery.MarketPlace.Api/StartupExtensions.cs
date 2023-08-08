@@ -17,7 +17,6 @@ namespace TechMastery.MarketPlace.Api
         this WebApplicationBuilder builder)
         {
             AddSwagger(builder.Services);
-
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddStorageProvider(StorageProviderType.AzureBlobStorage);

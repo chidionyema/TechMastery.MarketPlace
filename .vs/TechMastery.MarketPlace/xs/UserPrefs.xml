@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{9C8709A2-1088-4D60-8853-9BA7E589311B}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/TechMastery.Messaging.Consumers/MessagePublisher.cs">
+    <Files>
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Messaging/IMessage.cs" Line="8" Column="6" />
+      <File FileName="src/TechMastery.Messaging.Contracts/Class1.cs" Line="10" Column="14" />
+      <File FileName="src/TechMastery.Messaging.Consumers/Consumers/ProductAddedConsumer.cs" Line="7" Column="54" />
+      <File FileName="src/TechMastery.Messaging.Consumers/Consumers/OrderPlacedConsumer.cs" Line="14" Column="6" />
+      <File FileName="src/TechMastery.Messaging.Consumers/Messages/OrderPlaced.cs" Line="13" Column="6" />
+      <File FileName="src/TechMastery.Messaging.Consumers/Messages/ProductAdded.cs" Line="13" Column="6" />
+      <File FileName="src/TechMastery.MarketPlace.Application/ApplicationServiceRegistration.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/InfrastructureServiceRegistration.cs" Line="12" Column="5" />
+      <File FileName="src/TechMastery.Messaging.Consumers/EmptyClass.cs" Line="37" Column="10" />
+      <File FileName="src/TechMastery.Messaging.Consumers/MessagePublisher.cs" Line="10" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TechMastery.MarketPlace">
+            <Node name="src" expanded="True">
+              <Node name="Core" expanded="True" />
+              <Node name="Infrastructure" expanded="True" />
+              <Node name="Messaging" expanded="True">
+                <Node name="TechMastery.Messaging" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.src.Messaging.TechMastery.Messaging FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.src.API.TechMastery.MarketPlace.Api PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+</Properties>

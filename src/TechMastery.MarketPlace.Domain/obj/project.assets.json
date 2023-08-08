@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
-      "projectName": "TechMastery.MarketPlace.Domain",
-      "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+      "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.Marketplace.Domain.csproj",
+      "projectName": "TechMastery.Marketplace.Domain",
+      "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.Marketplace.Domain.csproj",
       "packagesPath": "/Users/chidionyema/.nuget/packages/",
-      "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/",
+      "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chidionyema/.nuget/NuGet/NuGet.Config"

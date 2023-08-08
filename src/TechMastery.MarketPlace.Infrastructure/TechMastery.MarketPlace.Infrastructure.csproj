@@ -20,6 +20,10 @@
 		<PackageReference Include="Stripe.net" Version="41.27.0" />
 		<PackageReference Include="AWSSDK.S3" Version="3.7.201.8" />
 		<PackageReference Include="AWSSDK.Core" Version="3.7.200.10" />
+		<PackageReference Include="MassTransit" Version="8.0.16" />
+		<PackageReference Include="Paramore.Brighter" Version="9.5.10" />
+		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.16" />
+		<PackageReference Include="MassTransit.AmazonSQS" Version="8.0.16" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -35,6 +39,6 @@
 	  <Folder Include="Search\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\..\tests\TechMastery.MarketPlace.Application.UnitTests\TechMastery.MarketPlace.Application.UnitTests.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
 	</ItemGroup>
 </Project>

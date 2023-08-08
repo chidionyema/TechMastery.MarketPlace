@@ -33,7 +33,7 @@ namespace BlobFolderStructureService
                     {
                         var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
                         var storageProvider = scope.ServiceProvider.GetRequiredService<IStorageProvider>();
-                        var currentUserService = scope.ServiceProvider.GetRequiredService<ICurrentUserService>();
+                        //var currentUserService = scope.ServiceProvider.GetRequiredService<ICurrentUserService>();
                         
                         var newProducts = await productRepository.GetProductsByStatusAsync(ProductStatusEnum.NewlyListed);
 

@@ -10551,11 +10551,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
+      "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
       "projectName": "TechMastery.MarketPlace.Identity",
-      "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
+      "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
       "packagesPath": "/Users/chidionyema/.nuget/packages/",
-      "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/obj/",
+      "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -10570,8 +10570,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj": {
-              "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj"
+            "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj": {
+              "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj"
             }
           }
         }

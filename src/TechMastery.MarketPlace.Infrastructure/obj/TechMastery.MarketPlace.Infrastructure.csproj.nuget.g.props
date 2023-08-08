@@ -17,8 +17,9 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/7.0.9/buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/7.0.9/buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Pkgxunit_analyzers Condition=" '$(Pkgxunit_analyzers)' == '' ">/Users/chidionyema/.nuget/packages/xunit.analyzers/1.2.0</Pkgxunit_analyzers>
     <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/chidionyema/.nuget/packages/awssdk.core/3.7.200.10</PkgAWSSDK_Core>
+    <PkgAWSSDK_SQS Condition=" '$(PkgAWSSDK_SQS)' == '' ">/Users/chidionyema/.nuget/packages/awssdk.sqs/3.7.100.114</PkgAWSSDK_SQS>
+    <PkgAWSSDK_SimpleNotificationService Condition=" '$(PkgAWSSDK_SimpleNotificationService)' == '' ">/Users/chidionyema/.nuget/packages/awssdk.simplenotificationservice/3.7.101.50</PkgAWSSDK_SimpleNotificationService>
     <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">/Users/chidionyema/.nuget/packages/awssdk.s3/3.7.201.8</PkgAWSSDK_S3>
   </PropertyGroup>
 </Project>

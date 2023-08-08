@@ -8,7 +8,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
     public class BlobStorageServiceTests
     {
         private readonly BlobEmulatorFixture _fixture;
-        private readonly IBlobStorageService _blobStorageService;
+        private readonly AzureBlobStorageProvider _blobStorageService;
 
         public BlobStorageServiceTests(BlobEmulatorFixture fixture)
         {
@@ -17,7 +17,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
                 .AddJsonFile("appsettings.test.json")
                 .Build();
 
-            _blobStorageService = new BlobStorageService(configuration);
+            _blobStorageService = new AzureBlobStorageProvider(configuration);
         }
 
         [Fact]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qKBGjNUF6Q5cycYNDgSVsEXUzLgOwew/HHZWk4ydr1lo+aWer4yNfBXoR+3apZ9AtPj2NgALTEGrrzPGt/wcMA==",
+  "dgSpecHash": "tdiGRrfcWCZQ+j5DBDsN7EF4xM2kxR3KQ4m6478J8EO78I+HgTNvsaZDgQCRhjE1O7xCX3twNIIFucTzy1lEXg==",
   "success": true,
-  "projectFilePath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
+  "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
   "expectedPackageFiles": [
     "/Users/chidionyema/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

@@ -52,6 +52,8 @@
 	  <None Remove="Features\Orders\Queries\GetByOrderId\" />
 	  <None Remove="Features\ProductListing\Queries\GetByCategory\" />
 	  <None Remove="BackgroundServices\" />
+	  <None Remove="Options\" />
+	  <None Remove="Contracts\Messaging\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Services\" />
@@ -77,6 +79,8 @@
 	  <Folder Include="Features\Orders\Queries\GetByOrderId\" />
 	  <Folder Include="Features\ProductListing\Queries\GetByCategory\" />
 	  <Folder Include="BackgroundServices\" />
+	  <Folder Include="Options\" />
+	  <Folder Include="Contracts\Messaging\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.Marketplace.Domain.csproj" />

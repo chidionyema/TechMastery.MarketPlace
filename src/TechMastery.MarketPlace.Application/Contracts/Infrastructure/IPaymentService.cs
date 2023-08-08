@@ -1,5 +1,4 @@
-﻿using System;
-using TechMastery.MarketPlace.Application.Models.Payment;
+﻿using TechMastery.MarketPlace.Application.Models.Payment;
 
 namespace TechMastery.MarketPlace.Application.Contracts.Infrastructure
 {
