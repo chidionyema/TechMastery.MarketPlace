@@ -83,6 +83,6 @@
 	  <Folder Include="Contracts\Messaging\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.Marketplace.Domain.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj" />
 	</ItemGroup>
 </Project>

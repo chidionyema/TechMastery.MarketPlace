@@ -26,12 +26,12 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
     public class AddOrUpdateListingHandler : IRequestHandler<AddOrUpdateListing, Guid>
     {
         private readonly IProductRepository _productRepository;
-        private readonly IBlobStorageService _blobStorageService;
+        private readonly IStorageProvider _storageProvider;
         private readonly ICategoryRepository _categoryRepository;
 
-        public AddOrUpdateListingHandler(IProductRepository productRepository, IBlobStorageService blobStorageService, ICategoryRepository categoryRepository)
+        public AddOrUpdateListingHandler(IProductRepository productRepository, IStorageProvider storageProvider, ICategoryRepository categoryRepository)
         {
-            _blobStorageService = blobStorageService ?? throw new ArgumentNullException(nameof(blobStorageService));
+            _storageProvider = storageProvider ?? throw new ArgumentNullException(nameof(storageProvider));
             _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
             _categoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
         }
@@ -164,7 +164,7 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
         private async Task<string> UploadBlobArtifact(ProductAssetDto uploadAssetData, CancellationToken cancellationToken)
         {
             string fileName = GenerateUniqueFileName(uploadAssetData.FormFile.FileName);
-            var blobUri = await _blobStorageService.UploadFileAsync(fileName, uploadAssetData.FormFile.OpenReadStream(), cancellationToken);
+            var blobUri = await _storageProvider.UploadFileAsync(fileName, uploadAssetData.FormFile.OpenReadStream(), cancellationToken);
             return blobUri.ToString();
         }
 

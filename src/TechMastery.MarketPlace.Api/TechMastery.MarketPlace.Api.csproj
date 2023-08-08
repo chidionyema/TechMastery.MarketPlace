@@ -24,6 +24,7 @@
 
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="7.0.9" />
 		<PackageReference Include="MediatR" Version="11.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
 	</ItemGroup>
 
 
@@ -32,9 +33,6 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\..\tests\TechMastery.MarketPlace.Application.UnitTests\TechMastery.MarketPlace.Application.UnitTests.csproj">
-		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-		</ProjectReference>
 		<ProjectReference Include="..\TechMastery.MarketPlace.Identity\TechMastery.MarketPlace.Identity.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
@@ -42,6 +40,9 @@
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
 		<ProjectReference Include="..\TechMastery.MarketPlace.Persistence\TechMastery.MarketPlace.Persistence.csproj">
+		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
 	</ItemGroup>

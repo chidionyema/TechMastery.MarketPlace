@@ -20,18 +20,18 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
         private readonly IOrderRepository _orderRepository;
         private readonly IPaymentService _paymentService;
         private readonly IEmailService _emailService;
-        private readonly IBlobStorageService _blobStorageService;
+        private readonly IStorageProvider _storageProvider;
 
         public ProcessOrderCommandHandler(
             IOrderRepository orderRepository,
             IPaymentService paymentService,
             IEmailService emailService,
-            IBlobStorageService blobStorageService)
+            IStorageProvider storageProvider)
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
             _paymentService = paymentService ?? throw new ArgumentNullException(nameof(paymentService));
             _emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
-            _blobStorageService = blobStorageService ?? throw new ArgumentNullException(nameof(blobStorageService));
+            _storageProvider = storageProvider ?? throw new ArgumentNullException(nameof(storageProvider));
         }
 
         public async Task<PaymentResult> Handle(ProcessOrder command, CancellationToken cancellationToken)
@@ -113,7 +113,7 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
             foreach (var orderLineItem in order.OrderLineItems)
             {
                 var blobName = orderLineItem.GetProductArtifactBlobName();
-                var sasUrl = await _blobStorageService.GenerateSasUriAsync(blobName, sasExpiryTime);
+                var sasUrl = await _storageProvider.GenerateSasUriAsync(blobName, sasExpiryTime);
                 await _emailService.SendDownloadLinkEmailAsync(order.OrderEmail, sasUrl);
             }
         }

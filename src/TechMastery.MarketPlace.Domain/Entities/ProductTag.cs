@@ -4,6 +4,9 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class ProductTag : AuditableEntity
     {
+        public ProductTag()
+        {
+        }
         public ProductTag (string tagName)
         {
             Name = tagName;

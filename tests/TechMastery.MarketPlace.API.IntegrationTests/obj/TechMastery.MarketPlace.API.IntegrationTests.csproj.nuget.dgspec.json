@@ -27,6 +27,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              },
               "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj": {
                 "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj"
               },
@@ -35,9 +38,6 @@
               },
               "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
                 "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj"
-              },
-              "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj"
               }
             }
           }
@@ -59,6 +59,10 @@
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
               "version": "[7.0.9, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.HealthChecks": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -300,8 +304,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj"
+              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
               }
             }
           }
@@ -684,115 +688,6 @@
             "Testcontainers.Elasticsearch": {
               "target": "Package",
               "version": "[3.3.0, )"
-            },
-            "coverlet.collector": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.0, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.5.0, )"
-            },
-            "xunit.runner.visualstudio": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.5.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj",
-        "projectName": "TechMastery.MarketPlace.Application.UnitTests",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj",
-        "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net7.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
-            "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
-              },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
-              },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.Extensions.Configuration.UserSecrets": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.6.3, )"
-            },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.18.4, )"
-            },
-            "Shouldly": {
-              "target": "Package",
-              "version": "[4.2.1, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

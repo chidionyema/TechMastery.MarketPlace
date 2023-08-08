@@ -16,6 +16,7 @@ namespace TechMastery.MarketPlace.Api
         public static WebApplication ConfigureServices(
         this WebApplicationBuilder builder)
         {
+            
             AddSwagger(builder.Services);
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -34,6 +35,8 @@ namespace TechMastery.MarketPlace.Api
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
+            builder.Services.AddHealthChecks();
+
             return builder.Build();
 
         }
@@ -46,13 +49,14 @@ namespace TechMastery.MarketPlace.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GloboTicket Ticket Management API");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TechMastery API");
                 });
             }
 
+            app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
 
-            //app.UseRouting();
+            app.UseRouting();
             
             app.UseAuthentication();
 

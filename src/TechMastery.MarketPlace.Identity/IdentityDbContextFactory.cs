@@ -26,7 +26,7 @@ namespace TechMastery.MarketPlace.Persistence
             var configuration = hostBuilder.Services.GetRequiredService<IConfiguration>();
 
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationIdentityDbContext>();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("GloboTicketIdentityConnectionString"));
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("TechMasteryMarkePlaceIdentityConnectionStringIdentityConnectionString"));
 
             return new ApplicationIdentityDbContext(optionsBuilder.Options);
         }

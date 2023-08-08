@@ -22,6 +22,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\tests\TechMastery.MarketPlace.Application.UnitTests\TechMastery.MarketPlace.Application.UnitTests.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
 	</ItemGroup>
 </Project>

@@ -1186,6 +1186,25 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "2.2.0",
+          "Microsoft.Extensions.Options": "2.2.0",
+          "Microsoft.Net.Http.Headers": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.HealthChecks.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.HealthChecks.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Http/2.2.2": {
         "type": "package",
         "dependencies": {
@@ -6403,6 +6422,7 @@
         "dependencies": {
           "MediatR": "11.0.0",
           "Microsoft.AspNetCore.Authentication.Google": "7.0.9",
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.8",
           "Serilog": "3.0.1",
           "Serilog.AspNetCore": "7.0.0",
@@ -6411,7 +6431,7 @@
           "Serilog.Sinks.File": "5.0.0",
           "Swashbuckle.AspNetCore": "6.5.0",
           "Swashbuckle.AspNetCore.Swagger": "6.5.0",
-          "TechMastery.MarketPlace.Application.UnitTests": "1.0.0",
+          "TechMastery.MarketPlace.Application": "1.0.0",
           "TechMastery.MarketPlace.Identity": "1.0.0",
           "TechMastery.MarketPlace.Infrastructure": "1.0.0",
           "TechMastery.MarketPlace.Persistence": "1.0.0"
@@ -6450,29 +6470,6 @@
           "bin/placeholder/TechMastery.MarketPlace.Application.dll": {}
         }
       },
-      "TechMastery.MarketPlace.Application.UnitTests/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.9",
-          "Microsoft.EntityFrameworkCore.InMemory": "7.0.9",
-          "Microsoft.EntityFrameworkCore.Sqlite": "7.0.9",
-          "Microsoft.Extensions.Configuration.UserSecrets": "7.0.0",
-          "Microsoft.NET.Test.Sdk": "17.6.3",
-          "Moq": "4.18.4",
-          "Shouldly": "4.2.1",
-          "TechMastery.MarketPlace.Application": "1.0.0",
-          "TechMastery.MarketPlace.Domain": "1.0.0",
-          "TechMastery.MarketPlace.Persistence": "1.0.0",
-          "xunit": "2.5.0"
-        },
-        "compile": {
-          "bin/placeholder/TechMastery.MarketPlace.Application.UnitTests.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TechMastery.MarketPlace.Application.UnitTests.dll": {}
-        }
-      },
       "TechMastery.MarketPlace.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -6495,7 +6492,7 @@
           "Microsoft.extensions.dependencyinjection": "7.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
           "System.IdentityModel.Tokens.Jwt": "6.32.0",
-          "TechMastery.MarketPlace.Application.UnitTests": "1.0.0"
+          "TechMastery.MarketPlace.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/TechMastery.MarketPlace.Identity.dll": {}
@@ -8092,6 +8089,19 @@
         "lib/net7.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
         "microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.9.nupkg.sha512",
         "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
+      "sha512": "RNmdLy9yncTprony49cuwhyTKoROpVflGM+pKlHA1671F00QUsjoY1Oi6xoa9XsUrfRDRYlxbt2CHYCMLzMh7Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.healthchecks/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.HealthChecks.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.HealthChecks.xml",
+        "microsoft.aspnetcore.diagnostics.healthchecks.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.healthchecks.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Http/2.2.2": {
@@ -17373,11 +17383,6 @@
       "type": "project",
       "path": "../../src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
       "msbuildProject": "../../src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
-    },
-    "TechMastery.MarketPlace.Application.UnitTests/1.0.0": {
-      "type": "project",
-      "path": "../TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj",
-      "msbuildProject": "../TechMastery.MarketPlace.Application.UnitTests/TechMastery.MarketPlace.Application.UnitTests.csproj"
     },
     "TechMastery.MarketPlace.Domain/1.0.0": {
       "type": "project",

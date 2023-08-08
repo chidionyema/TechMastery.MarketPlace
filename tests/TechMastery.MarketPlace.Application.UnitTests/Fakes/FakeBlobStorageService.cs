@@ -3,9 +3,14 @@
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {
     // Fake implementation of IBlobStorageService
-    public class FakeBlobStorageService : IBlobStorageService
+    public class FakeBlobStorageService : IStorageProvider
     {
         public Func<string, Stream, CancellationToken, Task<string>> UploadFileAsyncFunc { get; set; }
+
+        public Task CreateBlobFolderStructureAsync(string topLevel, string folderName)
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<byte[]> DownloadBlobAsync(string containerName, string blobName)
         {

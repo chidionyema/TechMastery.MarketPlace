@@ -1,0 +1,13 @@
+2023-08-08 17:03:24.575 +01:00 [INF] Now listening on: http://localhost:14029
+2023-08-08 17:03:24.603 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-08-08 17:03:24.604 +01:00 [INF] Hosting environment: Development
+2023-08-08 17:03:24.605 +01:00 [INF] Content root path: /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api
+2023-08-08 17:03:25.938 +01:00 [WRN] Failed to determine the https port for redirect.
+2023-08-08 17:03:26.038 +01:00 [INF] HTTP GET / responded 404 in 0.5925 ms
+2023-08-08 17:03:26.249 +01:00 [INF] HTTP GET /favicon.ico responded 404 in 0.0736 ms
+2023-08-08 17:32:42.964 +01:00 [INF] Now listening on: http://localhost:14029
+2023-08-08 17:32:42.993 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-08-08 17:32:42.994 +01:00 [INF] Hosting environment: Development
+2023-08-08 17:32:42.994 +01:00 [INF] Content root path: /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api
+2023-08-08 17:32:45.659 +01:00 [WRN] Failed to determine the https port for redirect.
+2023-08-08 17:32:45.760 +01:00 [INF] HTTP GET / responded 404 in 0.7367 ms

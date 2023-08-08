@@ -13,8 +13,10 @@ namespace TechMastery.MarketPlace.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                  //options.UseSqlServer(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString")));
-                  options.UseSqlite("Data Source=mydatabase.db"));
+            {
+                // Replace the connection string with your PostgreSQL connection string
+                options.UseNpgsql(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString"));
+            });
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IOrderRepository, OrderRepository>();
@@ -24,7 +26,7 @@ namespace TechMastery.MarketPlace.Persistence
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
-            return services;    
+            return services;
         }
     }
 }

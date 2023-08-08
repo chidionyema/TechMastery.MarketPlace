@@ -3,6 +3,9 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <DisabledProjects>
+    <String>src/TechMastery.Messaging/TechMastery.Messaging.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.Workbench ActiveDocument="src/TechMastery.Messaging.Consumers/MessagePublisher.cs">
     <Files>
       <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Messaging/IMessage.cs" Line="8" Column="6" />
