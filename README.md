@@ -3,46 +3,6 @@
 Welcome to TechMastery.MarketPlace! This project aims to provide a robust and feature-rich marketplace platform built using the latest technologies. Whether you're a developer looking to contribute or a user interested in using the platform, this README has you covered.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Introduction
-TechMastery.MarketPlace is a marketplace platform designed to connect buyers and sellers, offering a seamless experience for both parties. The platform is built with a focus on clean code, robust architecture, and the latest industry best practices.
-
-## Features
-- User authentication and authorization
-- Product listing and search
-- Secure payment processing
-- Seller management and analytics
-- Integration with popular third-party services
-- Responsive and user-friendly UI
-
-## Getting Started
-Follow these steps to get TechMastery.MarketPlace up and running on your local machine.
-
-### Prerequisites
-- [.NET SDK](https://dotnet.microsoft.com/download)
-- [Node.js](https://nodejs.org/)
-- [Stripe Account](https://stripe.com/) for payment processing
-
-### Installation
-
-Sure, here's the updated installation steps that include the setup script:
-
-markdown
-Copy code
-# TechMastery.MarketPlace
-
-Welcome to TechMastery.MarketPlace! This project aims to provide a robust and feature-rich marketplace platform built using the latest technologies. Whether you're a developer looking to contribute or a user interested in using the platform, this README has you covered.
-
-## Table of Contents
 
 - [Introduction](#introduction)
 - [Features](#features)
