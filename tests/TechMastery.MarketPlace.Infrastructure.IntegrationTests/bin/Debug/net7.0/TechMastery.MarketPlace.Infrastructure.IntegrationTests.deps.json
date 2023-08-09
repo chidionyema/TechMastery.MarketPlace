@@ -41,15 +41,19 @@
           "Microsoft.AspNetCore.Mvc.Testing": "7.0.9",
           "Microsoft.EntityFrameworkCore.Design": "7.0.9",
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.9",
+          "Microsoft.Extensions.Options": "7.0.1",
           "Microsoft.NET.Test.Sdk": "17.7.0",
           "Moq": "4.18.4",
           "NEST": "7.17.5",
+          "Newtonsoft.Json": "13.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "RabbitMQ.Client": "6.5.0",
           "Respawn": "6.1.0",
           "Shouldly": "4.2.1",
           "Stripe.net": "41.27.0",
           "TechMastery.MarketPlace.Api": "1.0.0",
           "TechMastery.MarketPlace.Application": "1.0.0",
+          "TechMastery.MarketPlace.Messaging": "1.0.0",
           "Testcontainers": "3.3.0",
           "Testcontainers.Elasticsearch": "3.3.0",
           "coverlet.collector": "6.0.0",
@@ -357,6 +361,21 @@
         },
         "compile": {
           "TechMastery.MarketPlace.Infrastructure.IntegrationTests.dll": {}
+        }
+      },
+      "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
+          "NEST": "7.17.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {}
         }
       },
       "AutoFixture/4.18.0": {
@@ -1245,7 +1264,7 @@
         "dependencies": {
           "MassTransit.Abstractions": "8.0.16",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
           "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1",
@@ -1253,7 +1272,7 @@
           "System.Reflection.Emit": "4.7.0",
           "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Text.Json": "7.0.3",
-          "System.Threading.Channels": "6.0.0"
+          "System.Threading.Channels": "7.0.0"
         },
         "runtime": {
           "lib/net6.0/MassTransit.dll": {
@@ -1306,6 +1325,21 @@
         },
         "compile": {
           "lib/net6.0/MassTransit.Azure.ServiceBus.Core.dll": {}
+        }
+      },
+      "MassTransit.RabbitMQ/8.0.16": {
+        "dependencies": {
+          "MassTransit": "8.0.16",
+          "RabbitMQ.Client": "6.5.0"
+        },
+        "runtime": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "8.0.16.0",
+            "fileVersion": "8.0.16.0"
+          }
+        },
+        "compile": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {}
         }
       },
       "MediatR/12.1.1": {
@@ -1410,7 +1444,7 @@
       "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
           "Microsoft.Extensions.Options": "7.0.1",
           "Microsoft.Net.Http.Headers": "2.2.0"
         }
@@ -2340,15 +2374,28 @@
           "lib/net7.0/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.9",
           "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.923.32110"
+          }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {},
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.923.32110"
+          }
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
@@ -3425,6 +3472,21 @@
         },
         "compile": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        }
+      },
+      "RabbitMQ.Client/6.5.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {}
         }
       },
       "Respawn/6.1.0": {
@@ -4733,7 +4795,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Threading.Channels/6.0.0": {},
+      "System.Threading.Channels/7.0.0": {},
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -4990,6 +5052,7 @@
         "dependencies": {
           "AWSSDK.Core": "3.7.200.10",
           "AWSSDK.S3": "3.7.201.8",
+          "AspNetCore.HealthChecks.Elasticsearch": "7.0.0",
           "Azure.Storage.Blobs": "12.17.0",
           "CsvHelper": "30.0.1",
           "MassTransit": "8.0.16",
@@ -5003,6 +5066,8 @@
           "NEST.JsonNetSerializer": "7.17.5",
           "Paramore.Brighter": "9.5.10",
           "SendGrid": "9.28.1",
+          "Serilog": "3.0.1",
+          "Serilog.Extensions.Logging": "7.0.0",
           "Stripe.net": "41.27.0",
           "TechMastery.MarketPlace.Application": "1.0.0"
         },
@@ -5011,6 +5076,20 @@
         },
         "compile": {
           "TechMastery.MarketPlace.Infrastructure.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Messaging/1.0.0": {
+        "dependencies": {
+          "MassTransit.AmazonSQS": "8.0.16",
+          "MassTransit.Azure.ServiceBus.Core": "8.0.16",
+          "MassTransit.RabbitMQ": "8.0.16",
+          "TechMastery.MarketPlace.Application": "1.0.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Messaging.dll": {}
+        },
+        "compile": {
+          "TechMastery.MarketPlace.Messaging.dll": {}
         }
       },
       "TechMastery.MarketPlace.Persistence/1.0.0": {
@@ -6816,6 +6895,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dA/fNzwHm/VyGwGCait0SwXNhcq3f8y+lSGqxIhIFDBP0yvfecByWJ9oWe5d6o3Kdsi2G9W2zWKNZIF3JLhGXA==",
+      "path": "aspnetcore.healthchecks.elasticsearch/7.0.0",
+      "hashPath": "aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512"
+    },
     "AutoFixture/4.18.0": {
       "type": "package",
       "serviceable": true,
@@ -7362,6 +7448,13 @@
       "path": "masstransit.azure.servicebus.core/8.0.16",
       "hashPath": "masstransit.azure.servicebus.core.8.0.16.nupkg.sha512"
     },
+    "MassTransit.RabbitMQ/8.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M97xmeV1MxCDV4RboVNbePqAZj+Haic+L4KAa8qJzkLIh0bqpCv+3Hb2X+snhGm03jS1Xknh+wzHR+upvIXf8w==",
+      "path": "masstransit.rabbitmq/8.0.16",
+      "hashPath": "masstransit.rabbitmq.8.0.16.nupkg.sha512"
+    },
     "MediatR/12.1.1": {
       "type": "package",
       "serviceable": true,
@@ -7796,19 +7889,19 @@
       "path": "microsoft.extensions.dependencymodel/7.0.0",
       "hashPath": "microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WdiVqAFrY40eNgtmtMHrXdrE1DwndwpzmWcN21lezRF+zqzWxZ83P9tJjwT0x6MgVx7iDOu4szxK/LDeC5YWEA==",
-      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.healthchecks.6.0.1.nupkg.sha512"
+      "sha512": "sha512-ubVLIa7GbGZrC7OWcMuFo/GJRYdVvqyMj7M4JFgWobXgh4QT2km40T46zLlXJfQWH68mh+g4iBJeg7VN3pldJA==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.9",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.7.0.9.nupkg.sha512"
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hXBOIVVsCsrehsZanu9UVzHZzOUM+3hCLXp8PBlZutv2xeCrw5fKh6mpX14lqfYewWLpARt2jFpbHhtaRhRt+Q==",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.1.nupkg.sha512"
+      "sha512": "sha512-myuiz5s14NEWffeiRH94GM1W9PkPyU/TLWCPjEIJ+Tck6QwRV89KHNwlJ+ZebRMlMTd64hwECybjLp1vIS4gTA==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.9",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.9.nupkg.sha512"
     },
     "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
       "type": "package",
@@ -8278,6 +8371,13 @@
       "sha512": "sha512-eZZBCABzVOek+id9Xy04HhmgykF0wZg9wpByzrWN7q8qEI0Qen9b7tfd7w8VA3dOeesumMG7C5ZPy0jk7PSRHw==",
       "path": "portable.bouncycastle/1.9.0",
       "hashPath": "portable.bouncycastle.1.9.0.nupkg.sha512"
+    },
+    "RabbitMQ.Client/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9hY5HiWPtCla1/l0WmXmLnqoX7iKE3neBQUWnetIJrRpOvTbO//XQfQDh++xgHCshL40Kv/6bR0HDkmJz46twg==",
+      "path": "rabbitmq.client/6.5.0",
+      "hashPath": "rabbitmq.client.6.5.0.nupkg.sha512"
     },
     "Respawn/6.1.0": {
       "type": "package",
@@ -9161,12 +9261,12 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
-    "System.Threading.Channels/6.0.0": {
+    "System.Threading.Channels/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TY8/9+tI0mNaUMgntOxxaq2ndTkdXqLSxvPmas7XEqOlv9lQtB7wLjYGd756lOaO7Dvb5r/WXhluM+0Xe87v5Q==",
-      "path": "system.threading.channels/6.0.0",
-      "hashPath": "system.threading.channels.6.0.0.nupkg.sha512"
+      "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+      "path": "system.threading.channels/7.0.0",
+      "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
     },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
@@ -9308,6 +9408,11 @@
       "sha512": ""
     },
     "TechMastery.MarketPlace.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Messaging/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

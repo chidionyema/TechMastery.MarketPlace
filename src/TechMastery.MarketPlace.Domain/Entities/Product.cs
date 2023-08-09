@@ -16,6 +16,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
             Owner = owner;
             Purpose = purpose;
             Status = ProductStatusEnum.NewlyListed;
+           // ProductOwner = new ProductOwner(owner);
         }
 
         public Guid ProductId { get; protected set; }
@@ -28,7 +29,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
         public string License { get; private set; } = string.Empty;
         public string Owner { get; private set; } = string.Empty;
         public string Purpose { get; private set; } = string.Empty;
-        public ProductOwner ProductOwner { get; private set; }
+        //public ProductOwner? ProductOwner { get; private set; }
         public List<Contribution> Contributions { get; private set; } = new List<Contribution>();
         public ICollection<ProductTag> Tags { get; private set; } = new List<ProductTag>();
         public ICollection<ProductArtifact> Artifacts { get; private set; } = new List<ProductArtifact>();
@@ -145,5 +146,16 @@ namespace TechMastery.MarketPlace.Domain.Entities
             DemoURL = demoUrl;
             Price = price;
         }
+
+        public void UpdateDependencies(List<ProductDependency> updatedOrNewDependencies)
+        {
+            Dependencies.Clear(); // Clear existing dependencies
+
+            foreach (var dependency in updatedOrNewDependencies)
+            {
+                Dependencies.Add(dependency); // Add updated or new dependencies
+            }
+        }
+
     }
 }

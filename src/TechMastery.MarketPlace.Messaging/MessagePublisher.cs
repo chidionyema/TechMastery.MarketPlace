@@ -5,7 +5,6 @@ using Amazon;
 using Amazon.Runtime;
 using Amazon.SQS;
 using Azure.Messaging.ServiceBus;
-using MassTransit;
 using RabbitMQ.Client;
 using TechMastery.Messaging.Consumers;
 
@@ -13,10 +12,10 @@ namespace TechMastery.MarketPlace.Application.Contracts.Messaging
 {
     public class MessagePublisher : IMessagePublisher, IDisposable
     {
-        private readonly MessagingSystemsOptions _messagingSystemsOptions;
-        private readonly ServiceBusClient _serviceBusClient;
-        private readonly IAmazonSQS _sqsClient;
-        private readonly IModel _rabbitMqChannel;
+        private readonly MessagingSystemsOptions? _messagingSystemsOptions;
+        private readonly ServiceBusClient? _serviceBusClient;
+        private readonly IAmazonSQS? _sqsClient;
+        private readonly IModel? _rabbitMqChannel;
 
         public MessagePublisher(MessagingSystemsOptions messagingSystemsOptions)
         {
@@ -78,7 +77,7 @@ namespace TechMastery.MarketPlace.Application.Contracts.Messaging
 
         private async Task PublishToAzureServiceBus<TMessage>(TMessage message, string queueName) where TMessage : class, IMessage
         {
-            await using (ServiceBusSender sender = _serviceBusClient.CreateSender(queueName))
+            await using (ServiceBusSender sender = _serviceBusClient!.CreateSender(queueName))
             {
                 string serializedMessage = SerializeMessage(message);
                 ServiceBusMessage serviceBusMessage = new ServiceBusMessage(serializedMessage);
@@ -95,7 +94,7 @@ namespace TechMastery.MarketPlace.Application.Contracts.Messaging
                 MessageBody = SerializeMessage(message)
             };
 
-            await _sqsClient.SendMessageAsync(request);
+            await _sqsClient!.SendMessageAsync(request);
         }
 
         private void PublishToRabbitMq<TMessage>(TMessage message, string queueName) where TMessage : class, IMessage

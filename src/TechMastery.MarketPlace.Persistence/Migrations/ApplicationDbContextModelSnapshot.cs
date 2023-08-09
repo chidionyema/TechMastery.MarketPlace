@@ -156,9 +156,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryDependencyId = new Guid("5f9c73d6-a387-4dd5-a697-ad32e00c5b12"),
+                            CategoryDependencyId = new Guid("2542448f-0ae3-4721-95b3-6fecd04798e6"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000001"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(150),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = "React",
@@ -166,9 +166,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("866db1d8-023a-4691-a286-afa41b29a719"),
+                            CategoryDependencyId = new Guid("f79acbb2-30fd-43d5-8360-2397af3fcfd2"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000001"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = "Angular",
@@ -176,9 +176,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("1c41216c-7cd4-49e0-909e-58978629eb92"),
+                            CategoryDependencyId = new Guid("691eea92-3e05-4236-ae5b-bce3c91c8aa5"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000002"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = ".NET Core",
@@ -186,9 +186,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("d33e158d-b5ce-43f2-94c3-12b0d6ccef9c"),
+                            CategoryDependencyId = new Guid("d427d457-6f6f-4b23-b447-c4f463457ae7"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000002"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = "Node.js",
@@ -196,9 +196,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("12520dd7-d253-4407-8d1f-721bdb63a1b6"),
+                            CategoryDependencyId = new Guid("e5237040-b261-43d9-927e-e4e85b9aa0d0"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000003"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
                             DependencyTypeEnum = 2,
                             DependencyTypeId = 0,
                             Name = "Docker",
@@ -206,9 +206,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("cd483f37-e607-45d7-87b9-0aa7a84fa82b"),
+                            CategoryDependencyId = new Guid("2280c0e8-3b51-400e-978d-a755feda790e"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000003"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
                             DependencyTypeEnum = 2,
                             DependencyTypeId = 0,
                             Name = "Kubernetes",
@@ -216,9 +216,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("bb63f775-be4d-4443-be15-a3313c0d06d4"),
+                            CategoryDependencyId = new Guid("f6494f8f-3ff3-4ec9-bed9-5f06e0ca081b"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000004"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
                             DependencyTypeEnum = 2,
                             DependencyTypeId = 0,
                             Name = "PostgreSQL",
@@ -226,9 +226,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("636c6b38-b70e-4b74-8967-2e22b4ccc07e"),
+                            CategoryDependencyId = new Guid("7db25e04-8362-4882-b5fd-71442a7ea3bb"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000004"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
                             DependencyTypeEnum = 2,
                             DependencyTypeId = 0,
                             Name = "MongoDB",
@@ -236,9 +236,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("115a5051-d771-44b6-a48a-2001e75c03ce"),
+                            CategoryDependencyId = new Guid("2b4e9bec-2698-4196-901a-e570c2c97e16"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000005"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(180),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = "TensorFlow",
@@ -246,9 +246,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         },
                         new
                         {
-                            CategoryDependencyId = new Guid("67f03938-fb25-4ea7-b0be-f10d2c5617dd"),
+                            CategoryDependencyId = new Guid("abbf55bc-6a76-4c63-ac08-64daae2d4d22"),
                             CategoryId = new Guid("00000001-0000-0000-0000-000000000005"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(180),
                             DependencyTypeEnum = 0,
                             DependencyTypeId = 0,
                             Name = "PyTorch",
@@ -308,6 +308,18 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("ContributorId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
@@ -329,8 +341,20 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -554,7 +578,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DownloadedBy")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("LastModifiedBy")
@@ -580,7 +603,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductDependency", b =>
                 {
-                    b.Property<Guid>("SolutionDependencyId")
+                    b.Property<Guid>("ProductDependencyId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -606,18 +629,18 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("SolutionId")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Version")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("SolutionDependencyId");
+                    b.HasKey("ProductDependencyId");
 
                     b.HasIndex("DependencyTypeId");
 
-                    b.HasIndex("SolutionId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductDependencies");
                 });
@@ -662,11 +685,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLicense", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("ProductLicenseId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
@@ -681,13 +702,12 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid?>("ProductId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductLicenseId");
 
                     b.HasIndex("ProductId");
 
@@ -737,11 +757,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("ReviewerUsername")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ProductReviewId");
@@ -809,7 +825,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("TagId");
@@ -822,6 +837,18 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
@@ -1020,15 +1047,15 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Solution")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
                         .WithMany("Dependencies")
-                        .HasForeignKey("SolutionId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DependencyType");
 
-                    b.Navigation("Solution");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLicense", b =>
@@ -1040,13 +1067,13 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductReview", b =>
                 {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Solution")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Solution");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.SaleTransaction", b =>

@@ -3442,6 +3442,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.XDocument.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/refs/WindowsBase.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/HealthChecks.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/AutoFixture.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/AutoMapper.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -3510,6 +3511,8 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Hosting.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.API.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll

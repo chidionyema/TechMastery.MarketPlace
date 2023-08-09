@@ -9,13 +9,22 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
     {
         private readonly BlobServiceClient _blobServiceClient;
         private readonly string _containerName;
-        private readonly string _storageBaseUrl;
 
-        public AzureBlobStorageProvider(IConfiguration configuration)
+        public AzureBlobStorageProvider(string storageConnectionString, string containerName)
         {
-            _blobServiceClient = CreateBlobServiceClient(configuration);
-            _containerName = GetConfigurationValue(configuration, "BlobStorageContainerName");
-            _storageBaseUrl = GetConfigurationValue(configuration, "BlobStorageBaseUrl");
+
+            if (string.IsNullOrWhiteSpace(storageConnectionString))
+            {
+                throw new ArgumentException("Storage connection string cannot be empty or null.", nameof(storageConnectionString));
+            }
+
+            if (string.IsNullOrWhiteSpace(containerName))
+            {
+                throw new ArgumentException("Container name cannot be empty or null.", nameof(containerName));
+            }
+
+            _blobServiceClient = new BlobServiceClient(storageConnectionString);
+            _containerName = containerName;
         }
 
         public async Task<string> UploadFileAsync(string fileName, Stream fileStream, CancellationToken cancellationToken)
@@ -84,17 +93,6 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
 
             var response = await blobClient.OpenReadAsync();
             return response;
-        }
-
-        private BlobServiceClient CreateBlobServiceClient(IConfiguration configuration)
-        {
-            var storageConnectionString = GetConfigurationValue(configuration, "BlobStorage");
-            if (string.IsNullOrWhiteSpace(storageConnectionString))
-            {
-                throw new ArgumentException("BlobStorage connection string is missing or empty.", nameof(configuration));
-            }
-
-            return new BlobServiceClient(storageConnectionString);
         }
 
         private async Task<BlobContainerClient> GetBlobContainerClientAsync()

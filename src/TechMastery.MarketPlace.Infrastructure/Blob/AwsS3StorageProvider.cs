@@ -1,7 +1,10 @@
-﻿using Amazon.S3;
+﻿using Amazon;
+using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
+using TechMastery.MarketPlace.Infrastructure.Options;
 
 namespace TechMastery.MarketPlace.Infrastructure.Blob
 {
@@ -10,11 +13,34 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
         private readonly IAmazonS3 _s3Client;
         private readonly string _bucketName;
 
-        public S3StorageProvider(IAmazonS3 s3Client, IConfiguration configuration)
+        public S3StorageProvider(IOptions<S3Options> options)
         {
-            _s3Client = s3Client ?? throw new ArgumentNullException(nameof(s3Client));
-            _bucketName = configuration["S3BucketName"] ?? throw new ArgumentNullException("S3BucketName");
+            var configuration = options.Value;
+
+            if (string.IsNullOrWhiteSpace(configuration.AccessKey))
+            {
+                throw new ArgumentException("AWS S3 access key cannot be empty or null.", nameof(configuration.AccessKey));
+            }
+
+            if (string.IsNullOrWhiteSpace(configuration.SecretKey))
+            {
+                throw new ArgumentException("AWS S3 secret key cannot be empty or null.", nameof(configuration.SecretKey));
+            }
+
+            if (string.IsNullOrWhiteSpace(configuration.Region))
+            {
+                throw new ArgumentException("AWS S3 region cannot be empty or null.", nameof(configuration.Region));
+            }
+
+            if (string.IsNullOrWhiteSpace(configuration.BucketName))
+            {
+                throw new ArgumentException("AWS S3 bucket name cannot be empty or null.", nameof(configuration.BucketName));
+            }
+
+            _s3Client = new AmazonS3Client(configuration.AccessKey, configuration.SecretKey, RegionEndpoint.GetBySystemName(configuration.Region));
+            _bucketName = configuration.BucketName;
         }
+
 
         public async Task<string> UploadFileAsync(string fileName, Stream fileStream, CancellationToken cancellationToken)
         {

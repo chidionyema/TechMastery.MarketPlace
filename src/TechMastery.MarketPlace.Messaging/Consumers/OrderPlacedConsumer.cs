@@ -1,6 +1,6 @@
 ﻿using System;
 using MassTransit;
-using TechMastery.Messaging.Consumers.Messages;
+using TechMastery.MarketPlace.Application.Messaging;
 
 namespace TechMastery.Messaging.Consumers.Consumers
 {

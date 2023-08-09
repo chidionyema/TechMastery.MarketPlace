@@ -1,11 +1,20 @@
-﻿using MediatR;
+﻿using Microsoft.Extensions.Logging;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.DataTransferObjects;
 using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.ProductListing.DataTransferObjects;
-using TechMastery.MarketPlace.Application.Features.ProductListing.Dto;
 using TechMastery.MarketPlace.Domain.Entities;
+using TechMastery.MarketPlace.Application.Messaging;
+using TechMastery.MarketPlace.Application.Contracts.Messaging;
+using TechMastery.MarketPlace.Application.Features.ProductListing.Dto;
 
 namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
 {
@@ -25,15 +34,19 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
 
     public class AddOrUpdateListingHandler : IRequestHandler<AddOrUpdateListing, Guid>
     {
+        private readonly ILogger<AddOrUpdateListingHandler> _logger;
         private readonly IProductRepository _productRepository;
         private readonly IStorageProvider _storageProvider;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IMessagePublisher _messagePublisher;
 
-        public AddOrUpdateListingHandler(IProductRepository productRepository, IStorageProvider storageProvider, ICategoryRepository categoryRepository)
+        public AddOrUpdateListingHandler(ILogger<AddOrUpdateListingHandler> logger, IProductRepository productRepository, IStorageProvider storageProvider, ICategoryRepository categoryRepository, IMessagePublisher messagePublisher)
         {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _storageProvider = storageProvider ?? throw new ArgumentNullException(nameof(storageProvider));
             _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
             _categoryRepository = categoryRepository ?? throw new ArgumentNullException(nameof(categoryRepository));
+            _messagePublisher = messagePublisher ?? throw new ArgumentNullException(nameof(messagePublisher));
         }
 
         public async Task<Guid> Handle(AddOrUpdateListing command, CancellationToken cancellationToken)
@@ -52,43 +65,58 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
 
             await SaveProductListing(productListing, command.ListingId);
 
+            await _messagePublisher.PublishAsync<ProductAdded>(new ProductAdded(), "QUEUENAME");
+
             return productListing.ProductId;
         }
 
+        // UpdateDependencies method: Prevent duplicates and update or add new dependencies
         private void UpdateDependencies(Domain.Entities.Product productListing, IList<ProductDependencyDto>? dependencies)
         {
             if (dependencies == null || !dependencies.Any())
             {
+                // No incoming dependencies, clear existing dependencies and exit
                 productListing.ClearDependencies();
                 return;
             }
 
-            var existingDependencies = new List<ProductDependency>(productListing.Dependencies);
-            foreach (var dependencyDto in dependencies)
+            var updatedOrNewDependencies = new List<ProductDependency>();
+
+            foreach (var incomingDependencyDto in dependencies)
             {
-                var existingDependency = existingDependencies.FirstOrDefault(d => d.Name == dependencyDto.Name);
-                if (existingDependency != null)
-                {
-                    existingDependency.UpdateVersionAndType(dependencyDto.Version, dependencyDto.DependencyType);
-                    existingDependencies.Remove(existingDependency);
-                }
-                else
-                {
-                    productListing.AddDependency(new ProductDependency(dependencyDto.Name, dependencyDto.Version, dependencyDto.DependencyType));
-                }
+                var existingDependency = updatedOrNewDependencies
+                    .FirstOrDefault(d => d.Name == incomingDependencyDto.Name && d.DependencyTypeEnum == incomingDependencyDto.DependencyType);
+
+                updatedOrNewDependencies.Add(existingDependency ?? new ProductDependency(
+                    incomingDependencyDto.Name,
+                    incomingDependencyDto.Version,
+                    incomingDependencyDto.DependencyType));
             }
 
-            foreach (var removedDependency in existingDependencies)
-            {
-                productListing.RemoveDependency(removedDependency);
-            }
+            productListing.UpdateDependencies(updatedOrNewDependencies);
         }
 
-        private static void ValidateCommand(AddOrUpdateListing command)
+
+        private void ValidateCommand(AddOrUpdateListing command)
         {
             if (command == null)
             {
-                throw new BadRequestException(nameof(command));
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            if (string.IsNullOrWhiteSpace(command.Name))
+            {
+                throw new BadRequestException("Product name is required.");
+            }
+
+            if (string.IsNullOrWhiteSpace(command.Description))
+            {
+                throw new BadRequestException("Product description is required.");
+            }
+
+            if (command.Price <= 0)
+            {
+                throw new BadRequestException("Product price must be greater than 0.");
             }
         }
 
@@ -136,7 +164,6 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.Handlers
 
         private void UpdateProductCoreProperties(Domain.Entities.Product productListing, AddOrUpdateListing command)
         {
-            // Update core properties of the product
             productListing.UpdateCoreProperties(
                 command.Name,
                 command.Description,

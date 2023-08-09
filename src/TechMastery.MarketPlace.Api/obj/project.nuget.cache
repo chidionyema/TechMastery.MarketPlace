@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0/fFX86o0rp8O7puG4/okTq8mP4hSDd8dFuVmDy7iLQkOJcFtVtOWJmYoXx1y6TxWLqr2YEBrgrtrGrG0zvT8Q==",
+  "dgSpecHash": "vvWKApLYv8JQ2J9uDE3ck/1oJXk4cNvAgGtqjMijJVAz4sQFNsfZwTerGvXDFO0RLCw9kAYbJ36ntUmn4lyZHQ==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj",
   "expectedPackageFiles": [
+    "/Users/chidionyema/.nuget/packages/aspnetcore.healthchecks.elasticsearch/7.0.0/aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/awssdk.core/3.7.200.10/awssdk.core.3.7.200.10.nupkg.sha512",
@@ -133,8 +134,8 @@
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.dependencyinjection/7.0.0/microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/7.0.0/microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.dependencymodel/7.0.0/microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/microsoft.extensions.diagnostics.healthchecks/6.0.1/microsoft.extensions.diagnostics.healthchecks.6.0.1.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.1/microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.1.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/microsoft.extensions.diagnostics.healthchecks/7.0.9/microsoft.extensions.diagnostics.healthchecks.7.0.9.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.9/microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.9.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.fileproviders.abstractions/7.0.0/microsoft.extensions.fileproviders.abstractions.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.fileproviders.physical/7.0.0/microsoft.extensions.fileproviders.physical.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.extensions.filesystemglobbing/7.0.0/microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",

@@ -29,6 +29,18 @@
           "TechMastery.MarketPlace.Api.dll": {}
         }
       },
+      "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
+          "NEST": "7.17.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
+        }
+      },
       "AutoMapper/12.0.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0"
@@ -764,7 +776,7 @@
         "dependencies": {
           "MassTransit.Abstractions": "8.0.16",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
           "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1",
@@ -898,7 +910,7 @@
       "Microsoft.AspNetCore.Diagnostics.HealthChecks/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
-          "Microsoft.Extensions.Diagnostics.HealthChecks": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
           "Microsoft.Extensions.Options": "7.0.1",
           "Microsoft.Net.Http.Headers": "2.2.0"
         }
@@ -1700,15 +1712,28 @@
           }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.1",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.9",
           "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
           "Microsoft.Extensions.Options": "7.0.1"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.923.32110"
+          }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {},
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.923.32110"
+          }
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
@@ -3598,6 +3623,7 @@
         "dependencies": {
           "AWSSDK.Core": "3.7.200.10",
           "AWSSDK.S3": "3.7.201.8",
+          "AspNetCore.HealthChecks.Elasticsearch": "7.0.0",
           "Azure.Storage.Blobs": "12.17.0",
           "CsvHelper": "30.0.1",
           "MassTransit": "8.0.16",
@@ -3611,6 +3637,8 @@
           "NEST.JsonNetSerializer": "7.17.5",
           "Paramore.Brighter": "9.5.10",
           "SendGrid": "9.28.1",
+          "Serilog": "3.0.1",
+          "Serilog.Extensions.Logging": "7.0.0",
           "Stripe.net": "41.27.0",
           "TechMastery.MarketPlace.Application": "1.0.0"
         },
@@ -3641,6 +3669,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dA/fNzwHm/VyGwGCait0SwXNhcq3f8y+lSGqxIhIFDBP0yvfecByWJ9oWe5d6o3Kdsi2G9W2zWKNZIF3JLhGXA==",
+      "path": "aspnetcore.healthchecks.elasticsearch/7.0.0",
+      "hashPath": "aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512"
     },
     "AutoMapper/12.0.1": {
       "type": "package",
@@ -4545,19 +4580,19 @@
       "path": "microsoft.extensions.dependencymodel/7.0.0",
       "hashPath": "microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WdiVqAFrY40eNgtmtMHrXdrE1DwndwpzmWcN21lezRF+zqzWxZ83P9tJjwT0x6MgVx7iDOu4szxK/LDeC5YWEA==",
-      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.healthchecks.6.0.1.nupkg.sha512"
+      "sha512": "sha512-ubVLIa7GbGZrC7OWcMuFo/GJRYdVvqyMj7M4JFgWobXgh4QT2km40T46zLlXJfQWH68mh+g4iBJeg7VN3pldJA==",
+      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.9",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.7.0.9.nupkg.sha512"
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hXBOIVVsCsrehsZanu9UVzHZzOUM+3hCLXp8PBlZutv2xeCrw5fKh6mpX14lqfYewWLpARt2jFpbHhtaRhRt+Q==",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.1.nupkg.sha512"
+      "sha512": "sha512-myuiz5s14NEWffeiRH94GM1W9PkPyU/TLWCPjEIJ+Tck6QwRV89KHNwlJ+ZebRMlMTd64hwECybjLp1vIS4gTA==",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.9",
+      "hashPath": "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.9.nupkg.sha512"
     },
     "Microsoft.Extensions.FileProviders.Abstractions/7.0.0": {
       "type": "package",

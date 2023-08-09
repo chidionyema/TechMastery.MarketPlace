@@ -344,3 +344,6 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/Release/net7.0/TechMastery.MarketPlace.Api.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/Release/net7.0/TechMastery.MarketPlace.Api.genruntimeconfig.cache
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/Release/net7.0/ref/TechMastery.MarketPlace.Api.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/HealthChecks.Elasticsearch.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll

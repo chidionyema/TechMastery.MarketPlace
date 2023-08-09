@@ -1,11 +1,14 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
-using TechMastery.MarketPlace.Application.Models.Mail;
-using TechMastery.MarketPlace.Infrastructure.Mail;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using TechMastery.MarketPlace.Infrastructure.Blob;
+using Serilog;
+using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
+using TechMastery.MarketPlace.Infrastructure.Mail;
 using Nest;
-using MassTransit;
+using Microsoft.Extensions.Logging;
+using TechMastery.MarketPlace.Infrastructure.Payment;
+using TechMastery.MarketPlace.Infrastructure.Blob;
+using TechMastery.MarketPlace.Application.Models.Mail;
+using TechMastery.MarketPlace.Infrastructure.Options;
 
 namespace TechMastery.MarketPlace.Infrastructure
 {
@@ -13,36 +16,91 @@ namespace TechMastery.MarketPlace.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            
-            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+            // Configure centralized logging
+            Log.Logger = new LoggerConfiguration()
+                .CreateLogger();
 
-             Uri elasticsearchUri = new Uri(configuration["Elasticsearch:Uri"]!);
-            var settings = new ConnectionSettings(elasticsearchUri)
-                .DefaultIndex(configuration["Elasticsearch:Index"]);
-            var elasticClient = new ElasticClient(settings);
-            services.AddSingleton(elasticClient);
-            services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IPaymentService>(sp =>
+            services.AddLogging(loggingBuilder =>
             {
-                var stripeSecretKey = configuration["Stripe:SecretKey"]; // Replace "Stripe:SecretKey" with your configuration key
-                return new StripePaymentService(stripeSecretKey);
+                loggingBuilder.AddSerilog(dispose: true);
             });
 
-            return services;
+            try
+            {
+                // Configure and validate email settings
+                var emailSettings = new EmailSettings();
+                configuration.GetSection("EmailSettings").Bind(emailSettings);
+                if (string.IsNullOrEmpty(emailSettings.ApiKey))
+                {
+                    Log.Logger.Error("EmailSettings: SmtpServer is missing or empty.");
+                    throw new ArgumentException("EmailSettings: SmtpServer is missing or empty.", nameof(emailSettings.ApiKey));
+                }
+                services.AddSingleton(emailSettings);
+
+                // Configure and validate Elasticsearch settings
+                var elasticsearchSettings = new ElasticsearchSettings();
+                configuration.GetSection("Elasticsearch").Bind(elasticsearchSettings);
+                if (string.IsNullOrEmpty(elasticsearchSettings.Uri))
+                {
+                    Log.Logger.Error("Elasticsearch: Uri is missing or empty.");
+                    throw new ArgumentException("Elasticsearch: Uri is missing or empty.", nameof(elasticsearchSettings.Uri));
+                }
+                if (string.IsNullOrEmpty(elasticsearchSettings.Index))
+                {
+                    Log.Logger.Error("Elasticsearch: Index is missing or empty.");
+                    throw new ArgumentException("Elasticsearch: Index is missing or empty.", nameof(elasticsearchSettings.Index));
+                }
+                Uri elasticsearchUri = new Uri(elasticsearchSettings.Uri);
+                var elasticClient = new ElasticClient(new ConnectionSettings(elasticsearchUri).DefaultIndex(elasticsearchSettings.Index));
+                services.AddSingleton(elasticClient);
+
+                // Register services
+                services.AddTransient<IEmailService, EmailService>();
+
+                // Validate and configure Stripe secret key
+                var stripeSecretKey = configuration["Stripe:SecretKey"];
+                if (string.IsNullOrWhiteSpace(stripeSecretKey))
+                {
+                    throw new InvalidOperationException("Stripe:SecretKey is missing or empty in configuration.");
+                }
+
+                // Register StripePaymentService with defensive checks
+                services.AddTransient(sp =>
+                {
+                    var logger = sp.GetRequiredService<ILogger<StripePaymentService>>();
+                    return new StripePaymentService(stripeSecretKey, logger);
+                });
+
+
+                // Add health checks
+                services.AddHealthChecks()
+                    .AddElasticsearch(elasticsearchSettings.Uri);
+
+                return services;
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.Error(ex, "Error occurred during service registration.");
+                throw;
+            }
         }
 
-        public static IServiceCollection AddStorageProvider(this IServiceCollection services, StorageProviderType providerType)
+        public static IServiceCollection AddStorageProvider(this IServiceCollection services, IConfiguration configuration, StorageProviderType providerType)
         {
             switch (providerType)
             {
                 case StorageProviderType.AwsS3:
+                    services.Configure<S3Options>(configuration.GetSection("BlobStorage:S3"));
                     services.AddSingleton<IStorageProvider, S3StorageProvider>();
                     break;
                 case StorageProviderType.AzureBlobStorage:
+                    services.Configure<AzureBlobStorageOptions>(configuration.GetSection("BlobStorage:AzureBlob"));
                     services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
                     break;
                 case StorageProviderType.Both:
+                    services.Configure<S3Options>(configuration.GetSection("BlobStorage:S3"));
                     services.AddSingleton<IStorageProvider, S3StorageProvider>();
+                    services.Configure<AzureBlobStorageOptions>(configuration.GetSection("BlobStorage:AzureBlob"));
                     services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
                     break;
                 default:
@@ -51,6 +109,7 @@ namespace TechMastery.MarketPlace.Infrastructure
 
             return services;
         }
+
     }
 
     public enum StorageProviderType

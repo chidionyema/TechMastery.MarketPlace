@@ -1,5 +1,8 @@
-﻿using Stripe;
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using Stripe;
 using TechMastery.MarketPlace.Application.Models.Payment;
+using TechMastery.MarketPlace.Infrastructure.Payment;
 
 namespace TechMastery.MarketPlace.Infrastructure.Tests
 {
@@ -41,7 +44,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Tests
                // SellerStripeAccountId = "seller_stripe_account_id"
             };
 
-            var stripePaymentService = new StripePaymentService(stripeSecretKey);
+            var stripePaymentService = new StripePaymentService(stripeSecretKey, new Mock<ILogger<StripePaymentService>>().Object);
 
             // Act
             var result = await stripePaymentService.ProcessPaymentAsync(paymentInfo, CancellationToken.None);
@@ -78,7 +81,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Tests
             };
             await Assert.ThrowsAsync<StripeException>(async () => await service.CreateAsync(chargeOptions));
 
-            var stripePaymentService = new StripePaymentService(stripeSecretKey);
+            var stripePaymentService = new StripePaymentService(stripeSecretKey, new Mock<ILogger<StripePaymentService>>().Object);
 
             // Act
             var result = await stripePaymentService.ProcessPaymentAsync(paymentInfo, CancellationToken.None);

@@ -1,10 +1,11 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
-using TechMastery.MarketPlace.Persistence.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using TechMastery.MarketPlace.Application.Contracts;
-using TechMastery.MarketPlace.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using TechMastery.MarketPlace.Application.Contracts;
+using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Services;
+using TechMastery.MarketPlace.Persistence.Repositories;
 
 namespace TechMastery.MarketPlace.Persistence
 {
@@ -12,10 +13,25 @@ namespace TechMastery.MarketPlace.Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (configuration == null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
+            var connectionString = configuration.GetConnectionString("TechMasteryMarkePlaceConnectionString");
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new ArgumentNullException("Connection string is missing or empty.", nameof(connectionString));
+            }
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                // Replace the connection string with your PostgreSQL connection string
-                options.UseNpgsql(configuration.GetConnectionString("GloboTicketTicketManagementConnectionString"));
+                options.UseNpgsql(connectionString);
             });
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));

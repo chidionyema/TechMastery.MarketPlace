@@ -822,6 +822,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/EmptyFiles/slide/empty.odp
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/EmptyFiles/slide/empty.pptx
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/appsettings.test.json
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/test.zip
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MvcTestingAppManifest.json
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/xunit.runner.reporters.netcoreapp10.dll
@@ -1126,6 +1127,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.XDocument.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/WindowsBase.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/HealthChecks.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/AutoFixture.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/AutoMapper.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -1154,6 +1156,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MassTransit.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MassTransit.AmazonSqsTransport.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MassTransit.Azure.ServiceBus.Core.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MassTransit.RabbitMqTransport.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MediatR.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MediatR.Contracts.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
@@ -1194,6 +1197,8 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Hosting.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
@@ -1247,6 +1252,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Paramore.Brighter.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Polly.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/BouncyCastle.Crypto.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/RabbitMQ.Client.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Respawn.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/SendGrid.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Serilog.dll
@@ -1538,9 +1544,11 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Api.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Application.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.pdb

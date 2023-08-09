@@ -1,6 +1,8 @@
 ﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
 using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {
@@ -9,12 +11,13 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly ApplicationTestFixture _fixture;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly ICartItemRepository _cartItemRepository;
-
+        private readonly AddItemToCartHandler handler;
         public AddToCartHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
             _shoppingCartRepository = _fixture.CreateCartRepository();
             _cartItemRepository = _fixture.CreateCartItemRepository();
+            handler =  new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository, new Mock<ILogger<AddItemToCartHandler>>().Object);
         }
 
         [Fact]
@@ -27,7 +30,6 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
             var cartItemIds = await handler.Handle(command, CancellationToken.None);
 
             Assert.Single(cartItemIds);
@@ -41,7 +43,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItems(null)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentNullException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -55,7 +57,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentNullException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -76,7 +78,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<InvalidOperationException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -91,7 +93,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -106,7 +108,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -121,7 +123,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             var cartItemIds = await handler.Handle(command, CancellationToken.None);
 
             Assert.Single(cartItemIds);
@@ -139,7 +141,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             var cartItemIds = await handler.Handle(command, CancellationToken.None);
 
             Assert.Single(cartItemIds);
@@ -157,7 +159,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -172,7 +174,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -187,7 +189,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItem(cartItemDto)
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
@@ -205,7 +207,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .WithCartItems(new List<CartItemDto> { cartItem1, cartItem2 })
                 .Build();
 
-            var handler = new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository);
+            
             var cartItemIds = await handler.Handle(command, CancellationToken.None);
 
             Assert.Equal(2, cartItemIds.Count);

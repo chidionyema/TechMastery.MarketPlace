@@ -161,10 +161,6 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         // Additional tests for querying, pagination, sorting, etc.
 
         // teardown
-        public async Task Dispose()
-        {
-            // Re-seed the database after each test
-            await _dbfixture.InitializeAsync();
-        }
+
     }
 }

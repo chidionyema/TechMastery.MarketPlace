@@ -10,6 +10,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TechMastery.MarketPlace.Infrastructure.IntegrationTests.Base;
+
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {
     public static class DockerSqlDatabaseUtilities
@@ -181,7 +183,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             await dockerClient.Volumes.RemoveAsync(volumeName);
         }
 
-        private static async Task WaitUntilDatabaseAvailableAsync(string databasePort)
+        public static async Task WaitUntilDatabaseAvailableAsync(string databasePort)
         {
             var start = DateTime.UtcNow;
             const int maxWaitTimeSeconds = 60;
@@ -230,6 +232,11 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
                 Database = DB_NAME,
                 Port = Int32.Parse(port)
             }.ToString();
+        }
+
+        internal static void WaitForPostgresToBeReady(TestContainerManager containerManager, string containerId, string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

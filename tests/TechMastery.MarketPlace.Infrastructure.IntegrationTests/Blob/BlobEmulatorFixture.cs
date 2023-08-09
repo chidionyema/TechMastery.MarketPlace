@@ -1,24 +1,33 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Xunit;
+using TechMastery.MarketPlace.Infrastructure.IntegrationTests.Base;
+using Microsoft.Extensions.Configuration;
 
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {
     public class BlobEmulatorFixture : IAsyncLifetime
     {
-        private Process _emulatorProcess;
+        private TestContainerManager _containerManager;
+        private string _containerId;
 
         public async Task InitializeAsync()
         {
-            var startInfo = new ProcessStartInfo
+            _containerManager = new TestContainerManager();
+            await _containerManager.StopAndRemoveContainerAsync("mcr.microsoft.com/azure-storage/azurite");
+            var environmentVariables = new List<string>
             {
-                FileName = "docker",
-                Arguments = "run -d -p 10000:10000 mcr.microsoft.com/azure-storage/azurite azurite-blob --blobHost 0.0.0.0",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
+                "BLOB_HOST=0.0.0.0"
             };
 
-            _emulatorProcess = Process.Start(startInfo);
+            var portBindings = new List<string>
+            {
+                "10000"
+            };
+
+            _containerId = await _containerManager.StartContainerAsync("mcr.microsoft.com/azure-storage/azurite", environmentVariables, 10000, 10000);
 
             // Wait for the emulator to start (you can improve this by checking for readiness)
             await Task.Delay(TimeSpan.FromSeconds(5));
@@ -26,11 +35,12 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            if (_emulatorProcess != null && !_emulatorProcess.HasExited)
-            {
-                _emulatorProcess.Kill();
-                await _emulatorProcess.WaitForExitAsync();
-            }
+            await _containerManager.StopAndRemoveContainerAsync(_containerId);
+        }
+
+        internal string GetBlobEmulatorConnectionString()
+        {
+            return "UseDevelopmentStorage=true"; // Use the appropriate connection string
         }
     }
 

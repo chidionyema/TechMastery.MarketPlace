@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Docker.DotNet" Version="3.125.15" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     <PackageReference Include="xunit" Version="2.5.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
@@ -36,6 +37,8 @@
 	  <PackageReference Include="Testcontainers" Version="3.3.0" />
 	  <PackageReference Include="Testcontainers.Elasticsearch" Version="3.3.0" />
 	  <PackageReference Include="Stripe.net" Version="41.27.0" />
+	  <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+	  <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +48,7 @@
     <None Remove="Search\" />
     <None Remove="Blob\" />
     <None Remove="Payment\" />
+    <None Remove="test.zip" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repository\" />
@@ -55,12 +59,16 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Api\TechMastery.MarketPlace.Api.csproj" />
     <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
+    <ProjectReference Include="..\..\src\TechMastery.MarketPlace.Messaging\TechMastery.MarketPlace.Messaging.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="appsettings.test.json" Condition="'$(ExcludeConfigFilesFromBuildOutput)'!='true'">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="test.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 </Project>

@@ -2,6 +2,23 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
+          "NEST": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "AutoMapper/12.0.1": {
         "type": "package",
         "dependencies": {
@@ -862,34 +879,34 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
-          "Microsoft.Extensions.Options": "6.0.0"
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1"
         },
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
             "related": ".xml"
           }
         }
@@ -1464,6 +1481,36 @@
         "runtime": {
           "lib/netstandard2.0/SendGrid.dll": {
             "related": ".pdb;.xml"
+          }
+        }
+      },
+      "Serilog/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Extensions.Logging/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "7.0.0",
+          "Serilog": "2.12.0"
+        },
+        "compile": {
+          "lib/net7.0/Serilog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Serilog.Extensions.Logging.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -2209,6 +2256,20 @@
     }
   },
   "libraries": {
+    "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+      "sha512": "dA/fNzwHm/VyGwGCait0SwXNhcq3f8y+lSGqxIhIFDBP0yvfecByWJ9oWe5d6o3Kdsi2G9W2zWKNZIF3JLhGXA==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.elasticsearch/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512",
+        "aspnetcore.healthchecks.elasticsearch.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/HealthChecks.Elasticsearch.dll",
+        "lib/netstandard2.0/HealthChecks.Elasticsearch.xml"
+      ]
+    },
     "AutoMapper/12.0.1": {
       "sha512": "hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
       "type": "package",
@@ -3298,41 +3359,41 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
-      "sha512": "WdiVqAFrY40eNgtmtMHrXdrE1DwndwpzmWcN21lezRF+zqzWxZ83P9tJjwT0x6MgVx7iDOu4szxK/LDeC5YWEA==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
+      "sha512": "ubVLIa7GbGZrC7OWcMuFo/GJRYdVvqyMj7M4JFgWobXgh4QT2km40T46zLlXJfQWH68mh+g4iBJeg7VN3pldJA==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.1",
+      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "microsoft.extensions.diagnostics.healthchecks.6.0.1.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.7.0.9.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.nuspec"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
-      "sha512": "hXBOIVVsCsrehsZanu9UVzHZzOUM+3hCLXp8PBlZutv2xeCrw5fKh6mpX14lqfYewWLpARt2jFpbHhtaRhRt+Q==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
+      "sha512": "myuiz5s14NEWffeiRH94GM1W9PkPyU/TLWCPjEIJ+Tck6QwRV89KHNwlJ+ZebRMlMTd64hwECybjLp1vIS4gTA==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.1",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.1.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.9.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.abstractions.nuspec"
       ]
     },
@@ -4117,6 +4178,56 @@
         "lib/netstandard2.0/SendGrid.xml",
         "sendgrid.9.28.1.nupkg.sha512",
         "sendgrid.nuspec"
+      ]
+    },
+    "Serilog/3.0.1": {
+      "sha512": "E4UmOQ++eNJax1laE+lws7E3zbhKgHsGJbO7ra0yE5smUh+5FfUPIKKBxM3MO1tK4sgpQke6/pLReDxIc/ggNw==",
+      "type": "package",
+      "path": "serilog/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net462/Serilog.dll",
+        "lib/net462/Serilog.xml",
+        "lib/net471/Serilog.dll",
+        "lib/net471/Serilog.xml",
+        "lib/net5.0/Serilog.dll",
+        "lib/net5.0/Serilog.xml",
+        "lib/net6.0/Serilog.dll",
+        "lib/net6.0/Serilog.xml",
+        "lib/net7.0/Serilog.dll",
+        "lib/net7.0/Serilog.xml",
+        "lib/netstandard2.0/Serilog.dll",
+        "lib/netstandard2.0/Serilog.xml",
+        "lib/netstandard2.1/Serilog.dll",
+        "lib/netstandard2.1/Serilog.xml",
+        "serilog.3.0.1.nupkg.sha512",
+        "serilog.nuspec"
+      ]
+    },
+    "Serilog.Extensions.Logging/7.0.0": {
+      "sha512": "9faU0zNQqU7I6soVhLUMYaGNpgWv6cKlKb2S5AnS8gXxzW/em5Ladm/6FMrWTnX41cdbdGPOWNAo6adi4WaJ6A==",
+      "type": "package",
+      "path": "serilog.extensions.logging/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Serilog.Extensions.Logging.dll",
+        "lib/net462/Serilog.Extensions.Logging.xml",
+        "lib/net6.0/Serilog.Extensions.Logging.dll",
+        "lib/net6.0/Serilog.Extensions.Logging.xml",
+        "lib/net7.0/Serilog.Extensions.Logging.dll",
+        "lib/net7.0/Serilog.Extensions.Logging.xml",
+        "lib/netstandard2.0/Serilog.Extensions.Logging.dll",
+        "lib/netstandard2.0/Serilog.Extensions.Logging.xml",
+        "lib/netstandard2.1/Serilog.Extensions.Logging.dll",
+        "lib/netstandard2.1/Serilog.Extensions.Logging.xml",
+        "serilog-extension-nuget.png",
+        "serilog.extensions.logging.7.0.0.nupkg.sha512",
+        "serilog.extensions.logging.nuspec"
       ]
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.4": {
@@ -5841,6 +5952,7 @@
     "net7.0": [
       "AWSSDK.Core >= 3.7.200.10",
       "AWSSDK.S3 >= 3.7.201.8",
+      "AspNetCore.HealthChecks.Elasticsearch >= 7.0.0",
       "Azure.Storage.Blobs >= 12.17.0",
       "CsvHelper >= 30.0.1",
       "MassTransit >= 8.0.16",
@@ -5854,6 +5966,8 @@
       "NEST.JsonNetSerializer >= 7.17.5",
       "Paramore.Brighter >= 9.5.10",
       "SendGrid >= 9.28.1",
+      "Serilog >= 3.0.1",
+      "Serilog.Extensions.Logging >= 7.0.0",
       "Stripe.net >= 41.27.0",
       "TechMastery.MarketPlace.Application >= 1.0.0"
     ]
@@ -5907,6 +6021,10 @@
             "target": "Package",
             "version": "[3.7.201.8, )"
           },
+          "AspNetCore.HealthChecks.Elasticsearch": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
           "Azure.Storage.Blobs": {
             "target": "Package",
             "version": "[12.17.0, )"
@@ -5958,6 +6076,14 @@
           "SendGrid": {
             "target": "Package",
             "version": "[9.28.1, )"
+          },
+          "Serilog": {
+            "target": "Package",
+            "version": "[3.0.1, )"
+          },
+          "Serilog.Extensions.Logging": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           },
           "Stripe.net": {
             "target": "Package",

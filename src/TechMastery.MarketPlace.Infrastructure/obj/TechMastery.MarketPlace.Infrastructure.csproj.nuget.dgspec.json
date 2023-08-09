@@ -206,6 +206,10 @@
               "target": "Package",
               "version": "[3.7.201.8, )"
             },
+            "AspNetCore.HealthChecks.Elasticsearch": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Azure.Storage.Blobs": {
               "target": "Package",
               "version": "[12.17.0, )"
@@ -257,6 +261,14 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.28.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Stripe.net": {
               "target": "Package",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Application.Exceptions;
@@ -19,24 +20,34 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IOrderRepository _orderRepository;
+        private readonly ILogger<CreateOrderHandler> _logger;
 
-        public CreateOrderHandler(IShoppingCartRepository shoppingCartRepository, IOrderRepository orderRepository)
+        public CreateOrderHandler(IShoppingCartRepository shoppingCartRepository, IOrderRepository orderRepository, ILogger<CreateOrderHandler> logger)
         {
             _shoppingCartRepository = shoppingCartRepository ?? throw new ArgumentNullException(nameof(shoppingCartRepository));
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<Guid> Handle(CreateOrder command, CancellationToken cancellationToken)
         {
-            ValidateCommand(command);
+            try
+            {
+                ValidateCommand(command);
 
-            var shoppingCart = await GetValidShoppingCartAsync(command.CartId);
+                var shoppingCart = await GetValidShoppingCartAsync(command.CartId);
 
-            var order = CreateOrderFromShoppingCart(shoppingCart);
+                var order = CreateOrderFromShoppingCart(shoppingCart);
 
-            await UpdateShoppingCartAndReturnOrderId(shoppingCart, order);
+                await UpdateShoppingCartAndReturnOrderId(shoppingCart, order);
 
-            return order.OrderId;
+                return order.OrderId;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while processing CreateOrder command.");
+                throw; // Re-throw the exception to preserve the original exception stack trace.
+            }
         }
 
         private static void ValidateCommand(CreateOrder command)
@@ -52,7 +63,7 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
             var shoppingCart = await _shoppingCartRepository.GetByIdAsync(cartId);
             if (shoppingCart == null)
             {
-                throw new ApplicationException("Shopping cart not found.");
+                throw new NotFoundException("Shopping cart not found.", cartId);
             }
             return shoppingCart;
         }
@@ -78,9 +89,14 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 
         private async Task UpdateShoppingCartAndReturnOrderId(ShoppingCart shoppingCart, Order order)
         {
-            shoppingCart.SetStatus(ShoppingCartStatus.InOrderState);
-            await _shoppingCartRepository.UpdateAsync(shoppingCart);
-            await _orderRepository.AddAsync(order);
+           // using (var transaction = _shoppingCartRepository.BeginTransaction()) // Assuming IShoppingCartRepository supports transactions
+            //{
+                shoppingCart.SetStatus(ShoppingCartStatus.InOrderState);
+                await _shoppingCartRepository.UpdateAsync(shoppingCart);
+                await _orderRepository.AddAsync(order);
+
+               // transaction.Commit(); // Commit the transaction if everything succeeds
+           // }
         }
     }
 }

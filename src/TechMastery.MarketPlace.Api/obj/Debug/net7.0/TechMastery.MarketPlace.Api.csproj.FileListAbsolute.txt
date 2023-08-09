@@ -1607,6 +1607,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Api.runtimeconfig.json
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Api.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Api.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/HealthChecks.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AutoMapper.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AWSSDK.Core.dll
@@ -1664,6 +1665,8 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Hosting.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll

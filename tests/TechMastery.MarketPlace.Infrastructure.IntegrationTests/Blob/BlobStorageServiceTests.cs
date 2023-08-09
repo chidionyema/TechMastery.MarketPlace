@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
-using TechMastery.MarketPlace.Infrastructure.Blob;
+﻿using TechMastery.MarketPlace.Infrastructure.Blob;
+using TechMastery.MarketPlace.Infrastructure.Options;
+using Microsoft.Extensions.Options;
+
 
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {
@@ -13,12 +14,21 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         public BlobStorageServiceTests(BlobEmulatorFixture fixture)
         {
             _fixture = fixture;
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.test.json")
-                .Build();
 
-            _blobStorageService = new AzureBlobStorageProvider(configuration);
+            // Get the Blob Emulator connection information from the fixture
+            var connectionString = _fixture.GetBlobEmulatorConnectionString();
+
+            // Create AzureBlobStorageOptions configuration
+            var options = new AzureBlobStorageOptions
+            {
+                ConnectionString = connectionString,
+                ContainerName = "test"
+            };
+
+            // Create the storage service using the options
+            _blobStorageService = new AzureBlobStorageProvider(options.ConnectionString, options.ContainerName);
         }
+
 
         [Fact]
         public async Task TestBlobUploadAndDownload()

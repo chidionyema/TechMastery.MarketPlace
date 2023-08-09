@@ -1,7 +1,12 @@
 ﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.ProductListing.Handlers;
 using TechMastery.MarketPlace.Domain.Entities;
+using MediatR;
+using TechMastery.MarketPlace.Application.IntegrationTests.Fakes;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {
@@ -12,14 +17,15 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly AddOrUpdateListingHandler handler;
-
+        private readonly IMessagePublisher _publisher;
         public AddProductHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
             _blobStorageService = new FakeBlobStorageService();
+            _publisher = new FakeMessagePublisher();
             _productRepository = _fixture.CreateProductListingRepository();
             _categoryRepository = _fixture.CreateCategoryRepository();
-            handler = new AddOrUpdateListingHandler(_productRepository, _blobStorageService, _categoryRepository);
+            handler = new AddOrUpdateListingHandler(new Mock<ILogger<AddOrUpdateListingHandler>>().Object, _productRepository, _blobStorageService, _categoryRepository, _publisher);
         }
 
         [Fact]

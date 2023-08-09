@@ -2,6 +2,23 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
+          "NEST": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/HealthChecks.Elasticsearch.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "AutoFixture/4.18.0": {
         "type": "package",
         "dependencies": {
@@ -1056,6 +1073,23 @@
         },
         "runtime": {
           "lib/net6.0/MassTransit.Azure.ServiceBus.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/8.0.16": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit": "8.0.16",
+          "RabbitMQ.Client": "6.5.0"
+        },
+        "compile": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {
             "related": ".xml"
           }
         }
@@ -2438,34 +2472,34 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "6.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "6.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
-          "Microsoft.Extensions.Options": "6.0.0"
+          "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "7.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1"
         },
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll": {
             "related": ".xml"
           }
         }
       },
-      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
+      "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
+          "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll": {
             "related": ".xml"
           }
         }
@@ -3885,6 +3919,23 @@
         },
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "RabbitMQ.Client/6.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
             "related": ".xml"
           }
         }
@@ -6134,20 +6185,20 @@
           "lib/netstandard1.3/System.Threading.dll": {}
         }
       },
-      "System.Threading.Channels/6.0.0": {
+      "System.Threading.Channels/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Threading.Channels.dll": {
+          "lib/net7.0/System.Threading.Channels.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.Threading.Channels.dll": {
+          "lib/net7.0/System.Threading.Channels.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Threading.Tasks/4.3.0": {
@@ -6507,6 +6558,7 @@
         "dependencies": {
           "AWSSDK.Core": "3.7.200.10",
           "AWSSDK.S3": "3.7.201.8",
+          "AspNetCore.HealthChecks.Elasticsearch": "7.0.0",
           "Azure.Storage.Blobs": "12.17.0",
           "CsvHelper": "30.0.1",
           "MassTransit": "8.0.16",
@@ -6520,6 +6572,8 @@
           "NEST.JsonNetSerializer": "7.17.5",
           "Paramore.Brighter": "9.5.10",
           "SendGrid": "9.28.1",
+          "Serilog": "3.0.1",
+          "Serilog.Extensions.Logging": "7.0.0",
           "Stripe.net": "41.27.0",
           "TechMastery.MarketPlace.Application": "1.0.0"
         },
@@ -6528,6 +6582,22 @@
         },
         "runtime": {
           "bin/placeholder/TechMastery.MarketPlace.Infrastructure.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Messaging/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MassTransit.AmazonSQS": "8.0.16",
+          "MassTransit.Azure.ServiceBus.Core": "8.0.16",
+          "MassTransit.RabbitMQ": "8.0.16",
+          "TechMastery.MarketPlace.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TechMastery.MarketPlace.Messaging.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TechMastery.MarketPlace.Messaging.dll": {}
         }
       },
       "TechMastery.MarketPlace.Persistence/1.0.0": {
@@ -6554,6 +6624,20 @@
     }
   },
   "libraries": {
+    "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
+      "sha512": "dA/fNzwHm/VyGwGCait0SwXNhcq3f8y+lSGqxIhIFDBP0yvfecByWJ9oWe5d6o3Kdsi2G9W2zWKNZIF3JLhGXA==",
+      "type": "package",
+      "path": "aspnetcore.healthchecks.elasticsearch/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512",
+        "aspnetcore.healthchecks.elasticsearch.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/HealthChecks.Elasticsearch.dll",
+        "lib/netstandard2.0/HealthChecks.Elasticsearch.xml"
+      ]
+    },
     "AutoFixture/4.18.0": {
       "sha512": "xITUSenQsEW3RxXzcDPvxA33PGEQHxfvYjEbiai8URCcmq+osECGdLqGfHmMmcttndWgLxYCV7bRIm089fu7HA==",
       "type": "package",
@@ -7962,6 +8046,27 @@
         "lib/netstandard2.1/MassTransit.Azure.ServiceBus.Core.xml",
         "masstransit.azure.servicebus.core.8.0.16.nupkg.sha512",
         "masstransit.azure.servicebus.core.nuspec",
+        "mt-logo-small.png"
+      ]
+    },
+    "MassTransit.RabbitMQ/8.0.16": {
+      "sha512": "M97xmeV1MxCDV4RboVNbePqAZj+Haic+L4KAa8qJzkLIh0bqpCv+3Hb2X+snhGm03jS1Xknh+wzHR+upvIXf8w==",
+      "type": "package",
+      "path": "masstransit.rabbitmq/8.0.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net462/MassTransit.RabbitMqTransport.dll",
+        "lib/net462/MassTransit.RabbitMqTransport.xml",
+        "lib/net6.0/MassTransit.RabbitMqTransport.dll",
+        "lib/net6.0/MassTransit.RabbitMqTransport.xml",
+        "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
+        "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
+        "lib/netstandard2.1/MassTransit.RabbitMqTransport.dll",
+        "lib/netstandard2.1/MassTransit.RabbitMqTransport.xml",
+        "masstransit.rabbitmq.8.0.16.nupkg.sha512",
+        "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
       ]
     },
@@ -9902,41 +10007,41 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/6.0.1": {
-      "sha512": "WdiVqAFrY40eNgtmtMHrXdrE1DwndwpzmWcN21lezRF+zqzWxZ83P9tJjwT0x6MgVx7iDOu4szxK/LDeC5YWEA==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks/7.0.9": {
+      "sha512": "ubVLIa7GbGZrC7OWcMuFo/GJRYdVvqyMj7M4JFgWobXgh4QT2km40T46zLlXJfQWH68mh+g4iBJeg7VN3pldJA==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks/6.0.1",
+      "path": "microsoft.extensions.diagnostics.healthchecks/7.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "microsoft.extensions.diagnostics.healthchecks.6.0.1.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.7.0.9.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.nuspec"
       ]
     },
-    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/6.0.1": {
-      "sha512": "hXBOIVVsCsrehsZanu9UVzHZzOUM+3hCLXp8PBlZutv2xeCrw5fKh6mpX14lqfYewWLpARt2jFpbHhtaRhRt+Q==",
+    "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions/7.0.9": {
+      "sha512": "myuiz5s14NEWffeiRH94GM1W9PkPyU/TLWCPjEIJ+Tck6QwRV89KHNwlJ+ZebRMlMTd64hwECybjLp1vIS4gTA==",
       "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/6.0.1",
+      "path": "microsoft.extensions.diagnostics.healthchecks.abstractions/7.0.9",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/net461/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
-        "lib/net6.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml",
-        "microsoft.extensions.diagnostics.healthchecks.abstractions.6.0.1.nupkg.sha512",
+        "microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.9.nupkg.sha512",
         "microsoft.extensions.diagnostics.healthchecks.abstractions.nuspec"
       ]
     },
@@ -12013,6 +12118,22 @@
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
         "portable.bouncycastle.1.9.0.nupkg.sha512",
         "portable.bouncycastle.nuspec"
+      ]
+    },
+    "RabbitMQ.Client/6.5.0": {
+      "sha512": "9hY5HiWPtCla1/l0WmXmLnqoX7iKE3neBQUWnetIJrRpOvTbO//XQfQDh++xgHCshL40Kv/6bR0HDkmJz46twg==",
+      "type": "package",
+      "path": "rabbitmq.client/6.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net461/RabbitMQ.Client.dll",
+        "lib/net461/RabbitMQ.Client.xml",
+        "lib/netstandard2.0/RabbitMQ.Client.dll",
+        "lib/netstandard2.0/RabbitMQ.Client.xml",
+        "rabbitmq.client.6.5.0.nupkg.sha512",
+        "rabbitmq.client.nuspec"
       ]
     },
     "Respawn/6.1.0": {
@@ -16816,29 +16937,31 @@
         "system.threading.nuspec"
       ]
     },
-    "System.Threading.Channels/6.0.0": {
-      "sha512": "TY8/9+tI0mNaUMgntOxxaq2ndTkdXqLSxvPmas7XEqOlv9lQtB7wLjYGd756lOaO7Dvb5r/WXhluM+0Xe87v5Q==",
+    "System.Threading.Channels/7.0.0": {
+      "sha512": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
       "type": "package",
-      "path": "system.threading.channels/6.0.0",
+      "path": "system.threading.channels/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Threading.Channels.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Threading.Channels.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Threading.Channels.dll",
-        "lib/net461/System.Threading.Channels.xml",
+        "lib/net462/System.Threading.Channels.dll",
+        "lib/net462/System.Threading.Channels.xml",
         "lib/net6.0/System.Threading.Channels.dll",
         "lib/net6.0/System.Threading.Channels.xml",
-        "lib/netcoreapp3.1/System.Threading.Channels.dll",
-        "lib/netcoreapp3.1/System.Threading.Channels.xml",
+        "lib/net7.0/System.Threading.Channels.dll",
+        "lib/net7.0/System.Threading.Channels.xml",
         "lib/netstandard2.0/System.Threading.Channels.dll",
         "lib/netstandard2.0/System.Threading.Channels.xml",
         "lib/netstandard2.1/System.Threading.Channels.dll",
         "lib/netstandard2.1/System.Threading.Channels.xml",
-        "system.threading.channels.6.0.0.nupkg.sha512",
+        "system.threading.channels.7.0.0.nupkg.sha512",
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -17399,6 +17522,11 @@
       "path": "../../src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
       "msbuildProject": "../../src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj"
     },
+    "TechMastery.MarketPlace.Messaging/1.0.0": {
+      "type": "project",
+      "path": "../../src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
+      "msbuildProject": "../../src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj"
+    },
     "TechMastery.MarketPlace.Persistence/1.0.0": {
       "type": "project",
       "path": "../../src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
@@ -17413,15 +17541,19 @@
       "Microsoft.AspNetCore.Mvc.Testing >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.9",
       "Microsoft.EntityFrameworkCore.InMemory >= 7.0.9",
+      "Microsoft.Extensions.Options >= 7.0.1",
       "Microsoft.NET.Test.Sdk >= 17.7.0",
       "Moq >= 4.18.4",
       "NEST >= 7.17.5",
+      "Newtonsoft.Json >= 13.0.3",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.4",
+      "RabbitMQ.Client >= 6.5.0",
       "Respawn >= 6.1.0",
       "Shouldly >= 4.2.1",
       "Stripe.net >= 41.27.0",
       "TechMastery.MarketPlace.Api >= 1.0.0",
       "TechMastery.MarketPlace.Application >= 1.0.0",
+      "TechMastery.MarketPlace.Messaging >= 1.0.0",
       "Testcontainers >= 3.3.0",
       "Testcontainers.Elasticsearch >= 3.3.0",
       "coverlet.collector >= 6.0.0",
@@ -17459,6 +17591,9 @@
             },
             "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
               "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+            },
+            "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj": {
+              "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj"
             }
           }
         }
@@ -17499,6 +17634,10 @@
             "target": "Package",
             "version": "[7.0.9, )"
           },
+          "Microsoft.Extensions.Options": {
+            "target": "Package",
+            "version": "[7.0.1, )"
+          },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.7.0, )"
@@ -17511,9 +17650,17 @@
             "target": "Package",
             "version": "[7.17.5, )"
           },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          },
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[7.0.4, )"
+          },
+          "RabbitMQ.Client": {
+            "target": "Package",
+            "version": "[6.5.0, )"
           },
           "Respawn": {
             "target": "Package",

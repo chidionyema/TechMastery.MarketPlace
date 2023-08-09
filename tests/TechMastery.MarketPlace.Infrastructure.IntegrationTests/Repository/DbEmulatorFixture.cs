@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Docker.DotNet;
 using Docker.DotNet.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
+using TechMastery.MarketPlace.Infrastructure.IntegrationTests.Base;
 using TechMastery.MarketPlace.Persistence;
 using TechMastery.MarketPlace.Persistence.Repositories;
 
@@ -14,48 +15,30 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
     public class DbEmulatorFixture : IAsyncLifetime
     {
         private string _connectionString;
-        private DockerClient _dockerClient;
+        private TestContainerManager _containerManager;
         private string _dockerContainerId;
+
         public ApplicationDbContext DbContext { get; private set; }
 
         public async Task InitializeAsync()
         {
-            _dockerClient = new DockerClientConfiguration(new Uri("unix:///var/run/docker.sock"))
-                .CreateClient();
+            _containerManager = new TestContainerManager();
 
             // Stop and remove the existing container with the same name if it exists
-            StopAndRemoveExistingContainer();
+            await _containerManager.StopAndRemoveContainerAsync("postgres:latest");
 
-            var createContainerResponse = _dockerClient.Containers.CreateContainerAsync(new CreateContainerParameters
+            var environmentVariables = new List<string>
             {
-                Image = "postgres:latest",
-                Name = "integration-test-db",
-                Env = new[] { "POSTGRES_PASSWORD=#testingDockerPassword#", "POSTGRES_USER=postgres", "POSTGRES_DB=Billing" },
-                ExposedPorts = new Dictionary<string, EmptyStruct>
-                {
-                    ["5432/tcp"] = default
-                },
-                HostConfig = new HostConfig
-                {
-                    PortBindings = new Dictionary<string, IList<PortBinding>>
-                    {
-                        ["5432/tcp"] = new List<PortBinding>
-                        {
-                            new PortBinding
-                            {
-                                HostPort = "5432"
-                            }
-                        }
-                    }
-                }
-            }).Result; // Wait for the container creation to complete
+                "POSTGRES_PASSWORD=#testingDockerPassword#",
+                "POSTGRES_USER=postgres",
+                "POSTGRES_DB=Billing"
+            };
+            var portBindings = new List<string> { "5432" };
 
-            _dockerContainerId = createContainerResponse.ID;
-
-            _dockerClient.Containers.StartContainerAsync(_dockerContainerId, null).Wait();
+            _dockerContainerId = await _containerManager.StartContainerAsync("postgres:latest", environmentVariables, 5432, 5432);
 
             // Wait for PostgreSQL to be ready to accept connections
-            WaitForPostgresToBeReady();
+            await DockerSqlDatabaseUtilities.WaitUntilDatabaseAvailableAsync("5432");
 
             _connectionString = DockerSqlDatabaseUtilities.GetSqlConnectionString("5432");
 
@@ -69,44 +52,8 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            _dockerClient.Containers.StopContainerAsync(_dockerContainerId, new ContainerStopParameters()).Wait();
-            _dockerClient.Containers.RemoveContainerAsync(_dockerContainerId, new ContainerRemoveParameters()).Wait();
+            await _containerManager.StopAndRemoveContainerAsync(_dockerContainerId);
             DbContext?.Dispose();
-        }
-
-        private void StopAndRemoveExistingContainer()
-        {
-            try
-            {
-                _dockerClient.Containers.StopContainerAsync("integration-test-db", new ContainerStopParameters()).Wait();
-                _dockerClient.Containers.RemoveContainerAsync("integration-test-db", new ContainerRemoveParameters()).Wait();
-            }
-            catch
-            {
-                // Ignore errors if the container doesn't exist or cannot be stopped/removed
-            }
-        }
-
-        private void WaitForPostgresToBeReady()
-        {
-            using var connection = new NpgsqlConnection(DockerSqlDatabaseUtilities.GetSqlConnectionString("5432"));
-            const int maxRetries = 30;
-            int retryCount = 0;
-
-            while (retryCount < maxRetries)
-            {
-                try
-                {
-                    connection.Open();
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error connecting to PostgreSQL: {ex.Message}");
-                    retryCount++;
-                    Task.Delay(1000).Wait();
-                }
-            }
         }
 
         public ProductRepository CreateProductRepository()
