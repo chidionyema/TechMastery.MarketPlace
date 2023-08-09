@@ -17,13 +17,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Consumers\" />
-    <None Remove="Messages\" />
     <None Remove="HealthChecks\" />
+    <None Remove="Options\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consumers\" />
-    <Folder Include="Messages\" />
     <Folder Include="HealthChecks\" />
+    <Folder Include="Options\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />

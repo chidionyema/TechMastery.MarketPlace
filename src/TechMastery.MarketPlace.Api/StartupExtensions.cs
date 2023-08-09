@@ -32,6 +32,7 @@ namespace TechMastery.MarketPlace.Api
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddMessagingServices(builder.Configuration);
+            builder.Services.AddStripePaymentService(builder.Configuration);
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
 

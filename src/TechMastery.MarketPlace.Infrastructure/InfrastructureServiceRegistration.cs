@@ -52,13 +52,6 @@ namespace TechMastery.MarketPlace.Infrastructure
                     throw new InvalidOperationException("Stripe:SecretKey is missing or empty in configuration.");
                 }
 
-                // Register StripePaymentService with defensive checks
-               services.AddTransient<IPaymentService>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<StripePaymentService>>(); 
-                    return new StripePaymentService(stripeSecretKey, logger);
-                });
-
                 return services;
             }
             catch (Exception ex)

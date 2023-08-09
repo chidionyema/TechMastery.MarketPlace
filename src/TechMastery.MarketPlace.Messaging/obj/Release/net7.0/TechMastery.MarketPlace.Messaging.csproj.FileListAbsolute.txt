@@ -1,0 +1,17 @@
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Messaging.deps.json
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Messaging.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Messaging.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Application.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Application.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/bin/Release/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.csproj.CopyComplete
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/refint/TechMastery.MarketPlace.Messaging.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/TechMastery.MarketPlace.Messaging.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/Release/net7.0/ref/TechMastery.MarketPlace.Messaging.dll

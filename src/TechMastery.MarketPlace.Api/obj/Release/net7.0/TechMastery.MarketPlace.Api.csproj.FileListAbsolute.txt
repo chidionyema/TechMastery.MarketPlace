@@ -347,3 +347,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/HealthChecks.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/MassTransit.RabbitMqTransport.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/RabbitMQ.Client.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/TechMastery.MarketPlace.Messaging.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/TechMastery.MarketPlace.Messaging.pdb

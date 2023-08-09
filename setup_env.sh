@@ -21,16 +21,20 @@ export PsqlDatabase=db_name
 export AzuriteAccount=azurite_account
 export AzuriteAccountKey=azurite_account_key
 
-
 # Clean up existing containers (if any)
 echo "Cleaning up existing Docker containers..."
 docker-compose down --volumes --remove-orphans
 
-# Stop the existing container
-docker stop marketplace
+# Check if the container exists
+if docker ps -a --format '{{.Names}}' | grep -q "^marketplace$"; then
+    # Stop the existing container
+    docker stop marketplace
 
-# Remove the existing container
-docker rm marketplace
+    # Remove the existing container
+    docker rm marketplace
+else
+    echo "Container 'marketplace' does not exist."
+fi
 
 # Start RabbitMQ, PostgreSQL, Azure Blob Emulator, and Elasticsearch in Docker containers
 echo "Starting Docker containers..."
@@ -40,9 +44,11 @@ docker-compose up -d
 sleep 10
 
 # Apply database migrations
-echo "Applying database migrations..."
+echo "Applying database migrations for persistence lib..."
 dotnet ef database update --project src/TechMastery.MarketPlace.Persistence
+echo "Applying database migrations for identity lib..."
 dotnet ef database update --project src/TechMastery.MarketPlace.Identity
+
 # Restore NuGet packages and build your microservice
 echo "Restoring NuGet packages and building microservice..."
 dotnet restore src/TechMastery.MarketPlace.Api
@@ -70,6 +76,9 @@ for ((i = 0; i < ${#test_projects[@]}; i += batch_size)); do
   run_tests_parallel "${batch[@]}" &
 done
 
+# Wait for all test batches to finish
+wait
+
 # Continue with other commands
 echo "Continuing with other commands..."
 
@@ -82,14 +91,14 @@ echo "Running microservice in a Docker container..."
 docker run -d -p 5000:80 --name marketplace techmastery/marketplace
 
 # Check the health of the application
- HEALTH_CHECK_URL="http://localhost/health"
-    HEALTH_CHECK_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL)
-    if [ "$HEALTH_CHECK_STATUS" -eq 200 ]; then
-        echo "Application is healthy."
-    else
-        echo "Application is not healthy. Setup script aborted."
-        exit 1
-    fi
+HEALTH_CHECK_URL="http://localhost/health"
+HEALTH_CHECK_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL)
+if [ "$HEALTH_CHECK_STATUS" -eq 200 ]; then
+    echo "Application is healthy."
+else
+    echo "Application is not healthy. Setup script aborted."
+    exit 1
+fi
 
 # Continue with other commands
 echo "Continuing with other commands..."

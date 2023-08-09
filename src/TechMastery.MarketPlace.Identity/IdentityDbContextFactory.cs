@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.Extensions.Hosting;
 using System;
 using TechMastery.MarketPlace.Identity;
@@ -26,7 +25,7 @@ namespace TechMastery.MarketPlace.Persistence
             var configuration = hostBuilder.Services.GetRequiredService<IConfiguration>();
 
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationIdentityDbContext>();
-            optionsBuilder.UseNpgsql(configuration.GetConnectionString("TechMasteryMarkePlaceIdentityConnectionStringIdentityConnectionString"));
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("TechMasteryMarketPlaceIdentityConnectionString"));
 
             return new ApplicationIdentityDbContext(optionsBuilder.Options);
         }
