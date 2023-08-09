@@ -1,0 +1,118 @@
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Package managers
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+.pnpm-lock.yaml
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Compiled languages
+*.log
+*.swp
+*.[oa]
+*~
+
+# Version control system files
+.history/
+.gitignore
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# macOS specific
+.AppleDouble
+.AppleDesktop
+.AppleDB
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Visual Studio Code settings
+.vscode/
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# JetBrains settings
+.idea/
+.idea/*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/.idea.*
+*.ipr
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.yarn/*
+.pnpm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Java
+*.class
+
+# Compiled C++ code
+*.out
+
+# Compiled Objective-C code
+*.o
+
+# Compiled Swift code
+*.swiftdoc
+*.swiftmodule
+
+# Compiled Java code
+bin/
+target/
+.idea/
+*.class
+*.war
+*.ear
+
+# Compiled Kotlin code
+*.kotlin_module
