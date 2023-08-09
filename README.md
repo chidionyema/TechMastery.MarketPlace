@@ -42,18 +42,32 @@ Before you proceed, ensure you have the following installed:
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/TechMastery.MarketPlace.git
-   cd TechMastery.MarketPlace
-Configure app settings:
-a. Copy appsettings.example.json to appsettings.json:
-bash command
-cp appsettings.example.json appsettings.json
-b. Update the configuration settings, especially the StripeSecretKey, in appsettings.json.
-Run the setup script to start required services and set up the application:
-bash command
- ./setup_env.sh
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/TechMastery.MarketPlace.git
+    cd TechMastery.MarketPlace
+    ```
+
+2. **Configure app settings:**
+
+    a. Copy `appsettings.example.json` to `appsettings.json`:
+
+    ```bash
+    cp appsettings.example.json appsettings.json
+    ```
+
+    b. Update the configuration settings, especially the `StripeSecretKey`, in `appsettings.json`.
+
+3. **Run the setup script to start required services and set up the application:**
+
+    ```bash
+    ./setup_env.sh
+    ```
+
+4. **Browse to port 5000/health:**
+
+    Open your web browser and navigate to `http://localhost:5000/health` to verify that the application is up and running.
 
 
 ## Usage
