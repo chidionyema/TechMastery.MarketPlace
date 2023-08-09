@@ -13,34 +13,31 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
         private readonly IAmazonS3 _s3Client;
         private readonly string _bucketName;
 
-        public S3StorageProvider(IOptions<S3Options> options)
+        public S3StorageProvider(string accessKey, string secretKey, string region, string bucketName)
         {
-            var configuration = options.Value;
-
-            if (string.IsNullOrWhiteSpace(configuration.AccessKey))
+            if (string.IsNullOrWhiteSpace(accessKey))
             {
-                throw new ArgumentException("AWS S3 access key cannot be empty or null.", nameof(configuration.AccessKey));
+                throw new ArgumentException("AWS S3 access key cannot be empty or null.", nameof(accessKey));
             }
 
-            if (string.IsNullOrWhiteSpace(configuration.SecretKey))
+            if (string.IsNullOrWhiteSpace(secretKey))
             {
-                throw new ArgumentException("AWS S3 secret key cannot be empty or null.", nameof(configuration.SecretKey));
+                throw new ArgumentException("AWS S3 secret key cannot be empty or null.", nameof(secretKey));
             }
 
-            if (string.IsNullOrWhiteSpace(configuration.Region))
+            if (string.IsNullOrWhiteSpace(region))
             {
-                throw new ArgumentException("AWS S3 region cannot be empty or null.", nameof(configuration.Region));
+                throw new ArgumentException("AWS S3 region cannot be empty or null.", nameof(region));
             }
 
-            if (string.IsNullOrWhiteSpace(configuration.BucketName))
+            if (string.IsNullOrWhiteSpace(bucketName))
             {
-                throw new ArgumentException("AWS S3 bucket name cannot be empty or null.", nameof(configuration.BucketName));
+                throw new ArgumentException("AWS S3 bucket name cannot be empty or null.", nameof(bucketName));
             }
 
-            _s3Client = new AmazonS3Client(configuration.AccessKey, configuration.SecretKey, RegionEndpoint.GetBySystemName(configuration.Region));
-            _bucketName = configuration.BucketName;
+            _s3Client = new AmazonS3Client(accessKey, secretKey, RegionEndpoint.GetBySystemName(region));
+            _bucketName = bucketName;
         }
-
 
         public async Task<string> UploadFileAsync(string fileName, Stream fileStream, CancellationToken cancellationToken)
         {

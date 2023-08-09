@@ -3585,7 +3585,7 @@
           "Serilog.Extensions.Hosting": "7.0.0",
           "Serilog.Formatting.Compact": "1.1.0",
           "Serilog.Settings.Configuration": "7.0.0",
-          "Serilog.Sinks.Console": "4.0.1",
+          "Serilog.Sinks.Console": "4.1.0",
           "Serilog.Sinks.Debug": "2.0.0",
           "Serilog.Sinks.File": "5.0.0"
         },
@@ -3662,14 +3662,14 @@
           "lib/net7.0/Serilog.Settings.Configuration.dll": {}
         }
       },
-      "Serilog.Sinks.Console/4.0.1": {
+      "Serilog.Sinks.Console/4.1.0": {
         "dependencies": {
           "Serilog": "3.0.1"
         },
         "runtime": {
           "lib/net5.0/Serilog.Sinks.Console.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         },
         "compile": {
@@ -4990,6 +4990,7 @@
           "TechMastery.MarketPlace.Application": "1.0.0",
           "TechMastery.MarketPlace.Identity": "1.0.0",
           "TechMastery.MarketPlace.Infrastructure": "1.0.0",
+          "TechMastery.MarketPlace.Messaging": "1.0.0",
           "TechMastery.MarketPlace.Persistence": "1.0.0"
         },
         "runtime": {
@@ -5083,6 +5084,10 @@
           "MassTransit.AmazonSQS": "8.0.16",
           "MassTransit.Azure.ServiceBus.Core": "8.0.16",
           "MassTransit.RabbitMQ": "8.0.16",
+          "Serilog": "3.0.1",
+          "Serilog.Extensions.Logging": "7.0.0",
+          "Serilog.Sinks.Console": "4.1.0",
+          "Serilog.Sinks.File": "5.0.0",
           "TechMastery.MarketPlace.Application": "1.0.0"
         },
         "runtime": {
@@ -5094,6 +5099,7 @@
       },
       "TechMastery.MarketPlace.Persistence/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.9",
@@ -8547,12 +8553,12 @@
       "path": "serilog.settings.configuration/7.0.0",
       "hashPath": "serilog.settings.configuration.7.0.0.nupkg.sha512"
     },
-    "Serilog.Sinks.Console/4.0.1": {
+    "Serilog.Sinks.Console/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-apLOvSJQLlIbKlbx+Y2UDHSP05kJsV7mou+fvJoRGs/iR+jC22r8cuFVMjjfVxz/AD4B2UCltFhE1naRLXwKNw==",
-      "path": "serilog.sinks.console/4.0.1",
-      "hashPath": "serilog.sinks.console.4.0.1.nupkg.sha512"
+      "sha512": "sha512-K6N5q+5fetjnJPvCmkWOpJ/V8IEIoMIB1s86OzBrbxwTyHxdx3pmz4H+8+O/Dc/ftUX12DM1aynx/dDowkwzqg==",
+      "path": "serilog.sinks.console/4.1.0",
+      "hashPath": "serilog.sinks.console.4.1.0.nupkg.sha512"
     },
     "Serilog.Sinks.Debug/2.0.0": {
       "type": "package",

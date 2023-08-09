@@ -42,7 +42,7 @@ sleep 10
 # Apply database migrations
 echo "Applying database migrations..."
 dotnet ef database update --project src/TechMastery.MarketPlace.Persistence
-
+dotnet ef database update --project src/TechMastery.MarketPlace.Identity
 # Restore NuGet packages and build your microservice
 echo "Restoring NuGet packages and building microservice..."
 dotnet restore src/TechMastery.MarketPlace.Api

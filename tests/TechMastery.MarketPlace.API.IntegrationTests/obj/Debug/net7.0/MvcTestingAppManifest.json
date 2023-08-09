@@ -4,5 +4,6 @@
   "TechMastery.MarketPlace.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechWarehouse\/src\/TechMastery.MarketPlace.Domain",
   "TechMastery.MarketPlace.Identity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechWarehouse\/src\/TechMastery.MarketPlace.Identity",
   "TechMastery.MarketPlace.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechWarehouse\/src\/TechMastery.MarketPlace.Infrastructure",
+  "TechMastery.MarketPlace.Messaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechWarehouse\/src\/TechMastery.MarketPlace.Messaging",
   "TechMastery.MarketPlace.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechWarehouse\/src\/TechMastery.MarketPlace.Persistence"
 }

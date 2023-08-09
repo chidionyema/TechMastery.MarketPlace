@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HGSlxQLv3nGhz4gF8I4faitwahjytIVn9U5bPnLfYw1mGhLgBdlVv/42B6T4pNjQv8TW3sJeEm2muOOomfKt3A==",
+  "dgSpecHash": "nmxStXimpydNsUpnHxPBqcMFRIurczj56yKIp8p7F/R/HmU+b8b5XO5+33xVi6h/8OAtZdyR/9ymfhyDD787LA==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/TechMastery.MarketPlace.Infrastructure.IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -240,7 +240,7 @@
     "/Users/chidionyema/.nuget/packages/serilog.extensions.logging/7.0.0/serilog.extensions.logging.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.formatting.compact/1.1.0/serilog.formatting.compact.1.1.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.settings.configuration/7.0.0/serilog.settings.configuration.7.0.0.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/serilog.sinks.console/4.0.1/serilog.sinks.console.4.0.1.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/serilog.sinks.console/4.1.0/serilog.sinks.console.4.1.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.sinks.debug/2.0.0/serilog.sinks.debug.2.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.sinks.file/5.0.0/serilog.sinks.file.5.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/sharpziplib/1.4.2/sharpziplib.1.4.2.nupkg.sha512",

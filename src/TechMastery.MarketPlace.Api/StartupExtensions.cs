@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using TechMastery.MarketPlace.Application;
 using TechMastery.MarketPlace.Application.Contracts;
-using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 using TechMastery.MarketPlace.Application.Services;
 using TechMastery.MarketPlace.Identity;
 using TechMastery.MarketPlace.Infrastructure;
 using TechMastery.MarketPlace.Persistence;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using TechMastery.Messaging.Consumers;
 using TechMastery.MarketPlace.Api.Middleware;
 using TechMastery.MarketPlace.Api.Utility;
 
@@ -32,10 +27,11 @@ namespace TechMastery.MarketPlace.Api
 
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
+            builder.Services.AddElasticsearchClient(builder.Configuration);
             builder.Services.AddStorageProvider(builder.Configuration, StorageProviderType.AzureBlobStorage);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
-
+            builder.Services.AddMessagingServices(builder.Configuration);
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
 

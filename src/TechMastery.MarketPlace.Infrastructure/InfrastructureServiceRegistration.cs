@@ -9,6 +9,9 @@ using TechMastery.MarketPlace.Infrastructure.Payment;
 using TechMastery.MarketPlace.Infrastructure.Blob;
 using TechMastery.MarketPlace.Application.Models.Mail;
 using TechMastery.MarketPlace.Infrastructure.Options;
+using Microsoft.Extensions.Options;
+using Stripe.Tax;
+using Stripe;
 
 namespace TechMastery.MarketPlace.Infrastructure
 {
@@ -16,6 +19,8 @@ namespace TechMastery.MarketPlace.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<EmailOptions>(configuration.GetSection("EmailSettings"));
+
             // Configure centralized logging
             Log.Logger = new LoggerConfiguration()
                 .CreateLogger();
@@ -37,23 +42,6 @@ namespace TechMastery.MarketPlace.Infrastructure
                 }
                 services.AddSingleton(emailSettings);
 
-                // Configure and validate Elasticsearch settings
-                var elasticsearchSettings = new ElasticsearchSettings();
-                configuration.GetSection("Elasticsearch").Bind(elasticsearchSettings);
-                if (string.IsNullOrEmpty(elasticsearchSettings.Uri))
-                {
-                    Log.Logger.Error("Elasticsearch: Uri is missing or empty.");
-                    throw new ArgumentException("Elasticsearch: Uri is missing or empty.", nameof(elasticsearchSettings.Uri));
-                }
-                if (string.IsNullOrEmpty(elasticsearchSettings.Index))
-                {
-                    Log.Logger.Error("Elasticsearch: Index is missing or empty.");
-                    throw new ArgumentException("Elasticsearch: Index is missing or empty.", nameof(elasticsearchSettings.Index));
-                }
-                Uri elasticsearchUri = new Uri(elasticsearchSettings.Uri);
-                var elasticClient = new ElasticClient(new ConnectionSettings(elasticsearchUri).DefaultIndex(elasticsearchSettings.Index));
-                services.AddSingleton(elasticClient);
-
                 // Register services
                 services.AddTransient<IEmailService, EmailService>();
 
@@ -65,16 +53,11 @@ namespace TechMastery.MarketPlace.Infrastructure
                 }
 
                 // Register StripePaymentService with defensive checks
-                services.AddTransient(sp =>
+               services.AddTransient<IPaymentService>(sp =>
                 {
-                    var logger = sp.GetRequiredService<ILogger<StripePaymentService>>();
+                    var logger = sp.GetRequiredService<ILogger<StripePaymentService>>(); 
                     return new StripePaymentService(stripeSecretKey, logger);
                 });
-
-
-                // Add health checks
-                services.AddHealthChecks()
-                    .AddElasticsearch(elasticsearchSettings.Uri);
 
                 return services;
             }
@@ -85,38 +68,106 @@ namespace TechMastery.MarketPlace.Infrastructure
             }
         }
 
+        public static IServiceCollection AddStripePaymentService(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<StripeOptions>(configuration.GetSection("Stripe"));
+
+            services.AddSingleton<IPaymentService>(provider =>
+            {
+                var stripeOptions = provider.GetRequiredService<IOptions<StripeOptions>>().Value;
+
+                if (string.IsNullOrEmpty(stripeOptions.SecretKey))
+                {
+                    throw new ArgumentNullException(nameof(stripeOptions.SecretKey), "StripeSecretKey is missing or null.");
+                }
+
+                var logger = provider.GetRequiredService<ILogger<StripePaymentService>>();
+                StripeConfiguration.ApiKey = stripeOptions.SecretKey;
+
+                return new StripePaymentService(stripeOptions.SecretKey, logger);
+            });
+
+            return services;
+        }
         public static IServiceCollection AddStorageProvider(this IServiceCollection services, IConfiguration configuration, StorageProviderType providerType)
         {
-            switch (providerType)
+            services.Configure<StorageOptions>(configuration.GetSection("BlobStorage"));
+
+            services.AddSingleton<IStorageProvider>(provider =>
             {
-                case StorageProviderType.AwsS3:
-                    services.Configure<S3Options>(configuration.GetSection("BlobStorage:S3"));
-                    services.AddSingleton<IStorageProvider, S3StorageProvider>();
-                    break;
-                case StorageProviderType.AzureBlobStorage:
-                    services.Configure<AzureBlobStorageOptions>(configuration.GetSection("BlobStorage:AzureBlob"));
-                    services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
-                    break;
-                case StorageProviderType.Both:
-                    services.Configure<S3Options>(configuration.GetSection("BlobStorage:S3"));
-                    services.AddSingleton<IStorageProvider, S3StorageProvider>();
-                    services.Configure<AzureBlobStorageOptions>(configuration.GetSection("BlobStorage:AzureBlob"));
-                    services.AddSingleton<IStorageProvider, AzureBlobStorageProvider>();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(providerType));
-            }
+                var storageOptions = provider.GetRequiredService<IOptions<StorageOptions>>().Value;
+
+                switch (providerType)
+                {
+                    case StorageProviderType.AwsS3:
+                        var s3Options = storageOptions.S3;
+                        return new S3StorageProvider(
+                            s3Options.AccessKey,
+                            s3Options.SecretKey,
+                            s3Options.Region,
+                            s3Options.BucketName
+                        );
+                    case StorageProviderType.AzureBlobStorage:
+                        var azureBlobOptions = storageOptions.AzureBlob;
+                        return new AzureBlobStorageProvider(azureBlobOptions.ConnectionString, azureBlobOptions.ContainerName);
+                    case StorageProviderType.Both:
+                        var s3OptionsBoth = storageOptions.S3;
+                        var azureBlobOptionsBoth = storageOptions.AzureBlob;
+                        return new S3StorageProvider(
+                            s3OptionsBoth.AccessKey,
+                            s3OptionsBoth.SecretKey,
+                            s3OptionsBoth.Region,
+                            s3OptionsBoth.BucketName
+                        );
+                    // You can also add AzureBlobStorageProvider here if needed
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(providerType));
+                }
+            });
 
             return services;
         }
 
+
+        public static IServiceCollection AddElasticsearchClient(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.Configure<ElasticsearchOptions>(configuration.GetSection("Elasticsearch"));
+
+            services.AddSingleton<IElasticClient>(provider =>
+            {
+                var elasticsearchOptions = provider.GetRequiredService<IOptions<ElasticsearchOptions>>().Value;
+
+                if (string.IsNullOrEmpty(elasticsearchOptions.Uri))
+                {
+                    Log.Logger.Error("Elasticsearch: Uri is missing or empty.");
+                    throw new ArgumentException("Elasticsearch: Uri is missing or empty.", nameof(elasticsearchOptions.Uri));
+                }
+                if (string.IsNullOrEmpty(elasticsearchOptions.Index))
+                {
+                    Log.Logger.Error("Elasticsearch: Index is missing or empty.");
+                    throw new ArgumentException("Elasticsearch: Index is missing or empty.", nameof(elasticsearchOptions.Index));
+                }
+
+                Uri elasticsearchUri = new Uri(elasticsearchOptions.Uri);
+                var elasticClient = new ElasticClient(new ConnectionSettings(elasticsearchUri).DefaultIndex(elasticsearchOptions.Index));
+
+                // Add health checks
+                services.AddHealthChecks()
+                    .AddElasticsearch(elasticsearchUri.ToString());
+                return elasticClient;
+
+            });
+
+
+            return services;
+        }
     }
 
-    public enum StorageProviderType
-    {
-        AwsS3,
-        AzureBlobStorage,
-        Both
-    }
+public enum StorageProviderType
+{
+  AwsS3,
+  AzureBlobStorage,
+  Both
+}
 }
 

@@ -10,14 +10,20 @@
     <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.16" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.16" />
     <PackageReference Include="MassTransit.AmazonSQS" Version="8.0.16" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Consumers\" />
     <None Remove="Messages\" />
+    <None Remove="HealthChecks\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consumers\" />
     <Folder Include="Messages\" />
+    <Folder Include="HealthChecks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />

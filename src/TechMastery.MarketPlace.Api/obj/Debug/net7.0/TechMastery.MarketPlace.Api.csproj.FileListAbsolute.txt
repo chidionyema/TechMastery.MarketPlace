@@ -1629,6 +1629,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.AmazonSqsTransport.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.Azure.ServiceBus.Core.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.RabbitMqTransport.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MediatR.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MediatR.Contracts.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
@@ -1710,6 +1711,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/NuGet.Versioning.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Paramore.Brighter.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Polly.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/RabbitMQ.Client.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/SendGrid.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Serilog.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Serilog.AspNetCore.dll
@@ -1922,11 +1924,13 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Application.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/Debug/net7.0/TechMastery.MarketPlace.Api.csproj.AssemblyReference.cache
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/Debug/net7.0/TechMastery.MarketPlace.Api.GeneratedMSBuildEditorConfig.editorconfig

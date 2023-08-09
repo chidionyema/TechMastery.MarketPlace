@@ -1265,7 +1265,7 @@
           "System.Reflection.Emit": "4.7.0",
           "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Text.Json": "7.0.3",
-          "System.Threading.Channels": "6.0.0"
+          "System.Threading.Channels": "7.0.0"
         },
         "runtime": {
           "lib/net6.0/MassTransit.dll": {
@@ -1318,6 +1318,21 @@
         },
         "compile": {
           "lib/net6.0/MassTransit.Azure.ServiceBus.Core.dll": {}
+        }
+      },
+      "MassTransit.RabbitMQ/8.0.16": {
+        "dependencies": {
+          "MassTransit": "8.0.16",
+          "RabbitMQ.Client": "6.5.0"
+        },
+        "runtime": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "8.0.16.0",
+            "fileVersion": "8.0.16.0"
+          }
+        },
+        "compile": {
+          "lib/net6.0/MassTransit.RabbitMqTransport.dll": {}
         }
       },
       "MediatR/12.1.1": {
@@ -3452,6 +3467,21 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "RabbitMQ.Client/6.5.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.5.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {}
+        }
+      },
       "Respawn/6.1.0": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "5.0.2"
@@ -3548,7 +3578,7 @@
           "Serilog.Extensions.Hosting": "7.0.0",
           "Serilog.Formatting.Compact": "1.1.0",
           "Serilog.Settings.Configuration": "7.0.0",
-          "Serilog.Sinks.Console": "4.0.1",
+          "Serilog.Sinks.Console": "4.1.0",
           "Serilog.Sinks.Debug": "2.0.0",
           "Serilog.Sinks.File": "5.0.0"
         },
@@ -3625,14 +3655,14 @@
           "lib/net7.0/Serilog.Settings.Configuration.dll": {}
         }
       },
-      "Serilog.Sinks.Console/4.0.1": {
+      "Serilog.Sinks.Console/4.1.0": {
         "dependencies": {
           "Serilog": "3.0.1"
         },
         "runtime": {
           "lib/net5.0/Serilog.Sinks.Console.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "4.1.0.0"
           }
         },
         "compile": {
@@ -4758,7 +4788,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Threading.Channels/6.0.0": {},
+      "System.Threading.Channels/7.0.0": {},
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -4953,6 +4983,7 @@
           "TechMastery.MarketPlace.Application": "1.0.0",
           "TechMastery.MarketPlace.Identity": "1.0.0",
           "TechMastery.MarketPlace.Infrastructure": "1.0.0",
+          "TechMastery.MarketPlace.Messaging": "1.0.0",
           "TechMastery.MarketPlace.Persistence": "1.0.0"
         },
         "runtime": {
@@ -5041,8 +5072,27 @@
           "TechMastery.MarketPlace.Infrastructure.dll": {}
         }
       },
+      "TechMastery.MarketPlace.Messaging/1.0.0": {
+        "dependencies": {
+          "MassTransit.AmazonSQS": "8.0.16",
+          "MassTransit.Azure.ServiceBus.Core": "8.0.16",
+          "MassTransit.RabbitMQ": "8.0.16",
+          "Serilog": "3.0.1",
+          "Serilog.Extensions.Logging": "7.0.0",
+          "Serilog.Sinks.Console": "4.1.0",
+          "Serilog.Sinks.File": "5.0.0",
+          "TechMastery.MarketPlace.Application": "1.0.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Messaging.dll": {}
+        },
+        "compile": {
+          "TechMastery.MarketPlace.Messaging.dll": {}
+        }
+      },
       "TechMastery.MarketPlace.Persistence/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.9",
@@ -7397,6 +7447,13 @@
       "path": "masstransit.azure.servicebus.core/8.0.16",
       "hashPath": "masstransit.azure.servicebus.core.8.0.16.nupkg.sha512"
     },
+    "MassTransit.RabbitMQ/8.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M97xmeV1MxCDV4RboVNbePqAZj+Haic+L4KAa8qJzkLIh0bqpCv+3Hb2X+snhGm03jS1Xknh+wzHR+upvIXf8w==",
+      "path": "masstransit.rabbitmq/8.0.16",
+      "hashPath": "masstransit.rabbitmq.8.0.16.nupkg.sha512"
+    },
     "MediatR/12.1.1": {
       "type": "package",
       "serviceable": true,
@@ -8314,6 +8371,13 @@
       "path": "portable.bouncycastle/1.9.0",
       "hashPath": "portable.bouncycastle.1.9.0.nupkg.sha512"
     },
+    "RabbitMQ.Client/6.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9hY5HiWPtCla1/l0WmXmLnqoX7iKE3neBQUWnetIJrRpOvTbO//XQfQDh++xgHCshL40Kv/6bR0HDkmJz46twg==",
+      "path": "rabbitmq.client/6.5.0",
+      "hashPath": "rabbitmq.client.6.5.0.nupkg.sha512"
+    },
     "Respawn/6.1.0": {
       "type": "package",
       "serviceable": true,
@@ -8482,12 +8546,12 @@
       "path": "serilog.settings.configuration/7.0.0",
       "hashPath": "serilog.settings.configuration.7.0.0.nupkg.sha512"
     },
-    "Serilog.Sinks.Console/4.0.1": {
+    "Serilog.Sinks.Console/4.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-apLOvSJQLlIbKlbx+Y2UDHSP05kJsV7mou+fvJoRGs/iR+jC22r8cuFVMjjfVxz/AD4B2UCltFhE1naRLXwKNw==",
-      "path": "serilog.sinks.console/4.0.1",
-      "hashPath": "serilog.sinks.console.4.0.1.nupkg.sha512"
+      "sha512": "sha512-K6N5q+5fetjnJPvCmkWOpJ/V8IEIoMIB1s86OzBrbxwTyHxdx3pmz4H+8+O/Dc/ftUX12DM1aynx/dDowkwzqg==",
+      "path": "serilog.sinks.console/4.1.0",
+      "hashPath": "serilog.sinks.console.4.1.0.nupkg.sha512"
     },
     "Serilog.Sinks.Debug/2.0.0": {
       "type": "package",
@@ -9196,12 +9260,12 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
-    "System.Threading.Channels/6.0.0": {
+    "System.Threading.Channels/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TY8/9+tI0mNaUMgntOxxaq2ndTkdXqLSxvPmas7XEqOlv9lQtB7wLjYGd756lOaO7Dvb5r/WXhluM+0Xe87v5Q==",
-      "path": "system.threading.channels/6.0.0",
-      "hashPath": "system.threading.channels.6.0.0.nupkg.sha512"
+      "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+      "path": "system.threading.channels/7.0.0",
+      "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
     },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
@@ -9343,6 +9407,11 @@
       "sha512": ""
     },
     "TechMastery.MarketPlace.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Messaging/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

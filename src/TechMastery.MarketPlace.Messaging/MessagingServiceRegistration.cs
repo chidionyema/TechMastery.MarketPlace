@@ -1,15 +1,18 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using MassTransit;
+using Serilog;
 using TechMastery.Messaging.Consumers.Consumers;
 using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace TechMastery.Messaging.Consumers
 {
     public static class MessagingServiceRegistration
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddMessagingServices(this IServiceCollection services, IConfiguration configuration)
         {
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
@@ -17,32 +20,52 @@ namespace TechMastery.Messaging.Consumers
             if (configuration == null)
                 throw new ArgumentNullException(nameof(configuration));
 
+            // Configure logging
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug() // Set your desired minimum log level
+                .CreateLogger();
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddSerilog(dispose: true);
+            });
+
             // Load messaging system options from configuration
             services.Configure<MessagingSystemsOptions>(configuration.GetSection("MessagingSystems"));
 
             var serviceProvider = services.BuildServiceProvider();
             var messagingSystemsOptions = serviceProvider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
 
+            // remove once options caching issue resolved
+            messagingSystemsOptions.EnableAzureServiceBus = false;
             // Add MassTransit with Azure Service Bus if enabled
             if (messagingSystemsOptions.EnableAzureServiceBus)
             {
+                services.AddHealthChecks().AddCheck<AzureServiceBusHealthCheck>("AzureServiceBusHealthCheck");
                 services.AddMassTransitWithAzureServiceBus(configuration.GetSection("MessagingSystems:AzureServiceBus"));
             }
 
-            // Add MassTransit with SQS if enabled
             if (messagingSystemsOptions.EnableSqs)
             {
+                services.AddHealthChecks().AddCheck<AmazonSqsHealthCheck>("AmazonSqsHealthCheck");
                 services.AddMassTransitWithSqs(configuration.GetSection("MessagingSystems:SQS"));
             }
 
-            // Add MassTransit with RabbitMQ if enabled
             if (messagingSystemsOptions.EnableRabbitMq)
             {
+                services.AddHealthChecks().AddCheck<RabbitMqHealthCheck>("RabbitMqHealthCheck");
                 services.AddMassTransitWithRabbitMq(configuration.GetSection("MessagingSystems:RabbitMQ"));
             }
 
             // Register IMessagePublisher as a singleton
-            services.AddSingleton<IMessagePublisher, MessagePublisher>();
+            services.AddSingleton<IMessagePublisher>(provider =>
+            {
+                var messagingSystemsOptions = provider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
+                // Other dependencies like ILogger can be injected here if needed
+                return new MessagePublisher(messagingSystemsOptions);
+            });
+
 
             return services;
         }
@@ -60,11 +83,7 @@ namespace TechMastery.Messaging.Consumers
 
                     cfg.ReceiveEndpoint(options.QueueName, e =>
                     {
-                        // Retry policy for transient failures
-                        e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-
-                        // Schedule message redelivery for non-transient failures
-                        e.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
+                        ConfigureReceiveEndpoint(e);
 
                         // Register consumers
                         e.Consumer<ProductAddedConsumer>();
@@ -72,8 +91,7 @@ namespace TechMastery.Messaging.Consumers
                     });
                 });
             });
-
-            services.AddMassTransitHostedService();
+            
         }
 
         private static void AddMassTransitWithSqs(this IServiceCollection services, IConfiguration configuration)
@@ -93,11 +111,7 @@ namespace TechMastery.Messaging.Consumers
 
                     cfg.ReceiveEndpoint(options.QueueUrl, e =>
                     {
-                        // Retry policy for transient failures
-                        e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-
-                        // Schedule message redelivery for non-transient failures
-                        e.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
+                        ConfigureReceiveEndpoint(e);
 
                         // Register consumers
                         e.Consumer<ProductAddedConsumer>();
@@ -106,7 +120,7 @@ namespace TechMastery.Messaging.Consumers
                 });
             });
 
-            services.AddMassTransitHostedService();
+            
         }
 
         private static void AddMassTransitWithRabbitMq(this IServiceCollection services, IConfiguration configuration)
@@ -126,20 +140,23 @@ namespace TechMastery.Messaging.Consumers
 
                     cfg.ReceiveEndpoint(options.QueueName, e =>
                     {
-                        // Retry policy for transient failures
-                        e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-
-                        // Schedule message redelivery for non-transient failures
-                        e.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
+                        ConfigureReceiveEndpoint(e);
 
                         // Register consumers
                         e.Consumer<ProductAddedConsumer>();
                         e.Consumer<OrderPlacedConsumer>();
                     });
                 });
+
             });
 
-            services.AddMassTransitHostedService();
+            
+        }
+
+        private static void ConfigureReceiveEndpoint(IReceiveEndpointConfigurator receiveEndpoint)
+        {
+            receiveEndpoint.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+            receiveEndpoint.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
         }
     }
 }

@@ -1158,6 +1158,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.Internal.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Diagnostics.HealthChecks.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Http.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Http.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.AspNetCore.Http.Features.dll
@@ -1186,6 +1187,8 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Microsoft.Extensions.FileSystemGlobbing.dll

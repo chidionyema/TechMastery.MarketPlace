@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RfEPZ5XlLXMp6kFNm9cn0WF0l7hCVqWriYTGF8p4r8CzPts6DcUfOd0pZYPvpPB0Txys29m+UEI5kSH9tZglPw==",
+  "dgSpecHash": "vsAGAOOOYd3zXbMkHO1QoQ/wTKNe4SJvcq6WFU80FXx6ZwwXjjHMlJjn7sLjle1AJmqk510YvGs9YGzgh6/kjg==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
   "expectedPackageFiles": [
@@ -65,6 +65,10 @@
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/rabbitmq.client/6.5.0/rabbitmq.client.6.5.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/serilog/3.0.1/serilog.3.0.1.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/serilog.extensions.logging/7.0.0/serilog.extensions.logging.7.0.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/serilog.sinks.console/4.1.0/serilog.sinks.console.4.1.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/serilog.sinks.file/5.0.0/serilog.sinks.file.5.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.diagnostics.diagnosticsource/7.0.1/system.diagnostics.diagnosticsource.7.0.1.nupkg.sha512",
