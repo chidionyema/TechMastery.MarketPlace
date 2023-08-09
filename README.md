@@ -53,7 +53,7 @@ cp appsettings.example.json appsettings.json
 b. Update the configuration settings, especially the StripeSecretKey, in appsettings.json.
 Run the setup script to start required services and set up the application:
 bash command
-./setup.sh
+ ./setup_env.sh
 
 
 ## Usage
