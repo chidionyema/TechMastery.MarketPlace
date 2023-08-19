@@ -6,7 +6,8 @@ namespace TechMastery.MarketPlace.Application.Features.ProductListing.DataTransf
 	{
         public required string Name { get; set; }
         public required string Version { get; set; }
-        public ProductDependencyTypeEnum DependencyType { get; set; }
+        public DependencyTypeEnum DependencyType { get; set; }
+        public Guid DependencyId { get; internal set; }
     }
 }
 

@@ -1,10 +1,7 @@
 ﻿using Amazon;
 using Amazon.S3;
 using Amazon.S3.Model;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
-using TechMastery.MarketPlace.Infrastructure.Options;
 
 namespace TechMastery.MarketPlace.Infrastructure.Blob
 {
@@ -86,8 +83,12 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
             return objectKey;
         }
 
+        public async Task<Uri> GenerateSasUploadUriAsync(string objectKey, DateTimeOffset expiryTime)
+        {
+            throw new NotImplementedException();
+        }
 
-        public async Task<Uri> GenerateSasUriAsync(string objectKey, DateTimeOffset expiryTime)
+        public async Task<Uri> GenerateSasDownloadUriAsync(string objectKey, DateTimeOffset expiryTime)
         {
             ValidateObjectKey(objectKey);
 

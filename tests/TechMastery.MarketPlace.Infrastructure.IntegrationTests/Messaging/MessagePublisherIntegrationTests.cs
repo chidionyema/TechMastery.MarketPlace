@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Moq;
 using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using TechMastery.MarketPlace.Application.Messaging;
 using TechMastery.MarketPlace.Infrastructure.IntegrationTests;
@@ -14,7 +16,7 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests
         public MessagePublisherIntegrationTests(RabbitMQFixture rabbitMQFixture)
         {
             _rabbitMQFixture = rabbitMQFixture;
-            _messagePublisher = new MessagePublisher(new MessagingSystemsOptions
+            _messagePublisher = new MessagePublisher(new BusControlConfigurator (new MessagingSystemsOptions
             {
                 EnableRabbitMq = true,
                 RabbitMq = new RabbitMqOptions
@@ -24,7 +26,7 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests
                     Username = "guest",      // Replace with your RabbitMQ username
                     Password = "guest"       // Replace with your RabbitMQ password
                 }
-            });
+            }), new Mock<ILogger<MessagePublisher>>().Object);
 
         }
 

@@ -6,7 +6,6 @@ using Serilog;
 using TechMastery.Messaging.Consumers.Consumers;
 using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using Microsoft.Extensions.Options;
-using System;
 
 namespace TechMastery.Messaging.Consumers
 {
@@ -58,14 +57,20 @@ namespace TechMastery.Messaging.Consumers
                 services.AddMassTransitWithRabbitMq(configuration.GetSection("MessagingSystems:RabbitMQ"));
             }
 
+            // Register BusControlConfigurator as a singleton
+            services.AddSingleton<BusControlConfigurator>(provider =>
+            {
+                var options = provider.GetRequiredService<MessagingSystemsOptions>();
+                return new BusControlConfigurator(options);
+            });
+
             // Register IMessagePublisher as a singleton
             services.AddSingleton<IMessagePublisher>(provider =>
             {
-                var messagingSystemsOptions = provider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
-                // Other dependencies like ILogger can be injected here if needed
-                return new MessagePublisher(messagingSystemsOptions);
+                var busControlConfigurator = provider.GetRequiredService<BusControlConfigurator>();
+                var logger = provider.GetRequiredService<ILogger<MessagePublisher>>(); // Inject the logger
+                return new MessagePublisher(busControlConfigurator, logger);
             });
-
 
             return services;
         }

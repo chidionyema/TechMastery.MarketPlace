@@ -1,66 +1,73 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Identity;
-using TechMastery.MarketPlace.Application.Models.Authentication;
-using TechMastery.MarketPlace.Identity.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using System;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using TechMastery.MarketPlace.Application.Models.Authentication;
+using TechMastery.MarketPlace.Application.Contracts.Identity;
 
 namespace TechMastery.MarketPlace.Identity.Services
 {
-    public class AuthenticationService: IAuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
+        private readonly ILogger<AuthenticationService> _logger;
+        private readonly Dictionary<string, ISocialAuthenticator> _socialAuthenticators;
 
-        public AuthenticationService(UserManager<ApplicationUser> userManager,
+        public AuthenticationService(
+            UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IEnumerable<ISocialAuthenticator> socialAuthenticators,
+            ILogger<AuthenticationService> logger)
         {
             _userManager = userManager;
             _jwtSettings = jwtSettings.Value;
             _signInManager = signInManager;
+            _logger = logger;
+            _socialAuthenticators = socialAuthenticators.ToDictionary(
+            auth => auth.GetType().Name.Replace("Authenticator", "").ToLower(),
+            auth => auth);
         }
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
-
             if (user == null)
             {
-                throw new Exception($"User with {request.Email} not found.");
+                _logger.LogWarning($"User with email: {request.Email} not found.");
+                throw new UserNotFoundException($"User with email {request.Email} not found.");
             }
 
             var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
 
             if (!result.Succeeded)
             {
-                throw new Exception($"Credentials for '{request.Email} aren't valid'.");
+                _logger.LogWarning($"Invalid credentials for email: {request.Email}");
+                throw new InvalidCredentialsException($"Credentials for '{request.Email}' aren't valid.");
             }
 
-            JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
-
-            AuthenticationResponse response = new AuthenticationResponse
-            {
-                Id = user.Id,
-                Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
-                Email = user.Email,
-                UserName = user.UserName
-            };
-            
-            return response;
+            return await GenerateAuthenticationResponseForUser(user);
         }
 
         public async Task<RegistrationResponse> RegisterAsync(RegistrationRequest request)
         {
-            var existingUser = await _userManager.FindByNameAsync(request.UserName);
-
-            if (existingUser != null)
+            if (await _userManager.FindByNameAsync(request.UserName) != null)
             {
-                throw new Exception($"Username '{request.UserName}' already exists.");
+                _logger.LogWarning($"Username {request.UserName} already exists.");
+                throw new UserNameAlreadyExistsException($"Username '{request.UserName}' already exists.");
+            }
+
+            if (await _userManager.FindByEmailAsync(request.Email) != null)
+            {
+                _logger.LogWarning($"Email {request.Email} already exists.");
+                throw new EmailAlreadyExistsException($"Email {request.Email} already exists.");
             }
 
             var user = new ApplicationUser
@@ -72,25 +79,98 @@ namespace TechMastery.MarketPlace.Identity.Services
                 EmailConfirmed = true
             };
 
-            var existingEmail = await _userManager.FindByEmailAsync(request.Email);
-
-            if (existingEmail == null)
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (!result.Succeeded)
             {
-                var result = await _userManager.CreateAsync(user, request.Password);
+                _logger.LogError($"Error during registration for email: {request.Email}");
+                throw new RegistrationFailedException($"Error during registration. {string.Join(", ", result.Errors.Select(e => e.Description))}");
+            }
 
-                if (result.Succeeded)
+            return new RegistrationResponse() { UserId = user.Id };
+        }
+
+        public async Task<IdentityResult> AddLoginAsync(ApplicationUser user, ExternalLoginInfo info)
+        {
+            return await _userManager.AddLoginAsync(user, info);
+        }
+
+        public async Task<ApplicationUser> FindByEmailAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                _logger.LogWarning($"User with email: {email} not found.");
+                throw new UserNotFoundException($"User with email {email} not found.");
+            }
+            return user;
+        }
+
+        public async Task<AuthenticationResponse> AuthenticateSocialAsync(string token, string provider)
+        {
+            if (!_socialAuthenticators.ContainsKey(provider.ToLower()))
+            {
+                _logger.LogError($"Unsupported provider: {provider}");
+                throw new UnsupportedProviderException($"Unsupported provider: {provider}");
+            }
+
+            var payload = await _socialAuthenticators[provider.ToLower()].ValidateToken(token);
+            var user = await ConnectOrCreateLocalAccount(payload, provider);
+
+            return await GenerateAuthenticationResponseForUser(user);
+        }
+
+
+        private async Task<ApplicationUser> ConnectOrCreateLocalAccount(object payload, string provider)
+        {
+            string email;
+            string id;
+
+            switch (provider)
+            {
+                case "Google":
+                    var googlePayload = payload as GooglePayload;
+                    email = googlePayload.Email;
+                    id = googlePayload.Sub;
+                    break;
+                case "Facebook":
+                    var fbPayload = payload as FacebookPayload;
+                    email = fbPayload.Email;
+                    id = fbPayload.UserId;
+                    break;
+                default:
+                    throw new ArgumentException($"Unsupported provider: {provider}", nameof(provider));
+            }
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                user = new ApplicationUser
                 {
-                    return new RegistrationResponse() { UserId = user.Id };
-                }
-                else
+                    Email = email,
+                    UserName = email,
+                    EmailConfirmed = true
+                };
+                var createUserResult = await _userManager.CreateAsync(user);
+                if (!createUserResult.Succeeded)
                 {
-                    throw new Exception($"{result.Errors}");
+                    throw new InvalidOperationException($"Failed to create a new user: {string.Join(", ", createUserResult.Errors.Select(e => e.Description))}");
                 }
             }
-            else
+
+            var externalLoginInfo = new ExternalLoginInfo(null, provider, id, provider);
+            var addLoginResult = await _userManager.AddLoginAsync(user, externalLoginInfo);
+            if (!addLoginResult.Succeeded)
             {
-                throw new Exception($"Email {request.Email } already exists.");
+                throw new InvalidOperationException($"Failed to add external login for user {user.UserName}: {string.Join(", ", addLoginResult.Errors.Select(e => e.Description))}");
             }
+
+            return user;
+        }
+
+        public Task RequestPasswordResetAsync(string email)
+        {
+            // TODO: Implement the request password reset logic, sending the reset link to the user's email, etc.
+            throw new NotImplementedException();
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
@@ -100,9 +180,9 @@ namespace TechMastery.MarketPlace.Identity.Services
 
             var roleClaims = new List<Claim>();
 
-            for (int i = 0; i < roles.Count; i++)
+            foreach (var role in roles)
             {
-                roleClaims.Add(new Claim("roles", roles[i]));
+                roleClaims.Add(new Claim("roles", role));
             }
 
             var claims = new[]
@@ -124,7 +204,22 @@ namespace TechMastery.MarketPlace.Identity.Services
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
+
             return jwtSecurityToken;
         }
+
+        private async Task<AuthenticationResponse> GenerateAuthenticationResponseForUser(ApplicationUser user)
+        {
+            var jwtSecurityToken = await GenerateToken(user);
+
+            return new AuthenticationResponse
+            {
+                Id = user.Id,
+                Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+                Email = user.Email,
+                UserName = user.UserName
+            };
+        }
+
     }
 }

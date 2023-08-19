@@ -1,5 +1,5 @@
-﻿using TechMastery.MarketPlace.Identity.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using TechMastery.MarketPlace.Application.Models.Authentication;
 
 namespace TechMastery.MarketPlace.Identity.Seed
 {

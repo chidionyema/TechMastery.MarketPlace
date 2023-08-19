@@ -15,8 +15,13 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
         public Guid OrderId { get; set; }
     }
 
+    /// <summary>
+    /// Handles the process of finalizing the order including payment and sending necessary confirmations.
+    /// </summary>
     public class ProcessOrderCommandHandler : IRequestHandler<ProcessOrder, PaymentResult>
     {
+        private const decimal FeePercentage = 0.15m;
+
         private readonly IOrderRepository _orderRepository;
         private readonly IPaymentService _paymentService;
         private readonly IEmailService _emailService;
@@ -38,13 +43,8 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
         {
             ValidateCommand(command);
 
-            var order = await GetExistingOrderAsync(command.OrderId);
-            ValidateOrder(order);
-
-            var orderTotal = CalculateOrderTotal(order);
-            var fee = CalculateFee(orderTotal);
-
-            AdjustPaymentAmount(command.PaymentInfo, fee);
+            var order = await GetValidatedOrderAsync(command.OrderId);
+            AdjustPaymentAmount(command.PaymentInfo, CalculateOrderTotal(order));
 
             var paymentResult = await ProcessPaymentAsync(command.PaymentInfo, cancellationToken);
 
@@ -58,38 +58,30 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 
         private static void ValidateCommand(ProcessOrder command)
         {
-            if (command == null)
+            if (command == null || command.OrderId == Guid.Empty || command.PaymentInfo == null)
             {
-                throw new BadRequestException(nameof(command));
+                throw new BadRequestException("Invalid command details.");
             }
         }
 
-        private async Task<Order> GetExistingOrderAsync(Guid orderId)
+        private async Task<Order> GetValidatedOrderAsync(Guid orderId)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
-            return order ?? throw new NotFoundException($"Order with ID {orderId} not found.", orderId);
-        }
-
-        private void ValidateOrder(Order order)
-        {
             if (order == null)
             {
-                throw new NotFoundException("Order not found.", "null");
+                throw new NotFoundException($"Order with ID {orderId} not found.", orderId);
             }
+
+            return order;
+        }
+
+        private void AdjustPaymentAmount(PaymentInfo paymentInfo, decimal orderTotal)
+        {
+            decimal fee = orderTotal * FeePercentage;
+            paymentInfo.SellerCut -= fee;
         }
 
         private static decimal CalculateOrderTotal(Order order) => order.OrderLineItems.Sum(item => item.UnitPrice * item.Quantity);
-
-        private static decimal CalculateFee(decimal orderTotal)
-        {
-            const decimal FeePercentage = 0.15m;
-            return orderTotal * FeePercentage;
-        }
-
-        private void AdjustPaymentAmount(PaymentInfo paymentInfo, decimal fee)
-        {
-            paymentInfo.SellerCut -= fee;
-        }
 
         private async Task<PaymentResult> ProcessPaymentAsync(PaymentInfo paymentInfo, CancellationToken cancellationToken)
         {
@@ -112,10 +104,15 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
             var sasExpiryTime = DateTimeOffset.UtcNow.AddHours(1);
             foreach (var orderLineItem in order.OrderLineItems)
             {
-                var blobName = orderLineItem.GetProductArtifactBlobName();
-                var sasUrl = await _storageProvider.GenerateSasUriAsync(blobName, sasExpiryTime);
+                var sasUrl = await GenerateSasDownloadUriForItem(orderLineItem, sasExpiryTime);
                 await _emailService.SendDownloadLinkEmailAsync(order.OrderEmail, sasUrl);
             }
+        }
+
+        private async Task<Uri> GenerateSasDownloadUriForItem(OrderLineItem orderLineItem, DateTimeOffset sasExpiryTime)
+        {
+            var blobName = orderLineItem.GetProductArtifactBlobName();
+            return await _storageProvider.GenerateSasDownloadUriAsync(blobName, sasExpiryTime);
         }
     }
 }

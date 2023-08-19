@@ -22,6 +22,16 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             throw new NotImplementedException();
         }
 
+        public Task<Uri> GenerateSasDownloadUriAsync(string objectKey, DateTimeOffset expiryTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Uri> GenerateSasUploadUriAsync(string objectKey, DateTimeOffset expiryTime)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Uri> GenerateSasUriAsync(string blobName, DateTimeOffset expiryTime)
         {
             throw new NotImplementedException();

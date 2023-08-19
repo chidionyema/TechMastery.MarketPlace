@@ -1,5 +1,5 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using MediatR;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
@@ -19,7 +19,10 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly ILogger<AddItemToCartHandler> _logger;
 
-        public AddItemToCartHandler(ICartItemRepository cartItemRepository, IShoppingCartRepository shoppingCartRepository, ILogger<AddItemToCartHandler> logger)
+        public AddItemToCartHandler(
+            ICartItemRepository cartItemRepository,
+            IShoppingCartRepository shoppingCartRepository,
+            ILogger<AddItemToCartHandler> logger)
         {
             _cartItemRepository = cartItemRepository ?? throw new ArgumentNullException(nameof(cartItemRepository));
             _shoppingCartRepository = shoppingCartRepository ?? throw new ArgumentNullException(nameof(shoppingCartRepository));
@@ -31,7 +34,7 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
             if (command.CartItems == null || !command.CartItems.Any())
             {
                 _logger.LogError("Invalid request: {Command}", nameof(command));
-                throw new BadRequestException(nameof(command));
+                throw new BadRequestException("CartItems must not be empty.");
             }
 
             var cartItemIds = new List<Guid>();
@@ -47,7 +50,6 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
             _logger.LogInformation("Successfully added items to cart. ShoppingCartId: {ShoppingCartId}, CartItemIds: {CartItemIds}",
                 shoppingCart.ShoppingCartId, string.Join(",", cartItemIds));
             return cartItemIds;
-
         }
 
         private void ValidateCartItem(CartItemDto cartItem)
@@ -56,6 +58,18 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
             {
                 _logger.LogError("Invalid cart item: CartItemDto cannot be null.");
                 throw new ArgumentNullException(nameof(cartItem), "CartItemDto cannot be null.");
+            }
+
+            if (cartItem.ProductId == Guid.Empty)
+            {
+                _logger.LogError("Invalid cart item: ProductId cannot be empty.");
+                throw new ArgumentException("ProductId cannot be empty.", nameof(cartItem.ProductId));
+            }
+
+            if (cartItem.Quantity <= 0)
+            {
+                _logger.LogError("Invalid cart item: Quantity should be greater than zero.");
+                throw new ArgumentException("Quantity should be greater than zero.", nameof(cartItem.Quantity));
             }
         }
 

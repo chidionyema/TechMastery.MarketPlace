@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using TechMastery.MarketPlace.Application.Contracts.Identity;
 using TechMastery.MarketPlace.Application.Models.Authentication;
-using TechMastery.MarketPlace.Identity.Models;
 using TechMastery.MarketPlace.Identity.Services;
 
 namespace TechMastery.MarketPlace.Identity
@@ -29,6 +28,7 @@ namespace TechMastery.MarketPlace.Identity
                 throw new ArgumentNullException(nameof(configuration));
             }
 
+          
             // Configure JWT settings
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
             if (jwtSettings == null)
@@ -38,7 +38,7 @@ namespace TechMastery.MarketPlace.Identity
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
             // Configure database context with migrations
-            var identityDbConnectionString = configuration.GetConnectionString("TechMasteryMarkePlaceIdentityConnectionString");
+            var identityDbConnectionString = configuration.GetConnectionString("TechMasteryMarketPlaceIdentityConnectionString");
             if (string.IsNullOrWhiteSpace(identityDbConnectionString))
             {
                 throw new ArgumentNullException("Identity DB connection string is missing or invalid.");

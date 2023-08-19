@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TechMastery.MarketPlace.Domain.Common;
 using TechMastery.MarketPlace.Domain.Entities;
-using TechMastery.MarketPlace.Persistence.Seed;
 
 namespace TechMastery.MarketPlace.Persistence
 {
@@ -26,8 +25,8 @@ namespace TechMastery.MarketPlace.Persistence
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<ProductArtifactDownloadHistory> ProductDownloadHistory { get; set; }
         public DbSet<ProductLicense> ProductLicenses { get; set; }
-        public DbSet<ProductDependencyType> ProductDependencyTypes { get; set; }
-        public DbSet<CategoryDependencyType> CategoryDependencyTypes { get; set; }
+        public DbSet<DependencyType> DependencyTypes { get; set; }
+        public DbSet<Dependency> Dependencies { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
 
@@ -54,6 +53,11 @@ namespace TechMastery.MarketPlace.Persistence
             ConfigureEntities(modelBuilder);
             SeedEnums(modelBuilder);
             SeedCategoryDependencies(modelBuilder);
+            modelBuilder.Entity<Category>().HasData(
+               new Category("Web", Guid.NewGuid()),
+               new Category("Devops", Guid.NewGuid()),
+               new Category("AI", Guid.NewGuid())
+           );
         }
 
         private void ConfigureEntities(ModelBuilder modelBuilder)
@@ -79,7 +83,6 @@ namespace TechMastery.MarketPlace.Persistence
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(s => s.ProductId);
-                entity.HasOne(s => s.Category).WithMany(c => c.ProductListings).HasForeignKey(s => s.CategoryId);
                 // Configure other properties and relationships for Product entity
             });
 
@@ -125,20 +128,12 @@ namespace TechMastery.MarketPlace.Persistence
 
         private void SeedEnums(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductDependencyType>().HasData(
-                Enum.GetValues(typeof(ProductDependencyTypeEnum))
-                    .Cast<ProductDependencyTypeEnum>()
+            modelBuilder.Entity<DependencyType>().HasData(
+                Enum.GetValues(typeof(DependencyTypeEnum))
+                    .Cast<DependencyTypeEnum>()
                     .Select((type, index) =>
-                        new ProductDependencyType { Id = index + 1, Name = type.ToString() })
+                        new DependencyType { Id = index + 1, Name = type.ToString() })
             );
-
-            modelBuilder.Entity<CategoryDependencyType>().HasData(
-                Enum.GetValues(typeof(CategoryDependencyTypeEnum))
-                    .Cast<CategoryDependencyTypeEnum>()
-                    .Select((type, index) =>
-                        new CategoryDependencyType { Id = index + 1, Name = type.ToString() })
-            );
-
             modelBuilder.Entity<ProductStatus>().HasData(
                 Enum.GetValues(typeof(ProductStatusEnum))
                     .Cast<ProductStatusEnum>()
@@ -149,7 +144,7 @@ namespace TechMastery.MarketPlace.Persistence
 
         private void SeedCategoryDependencies(ModelBuilder modelBuilder)
         {
-            CategoryDataSeeder.SeedCategoryDependencies(modelBuilder);
+          //  CategoryDataSeeder.SeedCategoryDependencies(modelBuilder);
         }
     }
 }

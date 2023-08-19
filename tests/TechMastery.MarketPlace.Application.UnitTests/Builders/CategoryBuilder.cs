@@ -14,7 +14,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
 
         internal CategoryBuilder WithName(string name)
         {
-            _category.SetName(name);
+            _category.UpdateName(name);
             return this;
         }
 

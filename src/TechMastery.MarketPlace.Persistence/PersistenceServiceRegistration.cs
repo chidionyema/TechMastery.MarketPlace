@@ -26,7 +26,7 @@ namespace TechMastery.MarketPlace.Persistence
             services.AddLogging();
 
             // Validate configuration and retrieve connection string
-            var connectionString = configuration.GetConnectionString("TechMasteryMarkePlaceConnectionString");
+            var connectionString = configuration.GetConnectionString("TechMasteryMarketPlaceConnectionString");
             if (string.IsNullOrWhiteSpace(connectionString))
             {
                 throw new ArgumentException("Connection string is missing or empty.", nameof(connectionString));

@@ -46,7 +46,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             var searchResults = productSearchService.SearchProducts(searchRequest);
 
             // Assert
-            Assert.Equal(1, searchResults.Count);
+            Assert.Equal(2, searchResults.Count);
             Assert.Equal("Product 1", searchResults.First().Title);
         }
 

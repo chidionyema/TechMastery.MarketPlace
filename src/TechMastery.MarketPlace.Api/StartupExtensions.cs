@@ -8,6 +8,9 @@ using TechMastery.MarketPlace.Persistence;
 using TechMastery.Messaging.Consumers;
 using TechMastery.MarketPlace.Api.Middleware;
 using TechMastery.MarketPlace.Api.Utility;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Newtonsoft.Json;
 
 namespace TechMastery.MarketPlace.Api
 {
@@ -36,6 +39,8 @@ namespace TechMastery.MarketPlace.Api
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
 
+
+
             builder.Services.AddControllers();
 
              return builder.Build();
@@ -54,7 +59,6 @@ namespace TechMastery.MarketPlace.Api
                 });
             }
 
-            app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -69,6 +73,22 @@ namespace TechMastery.MarketPlace.Api
             app.MapControllers();
 
             return app;
+        }
+
+        private static Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport result)
+        {
+            httpContext.Response.ContentType = "application/json";
+            var response = new
+            {
+                Status = result.Status.ToString(),
+                Checks = result.Entries.Select(entry => new
+                {
+                    Name = entry.Key,
+                    Status = entry.Value.Status.ToString(),
+                    Description = entry.Value.Description
+                })
+            };
+            return httpContext.Response.WriteAsync(JsonConvert.SerializeObject(response, Formatting.Indented));
         }
 
         private static void AddSwagger(IServiceCollection services)

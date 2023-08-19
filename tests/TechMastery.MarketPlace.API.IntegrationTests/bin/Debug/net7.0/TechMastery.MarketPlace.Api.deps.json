@@ -213,6 +213,14 @@
           }
         }
       },
+      "Facebook/7.0.6": {
+        "runtime": {
+          "lib/net45/Facebook.dll": {
+            "assemblyVersion": "6.0.10.0",
+            "fileVersion": "7.0.6.0"
+          }
+        }
+      },
       "FluentValidation/11.6.0": {
         "runtime": {
           "lib/net7.0/FluentValidation.dll": {
@@ -230,6 +238,44 @@
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.6.0.0"
+          }
+        }
+      },
+      "Google.Apis/1.61.0": {
+        "dependencies": {
+          "Google.Apis.Core": "1.61.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.dll": {
+            "assemblyVersion": "1.61.0.0",
+            "fileVersion": "1.61.0.0"
+          }
+        }
+      },
+      "Google.Apis.Auth/1.61.0": {
+        "dependencies": {
+          "Google.Apis": "1.61.0",
+          "Google.Apis.Core": "1.61.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {
+            "assemblyVersion": "1.61.0.0",
+            "fileVersion": "1.61.0.0"
+          },
+          "lib/netstandard2.0/Google.Apis.Auth.dll": {
+            "assemblyVersion": "1.61.0.0",
+            "fileVersion": "1.61.0.0"
+          }
+        }
+      },
+      "Google.Apis.Core/1.61.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "assemblyVersion": "1.61.0.0",
+            "fileVersion": "1.61.0.0"
           }
         }
       },
@@ -871,6 +917,44 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
+          "Microsoft.AspNetCore.DataProtection": "2.2.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1",
+          "Microsoft.Extensions.WebEncoders": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Cookies/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Core/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Http.Extensions": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/7.0.10": {
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "7.0.10.0",
+            "fileVersion": "7.0.1023.36439"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Google/7.0.9": {
         "runtime": {
           "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
@@ -909,6 +993,20 @@
           }
         }
       },
+      "Microsoft.AspNetCore.DataProtection/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "7.0.9",
+          "Microsoft.AspNetCore.DataProtection.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1",
+          "Microsoft.Win32.Registry": "5.0.0",
+          "System.Security.Cryptography.Xml": "4.5.0",
+          "System.Security.Principal.Windows": "5.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.DataProtection.Abstractions/2.2.0": {},
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/7.0.9": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "7.0.9"
@@ -928,6 +1026,19 @@
           "Microsoft.Net.Http.Headers": "2.2.0"
         }
       },
+      "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting.Server.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "7.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Hosting.Server.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0"
+        }
+      },
       "Microsoft.AspNetCore.Http/2.2.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -943,9 +1054,25 @@
           "System.Text.Encodings.Web": "7.0.0"
         }
       },
+      "Microsoft.AspNetCore.Http.Extensions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "7.0.0",
+          "Microsoft.Net.Http.Headers": "2.2.0",
+          "System.Buffers": "4.5.1"
+        }
+      },
       "Microsoft.AspNetCore.Http.Features/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Identity/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "7.0.9",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Identity.Core": "7.0.9"
         }
       },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.9": {
@@ -1912,6 +2039,13 @@
         }
       },
       "Microsoft.Extensions.Primitives/7.0.0": {},
+      "Microsoft.Extensions.WebEncoders/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Options": "7.0.1",
+          "System.Text.Encodings.Web": "7.0.0"
+        }
+      },
       "Microsoft.Identity.Client/4.49.1": {
         "dependencies": {
           "Microsoft.IdentityModel.Abstractions": "6.32.0"
@@ -3478,6 +3612,12 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
+      "System.Security.Cryptography.Xml/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "5.0.0",
+          "System.Security.Permissions": "6.0.0"
+        }
+      },
       "System.Security.Permissions/6.0.0": {
         "dependencies": {
           "System.Security.AccessControl": "6.0.0",
@@ -3612,6 +3752,7 @@
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Hosting": "7.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
@@ -3630,6 +3771,9 @@
       },
       "TechMastery.MarketPlace.Identity/1.0.0": {
         "dependencies": {
+          "Facebook": "7.0.6",
+          "Google.Apis.Auth": "1.61.0",
+          "Microsoft.AspNetCore.Authentication.Facebook": "7.0.10",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.9",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "7.0.9",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.9",
@@ -3673,6 +3817,7 @@
       },
       "TechMastery.MarketPlace.Messaging/1.0.0": {
         "dependencies": {
+          "MassTransit": "8.0.16",
           "MassTransit.AmazonSQS": "8.0.16",
           "MassTransit.Azure.ServiceBus.Core": "8.0.16",
           "MassTransit.RabbitMQ": "8.0.16",
@@ -3816,6 +3961,13 @@
       "path": "elasticsearch.net/7.17.5",
       "hashPath": "elasticsearch.net.7.17.5.nupkg.sha512"
     },
+    "Facebook/7.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D9nlWZb88S4U+eh1pUDQ+AkSkiht6m0eFpxKFddZnQSSFTnncvDMBEnNODy4fOIOjWQIiOXRVbuY04jCPyWqkw==",
+      "path": "facebook/7.0.6",
+      "hashPath": "facebook.7.0.6.nupkg.sha512"
+    },
     "FluentValidation/11.6.0": {
       "type": "package",
       "serviceable": true,
@@ -3829,6 +3981,27 @@
       "sha512": "sha512-3jyyy5VMzKsdGNzfBKtEYX3fd3YzSSzd7JEq7uJcqjqqkoCexT4khgTlNT8upXOeU6mT1MSW7H7OjvUG9W1bRw==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.6.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512"
+    },
+    "Google.Apis/1.61.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KUVqG6MRC7E8anPOLefqb+wnDeIS6IJ1B09GaXg07vAHGVnGxJ8odAtpnCQCN3aUzao3gFnSSEKawDvFrJpYZQ==",
+      "path": "google.apis/1.61.0",
+      "hashPath": "google.apis.1.61.0.nupkg.sha512"
+    },
+    "Google.Apis.Auth/1.61.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1tXnTa9WaimJdlrIyHnhjjgFX6fQ1r4ClWqlK9ZYF5YPyswG1GbWhhlPyQg615BnHSulmRINlXIi8AbGJsc1yQ==",
+      "path": "google.apis.auth/1.61.0",
+      "hashPath": "google.apis.auth.1.61.0.nupkg.sha512"
+    },
+    "Google.Apis.Core/1.61.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/COXAFLc1SrLDZl7Ahhi0ZyNHM6ADvdd73UjIPXr1MRubHTrBgvdfwoTrCL0C8C6w0ur/RIR1RHUR5orSJozGg==",
+      "path": "google.apis.core/1.61.0",
+      "hashPath": "google.apis.core.1.61.0.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",
@@ -4236,6 +4409,41 @@
       "path": "mediatr.extensions.microsoft.dependencyinjection/11.1.0",
       "hashPath": "mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Authentication/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b0R9X7L6zMqNsssKDvhYHuNi5x0s4DyHTeXybIAyGaitKiW1Q5aAGKdV2codHPiePv9yHfC9hAMyScXQ/xXhPw==",
+      "path": "microsoft.aspnetcore.authentication/2.2.0",
+      "hashPath": "microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VloMLDJMf3n/9ic5lCBOa42IBYJgyB1JhzLsL68Zqg+2bEPWfGBj/xCJy/LrKTArN0coOcZp3wyVTZlx0y9pHQ==",
+      "path": "microsoft.aspnetcore.authentication.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Cookies/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Iar9VFlBHkZGdSG9ZUTmn6Q8Qg+6CtW5G/TyJI2F8B432TOH+nZlkU7O0W0byow6xsxqOYeTviSHz4cCJ3amfQ==",
+      "path": "microsoft.aspnetcore.authentication.cookies/2.2.0",
+      "hashPath": "microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Core/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XlVJzJ5wPOYW+Y0J6Q/LVTEyfS4ssLXmt60T0SPP+D8abVhBTl+cgw2gDHlyKYIkcJg7btMVh383NDkMVqD/fg==",
+      "path": "microsoft.aspnetcore.authentication.core/2.2.0",
+      "hashPath": "microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/7.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7Grmb7ABKnFJiHY1SlRhwF89cyxmb6Tpu06mTV1PQK+mFW50BWjVyriXo14WxsjlbPTty3bWxBXKGUUYnvxJlg==",
+      "path": "microsoft.aspnetcore.authentication.facebook/7.0.10",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.7.0.10.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Authentication.Google/7.0.9": {
       "type": "package",
       "serviceable": true,
@@ -4264,6 +4472,20 @@
       "path": "microsoft.aspnetcore.cryptography.keyderivation/7.0.9",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.7.0.9.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.DataProtection/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G6dvu5Nd2vjpYbzazZ//qBFbSEf2wmBUbyAR7E4AwO3gWjhoJD5YxpThcGJb7oE3VUcW65SVMXT+cPCiiBg8Sg==",
+      "path": "microsoft.aspnetcore.dataprotection/2.2.0",
+      "hashPath": "microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.DataProtection.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-seANFXmp8mb5Y12m1ShiElJ3ZdOT3mBN3wA1GPhHJIvZ/BxOCPyqEOR+810OWsxEZwA5r5fDRNpG/CqiJmQnJg==",
+      "path": "microsoft.aspnetcore.dataprotection.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.dataprotection.abstractions.2.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/7.0.9": {
       "type": "package",
       "serviceable": true,
@@ -4277,6 +4499,20 @@
       "sha512": "sha512-RNmdLy9yncTprony49cuwhyTKoROpVflGM+pKlHA1671F00QUsjoY1Oi6xoa9XsUrfRDRYlxbt2CHYCMLzMh7Q==",
       "path": "microsoft.aspnetcore.diagnostics.healthchecks/2.2.0",
       "hashPath": "microsoft.aspnetcore.diagnostics.healthchecks.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ubycklv+ZY7Kutdwuy1W4upWcZ6VFR8WUXU7l7B2+mvbDBBPAcfpi+E+Y5GFe+Q157YfA3C49D2GCjAZc7Mobw==",
+      "path": "microsoft.aspnetcore.hosting.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Hosting.Server.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1PMijw8RMtuQF60SsD/JlKtVfvh4NORAhF4wjysdABhlhTrYmtgssqyncR0Stq5vqtjplZcj6kbT4LRTglt9IQ==",
+      "path": "microsoft.aspnetcore.hosting.server.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http/2.2.2": {
       "type": "package",
@@ -4292,12 +4528,26 @@
       "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
       "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Http.Extensions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2DgZ9rWrJtuR7RYiew01nGRzuQBDaGHGmK56Rk54vsLLsCdzuFUPqbDTJCS1qJQWTbmbIQ9wGIOjpxA1t0l7/w==",
+      "path": "microsoft.aspnetcore.http.extensions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Http.Features/2.2.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
       "path": "microsoft.aspnetcore.http.features/2.2.0",
       "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Identity/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F16BKeS96wKhyIyhaFR7m8kRIwIvPUW9Dx7IlGWmu2IIwnUDCdo+2z7IrWKA8r77pZQ1UE9kYcBPg5456YdAIA==",
+      "path": "microsoft.aspnetcore.identity/2.2.0",
+      "hashPath": "microsoft.aspnetcore.identity.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.9": {
       "type": "package",
@@ -4767,6 +5017,13 @@
       "sha512": "sha512-um1KU5kxcRp3CNuI8o/GrZtD4AIOXDk+RLsytjZ9QPok3ttLUelLKpilVPuaFT3TFjOhSibUAso0odbOaCDj3Q==",
       "path": "microsoft.extensions.primitives/7.0.0",
       "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.WebEncoders/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8XcqYcpcdBAxUhLeyYcuKmxu4CtNQA9IphTnARpQGhkop4A93v2XgM3AtaVVJo3H2cDWxWM6aeO8HxkifREqw==",
+      "path": "microsoft.extensions.webencoders/2.2.0",
+      "hashPath": "microsoft.extensions.webencoders.2.2.0.nupkg.sha512"
     },
     "Microsoft.Identity.Client/4.49.1": {
       "type": "package",
@@ -5838,6 +6095,13 @@
       "sha512": "sha512-t2Tmu6Y2NtJ2um0RtcuhP7ZdNNxXEgUm2JeoA/0NvlMjAhKCnM1NX07TDl3244mVp3QU6LPEhT3HTtH1uF7IYw==",
       "path": "system.security.cryptography.x509certificates/4.3.0",
       "hashPath": "system.security.cryptography.x509certificates.4.3.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Xml/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i2Jn6rGXR63J0zIklImGRkDIJL4b1NfPSEbIVHBlqoIb12lfXIigCbDRpDmIEzwSo/v1U5y/rYJdzZYSyCWxvg==",
+      "path": "system.security.cryptography.xml/4.5.0",
+      "hashPath": "system.security.cryptography.xml.4.5.0.nupkg.sha512"
     },
     "System.Security.Permissions/6.0.0": {
       "type": "package",

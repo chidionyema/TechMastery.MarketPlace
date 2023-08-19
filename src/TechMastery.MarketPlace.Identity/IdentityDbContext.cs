@@ -1,6 +1,6 @@
-﻿using TechMastery.MarketPlace.Identity.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TechMastery.MarketPlace.Application.Models.Authentication;
 
 namespace TechMastery.MarketPlace.Identity
 {

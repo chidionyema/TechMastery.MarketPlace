@@ -25,7 +25,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             _publisher = new FakeMessagePublisher();
             _productRepository = _fixture.CreateProductListingRepository();
             _categoryRepository = _fixture.CreateCategoryRepository();
-            handler = new AddOrUpdateListingHandler(new Mock<ILogger<AddOrUpdateListingHandler>>().Object, _productRepository, _blobStorageService, _categoryRepository, _publisher);
+            handler = new AddOrUpdateListingHandler(new Mock<ILogger<AddOrUpdateListingHandler>>().Object, _productRepository, _categoryRepository, _publisher);
         }
 
         [Fact]
@@ -143,9 +143,9 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             Assert.NotNull(product);
             Assert.Collection(product.Dependencies, dependencies =>
             {
-                Assert.Equal(command.Dependencies[0].Name, dependencies.Name);
-                Assert.Equal(command.Dependencies[0].Version, dependencies.Version);
-                Assert.Equal(command.Dependencies[0].DependencyType, dependencies.DependencyTypeEnum);
+                Assert.Equal(command.Dependencies[0].Name, dependencies.Dependency.Name);
+                Assert.Equal(command.Dependencies[0].Version, dependencies.Dependency.Version);
+                Assert.Equal(command.Dependencies[0].DependencyType, dependencies.Dependency.DependencyTypeEnum);
             });
         }
 

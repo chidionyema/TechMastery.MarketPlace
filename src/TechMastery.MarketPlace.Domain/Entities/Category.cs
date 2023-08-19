@@ -1,63 +1,75 @@
 ﻿using TechMastery.MarketPlace.Domain.Common;
+using System;
+using System.Collections.Generic;
 
 namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class Category : AuditableEntity
     {
-        public Category() { }
+        private readonly List<CategoryDependency> _dependencies = new List<CategoryDependency>();
+        private readonly List<Category> _subCategories = new List<Category>();
 
-        public Category(string name)
+        public Category(string name, Guid? id = null)
         {
-            Name = name;
-        }
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Category name cannot be null or empty.", nameof(name));
+            }
 
-        public Category(string name, Guid Id)
-        {
             Name = name;
-            CategoryId = Id;
+            CategoryId = id ?? Guid.NewGuid();
             CreatedDate = DateTime.UtcNow;
         }
 
-        public Guid CategoryId { get; protected set; }
-        public string Name { get; private set; } = string.Empty;
+        public Category()
+        {
+        }
+
+        public Guid CategoryId { get; private set; }
+        public string Name { get; private set; }
         public Category? ParentCategory { get; private set; }
         public Guid? ParentCategoryId { get; private set; }
-        public ICollection<CategoryDependency>? Dependencies { get; private set; } = new List<CategoryDependency>();
-        public ICollection<Category>? SubCategories { get; private set; } = new List<Category>();
-        public ICollection<Product>? ProductListings { get; private  set; }
+        public IReadOnlyCollection<CategoryDependency> Dependencies => _dependencies.AsReadOnly();
+        public IReadOnlyCollection<Category> SubCategories => _subCategories.AsReadOnly();
 
         public void AddSubCategory(Category subCategory)
         {
-            SubCategories?.Add(subCategory);
+            if (subCategory == null)
+            {
+                throw new ArgumentNullException(nameof(subCategory));
+            }
+
+            _subCategories.Add(subCategory);
         }
 
-        public void SetId(Guid Id)
+        public void UpdateName(string newName)
         {
-            CategoryId = Id;
-        }
-        public void SetName(string name)
-        {
-            Name = name;
+            if (string.IsNullOrWhiteSpace(newName))
+            {
+                throw new ArgumentException("Category name cannot be null or empty.", nameof(newName));
+            }
+
+            Name = newName;
         }
 
         public void RemoveSubCategory(Category subCategory)
         {
-            SubCategories?.Remove(subCategory);
+            _subCategories.Remove(subCategory);
         }
 
         public void AddDependency(CategoryDependency dependency)
         {
-            Dependencies?.Add(dependency);
+            if (dependency == null)
+            {
+                throw new ArgumentNullException(nameof(dependency));
+            }
+
+            _dependencies.Add(dependency);
         }
 
         public void RemoveDependency(CategoryDependency dependency)
         {
-            Dependencies?.Remove(dependency);
-        }
-
-        public void UpdateCategory(string name)
-        {
-            Name = name;
+            _dependencies.Remove(dependency);
         }
     }
 }

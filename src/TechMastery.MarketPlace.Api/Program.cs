@@ -1,3 +1,6 @@
+using System.Text.Json;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
 
 namespace TechMastery.MarketPlace.Api
@@ -24,10 +27,30 @@ namespace TechMastery.MarketPlace.Api
                 .ConfigureServices()
                 .ConfigurePipeline();
 
+            // Health check configuration
+            app.MapHealthChecks("/health", new HealthCheckOptions
+            {
+                ResponseWriter = HealthCheckResponseWriter,
+                Predicate = _ => true,
+                ResultStatusCodes =
+                {
+                    [HealthStatus.Healthy] = StatusCodes.Status200OK,
+                    [HealthStatus.Degraded] = StatusCodes.Status200OK,
+                    [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+                }
+            });
+
             // Use Serilog for request logging
             app.UseSerilogRequestLogging();
 
             app.Run();
+        }
+
+        private static async Task HealthCheckResponseWriter(HttpContext context, HealthReport report)
+        {
+            context.Response.ContentType = "application/json";
+            await JsonSerializer.SerializeAsync(context.Response.Body, report);
+
         }
     }
 }

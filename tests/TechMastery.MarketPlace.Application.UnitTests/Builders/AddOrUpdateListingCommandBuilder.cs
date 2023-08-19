@@ -30,7 +30,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             {
                 artifacts.Add(new ProductAssetDto
                 {
-                    FormFile = new FormFile(new MemoryStream(), 0, 0, $"mockFormFile{i}", $"mockFileName{i}"),
+                    BlobUrl = "blob",
                     ArtifactType = new ProductArtifactTypeEnum()
                 });
             }
@@ -47,7 +47,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 {
                     Name = $"Dependency {i + 1}",
                     Version = $"{i + 1}.0",
-                    DependencyType = (ProductDependencyTypeEnum)new Random().Next(1, Enum.GetValues(typeof(ProductDependencyTypeEnum)).Length)
+                    DependencyType = (DependencyTypeEnum)new Random().Next(1, Enum.GetValues(typeof(DependencyTypeEnum)).Length)
                 });
             }
             _command.Dependencies = dependencies;

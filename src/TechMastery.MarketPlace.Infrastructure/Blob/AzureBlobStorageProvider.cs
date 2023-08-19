@@ -40,7 +40,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
             return blobClient.Name;
         }
 
-        public async Task<Uri> GenerateSasUriAsync(string blobName, DateTimeOffset expiryTime)
+        public async Task<Uri> GenerateSasDownloadUriAsync(string blobName, DateTimeOffset expiryTime)
         {
             ValidateBlobName(blobName);
 
@@ -54,6 +54,19 @@ namespace TechMastery.MarketPlace.Infrastructure.Blob
             return sasUri;
         }
 
+        public async Task<Uri> GenerateSasUploadUriAsync(string blobName, DateTimeOffset expiryTime)
+        {
+            ValidateBlobName(blobName);
+
+            var containerClient = await GetBlobContainerClientAsync();
+            var blobClient = containerClient.GetBlobClient(blobName);
+            EnsureBlobClientAuthorization(blobClient);
+
+            var sasBuilder = BuildBlobSasBuilder(containerClient.Name, blobName, expiryTime, BlobSasPermissions.Write);
+            var sasUri = blobClient.GenerateSasUri(sasBuilder);
+
+            return sasUri;
+        }
         public async Task<byte[]> DownloadBlobAsync(string containerName, string blobName)
         {
             ValidateContainerAndBlobNames(containerName, blobName);

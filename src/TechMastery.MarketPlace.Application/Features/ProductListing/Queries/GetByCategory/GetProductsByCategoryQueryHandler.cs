@@ -1,8 +1,4 @@
 ﻿using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
 
 namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProductsList
