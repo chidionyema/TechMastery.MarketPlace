@@ -27,6 +27,10 @@ namespace TechMastery.MarketPlace.Api
                 .ConfigureServices()
                 .ConfigurePipeline();
 
+            var rabbitMqHost = builder.Configuration["MessagingSystems:RabbitMQ:Host"];
+            Log.Information($"Loaded RabbitMQ Host: {rabbitMqHost}");
+
+
             // Health check configuration
             app.MapHealthChecks("/health", new HealthCheckOptions
             {

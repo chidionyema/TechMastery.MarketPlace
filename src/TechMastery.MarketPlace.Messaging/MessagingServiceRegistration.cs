@@ -6,7 +6,6 @@ using Serilog;
 using TechMastery.Messaging.Consumers.Consumers;
 using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using Microsoft.Extensions.Options;
-
 namespace TechMastery.Messaging.Consumers
 {
     public static class MessagingServiceRegistration
@@ -36,29 +35,27 @@ namespace TechMastery.Messaging.Consumers
             var serviceProvider = services.BuildServiceProvider();
             var messagingSystemsOptions = serviceProvider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
 
-            // remove once options caching issue resolved
-            messagingSystemsOptions.EnableAzureServiceBus = false;
             // Add MassTransit with Azure Service Bus if enabled
             if (messagingSystemsOptions.EnableAzureServiceBus)
             {
                 services.AddHealthChecks().AddCheck<AzureServiceBusHealthCheck>("AzureServiceBusHealthCheck");
-                services.AddMassTransitWithAzureServiceBus(configuration.GetSection("MessagingSystems:AzureServiceBus"));
+                services.AddMassTransitWithAzureServiceBus(messagingSystemsOptions.AzureServiceBus!);
             }
 
             if (messagingSystemsOptions.EnableSqs)
             {
                 services.AddHealthChecks().AddCheck<AmazonSqsHealthCheck>("AmazonSqsHealthCheck");
-                services.AddMassTransitWithSqs(configuration.GetSection("MessagingSystems:SQS"));
+                services.AddMassTransitWithSqs(messagingSystemsOptions.Sqs!);
             }
 
             if (messagingSystemsOptions.EnableRabbitMq)
             {
                 services.AddHealthChecks().AddCheck<RabbitMqHealthCheck>("RabbitMqHealthCheck");
-                services.AddMassTransitWithRabbitMq(configuration.GetSection("MessagingSystems:RabbitMQ"));
+                services.AddMassTransitWithRabbitMq(messagingSystemsOptions.RabbitMq!);
             }
 
             // Register BusControlConfigurator as a singleton
-            services.AddSingleton<BusControlConfigurator>(provider =>
+            services.AddSingleton(provider =>
             {
                 var options = provider.GetRequiredService<MessagingSystemsOptions>();
                 return new BusControlConfigurator(options);
@@ -75,18 +72,22 @@ namespace TechMastery.Messaging.Consumers
             return services;
         }
 
-        private static void AddMassTransitWithAzureServiceBus(this IServiceCollection services, IConfiguration configuration)
+        private static void AddMassTransitWithAzureServiceBus(this IServiceCollection services, AzureServiceBusOptions serviceBusOptions)
         {
+            if (serviceBusOptions == null || string.IsNullOrEmpty(serviceBusOptions.QueueName) || string.IsNullOrEmpty(serviceBusOptions.ConnectionString))
+
+            {
+                throw new ArgumentException("SQS configuration is incomplete.");
+            }
+
             services.AddMassTransit(configure =>
             {
-                var options = new AzureServiceBusOptions();
-                configuration.Bind(options);
 
                 configure.UsingAzureServiceBus((context, cfg) =>
                 {
-                    cfg.Host(options.ConnectionString);
+                    cfg.Host(serviceBusOptions.ConnectionString);
 
-                    cfg.ReceiveEndpoint(options.QueueName, e =>
+                    cfg.ReceiveEndpoint(serviceBusOptions.QueueName, e =>
                     {
                         ConfigureReceiveEndpoint(e);
 
@@ -99,22 +100,26 @@ namespace TechMastery.Messaging.Consumers
             
         }
 
-        private static void AddMassTransitWithSqs(this IServiceCollection services, IConfiguration configuration)
+        private static void AddMassTransitWithSqs(this IServiceCollection services, SqsOptions sqsOptions)
         {
+            if (sqsOptions == null || string.IsNullOrEmpty(sqsOptions.AccessKey) || string.IsNullOrEmpty(sqsOptions.SecretKey))
+        
+            {
+                throw new ArgumentException("SQS configuration is incomplete.");
+            }
+
             services.AddMassTransit(configure =>
             {
-                var options = new SqsOptions();
-                configuration.Bind(options);
 
                 configure.UsingAmazonSqs((context, cfg) =>
                 {
-                    cfg.Host(options.Region, h =>
+                    cfg.Host(sqsOptions.Region, h =>
                     {
-                        h.AccessKey(options.AccessKey);
-                        h.SecretKey(options.SecretKey);
+                        h.AccessKey(sqsOptions.AccessKey);
+                        h.SecretKey(sqsOptions.SecretKey);
                     });
 
-                    cfg.ReceiveEndpoint(options.QueueUrl, e =>
+                    cfg.ReceiveEndpoint(sqsOptions.QueueUrl, e =>
                     {
                         ConfigureReceiveEndpoint(e);
 
@@ -128,34 +133,34 @@ namespace TechMastery.Messaging.Consumers
             
         }
 
-        private static void AddMassTransitWithRabbitMq(this IServiceCollection services, IConfiguration configuration)
+        public static void AddMassTransitWithRabbitMq(this IServiceCollection services, RabbitMqOptions rabbitMqOptions)
         {
+            if (rabbitMqOptions == null || string.IsNullOrEmpty(rabbitMqOptions.Host) ||  string.IsNullOrEmpty(rabbitMqOptions.Username)
+                || string.IsNullOrEmpty(rabbitMqOptions.Password)
+                || string.IsNullOrEmpty(rabbitMqOptions.QueueName)) {
+                throw new ArgumentException("RabbitMQ configuration is incomplete.");
+            }
+
             services.AddMassTransit(configure =>
             {
-                var options = new RabbitMqOptions();
-                configuration.Bind(options);
-
                 configure.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host(options.Host, h =>
+                    cfg.Host(rabbitMqOptions.Host, h =>
                     {
-                        h.Username(options.Username);
-                        h.Password(options.Password);
+                        h.Username(rabbitMqOptions.Username);
+                        h.Password(rabbitMqOptions.Password);
                     });
 
-                    cfg.ReceiveEndpoint(options.QueueName, e =>
+                    cfg.ReceiveEndpoint(rabbitMqOptions.QueueName, e =>
                     {
                         ConfigureReceiveEndpoint(e);
 
-                        // Register consumers
+                        // Assuming ProductAddedConsumer and OrderPlacedConsumer are already registered with the DI container
                         e.Consumer<ProductAddedConsumer>();
                         e.Consumer<OrderPlacedConsumer>();
                     });
                 });
-
             });
-
-            
         }
 
         private static void ConfigureReceiveEndpoint(IReceiveEndpointConfigurator receiveEndpoint)

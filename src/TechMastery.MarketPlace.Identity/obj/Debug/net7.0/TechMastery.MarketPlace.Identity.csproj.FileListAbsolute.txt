@@ -178,11 +178,6 @@
 /Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.pdb
 /Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.genruntimeconfig.cache
 /Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Identity.dll
-/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.csproj.AssemblyReference.cache
-/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.GeneratedMSBuildEditorConfig.editorconfig
-/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.AssemblyInfoInputs.cache
-/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.AssemblyInfo.cs
-/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.csproj.CoreCompileInputs.cache
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.deps.json
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.runtimeconfig.json
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.dll
@@ -191,6 +186,11 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Application.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.csproj.CoreCompileInputs.cache
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.csproj.CopyComplete
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/TechMastery.MarketPlace.Identity.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Identity.dll
