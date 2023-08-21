@@ -53,14 +53,8 @@ namespace TechMastery.MarketPlace.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ProductListVm>>> GetProductsBySubcategory(Guid categoryId, Guid subcategoryId)
         {
-            var query = new GetProductsBySubCategoryQuery
-            {
-                CategoryId = categoryId,
-                SubCategoryId = subcategoryId
-            };
-            var products = await _mediator.Send(query);
 
-            return Ok(products);
+            return NoContent();
         }
 
         [HttpGet("latest")]

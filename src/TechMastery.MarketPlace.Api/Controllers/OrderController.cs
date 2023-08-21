@@ -34,9 +34,17 @@ namespace TechMastery.MarketPlace.Api.Controllers
             return orderListVm;
         }
 
+        //[HttpGet("user/{userId}")]
+        //public async Task<IActionResult> GetOrdersForUser(Guid userId) { /* ... */ }
+
+        // Update the status of an order (e.g., shipped, delivered)
+        //[HttpPut("{orderId}/status")]
+       // public async Task<IActionResult> UpdateOrderStatus(Guid orderId, [FromBody] UpdateOrderStatusDto status) { /* ... */ }
+
+
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult<List<Guid>>> CreateOrder([FromBody] CreateOrder command)
+        public async Task<ActionResult<List<Guid>>> CreateOrderFromCart([FromBody] CreateOrderFromCart command)
         {
             var orderId = await _mediator.Send(command);
 

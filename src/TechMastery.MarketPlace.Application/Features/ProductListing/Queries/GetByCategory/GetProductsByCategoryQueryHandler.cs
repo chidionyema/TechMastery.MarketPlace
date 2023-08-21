@@ -3,6 +3,12 @@ using TechMastery.MarketPlace.Application.Contracts.Persistence;
 
 namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProductsList
 {
+    public class GetProductsByCategoryQuery : IRequest<List<ProductListVm>>
+    {
+        public Guid CategoryId { get; set; }
+        public Guid SubCategoryId { get; set; }
+    }
+
     public class GetProductsByCategoryQueryHandler : IRequestHandler<GetProductsByCategoryQuery, List<ProductListVm>>
     {
         private readonly IProductRepository _productListingRepository;

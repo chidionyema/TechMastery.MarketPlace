@@ -1,60 +1,63 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
-using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
+using Microsoft.Extensions.Logging;
 using MediatR;
+using System;
+using System.Threading.Tasks;
+using TechMastery.MarketPlace.Application.Features.Checkout.Commands;
 using TechMastery.MarketPlace.Application.Features.Checkout.Queries;
-using TechMastery.MarketPlace.Application.Features.Checkout.ViewModels;
-using Microsoft.AspNetCore.Authorization;
+using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
 
-namespace TechMastery.MarketPlace.Api.Controllers
+namespace TechMastery.MarketPlace.WebApi.Controllers
 {
-    [Route("api/shopping-cart")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ShoppingCartController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<ShoppingCartController> _logger;
 
-        public ShoppingCartController(IMediator mediator)
+        public ShoppingCartController(IMediator mediator, ILogger<ShoppingCartController> logger)
         {
-            _mediator = mediator;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [Authorize]
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<ShoppingCartVm>> GetShoppingCart(Guid userId)
+        [HttpPost("add-item")]
+        public async Task<IActionResult> AddItemToCart([FromBody] AddCartItem command)
         {
-            var query = new GetShoppingCartQuery { UserId = userId };
-            var shoppingCartVm = await _mediator.Send(query);
+            var cartItemIds = await _mediator.Send(command);
+            return Ok(cartItemIds);
+        }
 
-            if (shoppingCartVm == null)
+        [HttpGet("get-cart")]
+        public async Task<IActionResult> GetShoppingCart([FromQuery] Guid shoppingCartId)
+        {
+            var query = new GetShoppingCartQuery { ShoppingCartId = shoppingCartId };
+            var shoppingCart = await _mediator.Send(query);
+
+            if (shoppingCart == null)
             {
-                return NotFound($"Shopping cart not found for user with ID {userId}");
+                return NotFound();
             }
 
-            return Ok(shoppingCartVm);
+            return Ok(shoppingCart);
         }
 
-        [Authorize]
-        [HttpPost("{userId}/items")]
-        public async Task<IActionResult> AddToCart(Guid userId, [FromBody] CartItemDto cartItem)
+        [HttpPut("update-item")]
+        public async Task<IActionResult> UpdateCartItem([FromBody] UpdateCartItem command)
         {
-            var command = new AddItemToCart { ShoppingCartId = userId, CartItems = new List<CartItemDto> { cartItem } };
-            var cartItemIds = await _mediator.Send(command);
-
-            return CreatedAtAction(nameof(GetShoppingCart), new { userId }, cartItemIds);
+            await _mediator.Send(command);
+            return Ok();
         }
 
-        [Authorize]
-        [HttpPut("{userId}/items/{productId}")]
-        public async Task<IActionResult> UpdateCartItem(Guid userId, Guid productId, [FromBody] CartItemDto cartItem)
+        [HttpDelete("remove-item")]
+        public async Task<IActionResult> RemoveCartItem([FromQuery] Guid shoppingCartId, [FromQuery] Guid cartItemId)
         {
-            return NoContent();
+            var deleteCommand = new DeleteCartItem { CartItemId = cartItemId };
+            await _mediator.Send(deleteCommand);
+            return Ok();
         }
-        [Authorize]
-        [HttpDelete("{userId}/items/{productId}")]
-        public async Task<IActionResult> RemoveCartItem(Guid userId, Guid productId)
-        {
-            return NoContent();
-        }
+
+        // Other actions for updating cart items, removing items, etc.
     }
 }

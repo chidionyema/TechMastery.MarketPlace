@@ -55,6 +55,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AspNetCore.HealthChecks.UI": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[11.0.0, )"

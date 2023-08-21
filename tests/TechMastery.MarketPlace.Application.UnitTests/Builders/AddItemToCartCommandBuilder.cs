@@ -21,9 +21,9 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             return this;
         }
 
-        internal AddItemToCart Build()
+        internal AddCartItem Build()
         {
-            return new AddItemToCart { CartItems = _cartItems };
+            return new AddCartItem { CartItem = _cartItems.First() };
         }
     }
 }

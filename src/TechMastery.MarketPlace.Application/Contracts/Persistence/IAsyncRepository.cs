@@ -1,18 +1,21 @@
-﻿
+﻿using System;
 using System.Linq.Expressions;
-using TechMastery.MarketPlace.Domain.Entities;
-
 namespace TechMastery.MarketPlace.Application.Contracts.Persistence
 {
     public interface IAsyncRepository<T> where T : class
     {
-        Task<T?> GetByIdAsync(Guid id);
-        Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task<IReadOnlyList<T>> ListAllAsync();
-        Task<T> AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
-        Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size);
-        Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> sortExpression = null, SortDirection sortDirection = SortDirection.Ascending, int pageNumber = 1, int pageSize = 10);
+        ValueTask<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default);
+
+        Task<T> AddAsync(T entity, CancellationToken cancellationToken = default);
+
+        Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
+
+        Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
+
+        Task ExecuteWithinTransactionAsync(Func<Task> operation, CancellationToken cancellationToken = default);
+
+        Task<IReadOnlyList<T>> GetAsync(IQueryOptions<T> options, CancellationToken cancellationToken = default);
     }
 }

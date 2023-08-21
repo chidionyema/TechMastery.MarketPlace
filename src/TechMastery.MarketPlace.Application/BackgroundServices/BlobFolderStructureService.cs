@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Models;
 using TechMastery.MarketPlace.Domain.Entities;
 
 namespace BlobFolderStructureService
@@ -34,8 +35,13 @@ namespace BlobFolderStructureService
                         var productRepository = scope.ServiceProvider.GetRequiredService<IProductRepository>();
                         var storageProvider = scope.ServiceProvider.GetRequiredService<IStorageProvider>();
                         //var currentUserService = scope.ServiceProvider.GetRequiredService<ICurrentUserService>();
-                        
-                        var newProducts = await productRepository.GetProductsByStatusAsync(ProductStatusEnum.NewlyListed);
+
+                        var queryOptions = new QueryOptions<Product>
+                        {
+                            Filter = product => product.Status == ProductStatusEnum.NewlyListed
+                        };
+
+                        var newProducts = await productRepository.GetProductsAsync(queryOptions);
 
                         foreach (var product in newProducts)
                         {

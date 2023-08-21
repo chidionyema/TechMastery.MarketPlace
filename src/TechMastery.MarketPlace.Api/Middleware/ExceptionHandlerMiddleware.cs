@@ -1,16 +1,18 @@
-﻿using TechMastery.MarketPlace.Application.Exceptions;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
+using TechMastery.MarketPlace.Application.Exceptions;
 
 namespace TechMastery.MarketPlace.Api.Middleware
 {
     public class ExceptionHandlerMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionHandlerMiddleware> _logger;
 
-        public ExceptionHandlerMiddleware(RequestDelegate next)
+        public ExceptionHandlerMiddleware(RequestDelegate next, ILogger<ExceptionHandlerMiddleware> logger)
         {
-            _next = next;
+            _next = next ?? throw new ArgumentNullException(nameof(next));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task Invoke(HttpContext context)
@@ -21,44 +23,46 @@ namespace TechMastery.MarketPlace.Api.Middleware
             }
             catch (Exception ex)
             {
-                await ConvertException(context, ex);
+                await HandleExceptionAsync(context, ex);
             }
         }
 
-        private Task ConvertException(HttpContext context, Exception exception)
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
+            _logger.LogError(exception, "An error occurred while processing the request.");
 
-            context.Response.ContentType = "application/json";
+            var statusCode = GetStatusCodeForException(exception);
+            var response = context.Response;
 
-            var result = string.Empty;
+            response.ContentType = "application/json";
+            response.StatusCode = (int)statusCode;
 
-            switch (exception)
+            var errorMessage = GetErrorMessageForStatusCode(statusCode, exception);
+
+            var errorResponse = JsonSerializer.Serialize(new { error = errorMessage });
+
+            await response.WriteAsync(errorResponse);
+        }
+
+        private HttpStatusCode GetStatusCodeForException(Exception exception)
+        {
+            return exception switch
             {
-                case ValidationException validationException:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    result = JsonSerializer.Serialize(validationException.ValdationErrors);
-                    break;
-                case BadRequestException badRequestException:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    result = badRequestException.Message;
-                    break;
-                case NotFoundException:
-                    httpStatusCode = HttpStatusCode.NotFound;
-                    break;
-                case Exception:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    break;
-            }
+                ValidationException _ => HttpStatusCode.BadRequest,
+                BadRequestException _ => HttpStatusCode.BadRequest,
+                NotFoundException _ => HttpStatusCode.NotFound,
+                _ => HttpStatusCode.InternalServerError,
+            };
+        }
 
-            context.Response.StatusCode = (int)httpStatusCode;
-
-            if (result == string.Empty)
+        private string GetErrorMessageForStatusCode(HttpStatusCode statusCode, Exception exception)
+        {
+            return statusCode switch
             {
-                result = JsonSerializer.Serialize(new { error = exception.Message });
-            }
-
-            return context.Response.WriteAsync(result);
+                HttpStatusCode.BadRequest => exception.Message,
+                HttpStatusCode.NotFound => "Resource not found.",
+                _ => "An unexpected error occurred.",
+            };
         }
     }
 }

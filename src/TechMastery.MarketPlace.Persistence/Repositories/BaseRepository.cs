@@ -1,77 +1,113 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
-using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using TechMastery.MarketPlace.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TechMastery.MarketPlace.Application.Contracts.Persistence;
+
 namespace TechMastery.MarketPlace.Persistence.Repositories
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
         protected readonly ApplicationDbContext _dbContext;
+        protected readonly DbSet<T> _dbSet;
 
         public BaseRepository(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _dbSet = _dbContext.Set<T>();
         }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id)
+        /// <summary>
+        /// Retrieves an entity by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the entity.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the entity found, or null.</returns>
+        public virtual async ValueTask<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            T? t = await _dbContext.Set<T>().FindAsync(id);
-            return t;
+            return await _dbSet.FindAsync(new object[] { id }, cancellationToken);
         }
 
-        public async Task<IReadOnlyList<T>> ListAllAsync()
+        /// <summary>
+        /// Retrieves all entities from the database.
+        /// </summary>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>A list of entities.</returns>
+        public async Task<IReadOnlyList<T>> ListAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
         }
 
-        public async Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        /// <summary>
+        /// Adds an entity to the database.
+        /// </summary>
+        /// <param name="entity">Entity to be added.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>The added entity.</returns>
+        public async Task<T> AddAsync(T entity, CancellationToken cancellationToken = default)
         {
-            return await _dbContext.Set<T>().Where(predicate).ToListAsync();
-        }
-
-        public async Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, object>> sortExpression = null, SortDirection sortDirection = SortDirection.Ascending, int pageNumber = 1, int pageSize = 10)
-        {
-            IQueryable<T> query = _dbContext.Set<T>().Where(predicate);
-
-            query = sortExpression != null
-                ? (sortDirection == SortDirection.Ascending ? query.OrderBy(sortExpression) : query.OrderByDescending(sortExpression))
-                : query;
-
-            query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
-
-            return await query.ToListAsync();
-        }
-
-
-        public async virtual Task<IReadOnlyList<T>> GetPagedReponseAsync(int page, int size)
-        {
-            return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
-        }
-
-        public async Task<T> AddAsync(T entity)
-        {
-            try
-            {
-                await _dbContext.Set<T>().AddAsync(entity);
-                await _dbContext.SaveChangesAsync();
-            }
-            catch(Exception ex)
-            {
-
-            }
+            await _dbSet.AddAsync(entity, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return entity;
         }
 
-        public async Task UpdateAsync(T entity)
+        /// <summary>
+        /// Updates an existing entity in the database.
+        /// </summary>
+        /// <param name="entity">Entity to be updated.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _dbSet.Update(entity);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task DeleteAsync(T entity)
+        /// <summary>
+        /// Deletes an entity from the database.
+        /// </summary>
+        /// <param name="entity">Entity to be deleted.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
         {
-            _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
+            _dbSet.Remove(entity);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Executes a given operation within a database transaction.
+        /// </summary>
+        /// <param name="operation">The operation to execute.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        public async Task ExecuteWithinTransactionAsync(Func<Task> operation, CancellationToken cancellationToken = default)
+        {
+            using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+            await operation();
+            await transaction.CommitAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves entities based on the given query options.
+        /// </summary>
+        /// <param name="options">The query options to apply.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>A list of entities matching the query options.</returns>
+        public async Task<IReadOnlyList<T>> GetAsync(IQueryOptions<T> options, CancellationToken cancellationToken = default)
+        {
+            var query = _dbContext.Set<T>().AsNoTracking().AsQueryable();
+
+            if (options.Filter != null)
+            {
+                query = query.Where(options.Filter);
+            }
+
+            if (options.OrderBy != null)
+            {
+                query = options.OrderBy(query);
+            }
+
+            if (options.IsPagingEnabled)
+            {
+                query = query.Skip((options.PageNumber.Value - 1) * options.PageSize.Value).Take(options.PageSize.Value);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
     }
 }

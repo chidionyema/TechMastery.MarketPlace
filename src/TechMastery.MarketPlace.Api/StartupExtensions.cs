@@ -8,7 +8,6 @@ using TechMastery.MarketPlace.Persistence;
 using TechMastery.Messaging.Consumers;
 using TechMastery.MarketPlace.Api.Middleware;
 using TechMastery.MarketPlace.Api.Utility;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Newtonsoft.Json;
 
@@ -16,18 +15,77 @@ namespace TechMastery.MarketPlace.Api
 {
     public static class StartupExtensions
     {
+        /// <summary>
+        /// Configures services for the application.
+        /// </summary>
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
-            // Configure services
+            AddCoreServices(builder);
+            AddApplicationSpecificServices(builder);
+            ConfigureSwaggerServices(builder.Services);
+
+            builder.Services.AddControllers();
+            return builder.Build();
+        }
+
+        /// <summary>
+        /// Configures the application's request/response pipeline.
+        /// </summary>
+        public static WebApplication ConfigurePipeline(this WebApplication app)
+        {
+            var env = app.Services.GetRequiredService<IWebHostEnvironment>();
+
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TechMastery API"));
+            }
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseCors("Open");
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseCustomExceptionHandler();
+            app.MapControllers();
+
+            return app;
+        }
+
+        /// <summary>
+        /// Configures CORS for the application.
+        /// </summary>
+        public static void ConfigureCors(this WebApplicationBuilder builder)
+        {
+            var allowedOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").Get<string[]>();
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                options.AddPolicy("AllowOrigin", builder =>
+                {
+                    builder.WithOrigins(allowedOrigins)
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
             });
+        }
 
+        /// <summary>
+        /// Adds core services that are fundamental to the application's operations.
+        /// </summary>
+        private static void AddCoreServices(WebApplicationBuilder builder)
+        {
             builder.Services.AddHealthChecks();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Open", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+        }
 
-            AddSwagger(builder.Services);
-
+        /// <summary>
+        /// Adds application-specific services.
+        /// </summary>
+        private static void AddApplicationSpecificServices(WebApplicationBuilder builder)
+        {
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddElasticsearchClient(builder.Configuration);
@@ -38,60 +96,12 @@ namespace TechMastery.MarketPlace.Api
             builder.Services.AddStripePaymentService(builder.Configuration);
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();
-
-
-
-            builder.Services.AddControllers();
-
-             return builder.Build();
         }
 
-        public static WebApplication ConfigurePipeline(this WebApplication app)
-        {
-            var env = app.Services.GetRequiredService<IWebHostEnvironment>();
-
-            if (env.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TechMastery API");
-                });
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseCors("Open");
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseCustomExceptionHandler();
-
-            app.MapControllers();
-
-            return app;
-        }
-
-        private static Task WriteHealthCheckResponse(HttpContext httpContext, HealthReport result)
-        {
-            httpContext.Response.ContentType = "application/json";
-            var response = new
-            {
-                Status = result.Status.ToString(),
-                Checks = result.Entries.Select(entry => new
-                {
-                    Name = entry.Key,
-                    Status = entry.Value.Status.ToString(),
-                    Description = entry.Value.Description
-                })
-            };
-            return httpContext.Response.WriteAsync(JsonConvert.SerializeObject(response, Formatting.Indented));
-        }
-
-        private static void AddSwagger(IServiceCollection services)
+        /// <summary>
+        /// Configures Swagger for API documentation.
+        /// </summary>
+        private static void ConfigureSwaggerServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
             {

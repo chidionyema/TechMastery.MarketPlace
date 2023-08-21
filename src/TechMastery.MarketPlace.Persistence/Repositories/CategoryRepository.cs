@@ -1,6 +1,6 @@
 ﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+using TechMastery.MarketPlace.Application.Models;
 
 namespace TechMastery.MarketPlace.Persistence.Repositories
 {
@@ -8,18 +8,24 @@ namespace TechMastery.MarketPlace.Persistence.Repositories
     {
         public CategoryRepository(ApplicationDbContext dbContext) : base(dbContext) { }
 
-        public async Task<List<Category>> GetTopLevelCategoriesAsync()
+        public async Task<IReadOnlyList<Category>> GetTopLevelCategoriesAsync()
         {
-            return await _dbContext.Categories
-                .Where(c => c.ParentCategory == null)
-                .ToListAsync();
+            var options = new QueryOptions<Category>
+            {
+                Filter = c => c.ParentCategory == null
+            };
+
+            return await GetAsync(options);
         }
 
-        public async Task<List<Category>> GetSubcategoriesAsync(Guid parentId)
+        public async Task<IReadOnlyList<Category>> GetSubcategoriesAsync(Guid parentId)
         {
-            return await _dbContext.Categories
-                .Where(c => c.ParentCategory != null && c.ParentCategoryId == parentId)
-                .ToListAsync();
+            var options = new QueryOptions<Category>
+            {
+                Filter = c => c.ParentCategory != null && c.ParentCategoryId == parentId
+            };
+
+            return await GetAsync(options);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
 
             var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 
-            var command = new CreateOrder { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
             // Act
             var orderId = await handler.Handle(command, CancellationToken.None);
@@ -75,7 +75,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
             var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
-            var command = new CreateOrder { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
             // Act
             var orderId = await handler.Handle(command, CancellationToken.None);
@@ -105,7 +105,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
             var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
-            var command = new CreateOrder { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
             // Act
             await handler.Handle(command, CancellationToken.None);
@@ -120,7 +120,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
         {
             // Arrange
             var cartId = Guid.NewGuid();
-            var command = new CreateOrder { CartId = cartId };
+            var command = new CreateOrderFromCart { CartId = cartId };
 
             var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 

@@ -1,26 +1,53 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MassTransit;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MassTransit;
-using Serilog;
-using TechMastery.Messaging.Consumers.Consumers;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using Microsoft.Extensions.Options;
+using Serilog;
+using System;
+using TechMastery.MarketPlace.Application.Contracts.Messaging;
+using TechMastery.Messaging.Consumers.Consumers;
+
 namespace TechMastery.Messaging.Consumers
 {
     public static class MessagingServiceRegistration
     {
         public static IServiceCollection AddMessagingServices(this IServiceCollection services, IConfiguration configuration)
         {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
+            if (services == null) throw new ArgumentNullException(nameof(services));
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            if (configuration == null)
-                throw new ArgumentNullException(nameof(configuration));
+            LoggingConfigurator.ConfigureLogging(services);
 
-            // Configure logging
+            services.Configure<MessagingSystemsOptions>(configuration.GetSection("MessagingSystems"));
+            var serviceProvider = services.BuildServiceProvider();
+            var messagingSystemsOptions = serviceProvider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
+
+            MessageBrokerRegistrar.RegisterMessageBrokers(services, messagingSystemsOptions);
+
+            services.AddSingleton(provider =>
+            {
+                var options = provider.GetRequiredService<MessagingSystemsOptions>();
+                return new BusControlConfigurator(options);
+            });
+
+            services.AddSingleton<IMessagePublisher>(provider =>
+            {
+                var busControlConfigurator = provider.GetRequiredService<BusControlConfigurator>();
+                var logger = provider.GetRequiredService<ILogger<MessagePublisher>>();
+                return new MessagePublisher(busControlConfigurator, logger);
+            });
+
+            return services;
+        }
+    }
+
+    static class LoggingConfigurator
+    {
+        public static void ConfigureLogging(IServiceCollection services)
+        {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug() // Set your desired minimum log level
+                .MinimumLevel.Debug()
                 .CreateLogger();
 
             services.AddLogging(loggingBuilder =>
@@ -28,145 +55,124 @@ namespace TechMastery.Messaging.Consumers
                 loggingBuilder.ClearProviders();
                 loggingBuilder.AddSerilog(dispose: true);
             });
+        }
+    }
 
-            // Load messaging system options from configuration
-            services.Configure<MessagingSystemsOptions>(configuration.GetSection("MessagingSystems"));
-
-            var serviceProvider = services.BuildServiceProvider();
-            var messagingSystemsOptions = serviceProvider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
-
-            // Add MassTransit with Azure Service Bus if enabled
-            if (messagingSystemsOptions.EnableAzureServiceBus)
+    static class MessageBrokerRegistrar
+    {
+        public static void RegisterMessageBrokers(IServiceCollection services, MessagingSystemsOptions options)
+        {
+            if (options.EnableAzureServiceBus)
             {
+                ValidateAzureServiceBusOptions(options.AzureServiceBus!);
                 services.AddHealthChecks().AddCheck<AzureServiceBusHealthCheck>("AzureServiceBusHealthCheck");
-                services.AddMassTransitWithAzureServiceBus(messagingSystemsOptions.AzureServiceBus!);
+                AzureServiceBusConfigurator.Configure(services, options.AzureServiceBus!);
             }
 
-            if (messagingSystemsOptions.EnableSqs)
+            if (options.EnableSqs)
             {
+                ValidateSqsOptions(options.Sqs!);
                 services.AddHealthChecks().AddCheck<AmazonSqsHealthCheck>("AmazonSqsHealthCheck");
-                services.AddMassTransitWithSqs(messagingSystemsOptions.Sqs!);
+                SqsConfigurator.Configure(services, options.Sqs!);
             }
 
-            if (messagingSystemsOptions.EnableRabbitMq)
+            if (options.EnableRabbitMq)
             {
+                ValidateRabbitMqOptions(options.RabbitMq!);
                 services.AddHealthChecks().AddCheck<RabbitMqHealthCheck>("RabbitMqHealthCheck");
-                services.AddMassTransitWithRabbitMq(messagingSystemsOptions.RabbitMq!);
+                RabbitMqConfigurator.Configure(services, options.RabbitMq!);
             }
-
-            // Register BusControlConfigurator as a singleton
-            services.AddSingleton(provider =>
-            {
-                var options = provider.GetRequiredService<MessagingSystemsOptions>();
-                return new BusControlConfigurator(options);
-            });
-
-            // Register IMessagePublisher as a singleton
-            services.AddSingleton<IMessagePublisher>(provider =>
-            {
-                var busControlConfigurator = provider.GetRequiredService<BusControlConfigurator>();
-                var logger = provider.GetRequiredService<ILogger<MessagePublisher>>(); // Inject the logger
-                return new MessagePublisher(busControlConfigurator, logger);
-            });
-
-            return services;
         }
 
-        private static void AddMassTransitWithAzureServiceBus(this IServiceCollection services, AzureServiceBusOptions serviceBusOptions)
+        private static void ValidateAzureServiceBusOptions(AzureServiceBusOptions options)
         {
-            if (serviceBusOptions == null || string.IsNullOrEmpty(serviceBusOptions.QueueName) || string.IsNullOrEmpty(serviceBusOptions.ConnectionString))
+            if (options == null || string.IsNullOrEmpty(options.QueueName) || string.IsNullOrEmpty(options.ConnectionString))
+                throw new ArgumentException("Azure Service Bus configuration is incomplete.");
+        }
 
-            {
-                throw new ArgumentException("SQS configuration is incomplete.");
-            }
+        private static void ValidateSqsOptions(SqsOptions options)
+        {
+            if (options == null || string.IsNullOrEmpty(options.AccessKey) || string.IsNullOrEmpty(options.SecretKey))
+                throw new ArgumentException("Amazon SQS configuration is incomplete.");
+        }
 
+        private static void ValidateRabbitMqOptions(RabbitMqOptions options)
+        {
+            if (options == null || string.IsNullOrEmpty(options.Host) || string.IsNullOrEmpty(options.Username) ||
+                string.IsNullOrEmpty(options.Password) || string.IsNullOrEmpty(options.QueueName))
+                throw new ArgumentException("RabbitMQ configuration is incomplete.");
+        }
+    }
+
+    static class AzureServiceBusConfigurator
+    {
+        public static void Configure(IServiceCollection services, AzureServiceBusOptions options)
+        {
             services.AddMassTransit(configure =>
             {
-
                 configure.UsingAzureServiceBus((context, cfg) =>
                 {
-                    cfg.Host(serviceBusOptions.ConnectionString);
-
-                    cfg.ReceiveEndpoint(serviceBusOptions.QueueName, e =>
-                    {
-                        ConfigureReceiveEndpoint(e);
-
-                        // Register consumers
-                        e.Consumer<ProductAddedConsumer>();
-                        e.Consumer<OrderPlacedConsumer>();
-                    });
+                    cfg.Host(options.ConnectionString);
+                    ConsumerConfigurator.Configure(cfg, options.QueueName!);
                 });
             });
-            
         }
+    }
 
-        private static void AddMassTransitWithSqs(this IServiceCollection services, SqsOptions sqsOptions)
+    static class SqsConfigurator
+    {
+        public static void Configure(IServiceCollection services, SqsOptions options)
         {
-            if (sqsOptions == null || string.IsNullOrEmpty(sqsOptions.AccessKey) || string.IsNullOrEmpty(sqsOptions.SecretKey))
-        
-            {
-                throw new ArgumentException("SQS configuration is incomplete.");
-            }
-
             services.AddMassTransit(configure =>
             {
-
                 configure.UsingAmazonSqs((context, cfg) =>
                 {
-                    cfg.Host(sqsOptions.Region, h =>
+                    cfg.Host(options.Region, h =>
                     {
-                        h.AccessKey(sqsOptions.AccessKey);
-                        h.SecretKey(sqsOptions.SecretKey);
+                        h.AccessKey(options.AccessKey);
+                        h.SecretKey(options.SecretKey);
                     });
 
-                    cfg.ReceiveEndpoint(sqsOptions.QueueUrl, e =>
-                    {
-                        ConfigureReceiveEndpoint(e);
-
-                        // Register consumers
-                        e.Consumer<ProductAddedConsumer>();
-                        e.Consumer<OrderPlacedConsumer>();
-                    });
+                    ConsumerConfigurator.Configure(cfg, options.QueueUrl!);
                 });
             });
-
-            
         }
+    }
 
-        public static void AddMassTransitWithRabbitMq(this IServiceCollection services, RabbitMqOptions rabbitMqOptions)
+
+    static class RabbitMqConfigurator
+    {
+        public static void Configure(IServiceCollection services, RabbitMqOptions options)
         {
-            if (rabbitMqOptions == null || string.IsNullOrEmpty(rabbitMqOptions.Host) ||  string.IsNullOrEmpty(rabbitMqOptions.Username)
-                || string.IsNullOrEmpty(rabbitMqOptions.Password)
-                || string.IsNullOrEmpty(rabbitMqOptions.QueueName)) {
-                throw new ArgumentException("RabbitMQ configuration is incomplete.");
-            }
-
             services.AddMassTransit(configure =>
             {
                 configure.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host(rabbitMqOptions.Host, h =>
+                    var rabbitMqUri = new Uri($"rabbitmq://{options.Host}/");
+                    cfg.Host(rabbitMqUri, h =>
                     {
-                        h.Username(rabbitMqOptions.Username);
-                        h.Password(rabbitMqOptions.Password);
+                        h.Username(options.Username);
+                        h.Password(options.Password);
                     });
 
-                    cfg.ReceiveEndpoint(rabbitMqOptions.QueueName, e =>
-                    {
-                        ConfigureReceiveEndpoint(e);
-
-                        // Assuming ProductAddedConsumer and OrderPlacedConsumer are already registered with the DI container
-                        e.Consumer<ProductAddedConsumer>();
-                        e.Consumer<OrderPlacedConsumer>();
-                    });
+                    ConsumerConfigurator.Configure(cfg, options.QueueName!);
                 });
             });
         }
+    }
 
-        private static void ConfigureReceiveEndpoint(IReceiveEndpointConfigurator receiveEndpoint)
+    static class ConsumerConfigurator
+    {
+        public static void Configure(IBusFactoryConfigurator cfg, string queueName)
         {
-            receiveEndpoint.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-            receiveEndpoint.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
+            cfg.ReceiveEndpoint(queueName, e =>
+            {
+                e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+                e.UseScheduledRedelivery(r => r.Intervals(TimeSpan.FromSeconds(30), TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(5)));
+
+                e.Consumer<ProductAddedConsumer>();
+                e.Consumer<OrderPlacedConsumer>();
+            });
         }
     }
 }

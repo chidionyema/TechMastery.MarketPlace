@@ -357,3 +357,14 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Google.Apis.Auth.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Google.Apis.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Microsoft.AspNetCore.Authentication.Facebook.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/HealthChecks.UI.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/HealthChecks.UI.Core.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/HealthChecks.UI.Data.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Fractions.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/IdentityModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/IdentityModel.OidcClient.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/KubernetesClient.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/KubernetesClient.Basic.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/KubernetesClient.Models.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/Prometheus.NetStandard.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Release/net7.0/YamlDotNet.dll

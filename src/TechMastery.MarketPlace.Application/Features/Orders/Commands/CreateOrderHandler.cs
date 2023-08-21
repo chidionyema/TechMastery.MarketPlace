@@ -6,12 +6,12 @@ using TechMastery.MarketPlace.Application.Exceptions;
 
 namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 {
-    public class CreateOrder : IRequest<Guid>
+    public class CreateOrderFromCart : IRequest<Guid>
     {
         public Guid CartId { get; set; }
     }
 
-    public class CreateOrderHandler : IRequestHandler<CreateOrder, Guid>
+    public class CreateOrderHandler : IRequestHandler<CreateOrderFromCart, Guid>
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IOrderRepository _orderRepository;
@@ -24,7 +24,7 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<Guid> Handle(CreateOrder command, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateOrderFromCart command, CancellationToken cancellationToken)
         {
             ValidateCommand(command);
 
@@ -32,13 +32,13 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 
             var order = CreateOrderFromShoppingCart(shoppingCart);
 
-            await UpdateShoppingCartAndPersistOrder(shoppingCart, order);
+            await UpdateShoppingCartAndPersistOrderAsync(shoppingCart, order);
 
             _logger.LogInformation("Order created successfully with OrderId: {OrderId}", order.OrderId);
             return order.OrderId;
         }
 
-        private void ValidateCommand(CreateOrder command)
+        private void ValidateCommand(CreateOrderFromCart command)
         {
             if (command == null || command.CartId == Guid.Empty)
             {
@@ -74,25 +74,15 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
             return new OrderLineItem(cartItem.Price, cartItem.ProductId, cartItem.Quantity);
         }
 
-        private async Task UpdateShoppingCartAndPersistOrder(ShoppingCart shoppingCart, Order order)
+        private async Task UpdateShoppingCartAndPersistOrderAsync(ShoppingCart shoppingCart, Order order)
         {
-          //  using (var transaction = await _shoppingCartRepository.BeginTransactionAsync()) // Assuming IShoppingCartRepository supports async transactions
-           // {
-                try
-                {
-                    shoppingCart.SetStatus(ShoppingCartStatus.InOrderState); // Assuming a method like this exists on ShoppingCart.
-                    await _shoppingCartRepository.UpdateAsync(shoppingCart);
-                    await _orderRepository.AddAsync(order);
+            await _orderRepository.ExecuteWithinTransactionAsync(async () =>
+            {
+                shoppingCart.SetStatus(ShoppingCartStatus.InOrderState);
+                await _shoppingCartRepository.UpdateAsync(shoppingCart);
+                await _orderRepository.AddAsync(order);
+            });
 
-                  //  await transaction.CommitAsync(); // Commit the transaction if everything succeeds
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "An error occurred while updating the shopping cart and persisting the order.");
-                  //  await transaction.RollbackAsync();
-                    throw;
-                }
-           // }
         }
     }
 }

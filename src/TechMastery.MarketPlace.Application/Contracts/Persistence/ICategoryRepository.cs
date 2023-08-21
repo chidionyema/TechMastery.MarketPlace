@@ -3,8 +3,8 @@ namespace TechMastery.MarketPlace.Application.Contracts.Persistence
 {
     public interface ICategoryRepository : IAsyncRepository<Category>
     {
-        Task<List<Category>> GetTopLevelCategoriesAsync();
+        Task<IReadOnlyList<Category>> GetTopLevelCategoriesAsync();
 
-        Task<List<Category>> GetSubcategoriesAsync(Guid parentId);
+        Task<IReadOnlyList<Category>> GetSubcategoriesAsync(Guid parentId);
     }
 }

@@ -1,12 +1,13 @@
 ﻿using MediatR;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.Checkout.ViewModels;
 
 namespace TechMastery.MarketPlace.Application.Features.Checkout.Queries
 {
     public class GetShoppingCartQuery : IRequest<ShoppingCartVm>
     {
-        public Guid UserId { get; set; }
+        public Guid ShoppingCartId { get; set; }
     }
 
     public class GetShoppingCartQueryHandler : IRequestHandler<GetShoppingCartQuery, ShoppingCartVm>
@@ -25,7 +26,12 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Queries
                 throw new ArgumentNullException(nameof(query));
             }
 
-            var shoppingCart = await _shoppingCartRepository.GetByUserIdAsync(query.UserId);
+            var shoppingCart = await _shoppingCartRepository.GetByIdAsync(query.ShoppingCartId);
+
+            if (shoppingCart == null)
+            {
+                throw new NotFoundException("shopping cart not found", query.ShoppingCartId);
+            }
 
             var shoppingCartVm = new ShoppingCartVm
             {

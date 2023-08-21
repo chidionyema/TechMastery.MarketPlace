@@ -1,6 +1,5 @@
 ﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
-using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -11,13 +10,13 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly ApplicationTestFixture _fixture;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly ICartItemRepository _cartItemRepository;
-        private readonly AddItemToCartHandler handler;
+        private readonly AddCartItemHandler handler;
         public AddToCartHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
             _shoppingCartRepository = _fixture.CreateCartRepository();
             _cartItemRepository = _fixture.CreateCartItemRepository();
-            handler =  new AddItemToCartHandler(_cartItemRepository, _shoppingCartRepository, new Mock<ILogger<AddItemToCartHandler>>().Object);
+            handler =  new AddCartItemHandler(_cartItemRepository, _shoppingCartRepository, new Mock<ILogger<AddCartItemHandler>>().Object);
         }
 
         [Fact]
@@ -32,8 +31,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
 
             var cartItemIds = await handler.Handle(command, CancellationToken.None);
 
-            Assert.Single(cartItemIds);
-            Assert.NotEqual(Guid.Empty, cartItemIds.Single());
+            Assert.NotEqual(Guid.Empty, cartItemIds);
         }
 
         [Fact]
@@ -124,10 +122,9 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .Build();
 
             
-            var cartItemIds = await handler.Handle(command, CancellationToken.None);
+            var cartItemId = await handler.Handle(command, CancellationToken.None);
 
-            Assert.Single(cartItemIds);
-            Assert.NotEqual(Guid.Empty, cartItemIds.Single());
+            Assert.NotEqual(Guid.Empty, cartItemId);
         }
 
         [Fact]
@@ -142,10 +139,9 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                 .Build();
 
             
-            var cartItemIds = await handler.Handle(command, CancellationToken.None);
+            var cartItemId = await handler.Handle(command, CancellationToken.None);
 
-            Assert.Single(cartItemIds);
-            Assert.NotEqual(Guid.Empty, cartItemIds.Single());
+            Assert.NotEqual(Guid.Empty, cartItemId);
         }
 
         [Fact]
@@ -193,27 +189,5 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             await Assert.ThrowsAsync<ArgumentException>(() => handler.Handle(command, CancellationToken.None));
         }
 
-        [Fact]
-        public async Task AddCommand_ShouldHandleMultipleCartItems()
-        {
-            var cartItem1 = CartItemDtoBuilder.Create()
-                .Build();
-
-            var cartItem2 = CartItemDtoBuilder.Create()
-                .WithPrice(5.99m)
-                .Build();
-
-            var command = AddItemToCartCommandBuilder.Create()
-                .WithCartItems(new List<CartItemDto> { cartItem1, cartItem2 })
-                .Build();
-
-            
-            var cartItemIds = await handler.Handle(command, CancellationToken.None);
-
-            Assert.Equal(2, cartItemIds.Count);
-            Assert.True(cartItemIds.All(id => id != Guid.Empty));
-        }
-
-        // Add more test cases as needed to cover various scenarios.
     }
 }

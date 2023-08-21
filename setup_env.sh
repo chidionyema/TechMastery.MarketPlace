@@ -10,17 +10,23 @@ fi
 
 # Define the necessary environment variables for Local
 export ASPNETCORE_ENVIRONMENT=Local
-export RabbitMqHost=rabbitmq_host
-export RabbitMqUsername=rabbitmq_username
-export RabbitMqPassword=rabbitmq_password
-export PsqlHost=postgresql_host
+export RabbitMqHost=rabbitmq
+export RabbitMqUsername=guest
+export RabbitMqPassword=guest
+export MessagingSystems__RabbitMQ__Host=rabbitmq
+export MessagingSystems__RabbitMQ__Username=guest
+export MessagingSystems__RabbitMQ__Password=guest
+
+export PsqlHost=localhost
 export PsqlPort=5432
 export PsqlUser=db_user
 export PsqlPassword=db_password
 export PsqlDatabase=db_name
 export AzuriteAccount=azurite_account
 export AzuriteAccountKey=azurite_account_key
-
+# Export the connection strings as environment variables
+export ConnectionStrings__TechMasteryMarketPlaceConnectionString="Host=$PsqlHost;Port=$PsqlPort;Database=TechMasteryDb111;Username=$PsqlUser;Password=$PsqlPassword;"
+export ConnectionStrings__TechMasteryMarketPlaceIdentityConnectionString="Host=$PsqlHost;Port=$PsqlPort;Database=TechMasteryIdentityDb;Username=$PsqlUser;Password=$PsqlPassword;"
 # Clean up existing containers (if any)
 echo "Cleaning up existing Docker containers..."
 docker-compose down --volumes --remove-orphans

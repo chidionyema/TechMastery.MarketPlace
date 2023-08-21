@@ -1,40 +1,67 @@
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
 using Serilog;
+using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace TechMastery.MarketPlace.Api
 {
-    public partial class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
-            // Configure Serilog logger
+            var builder = WebApplication.CreateBuilder(args);
+
+            ConfigureLogging(builder.Configuration);
+            var app = InitializeApplication(builder);
+            app.Run();
+        }
+
+        private static void ConfigureLogging(IConfiguration configuration)
+        {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
+                .ReadFrom.Configuration(configuration)
                 .CreateBootstrapLogger();
 
             Log.Information("TechMastery API starting");
+        }
 
-            var builder = WebApplication.CreateBuilder(args);
+        private static WebApplication InitializeApplication(WebApplicationBuilder builder)
+        {
+            builder.Host.UseSerilog();
+            var app = ConfigureApplicationServices(builder);
 
-            // Use Serilog for host and request logging
-            builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration
-                 .WriteTo.Console()
-                 .ReadFrom.Configuration(context.Configuration));
+            RegisterMiddlewares(app);
+            ConfigureHealthChecks(app, builder.Configuration);
 
-            var app = builder
-                .ConfigureServices()
-                .ConfigurePipeline();
+            return app;
+        }
 
-            var rabbitMqHost = builder.Configuration["MessagingSystems:RabbitMQ:Host"];
+        private static WebApplication ConfigureApplicationServices(WebApplicationBuilder builder)
+        {
+            // Assuming these methods (ConfigureServices and ConfigurePipeline) are part of some extension methods for the WebApplicationBuilder
+            return builder.ConfigureServices()
+                          .ConfigurePipeline();
+        }
+
+        private static void RegisterMiddlewares(WebApplication app)
+        {
+            app.UseSerilogRequestLogging();
+            app.UseCors("AllowOrigin");
+        }
+
+        private static void ConfigureHealthChecks(WebApplication app, IConfiguration configuration)
+        {
+            var rabbitMqHost = configuration["MessagingSystems:RabbitMQ:Host"];
             Log.Information($"Loaded RabbitMQ Host: {rabbitMqHost}");
 
-
-            // Health check configuration
             app.MapHealthChecks("/health", new HealthCheckOptions
             {
-                ResponseWriter = HealthCheckResponseWriter,
+                ResponseWriter = WriteHealthCheckResponseAsync,
                 Predicate = _ => true,
                 ResultStatusCodes =
                 {
@@ -43,18 +70,26 @@ namespace TechMastery.MarketPlace.Api
                     [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
                 }
             });
-
-            // Use Serilog for request logging
-            app.UseSerilogRequestLogging();
-
-            app.Run();
         }
 
-        private static async Task HealthCheckResponseWriter(HttpContext context, HealthReport report)
+        private static Task WriteHealthCheckResponseAsync(HttpContext context, HealthReport report)
         {
             context.Response.ContentType = "application/json";
-            await JsonSerializer.SerializeAsync(context.Response.Body, report);
 
+            var response = new
+            {
+                Status = report.Status.ToString(),
+                Checks = report.Entries.Select(entry => new
+                {
+                    Name = entry.Key,
+                    Status = entry.Value.Status.ToString(),
+                    Description = entry.Value.Description
+                })
+            };
+
+            var jsonResponse = JsonSerializer.Serialize(response, new JsonSerializerOptions { WriteIndented = true });
+
+            return context.Response.WriteAsync(jsonResponse);
         }
     }
 }

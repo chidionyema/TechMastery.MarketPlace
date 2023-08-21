@@ -1,12 +1,12 @@
 ﻿using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using TechMastery.MarketPlace.Application.Contracts.Persistence;
-
+using TechMastery.MarketPlace.Application.Models;
 namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProductsList
 {
+    public class GetLatestProductsQuery : IRequest<List<ProductListVm>>
+    {
+    }
+
     public class GetBestSellingProductsListQueryHandler : IRequestHandler<GetLatestProductsQuery, List<ProductListVm>>
     {
         private readonly IProductRepository _productListingRepository;
@@ -18,7 +18,12 @@ namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProduc
 
         public async Task<List<ProductListVm>> Handle(GetLatestProductsQuery request, CancellationToken cancellationToken)
         {
-            var latestProducts = await _productListingRepository.GetBestLatestProductsAsync(); // Assuming this method exists
+            var queryOptions = new QueryOptions<Domain.Entities.Product>
+            {
+                OrderBy = products => products.OrderByDescending(p => p.CreatedDate)
+            };
+            var latestProducts = await _productListingRepository.GetProductsAsync(queryOptions);
+
 
             var productList = latestProducts.Select(product => new ProductListVm
             {

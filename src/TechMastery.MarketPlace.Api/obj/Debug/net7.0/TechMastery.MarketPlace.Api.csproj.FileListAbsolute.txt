@@ -1608,6 +1608,9 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Api.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/TechMastery.MarketPlace.Api.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/HealthChecks.Elasticsearch.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/HealthChecks.UI.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/HealthChecks.UI.Core.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/HealthChecks.UI.Data.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AutoMapper.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/AWSSDK.Core.dll
@@ -1625,11 +1628,17 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Facebook.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/FluentValidation.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Fractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Google.Apis.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Google.Apis.Auth.PlatformServices.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Google.Apis.Auth.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Google.Apis.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Humanizer.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/IdentityModel.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/IdentityModel.OidcClient.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/KubernetesClient.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/KubernetesClient.Basic.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/KubernetesClient.Models.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.Abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/MassTransit.AmazonSqsTransport.dll
@@ -1717,6 +1726,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/NuGet.Versioning.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Paramore.Brighter.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Polly.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Prometheus.NetStandard.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/RabbitMQ.Client.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/SendGrid.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/Serilog.dll
@@ -1752,6 +1762,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/System.Security.Cryptography.ProtectedData.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/System.Security.Permissions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/System.Windows.Extensions.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/YamlDotNet.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/af/Humanizer.resources.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/ar/Humanizer.resources.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/bin/Debug/net7.0/az/Humanizer.resources.dll
