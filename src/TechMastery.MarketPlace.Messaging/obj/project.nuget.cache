@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+cL8jSKP6DC6Rb+akCx66N0Ca/b2F6+JEEo8PKOpoozg+4Rc2M8hv879YguOz3JQBFGYWXeJW4LoLlC9zxARsQ==",
+  "dgSpecHash": "w3V57/ArL4rtIMRyDx+eYQENMR9oQE6j5kDWmu8CXGA8KYvbGVsTXfZ7DQzW/DEinkbEWkRgtt2zjvdu6tGzCg==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "/Users/chidionyema/.nuget/packages/azure.core.amqp/1.3.0/azure.core.amqp.1.3.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/azure.identity/1.8.2/azure.identity.1.8.2.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/azure.messaging.servicebus/7.13.1/azure.messaging.servicebus.7.13.1.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.6.0/fluentvalidation.11.6.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.6.0/fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/masstransit/8.0.16/masstransit.8.0.16.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/masstransit.abstractions/8.0.16/masstransit.abstractions.8.0.16.nupkg.sha512",
@@ -79,6 +79,7 @@
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.win32.registry/4.5.0/microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/polly/7.2.4/polly.7.2.4.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/rabbitmq.client/6.5.0/rabbitmq.client.6.5.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog/3.0.1/serilog.3.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.extensions.logging/7.0.0/serilog.extensions.logging.7.0.0.nupkg.sha512",

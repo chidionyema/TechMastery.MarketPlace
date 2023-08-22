@@ -9,7 +9,7 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="12.0.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-		<PackageReference Include="FluentValidation" Version="11.6.0" />
+		<PackageReference Include="FluentValidation" Version="11.7.1" />
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
 		<!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />-->
@@ -20,6 +20,7 @@
 		<PackageReference Include="System.Security.Claims" Version="4.3.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Polly" Version="7.2.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -45,16 +46,16 @@
 	  <None Remove="Features\Checkout\Dto\" />
 	  <None Remove="Features\Checkout\Queries\" />
 	  <None Remove="Features\Checkout\ViewModel\" />
-	  <None Remove="Features\Orders\" />
-	  <None Remove="Features\Orders\Dto\" />
-	  <None Remove="Features\Orders\Queries\" />
-	  <None Remove="Features\Orders\ViewModel\" />
-	  <None Remove="Features\Orders\Queries\GetByCartId\" />
-	  <None Remove="Features\Orders\Queries\GetByOrderId\" />
 	  <None Remove="Features\ProductListing\Queries\GetByCategory\" />
 	  <None Remove="BackgroundServices\" />
 	  <None Remove="Options\" />
 	  <None Remove="Contracts\Messaging\" />
+	  <None Remove="Features\Catgegory\" />
+	  <None Remove="Features\Order\" />
+	  <None Remove="Features\Catgegory\Queries\" />
+	  <None Remove="Features\Catgegory\ViewModel\" />
+	  <None Remove="Validators\" />
+	  <None Remove="Messages\Payment\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Services\" />
@@ -72,16 +73,16 @@
 	  <Folder Include="Features\Checkout\Dto\" />
 	  <Folder Include="Features\Checkout\Queries\" />
 	  <Folder Include="Features\Checkout\ViewModel\" />
-	  <Folder Include="Features\Orders\" />
-	  <Folder Include="Features\Orders\Dto\" />
-	  <Folder Include="Features\Orders\Queries\" />
-	  <Folder Include="Features\Orders\ViewModel\" />
-	  <Folder Include="Features\Orders\Queries\GetByCartId\" />
-	  <Folder Include="Features\Orders\Queries\GetByOrderId\" />
 	  <Folder Include="Features\ProductListing\Queries\GetByCategory\" />
 	  <Folder Include="BackgroundServices\" />
 	  <Folder Include="Options\" />
 	  <Folder Include="Contracts\Messaging\" />
+	  <Folder Include="Features\Catgegory\" />
+	  <Folder Include="Features\Order\" />
+	  <Folder Include="Features\Catgegory\Queries\" />
+	  <Folder Include="Features\Catgegory\ViewModel\" />
+	  <Folder Include="Validators\" />
+	  <Folder Include="Messages\Payment\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj" />

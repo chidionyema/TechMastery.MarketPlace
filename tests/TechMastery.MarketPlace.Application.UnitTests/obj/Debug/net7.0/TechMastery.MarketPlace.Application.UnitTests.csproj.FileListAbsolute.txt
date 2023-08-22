@@ -1093,6 +1093,11 @@
 /Users/chidionyema/Documents/code/TechMastery.MarketPlace/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.genruntimeconfig.cache
 /Users/chidionyema/Documents/code/TechMastery.MarketPlace/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Application.UnitTests.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/CoverletSourceRootsMapping_TechMastery.MarketPlace.Application.UnitTests
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.csproj.CoreCompileInputs.cache
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/EmptyFiles/archive/empty.7z
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/EmptyFiles/archive/empty.bz2
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/EmptyFiles/archive/empty.gz
@@ -1242,6 +1247,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Npgsql.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/NuGet.Frameworks.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Polly.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/Shouldly.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/SQLitePCLRaw.batteries_v2.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/SQLitePCLRaw.core.dll
@@ -1373,11 +1379,6 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/TechMastery.MarketPlace.Application.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.csproj.AssemblyReference.cache
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.AssemblyInfoInputs.cache
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.AssemblyInfo.cs
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.csproj.CoreCompileInputs.cache
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.csproj.CopyComplete
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/TechMastery.MarketPlace.Application.UnitTests.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Application.UnitTests/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Application.UnitTests.dll

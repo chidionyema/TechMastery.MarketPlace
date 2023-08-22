@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Moq;
-using Nest;
 using TechMastery.MarketPlace.Application.Models.Search;
 using TechMastery.MarketPlace.Infrastructure.Search;
+using TechMastery.MarketPlace.Tests.Emulators;
 
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 {

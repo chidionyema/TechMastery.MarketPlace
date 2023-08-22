@@ -13,21 +13,21 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
         private readonly ApplicationTestFixture _fixture;
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IOrderRepository _orderRepository;
-        private readonly Mock<ILogger<CreateOrderHandler>> _mockLogger;
+        private readonly Mock<ILogger<CreateOrderFromCartHandler>> _mockLogger;
 
         public CreateOrderHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
             _shoppingCartRepository = _fixture.CreateCartRepository();
             _orderRepository = _fixture.CreateOrderRepository();
-            _mockLogger = new Mock<ILogger<CreateOrderHandler>>();
+            _mockLogger = new Mock<ILogger<CreateOrderFromCartHandler>>();
         }
 
         [Fact]
         public async Task Handle_NullCommand_ShouldThrowArgumentNullException()
         {
             // Arrange
-            var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
+            var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 
             // Act & Assert
             await Assert.ThrowsAsync<BadRequestException>(() => handler.Handle(null, CancellationToken.None));
@@ -45,7 +45,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
 
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
-            var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
+            var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 
             var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
@@ -74,7 +74,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
 
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
-            var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
+            var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
             var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
             // Act
@@ -104,7 +104,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
                 .Build();
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
-            var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
+            var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
             var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
 
             // Act
@@ -122,7 +122,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
             var cartId = Guid.NewGuid();
             var command = new CreateOrderFromCart { CartId = cartId };
 
-            var handler = new CreateOrderHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
+            var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 
             // Act & Assert
             await Assert.ThrowsAsync<ApplicationException>(() => handler.Handle(command, CancellationToken.None));

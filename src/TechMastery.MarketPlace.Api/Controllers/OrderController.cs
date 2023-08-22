@@ -53,7 +53,7 @@ namespace TechMastery.MarketPlace.Api.Controllers
 
         [Authorize]
         [HttpPost("process/{cartId}")]
-        public async Task<ActionResult<Order>> CompleteOrder([FromBody] ProcessOrder command)
+        public async Task<ActionResult<Order>> CompleteOrder([FromBody] PaymentCommand command)
         {
             var orderId = await _mediator.Send(command);
 

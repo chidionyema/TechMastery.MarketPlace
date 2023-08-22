@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TechMastery.MarketPlace.Application.Features.Checkout.Commands;
 using TechMastery.MarketPlace.Application.Features.Checkout.Queries;
 using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace TechMastery.MarketPlace.WebApi.Controllers
 {
@@ -23,13 +25,15 @@ namespace TechMastery.MarketPlace.WebApi.Controllers
         }
 
         [HttpPost("add-item")]
+        [Authorize]
         public async Task<IActionResult> AddItemToCart([FromBody] AddCartItem command)
         {
-            var cartItemIds = await _mediator.Send(command);
-            return Ok(cartItemIds);
+            var cartItemId = await _mediator.Send(command);
+            return Ok(cartItemId);
         }
 
         [HttpGet("get-cart")]
+        [Authorize]
         public async Task<IActionResult> GetShoppingCart([FromQuery] Guid shoppingCartId)
         {
             var query = new GetShoppingCartQuery { ShoppingCartId = shoppingCartId };
@@ -43,7 +47,30 @@ namespace TechMastery.MarketPlace.WebApi.Controllers
             return Ok(shoppingCart);
         }
 
+        [HttpGet("get-cart-by-user")]
+        [Authorize]
+        public async Task<IActionResult> GetShoppingCartByUser()
+        {
+            // Extract the user's ID from the claims
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("Invalid user token.");
+            }
+
+            var query = new GetShoppingCartByUserIdQuery { LoggedInUserId = Guid.Parse(userId) };
+            var shoppingCart = await _mediator.Send(query);
+
+            if (shoppingCart == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(shoppingCart);
+        }
+
         [HttpPut("update-item")]
+        [Authorize]
         public async Task<IActionResult> UpdateCartItem([FromBody] UpdateCartItem command)
         {
             await _mediator.Send(command);
@@ -51,13 +78,12 @@ namespace TechMastery.MarketPlace.WebApi.Controllers
         }
 
         [HttpDelete("remove-item")]
+        [Authorize]
         public async Task<IActionResult> RemoveCartItem([FromQuery] Guid shoppingCartId, [FromQuery] Guid cartItemId)
         {
             var deleteCommand = new DeleteCartItem { CartItemId = cartItemId };
             await _mediator.Send(deleteCommand);
             return Ok();
         }
-
-        // Other actions for updating cart items, removing items, etc.
     }
 }

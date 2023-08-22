@@ -1,12 +1,8 @@
-﻿using System;
-using System.Security.Claims;
-
-namespace TechMastery.MarketPlace.Application.Models.Authentication
+﻿namespace TechMastery.MarketPlace.Application.Models.Authentication
 {
     public class SocialPayload
     {
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
     }
-
 }
 

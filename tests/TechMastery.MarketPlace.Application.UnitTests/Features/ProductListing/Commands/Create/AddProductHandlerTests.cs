@@ -16,7 +16,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly FakeBlobStorageService _blobStorageService;
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly AddOrUpdateListingHandler handler;
+        private readonly AddListingHandler handler;
         private readonly IMessagePublisher _publisher;
         public AddProductHandlerTests(ApplicationTestFixture fixture)
         {
@@ -25,7 +25,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             _publisher = new FakeMessagePublisher();
             _productRepository = _fixture.CreateProductListingRepository();
             _categoryRepository = _fixture.CreateCategoryRepository();
-            handler = new AddOrUpdateListingHandler(new Mock<ILogger<AddOrUpdateListingHandler>>().Object, _productRepository, _categoryRepository, _publisher);
+            handler = new AddListingHandler(new Mock<ILogger<AddListingHandler>>().Object, _productRepository, _categoryRepository, _publisher);
         }
 
         [Fact]

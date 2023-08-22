@@ -52,7 +52,7 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.6.0, )"
+              "version": "[11.7.1, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
@@ -81,6 +81,10 @@
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[7.0.1, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[7.2.4, )"
             },
             "System.Security.Claims": {
               "target": "Package",

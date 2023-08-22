@@ -1127,6 +1127,8 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/System.Xml.XPath.XDocument.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/refs/WindowsBase.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Amazon.Core.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Amazon.S3.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/HealthChecks.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/HealthChecks.UI.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/HealthChecks.UI.Core.dll
@@ -1144,6 +1146,7 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Azure.Messaging.ServiceBus.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Azure.Storage.Blobs.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Azure.Storage.Common.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Carbon.Storage.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Castle.Core.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/CsvHelper.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/DiffEngine.dll
@@ -1310,7 +1313,6 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/System.Security.Permissions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/System.Windows.Extensions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Testcontainers.dll
-/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/Testcontainers.Elasticsearch.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/xunit.abstractions.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/xunit.assert.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/xunit.core.dll
@@ -1563,9 +1565,11 @@
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.dll
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Tests.Emulators.dll
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Api.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Application.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Tests.Emulators.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Identity.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/bin/Debug/net7.0/TechMastery.MarketPlace.Infrastructure.pdb

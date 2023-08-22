@@ -1,11 +1,7 @@
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Http;
 using Serilog;
-using Microsoft.Extensions.Configuration;
-using System.Linq;
 
 namespace TechMastery.MarketPlace.Api
 {
@@ -43,7 +39,6 @@ namespace TechMastery.MarketPlace.Api
 
         private static WebApplication ConfigureApplicationServices(WebApplicationBuilder builder)
         {
-            // Assuming these methods (ConfigureServices and ConfigurePipeline) are part of some extension methods for the WebApplicationBuilder
             return builder.ConfigureServices()
                           .ConfigurePipeline();
         }
@@ -51,7 +46,7 @@ namespace TechMastery.MarketPlace.Api
         private static void RegisterMiddlewares(WebApplication app)
         {
             app.UseSerilogRequestLogging();
-            app.UseCors("AllowOrigin");
+            app.UseCors("AllowSpecificOrigins");
         }
 
         private static void ConfigureHealthChecks(WebApplication app, IConfiguration configuration)

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Stripe;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 using TechMastery.MarketPlace.Application.Models.Payment;
@@ -12,10 +9,14 @@ namespace TechMastery.MarketPlace.Infrastructure.Payment
     {
         private readonly string _stripeSecretKey;
         private readonly ILogger<StripePaymentService> _logger;
+        private const int MAX_RETRIES = 3;
 
         public StripePaymentService(string stripeSecretKey, ILogger<StripePaymentService> logger)
         {
-            _stripeSecretKey = stripeSecretKey ?? throw new ArgumentNullException(nameof(stripeSecretKey), "StripeSecretKey is missing or null.");
+            if (!stripeSecretKey.StartsWith("sk_live_") && !stripeSecretKey.StartsWith("sk_test_"))
+                throw new ArgumentException("Invalid StripeSecretKey format.", nameof(stripeSecretKey));
+
+            _stripeSecretKey = stripeSecretKey;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             StripeConfiguration.ApiKey = _stripeSecretKey;
         }
@@ -41,14 +42,55 @@ namespace TechMastery.MarketPlace.Infrastructure.Payment
                 _logger.LogError(stripeException, "Stripe payment processing failed.");
                 return HandleStripeException(stripeException);
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred during payment processing.");
+                throw;
+            }
         }
 
         private async Task<Charge> CreateChargeAsync(PaymentInfo paymentInfo, CancellationToken cancellationToken)
         {
             var chargeOptions = BuildChargeOptions(paymentInfo);
+            var requestOptions = new RequestOptions { IdempotencyKey = Guid.NewGuid().ToString() };
 
             var service = new ChargeService();
-            return await service.CreateAsync(chargeOptions, null, cancellationToken);
+            int retryCount = 0;
+            while (retryCount < MAX_RETRIES)
+            {
+                try
+                {
+                    return await service.CreateAsync(chargeOptions, requestOptions, cancellationToken);
+                }
+                catch (HttpRequestException)
+                {
+                    retryCount++;
+                    await Task.Delay(2000); // wait for 2 seconds before retrying
+                }
+            }
+            throw new Exception("Max retry attempts reached for CreateChargeAsync.");
+        }
+
+        private async Task<Transfer> CreateTransferAsync(PaymentInfo paymentInfo, CancellationToken cancellationToken)
+        {
+            var transferOptions = BuildTransferOptions(paymentInfo);
+            var requestOptions = new RequestOptions { IdempotencyKey = Guid.NewGuid().ToString() };
+
+            var transferService = new TransferService();
+            int retryCount = 0;
+            while (retryCount < MAX_RETRIES)
+            {
+                try
+                {
+                    return await transferService.CreateAsync(transferOptions, requestOptions, cancellationToken);
+                }
+                catch (HttpRequestException)
+                {
+                    retryCount++;
+                    await Task.Delay(2000); // wait for 2 seconds before retrying
+                }
+            }
+            throw new Exception("Max retry attempts reached for CreateTransferAsync.");
         }
 
         private ChargeCreateOptions BuildChargeOptions(PaymentInfo paymentInfo)
@@ -62,20 +104,9 @@ namespace TechMastery.MarketPlace.Infrastructure.Payment
             };
         }
 
-        private async Task<Transfer> CreateTransferAsync(PaymentInfo paymentInfo, CancellationToken cancellationToken)
-        {
-            var transferOptions = BuildTransferOptions(paymentInfo);
-
-            var transferService = new TransferService();
-            return await transferService.CreateAsync(transferOptions, null, cancellationToken);
-        }
-
         private TransferCreateOptions BuildTransferOptions(PaymentInfo paymentInfo)
         {
-            var feeAmount = CalculateFeeAmount(paymentInfo.Amount);
-            var transferAmount = paymentInfo.Amount - feeAmount;
-
-            ValidateSellerCut(paymentInfo.SellerCut, transferAmount);
+            var transferAmount = paymentInfo.GetPaymentAmount();
 
             return new TransferCreateOptions
             {
@@ -83,20 +114,6 @@ namespace TechMastery.MarketPlace.Infrastructure.Payment
                 Currency = paymentInfo.Currency,
                 Destination = paymentInfo.SellerStripeAccountId,
             };
-        }
-
-        private static long CalculateFeeAmount(decimal amount)
-        {
-            const decimal feePercentage = 0.15m;
-            return (long)(amount * feePercentage);
-        }
-
-        private static void ValidateSellerCut(decimal sellerCut, decimal transferAmount)
-        {
-            if (sellerCut != transferAmount)
-            {
-                throw new InvalidOperationException("Seller cut does not match transfer amount.");
-            }
         }
 
         private static PaymentResult HandleStripeException(StripeException stripeException)

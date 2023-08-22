@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TechMastery.MarketPlace.Domain.Entities;
+﻿using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Persistence.Repositories;
+using TechMastery.MarketPlace.Tests.Emulators;
 using Xunit;
 
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests

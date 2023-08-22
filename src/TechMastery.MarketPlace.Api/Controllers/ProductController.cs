@@ -19,7 +19,7 @@ namespace TechMastery.MarketPlace.Api.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddListing([FromBody] AddOrUpdateListing command)
+        public async Task<IActionResult> AddListing([FromBody] AddListingCommand command)
         {
             var productId = await _mediator.Send(command);
                     

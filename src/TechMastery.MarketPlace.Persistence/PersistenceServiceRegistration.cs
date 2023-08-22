@@ -51,6 +51,7 @@ namespace TechMastery.MarketPlace.Persistence
             services.AddScoped<ICartItemRepository, CartItemRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<IOutboxRepository, OutboxRepository>();
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
             return services;

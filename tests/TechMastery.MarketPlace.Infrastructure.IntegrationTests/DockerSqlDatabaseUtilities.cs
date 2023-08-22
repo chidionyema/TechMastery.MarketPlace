@@ -2,14 +2,8 @@
 using Docker.DotNet;
 using Docker.DotNet.Models;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using TechMastery.MarketPlace.Infrastructure.IntegrationTests.Base;
 
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests

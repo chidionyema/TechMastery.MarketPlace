@@ -3,6 +3,7 @@ using Moq;
 using Stripe;
 using TechMastery.MarketPlace.Application.Models.Payment;
 using TechMastery.MarketPlace.Infrastructure.Payment;
+using TechMastery.MarketPlace.Tests.Emulators;
 
 namespace TechMastery.MarketPlace.Infrastructure.Tests
 {
@@ -37,8 +38,7 @@ namespace TechMastery.MarketPlace.Infrastructure.Tests
             var paymentInfo = new PaymentInfo
             {
                 Token = stripeToken.Id,
-                Amount = 100.00m,
-                SellerCut = 85.00m,
+                PaymentAmount = 100.00m,
                 Currency = "usd",
                 Description = "Sample payment",
                // SellerStripeAccountId = "seller_stripe_account_id"
@@ -64,7 +64,6 @@ namespace TechMastery.MarketPlace.Infrastructure.Tests
             {
                 Token = "invalid_token",
                 Amount = 50.00m,
-                SellerCut = 40.00m,
                 Currency = "usd",
                 Description = "Sample payment",
                 SellerStripeAccountId = "seller_stripe_account_id"

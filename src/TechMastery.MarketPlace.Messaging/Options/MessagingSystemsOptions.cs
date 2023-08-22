@@ -7,7 +7,7 @@
         public bool EnableRabbitMq { get; set; }
 
         public AzureServiceBusOptions? AzureServiceBus { get; set; }
-        public SqsOptions? Sqs { get; set; }
+        public SqsOptions? SqsOptions { get; set; }
         public RabbitMqOptions? RabbitMq { get; set; }
     }
 }

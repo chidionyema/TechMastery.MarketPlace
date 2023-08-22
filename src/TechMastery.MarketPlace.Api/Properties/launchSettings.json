@@ -20,7 +20,7 @@
     "TechMastery.MarketPlace.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:51818",
+      "applicationUrl": "http://localhost:50929",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

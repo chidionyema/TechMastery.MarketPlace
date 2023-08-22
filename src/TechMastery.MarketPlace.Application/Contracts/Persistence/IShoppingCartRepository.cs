@@ -5,7 +5,7 @@ namespace TechMastery.MarketPlace.Application.Contracts.Persistence
 {
     public interface IShoppingCartRepository : IAsyncRepository<ShoppingCart>
     {
-        Task<ShoppingCart> GetByUserIdAsync(Guid userId);
+        Task<ShoppingCart?> GetByUserIdAsync(Guid userId);
     }
 }
 

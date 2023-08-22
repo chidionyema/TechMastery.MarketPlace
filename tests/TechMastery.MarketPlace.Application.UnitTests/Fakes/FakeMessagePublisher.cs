@@ -35,6 +35,11 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests.Fakes
             throw new NotImplementedException();
         }
 
+        public Task PublishSerializedAsync(string serializedMessage, string queueName)
+        {
+            throw new NotImplementedException();
+        }
+
         // Expose the Mock for assertions or verifications in tests
         public Mock<IMessagePublisher> Mock => _mock;
     }

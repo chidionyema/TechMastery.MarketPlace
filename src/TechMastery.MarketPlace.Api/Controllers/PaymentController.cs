@@ -1,30 +1,30 @@
 ﻿using System;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
-using TechMastery.MarketPlace.Infrastructure.Payments.Models;
 using Microsoft.AspNetCore.Mvc;
 using TechMastery.MarketPlace.Application.Models.Payment;
-using TechMastery.MarketPlace.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
+using TechMastery.MarketPlace.Application.Features.Orders.Commands;
+using MediatR;
 
 namespace TechMastery.MarketPlace.Api.Controllers
 {
     [Route("api/[controller]")]
     public class PaymentController : Controller
     {
-        private readonly IPaymentService _paymentService;
+        private readonly IMediator _mediator;
 
-        public PaymentController(IPaymentService paymentService)
+        public PaymentController(IMediator mediator)
         {
-            _paymentService = paymentService;
+            _mediator = mediator;
         }
 
         [HttpPost("processpayment")]
         [Authorize]
-        public async Task<ActionResult<PaymentResult>> ProcessPayment(
-            [FromBody] PaymentInfo paymentInfo,
+        public async Task<ActionResult<Unit>> ProcessPayment(
+            [FromBody] Guid orderId, PaymentInfo paymentInfo,
             CancellationToken ct)
         {
-            var createdPayment = await _paymentService.ProcessPaymentAsync(paymentInfo, ct);
+            var createdPayment = await _mediator.Send(new PaymentCommand { OrderId = orderId, PaymentInfo = paymentInfo}, ct);
 
             return StatusCode(StatusCodes.Status200OK, createdPayment);
         }

@@ -1,18 +1,20 @@
 ﻿using AutoFixture;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Persistence.Repositories;
+using TechMastery.MarketPlace.Tests.Emulators;
 using Xunit;
 
 namespace TechMastery.MarketPlace.API.IntegrationTests
 {
-    public class ProductListingRepositoryTests : ApiIntegrationTestFixture, IDisposable
+    [Collection("DbEmulatorCollection")] // This associates the test class with DbEmulatorFixture.
+    public class ProductListingRepositoryTests : IClassFixture<DbEmulatorFixture>
     {
         private readonly ProductRepository _repository;
         private readonly Fixture _fixture;
 
-        public ProductListingRepositoryTests() : base()
+        public ProductListingRepositoryTests(DbEmulatorFixture dbEmulatorFixture) // Constructor injection of the DbEmulatorFixture.
         {
-            _repository = CreateProductListingRepository();
+            _repository = dbEmulatorFixture.CreateProductRepository(); // Use DbEmulatorFixture to create the repository.
             _fixture = new Fixture();
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
@@ -135,7 +137,6 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
         // teardown
         public void Dispose()
         {
-            DisposeContext();
         }
     }
 }

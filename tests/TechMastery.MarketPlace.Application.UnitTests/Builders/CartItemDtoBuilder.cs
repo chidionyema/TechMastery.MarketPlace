@@ -21,7 +21,6 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             _productId = cartItem.ProductId;
             _price = cartItem.Price;
             _quantity = cartItem.Quantity;
-            _productName = cartItem.ProductName;
             return this;
         }
 

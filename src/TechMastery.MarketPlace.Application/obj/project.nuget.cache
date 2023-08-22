@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Hp5sIjrd1BoyZc/JIbIrFOCLx68khwD1GBVZGZWY1pS9ydAW2UvCcM2I6Ubv87xVCgo0YyZ2nv7jl9YOlkIOeQ==",
+  "dgSpecHash": "RXy0a+Jc29dzSngswFXMvmEQd2hfVY5iUJH2UMiY0giZDz5RXEaxn07AtDl00/aUwh4khtgxm825+Ej4TYS74A==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
   "expectedPackageFiles": [
     "/Users/chidionyema/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.6.0/fluentvalidation.11.6.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.6.0/fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/mediatr/11.0.0/mediatr.11.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/mediatr.contracts/1.0.1/mediatr.contracts.1.0.1.nupkg.sha512",
@@ -60,6 +60,7 @@
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.platforms/2.0.0/microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/microsoft.win32.registry/4.5.0/microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/polly/7.2.4/polly.7.2.4.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.buffers/4.5.0/system.buffers.4.5.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.componentmodel.annotations/4.5.0/system.componentmodel.annotations.4.5.0.nupkg.sha512",

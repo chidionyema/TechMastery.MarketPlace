@@ -1,0 +1,5 @@
+2023-08-22 03:03:03.038 +01:00 [INF] TechMastery API starting
+2023-08-22 03:04:30.293 +01:00 [INF] TechMastery API starting
+2023-08-22 03:07:30.526 +01:00 [INF] TechMastery API starting
+2023-08-22 03:08:50.034 +01:00 [INF] TechMastery API starting
+2023-08-22 03:14:11.595 +01:00 [INF] TechMastery API starting

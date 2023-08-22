@@ -8,9 +8,6 @@ using TechMastery.MarketPlace.Persistence;
 using TechMastery.Messaging.Consumers;
 using TechMastery.MarketPlace.Api.Middleware;
 using TechMastery.MarketPlace.Api.Utility;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Newtonsoft.Json;
-
 namespace TechMastery.MarketPlace.Api
 {
     public static class StartupExtensions
@@ -53,31 +50,22 @@ namespace TechMastery.MarketPlace.Api
         }
 
         /// <summary>
-        /// Configures CORS for the application.
-        /// </summary>
-        public static void ConfigureCors(this WebApplicationBuilder builder)
-        {
-            var allowedOrigins = builder.Configuration.GetSection("AllowedCorsOrigins").Get<string[]>();
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin", builder =>
-                {
-                    builder.WithOrigins(allowedOrigins)
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
-                });
-            });
-        }
-
-        /// <summary>
         /// Adds core services that are fundamental to the application's operations.
         /// </summary>
         private static void AddCoreServices(WebApplicationBuilder builder)
         {
             builder.Services.AddHealthChecks();
+            var config = builder.Configuration;
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("Open", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                options.AddPolicy("AllowSpecificOrigins",
+                    builder =>
+                    {
+                        var allowedOrigins = config.GetSection("AllowedCorsOrigins").Get<string[]>();
+                        builder.WithOrigins(allowedOrigins)
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
             });
         }
 

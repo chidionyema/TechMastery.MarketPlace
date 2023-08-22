@@ -94,7 +94,8 @@ docker build -t techmastery/marketplace .
 
 # Run your microservice in a Docker container
 echo "Running microservice in a Docker container..."
-docker run -d -p 5000:80 --name marketplace techmastery/marketplace
+docker run -d -p 5000:80 --name marketplace -e ALLOWEDCORSORIGINS='["http://localhost:3000", "http://yourdomain.com"]' techmastery/marketplace
+
 
 # Check the health of the application
 HEALTH_CHECK_URL="http://localhost/health"

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Et2J4qk4wKiIT3qriG2YqXnMoEX0jVnTQUPoaqPHr/mKhod7Uu+zlY1cGMY6CoAbzM2rA/vUu1OyVkQ3IfPFgA==",
+  "dgSpecHash": "J7xVYek8EnvzneGfWUAAslJHbFn4JwrOf9J3zJ6JJi6OB9vMS4FLd16DTjrfevmBd+25rIUknLuhGYxvtf15IA==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "/Users/chidionyema/.nuget/packages/azure.storage.common/12.16.0/azure.storage.common.12.16.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/csvhelper/30.0.1/csvhelper.30.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/elasticsearch.net/7.17.5/elasticsearch.net.7.17.5.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.6.0/fluentvalidation.11.6.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.6.0/fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/masstransit/8.0.16/masstransit.8.0.16.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/masstransit.abstractions/8.0.16/masstransit.abstractions.8.0.16.nupkg.sha512",
@@ -101,7 +101,7 @@
     "/Users/chidionyema/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/njsonschema/10.9.0/njsonschema.10.9.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/paramore.brighter/9.5.10/paramore.brighter.9.5.10.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/polly/7.2.3/polly.7.2.3.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/polly/7.2.4/polly.7.2.4.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/sendgrid/9.28.1/sendgrid.9.28.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog/3.0.1/serilog.3.0.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/serilog.extensions.logging/7.0.0/serilog.extensions.logging.7.0.0.nupkg.sha512",

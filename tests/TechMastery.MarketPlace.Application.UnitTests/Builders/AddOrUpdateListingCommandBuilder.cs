@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http.Internal;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http.Internal;
 using TechMastery.MarketPlace.Application.DataTransferObjects;
 using TechMastery.MarketPlace.Application.Features.ProductListing.DataTransferObjects;
 using TechMastery.MarketPlace.Application.Features.ProductListing.Dto;
@@ -10,7 +12,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
     // Builder for AddOrUpdateListing command
     internal class AddOrUpdateListingCommandBuilder
     {
-        private AddOrUpdateListing _command = new AddOrUpdateListing();
+        private AddListingCommand _command = new AddListingCommand();
 
         internal static AddOrUpdateListingCommandBuilder Create()
         {
@@ -19,7 +21,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
 
         internal AddOrUpdateListingCommandBuilder WithCategory(Category category)
         {
-            _command.Category = new CategoryDto { CategoryId = category.CategoryId, Name = category.Name};
+            _command = _command with { Category = new CategoryDto { CategoryId = category.CategoryId, Name = category.Name } };
             return this;
         }
 
@@ -34,7 +36,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                     ArtifactType = new ProductArtifactTypeEnum()
                 });
             }
-            _command.UploadAssets = artifacts;
+            _command = _command with { UploadAssets = artifacts };
             return this;
         }
 
@@ -50,38 +52,37 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
                     DependencyType = (DependencyTypeEnum)new Random().Next(1, Enum.GetValues(typeof(DependencyTypeEnum)).Length)
                 });
             }
-            _command.Dependencies = dependencies;
+            _command = _command with { Dependencies = dependencies };
             return this;
         }
 
         internal AddOrUpdateListingCommandBuilder WithNoTags()
         {
-            _command.Tags = null;
+            _command = _command with { Tags = null };
             return this;
         }
 
         internal AddOrUpdateListingCommandBuilder WithNoDependencies()
         {
-            _command.Dependencies = null;
+            _command = _command with { Dependencies = null };
             return this;
         }
 
         internal AddOrUpdateListingCommandBuilder WithNoUploadAssets()
         {
-            _command.UploadAssets = null;
+            _command = _command with { UploadAssets = null };
             return this;
         }
 
         internal AddOrUpdateListingCommandBuilder WithInvalidCategory(Guid categoryId)
         {
-            _command.Category = new CategoryDto { CategoryId = categoryId, Name = "Invalid Category" };
+            _command = _command with { Category = new CategoryDto { CategoryId = categoryId, Name = "Invalid Category" } };
             return this;
         }
 
-        internal AddOrUpdateListing Build()
+        internal AddListingCommand Build()
         {
             return _command;
         }
     }
 }
-

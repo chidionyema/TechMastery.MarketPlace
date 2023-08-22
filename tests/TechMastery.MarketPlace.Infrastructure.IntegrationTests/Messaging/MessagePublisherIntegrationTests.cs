@@ -3,6 +3,7 @@ using Moq;
 using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using TechMastery.MarketPlace.Application.Messaging;
 using TechMastery.MarketPlace.Infrastructure.IntegrationTests;
+using TechMastery.MarketPlace.Tests.Emulators;
 using TechMastery.Messaging.Consumers;
 namespace TechMastery.MarketPlace.Application.IntegrationTests
 {

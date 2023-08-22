@@ -2,7 +2,7 @@
 {
     public class CartItemVm
     {
-        // Add properties that you want to include in the ViewModel
+        public Guid CartItemId { get; set; }
         public Guid ProductId { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }

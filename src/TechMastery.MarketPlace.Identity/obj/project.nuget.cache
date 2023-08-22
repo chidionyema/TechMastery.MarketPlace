@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qceyop7wz4bBcSHft5nNqI65gr2d7G/aL1tmL21bmZNsj8NuJNHOYY+Avg04SlpP+zOk7u0Q+rsWixof3CjosA==",
+  "dgSpecHash": "00toDuVuSbO9fQV6pIoDPlAtnF4y7YL2z2ilMIWqQ9EzxHKyD5KOseK7AtcAz9NUN1ZfG+mSj6BUrEgTP2Oi6A==",
   "success": true,
   "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "/Users/chidionyema/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/facebook/7.0.6/facebook.7.0.6.nupkg.sha512",
-    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.6.0/fluentvalidation.11.6.0.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/fluentvalidation/11.7.1/fluentvalidation.11.7.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.6.0/fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/google.apis/1.61.0/google.apis.1.61.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/google.apis.auth/1.61.0/google.apis.auth.1.61.0.nupkg.sha512",
@@ -99,6 +99,7 @@
     "/Users/chidionyema/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/npgsql/7.0.4/npgsql.7.0.4.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/npgsql.entityframeworkcore.postgresql/7.0.4/npgsql.entityframeworkcore.postgresql.7.0.4.nupkg.sha512",
+    "/Users/chidionyema/.nuget/packages/polly/7.2.4/polly.7.2.4.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",

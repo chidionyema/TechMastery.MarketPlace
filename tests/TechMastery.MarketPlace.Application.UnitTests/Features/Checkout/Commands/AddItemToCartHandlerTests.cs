@@ -2,6 +2,7 @@
 using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
 using Microsoft.Extensions.Logging;
 using Moq;
+using TechMastery.MarketPlace.Application.Validators;
 
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {
@@ -11,12 +12,13 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly ICartItemRepository _cartItemRepository;
         private readonly AddCartItemHandler handler;
+
         public AddToCartHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
             _shoppingCartRepository = _fixture.CreateCartRepository();
             _cartItemRepository = _fixture.CreateCartItemRepository();
-            handler =  new AddCartItemHandler(_cartItemRepository, _shoppingCartRepository, new Mock<ILogger<AddCartItemHandler>>().Object);
+            handler =  new AddCartItemHandler(_cartItemRepository, _shoppingCartRepository, new Mock<ILogger<AddCartItemHandler>>().Object, new CartItemDtoValidator());
         }
 
         [Fact]

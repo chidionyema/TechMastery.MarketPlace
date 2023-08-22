@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
 
 namespace TechMastery.MarketPlace.Api.Controllers
@@ -15,14 +17,12 @@ namespace TechMastery.MarketPlace.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetSignedUrl(string blobKey, string fileType)
+        [Authorize]
+        public IActionResult GetSignedUrl(string fileType)
         {
-            // Ensure the blobKey and fileType are provided.
-            if (string.IsNullOrEmpty(blobKey) || string.IsNullOrEmpty(fileType))
-                return BadRequest("Blob key or file type missing.");
-
+            var userName = User.Identity.Name;
             // Generate the signed URL using Azure Blob Storage SDK or S3 SDK.
-            var signedUrl = GenerateSignedUrl(blobKey, fileType).ToString();
+            var signedUrl = GenerateSignedUrl(userName, fileType).ToString();
 
             if (string.IsNullOrEmpty(signedUrl))
                 return BadRequest("Failed to generate signed URL.");
@@ -32,7 +32,7 @@ namespace TechMastery.MarketPlace.Api.Controllers
 
         private async Task<Uri> GenerateSignedUrl(string blobKey, string fileType)
         {
-            return await _storageProvider.GenerateSasUploadUriAsync(blobKey, DateTimeOffset.MaxValue); 
+            return await _storageProvider.GenerateSasUploadUriAsync(blobKey + "_" +fileType, DateTimeOffset.MaxValue); 
         }
 
     }

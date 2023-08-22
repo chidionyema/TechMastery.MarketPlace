@@ -1,5 +1,8 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
+using TechMastery.MarketPlace.Application.Validators;
 
 namespace TechMastery.MarketPlace.Application
 {
@@ -9,6 +12,7 @@ namespace TechMastery.MarketPlace.Application
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddTransient<IValidator<CartItemDto>, CartItemDtoValidator>();
 
             return services;
         }

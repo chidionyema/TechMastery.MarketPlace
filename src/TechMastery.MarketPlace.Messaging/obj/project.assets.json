@@ -158,7 +158,7 @@
           }
         }
       },
-      "FluentValidation/11.6.0": {
+      "FluentValidation/11.7.1": {
         "type": "package",
         "compile": {
           "lib/net7.0/FluentValidation.dll": {
@@ -1361,6 +1361,19 @@
           }
         }
       },
+      "Polly/7.2.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "RabbitMQ.Client/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -1948,7 +1961,7 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "FluentValidation": "11.6.0",
+          "FluentValidation": "11.7.1",
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -1956,6 +1969,7 @@
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Hosting": "7.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Polly": "7.2.4",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "7.0.3",
           "TechMastery.MarketPlace.Domain": "1.0.0"
@@ -2160,16 +2174,16 @@
         "lib/netstandard2.0/Azure.Messaging.ServiceBus.xml"
       ]
     },
-    "FluentValidation/11.6.0": {
-      "sha512": "DWKd0jHA33d7BXVWytSoN5Oafj9nYuiLUyyFoaUboOZZiaN5tlXdcJpkRbmrrWBUTWdSxjTwIoyUs38KSU/7OQ==",
+    "FluentValidation/11.7.1": {
+      "sha512": "w9Al4gls6iVGFbTd/NPOPlwzqDTghH+ntL4c4FYUatc+LeybpIwhYArLykZJP/VjF2n3ihj3ws+1yd7KR5lQlg==",
       "type": "package",
-      "path": "fluentvalidation/11.6.0",
+      "path": "fluentvalidation/11.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.11.6.0.nupkg.sha512",
+        "fluentvalidation.11.7.1.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net5.0/FluentValidation.dll",
         "lib/net5.0/FluentValidation.xml",
@@ -3643,6 +3657,31 @@
         "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Polly/7.2.4": {
+      "sha512": "bw00Ck5sh6ekduDE3mnCo1ohzuad946uslCDEENu3091+6UKnBuKLo4e+yaNcCzXxOZCXWY2gV4a35+K1d4LDA==",
+      "type": "package",
+      "path": "polly/7.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net461/Polly.dll",
+        "lib/net461/Polly.pdb",
+        "lib/net461/Polly.xml",
+        "lib/net472/Polly.dll",
+        "lib/net472/Polly.pdb",
+        "lib/net472/Polly.xml",
+        "lib/netstandard1.1/Polly.dll",
+        "lib/netstandard1.1/Polly.pdb",
+        "lib/netstandard1.1/Polly.xml",
+        "lib/netstandard2.0/Polly.dll",
+        "lib/netstandard2.0/Polly.pdb",
+        "lib/netstandard2.0/Polly.xml",
+        "package-icon.png",
+        "polly.7.2.4.nupkg.sha512",
+        "polly.nuspec"
       ]
     },
     "RabbitMQ.Client/6.5.0": {
@@ -5469,6 +5508,7 @@
       "MassTransit.AmazonSQS >= 8.0.16",
       "MassTransit.Azure.ServiceBus.Core >= 8.0.16",
       "MassTransit.RabbitMQ >= 8.0.16",
+      "Polly >= 7.2.4",
       "Serilog >= 3.0.1",
       "Serilog.Extensions.Logging >= 7.0.0",
       "Serilog.Sinks.Console >= 4.1.0",
@@ -5532,6 +5572,10 @@
           "MassTransit.RabbitMQ": {
             "target": "Package",
             "version": "[8.0.16, )"
+          },
+          "Polly": {
+            "target": "Package",
+            "version": "[7.2.4, )"
           },
           "Serilog": {
             "target": "Package",

@@ -107,6 +107,26 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = new Guid("60dff8dd-8efb-4b8f-94d7-e56c472c8601"),
+                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9350),
+                            Name = "Web"
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("8efe24a1-fa4f-4a66-92f2-a9b68f274561"),
+                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9370),
+                            Name = "Devops"
+                        },
+                        new
+                        {
+                            CategoryId = new Guid("d6d63abf-0e58-4c3c-bb1a-946170d75ac2"),
+                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9370),
+                            Name = "AI"
+                        });
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.CategoryDependency", b =>
@@ -115,7 +135,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("CategoryId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("CreatedBy")
@@ -124,14 +144,8 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("DependencyTypeEntityId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("DependencyTypeEnum")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("DependencyTypeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("DependencyId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -139,164 +153,13 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Version")
-                        .HasColumnType("text");
-
                     b.HasKey("CategoryDependencyId");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("DependencyTypeEntityId");
+                    b.HasIndex("DependencyId");
 
                     b.ToTable("CategoryDependencies");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryDependencyId = new Guid("2542448f-0ae3-4721-95b3-6fecd04798e6"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000001"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(150),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = "React",
-                            Version = "17.0.2"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("f79acbb2-30fd-43d5-8360-2397af3fcfd2"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000001"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = "Angular",
-                            Version = "12.0.3"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("691eea92-3e05-4236-ae5b-bce3c91c8aa5"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000002"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = ".NET Core",
-                            Version = "6.0"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("d427d457-6f6f-4b23-b447-c4f463457ae7"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000002"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(160),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = "Node.js",
-                            Version = "14.17.6"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("e5237040-b261-43d9-927e-e4e85b9aa0d0"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000003"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
-                            DependencyTypeEnum = 2,
-                            DependencyTypeId = 0,
-                            Name = "Docker",
-                            Version = "20.10.8"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("2280c0e8-3b51-400e-978d-a755feda790e"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000003"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
-                            DependencyTypeEnum = 2,
-                            DependencyTypeId = 0,
-                            Name = "Kubernetes",
-                            Version = "1.21.3"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("f6494f8f-3ff3-4ec9-bed9-5f06e0ca081b"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000004"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
-                            DependencyTypeEnum = 2,
-                            DependencyTypeId = 0,
-                            Name = "PostgreSQL",
-                            Version = "13.4"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("7db25e04-8362-4882-b5fd-71442a7ea3bb"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000004"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(170),
-                            DependencyTypeEnum = 2,
-                            DependencyTypeId = 0,
-                            Name = "MongoDB",
-                            Version = "5.0.2"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("2b4e9bec-2698-4196-901a-e570c2c97e16"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000005"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(180),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = "TensorFlow",
-                            Version = "2.7.0"
-                        },
-                        new
-                        {
-                            CategoryDependencyId = new Guid("abbf55bc-6a76-4c63-ac08-64daae2d4d22"),
-                            CategoryId = new Guid("00000001-0000-0000-0000-000000000005"),
-                            CreatedDate = new DateTime(2023, 8, 8, 22, 7, 36, 747, DateTimeKind.Utc).AddTicks(180),
-                            DependencyTypeEnum = 0,
-                            DependencyTypeId = 0,
-                            Name = "PyTorch",
-                            Version = "1.9.1"
-                        });
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.CategoryDependencyType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CategoryDependencyTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Framework"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Platform"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tool"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Language"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Library"
-                        });
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Contribution", b =>
@@ -362,6 +225,83 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasKey("ContributorId");
 
                     b.ToTable("Contributors");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Dependency", b =>
+                {
+                    b.Property<Guid>("DependencyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("DependencyTypeEnum")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("DependencyTypeId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("DependencyId");
+
+                    b.HasIndex("DependencyTypeId");
+
+                    b.ToTable("Dependencies");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.DependencyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DependencyTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Framework"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Platform"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Tool"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Language"
+                        });
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Order", b =>
@@ -516,8 +456,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("Owner");
-
                     b.ToTable("Products");
                 });
 
@@ -613,11 +551,8 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("DependencyTypeEnum")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("DependencyTypeId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("DependencyId")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -625,62 +560,16 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Version")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("ProductDependencyId");
 
-                    b.HasIndex("DependencyTypeId");
+                    b.HasIndex("DependencyId");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductDependencies");
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductDependencyType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductDependencyTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Framework"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Platform"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tool"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Language"
-                        });
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLicense", b =>
@@ -712,22 +601,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductLicenses");
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductOwner", b =>
-                {
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("ProductOwnerId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Email");
-
-                    b.ToTable("ProductOwners");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductReview", b =>
@@ -940,15 +813,19 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                 {
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Category", "Category")
                         .WithMany("Dependencies")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.CategoryDependencyType", "DependencyTypeEntity")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Dependency", "Dependency")
                         .WithMany()
-                        .HasForeignKey("DependencyTypeEntityId");
+                        .HasForeignKey("DependencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
-                    b.Navigation("DependencyTypeEntity");
+                    b.Navigation("Dependency");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Contribution", b =>
@@ -968,6 +845,17 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Navigation("Contributor");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Dependency", b =>
+                {
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.DependencyType", "DependencyType")
+                        .WithMany()
+                        .HasForeignKey("DependencyTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DependencyType");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Order", b =>
@@ -995,20 +883,12 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Product", b =>
                 {
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Category", "Category")
-                        .WithMany("ProductListings")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.ProductOwner", "ProductOwner")
-                        .WithMany("OwnedProducts")
-                        .HasForeignKey("Owner")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("ProductOwner");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductArtifact", b =>
@@ -1041,9 +921,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductDependency", b =>
                 {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.ProductDependencyType", "DependencyType")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Dependency", "Dependency")
                         .WithMany()
-                        .HasForeignKey("DependencyTypeId")
+                        .HasForeignKey("DependencyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1053,7 +933,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DependencyType");
+                    b.Navigation("Dependency");
 
                     b.Navigation("Product");
                 });
@@ -1097,8 +977,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                 {
                     b.Navigation("Dependencies");
 
-                    b.Navigation("ProductListings");
-
                     b.Navigation("SubCategories");
                 });
 
@@ -1129,11 +1007,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Navigation("Reviews");
 
                     b.Navigation("Sales");
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductOwner", b =>
-                {
-                    b.Navigation("OwnedProducts");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ShoppingCart", b =>

@@ -11,6 +11,8 @@ namespace TechMastery.MarketPlace.Persistence
         {
         }
 
+        public DbSet<OutboxMessage> OutboxMessages { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryDependency> CategoryDependencies { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -29,6 +31,7 @@ namespace TechMastery.MarketPlace.Persistence
         public DbSet<Dependency> Dependencies { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<ArchivedOutboxMessage> ArchivedOutboxMessages { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -140,6 +143,19 @@ namespace TechMastery.MarketPlace.Persistence
                     .Select((type, index) =>
                         new ProductStatus { Id = index + 1, Name = type.ToString() })
             );
+            modelBuilder.Entity<PaymentStatus>().HasData(
+               Enum.GetValues(typeof(PaymentStatusEnum))
+                   .Cast<PaymentStatusEnum>()
+                   .Select((type, index) =>
+                       new PaymentStatus { Id = index + 1, Name = type.ToString() })
+           );
+
+           /* modelBuilder.Entity<OrderStatus>().HasData(
+              Enum.GetValues(typeof(OrderStatusEnum))
+                  .Cast<OrderStatusEnum>()
+                  .Select((type, index) =>
+                      new OrderStatus { Id = index + 1, Name = type.ToString() })*/
+          //);
         }
 
         private void SeedCategoryDependencies(ModelBuilder modelBuilder)

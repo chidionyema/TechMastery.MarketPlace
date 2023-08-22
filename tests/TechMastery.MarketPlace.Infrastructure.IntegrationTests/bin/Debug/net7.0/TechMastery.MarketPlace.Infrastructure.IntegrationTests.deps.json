@@ -54,8 +54,7 @@
           "TechMastery.MarketPlace.Api": "1.0.0",
           "TechMastery.MarketPlace.Application": "1.0.0",
           "TechMastery.MarketPlace.Messaging": "1.0.0",
-          "Testcontainers": "3.3.0",
-          "Testcontainers.Elasticsearch": "3.3.0",
+          "TechMastery.MarketPlace.Tests.Emulators": "1.0.0",
           "coverlet.collector": "6.0.0",
           "xunit": "2.5.0",
           "xunit.runner.visualstudio": "2.5.0",
@@ -363,6 +362,32 @@
           "TechMastery.MarketPlace.Infrastructure.IntegrationTests.dll": {}
         }
       },
+      "Amazon.Core/0.30.0": {
+        "runtime": {
+          "lib/net7.0/Amazon.Core.dll": {
+            "assemblyVersion": "0.30.0.0",
+            "fileVersion": "0.30.0.0"
+          }
+        },
+        "compile": {
+          "lib/net7.0/Amazon.Core.dll": {}
+        }
+      },
+      "Amazon.S3/0.31.0": {
+        "dependencies": {
+          "Amazon.Core": "0.30.0",
+          "Carbon.Storage": "3.14.0"
+        },
+        "runtime": {
+          "lib/net7.0/Amazon.S3.dll": {
+            "assemblyVersion": "0.31.0.0",
+            "fileVersion": "0.31.0.0"
+          }
+        },
+        "compile": {
+          "lib/net7.0/Amazon.S3.dll": {}
+        }
+      },
       "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Diagnostics.HealthChecks": "7.0.9",
@@ -626,6 +651,17 @@
           "lib/net6.0/Azure.Storage.Common.dll": {}
         }
       },
+      "Carbon.Storage/3.14.0": {
+        "runtime": {
+          "lib/net7.0/Carbon.Storage.dll": {
+            "assemblyVersion": "3.14.0.0",
+            "fileVersion": "3.14.0.0"
+          }
+        },
+        "compile": {
+          "lib/net7.0/Carbon.Storage.dll": {}
+        }
+      },
       "Castle.Core/5.1.1": {
         "dependencies": {
           "System.Diagnostics.EventLog": "7.0.0"
@@ -749,11 +785,11 @@
           "lib/netstandard1.1/Fare.dll": {}
         }
       },
-      "FluentValidation/11.6.0": {
+      "FluentValidation/11.7.1": {
         "runtime": {
           "lib/net7.0/FluentValidation.dll": {
             "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.6.0.0"
+            "fileVersion": "11.7.1.0"
           }
         },
         "compile": {
@@ -762,7 +798,7 @@
       },
       "FluentValidation.DependencyInjectionExtensions/11.6.0": {
         "dependencies": {
-          "FluentValidation": "11.6.0",
+          "FluentValidation": "11.7.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
         },
         "runtime": {
@@ -3733,7 +3769,7 @@
           "Microsoft.Extensions.Logging": "7.0.0",
           "NJsonSchema": "10.9.0",
           "Newtonsoft.Json": "13.0.3",
-          "Polly": "7.2.3"
+          "Polly": "7.2.4"
         },
         "runtime": {
           "lib/net6.0/Paramore.Brighter.dll": {
@@ -3745,11 +3781,11 @@
           "lib/net6.0/Paramore.Brighter.dll": {}
         }
       },
-      "Polly/7.2.3": {
+      "Polly/7.2.4": {
         "runtime": {
           "lib/netstandard2.0/Polly.dll": {
             "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.2.3.0"
+            "fileVersion": "7.2.4.982"
           }
         },
         "compile": {
@@ -5183,7 +5219,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "Testcontainers/3.3.0": {
+      "Testcontainers/3.4.0": {
         "dependencies": {
           "Docker.DotNet": "3.125.15",
           "Docker.DotNet.X509": "3.125.15",
@@ -5196,26 +5232,12 @@
         },
         "runtime": {
           "lib/netstandard2.1/Testcontainers.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.0.0"
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.0.0"
           }
         },
         "compile": {
           "lib/netstandard2.1/Testcontainers.dll": {}
-        }
-      },
-      "Testcontainers.Elasticsearch/3.3.0": {
-        "dependencies": {
-          "Testcontainers": "3.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.1/Testcontainers.Elasticsearch.dll": {
-            "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.3.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.1/Testcontainers.Elasticsearch.dll": {}
         }
       },
       "xunit/2.5.0": {
@@ -5330,7 +5352,7 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "FluentValidation": "11.6.0",
+          "FluentValidation": "11.7.1",
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -5338,6 +5360,7 @@
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Hosting": "7.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Polly": "7.2.4",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "7.0.3",
           "TechMastery.MarketPlace.Domain": "1.0.0"
@@ -5415,6 +5438,7 @@
           "MassTransit.AmazonSQS": "8.0.16",
           "MassTransit.Azure.ServiceBus.Core": "8.0.16",
           "MassTransit.RabbitMQ": "8.0.16",
+          "Polly": "7.2.4",
           "Serilog": "3.0.1",
           "Serilog.Extensions.Logging": "7.0.0",
           "Serilog.Sinks.Console": "4.1.0",
@@ -5446,6 +5470,23 @@
         },
         "compile": {
           "TechMastery.MarketPlace.Persistence.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Tests.Emulators/1.0.0": {
+        "dependencies": {
+          "Amazon.S3": "0.31.0",
+          "NEST": "7.17.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "RabbitMQ.Client": "6.5.0",
+          "TechMastery.MarketPlace.Persistence": "1.0.0",
+          "Testcontainers": "3.4.0",
+          "xunit": "2.5.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Tests.Emulators.dll": {}
+        },
+        "compile": {
+          "TechMastery.MarketPlace.Tests.Emulators.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/7.0.0.0": {
@@ -7232,6 +7273,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Amazon.Core/0.30.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TypWD+37/Vv5mi5Z3GeGSGPHPw1Z6QUDiqvFrvehUKMPl7B7L0SzAqtYHVYOTYXO493mnx4nIW/By5FIhhFoLA==",
+      "path": "amazon.core/0.30.0",
+      "hashPath": "amazon.core.0.30.0.nupkg.sha512"
+    },
+    "Amazon.S3/0.31.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zbTJiLIL2rNLXmlMrkOd+ITu6GzFWt0rEPHRGDbCuTvznLkefXqgyS9ols0uCyl5Snp6xWn40SeAC0ttbYIkrg==",
+      "path": "amazon.s3/0.31.0",
+      "hashPath": "amazon.s3.0.31.0.nupkg.sha512"
+    },
     "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -7351,6 +7406,13 @@
       "path": "azure.storage.common/12.16.0",
       "hashPath": "azure.storage.common.12.16.0.nupkg.sha512"
     },
+    "Carbon.Storage/3.14.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k3jTYE/uPLUy0BFA3sCtRJUN/rA/DuGt2dy6E3R5KQRS84KDVboZJqmUY/EkvoGkS/h2c6KsVzv9VRA5GEEGyw==",
+      "path": "carbon.storage/3.14.0",
+      "hashPath": "carbon.storage.3.14.0.nupkg.sha512"
+    },
     "Castle.Core/5.1.1": {
       "type": "package",
       "serviceable": true,
@@ -7421,12 +7483,12 @@
       "path": "fare/2.1.1",
       "hashPath": "fare.2.1.1.nupkg.sha512"
     },
-    "FluentValidation/11.6.0": {
+    "FluentValidation/11.7.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DWKd0jHA33d7BXVWytSoN5Oafj9nYuiLUyyFoaUboOZZiaN5tlXdcJpkRbmrrWBUTWdSxjTwIoyUs38KSU/7OQ==",
-      "path": "fluentvalidation/11.6.0",
-      "hashPath": "fluentvalidation.11.6.0.nupkg.sha512"
+      "sha512": "sha512-w9Al4gls6iVGFbTd/NPOPlwzqDTghH+ntL4c4FYUatc+LeybpIwhYArLykZJP/VjF2n3ihj3ws+1yd7KR5lQlg==",
+      "path": "fluentvalidation/11.7.1",
+      "hashPath": "fluentvalidation.11.7.1.nupkg.sha512"
     },
     "FluentValidation.DependencyInjectionExtensions/11.6.0": {
       "type": "package",
@@ -8877,12 +8939,12 @@
       "path": "paramore.brighter/9.5.10",
       "hashPath": "paramore.brighter.9.5.10.nupkg.sha512"
     },
-    "Polly/7.2.3": {
+    "Polly/7.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ==",
-      "path": "polly/7.2.3",
-      "hashPath": "polly.7.2.3.nupkg.sha512"
+      "sha512": "sha512-bw00Ck5sh6ekduDE3mnCo1ohzuad946uslCDEENu3091+6UKnBuKLo4e+yaNcCzXxOZCXWY2gV4a35+K1d4LDA==",
+      "path": "polly/7.2.4",
+      "hashPath": "polly.7.2.4.nupkg.sha512"
     },
     "Portable.BouncyCastle/1.9.0": {
       "type": "package",
@@ -9850,19 +9912,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "Testcontainers/3.3.0": {
+    "Testcontainers/3.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PNl479gZH7U54sGzQKM9MhAt8eos678gsNOlu/MMc0qecTAYBGronT0GGsBwaJtrsMGqD5bQr6ylcmRI+HwAtw==",
-      "path": "testcontainers/3.3.0",
-      "hashPath": "testcontainers.3.3.0.nupkg.sha512"
-    },
-    "Testcontainers.Elasticsearch/3.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-jrMXnv79At9Cb0lHWNxE/k5wwFpiSWX9VrQhcKLWPq9MENss9VlbofGah5/LpQGq6CTbqWnH0p1ZMbDIoaNaBw==",
-      "path": "testcontainers.elasticsearch/3.3.0",
-      "hashPath": "testcontainers.elasticsearch.3.3.0.nupkg.sha512"
+      "sha512": "sha512-zAQOLMxrxlfD8zYiLOgbZmXqGSr2h/ng+IRBfmFe/027sEZSaiS4Oo1W5wv+xtDLSlGyRORkkT1TSSudyFJ5hg==",
+      "path": "testcontainers/3.4.0",
+      "hashPath": "testcontainers.3.4.0.nupkg.sha512"
     },
     "xunit/2.5.0": {
       "type": "package",
@@ -9958,6 +10013,11 @@
       "sha512": ""
     },
     "TechMastery.MarketPlace.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Tests.Emulators/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

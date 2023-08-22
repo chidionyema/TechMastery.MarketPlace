@@ -2,6 +2,28 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "Amazon.Core/0.30.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Amazon.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Amazon.Core.dll": {}
+        }
+      },
+      "Amazon.S3/0.31.0": {
+        "type": "package",
+        "dependencies": {
+          "Amazon.Core": "0.30.0",
+          "Carbon.Storage": "3.14.0"
+        },
+        "compile": {
+          "lib/net7.0/Amazon.S3.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Amazon.S3.dll": {}
+        }
+      },
       "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -298,6 +320,15 @@
           }
         }
       },
+      "Carbon.Storage/3.14.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Carbon.Storage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Carbon.Storage.dll": {}
+        }
+      },
       "Castle.Core/5.1.1": {
         "type": "package",
         "dependencies": {
@@ -447,7 +478,7 @@
           }
         }
       },
-      "FluentValidation/11.6.0": {
+      "FluentValidation/11.7.1": {
         "type": "package",
         "compile": {
           "lib/net7.0/FluentValidation.dll": {
@@ -4354,7 +4385,7 @@
           "lib/net6.0/Paramore.Brighter.dll": {}
         }
       },
-      "Polly/7.2.3": {
+      "Polly/7.2.4": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Polly.dll": {
@@ -6816,17 +6847,17 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Testcontainers/3.3.0": {
+      "Testcontainers/3.4.0": {
         "type": "package",
         "dependencies": {
           "Docker.DotNet": "3.125.15",
           "Docker.DotNet.X509": "3.125.15",
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.3",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.4",
           "Portable.BouncyCastle": "1.9.0",
           "SSH.NET": "2020.0.2",
           "SharpZipLib": "1.4.2",
-          "System.Text.Json": "6.0.7"
+          "System.Text.Json": "6.0.8"
         },
         "compile": {
           "lib/netstandard2.1/Testcontainers.dll": {
@@ -6835,22 +6866,6 @@
         },
         "runtime": {
           "lib/netstandard2.1/Testcontainers.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Testcontainers.Elasticsearch/3.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Testcontainers": "3.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/Testcontainers.Elasticsearch.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/Testcontainers.Elasticsearch.dll": {
             "related": ".xml"
           }
         }
@@ -7007,7 +7022,7 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
-          "FluentValidation": "11.6.0",
+          "FluentValidation": "11.7.1",
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -7015,6 +7030,7 @@
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Hosting": "7.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Polly": "7.2.4",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "7.0.3",
           "TechMastery.MarketPlace.Domain": "1.0.0"
@@ -7100,6 +7116,7 @@
           "MassTransit.AmazonSQS": "8.0.16",
           "MassTransit.Azure.ServiceBus.Core": "8.0.16",
           "MassTransit.RabbitMQ": "8.0.16",
+          "Polly": "7.2.4",
           "Serilog": "3.0.1",
           "Serilog.Extensions.Logging": "7.0.0",
           "Serilog.Sinks.Console": "4.1.0",
@@ -7134,10 +7151,53 @@
         "runtime": {
           "bin/placeholder/TechMastery.MarketPlace.Persistence.dll": {}
         }
+      },
+      "TechMastery.MarketPlace.Tests.Emulators/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Amazon.S3": "0.31.0",
+          "NEST": "7.17.5",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.4",
+          "RabbitMQ.Client": "6.5.0",
+          "TechMastery.MarketPlace.Persistence": "1.0.0",
+          "Testcontainers": "3.4.0",
+          "xunit": "2.5.0"
+        },
+        "compile": {
+          "bin/placeholder/TechMastery.MarketPlace.Tests.Emulators.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TechMastery.MarketPlace.Tests.Emulators.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Amazon.Core/0.30.0": {
+      "sha512": "TypWD+37/Vv5mi5Z3GeGSGPHPw1Z6QUDiqvFrvehUKMPl7B7L0SzAqtYHVYOTYXO493mnx4nIW/By5FIhhFoLA==",
+      "type": "package",
+      "path": "amazon.core/0.30.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "amazon.core.0.30.0.nupkg.sha512",
+        "amazon.core.nuspec",
+        "lib/net7.0/Amazon.Core.dll"
+      ]
+    },
+    "Amazon.S3/0.31.0": {
+      "sha512": "zbTJiLIL2rNLXmlMrkOd+ITu6GzFWt0rEPHRGDbCuTvznLkefXqgyS9ols0uCyl5Snp6xWn40SeAC0ttbYIkrg==",
+      "type": "package",
+      "path": "amazon.s3/0.31.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "amazon.s3.0.31.0.nupkg.sha512",
+        "amazon.s3.nuspec",
+        "lib/net7.0/Amazon.S3.dll"
+      ]
+    },
     "AspNetCore.HealthChecks.Elasticsearch/7.0.0": {
       "sha512": "dA/fNzwHm/VyGwGCait0SwXNhcq3f8y+lSGqxIhIFDBP0yvfecByWJ9oWe5d6o3Kdsi2G9W2zWKNZIF3JLhGXA==",
       "type": "package",
@@ -7464,6 +7524,18 @@
         "lib/netstandard2.0/Azure.Storage.Common.xml"
       ]
     },
+    "Carbon.Storage/3.14.0": {
+      "sha512": "k3jTYE/uPLUy0BFA3sCtRJUN/rA/DuGt2dy6E3R5KQRS84KDVboZJqmUY/EkvoGkS/h2c6KsVzv9VRA5GEEGyw==",
+      "type": "package",
+      "path": "carbon.storage/3.14.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "carbon.storage.3.14.0.nupkg.sha512",
+        "carbon.storage.nuspec",
+        "lib/net7.0/Carbon.Storage.dll"
+      ]
+    },
     "Castle.Core/5.1.1": {
       "sha512": "rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
       "type": "package",
@@ -7770,16 +7842,16 @@
         "lib/netstandard1.1/Fare.xml"
       ]
     },
-    "FluentValidation/11.6.0": {
-      "sha512": "DWKd0jHA33d7BXVWytSoN5Oafj9nYuiLUyyFoaUboOZZiaN5tlXdcJpkRbmrrWBUTWdSxjTwIoyUs38KSU/7OQ==",
+    "FluentValidation/11.7.1": {
+      "sha512": "w9Al4gls6iVGFbTd/NPOPlwzqDTghH+ntL4c4FYUatc+LeybpIwhYArLykZJP/VjF2n3ihj3ws+1yd7KR5lQlg==",
       "type": "package",
-      "path": "fluentvalidation/11.6.0",
+      "path": "fluentvalidation/11.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.11.6.0.nupkg.sha512",
+        "fluentvalidation.11.7.1.nupkg.sha512",
         "fluentvalidation.nuspec",
         "lib/net5.0/FluentValidation.dll",
         "lib/net5.0/FluentValidation.xml",
@@ -13053,14 +13125,14 @@
         "paramore.brighter.nuspec"
       ]
     },
-    "Polly/7.2.3": {
-      "sha512": "DeCY0OFbNdNxsjntr1gTXHJ5pKUwYzp04Er2LLeN3g6pWhffsGuKVfMBLe1lw7x76HrPkLxKEFxBlpRxS2nDEQ==",
+    "Polly/7.2.4": {
+      "sha512": "bw00Ck5sh6ekduDE3mnCo1ohzuad946uslCDEENu3091+6UKnBuKLo4e+yaNcCzXxOZCXWY2gV4a35+K1d4LDA==",
       "type": "package",
-      "path": "polly/7.2.3",
+      "path": "polly/7.2.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Polly.png",
+        "README.md",
         "lib/net461/Polly.dll",
         "lib/net461/Polly.pdb",
         "lib/net461/Polly.xml",
@@ -13073,7 +13145,8 @@
         "lib/netstandard2.0/Polly.dll",
         "lib/netstandard2.0/Polly.pdb",
         "lib/netstandard2.0/Polly.xml",
-        "polly.7.2.3.nupkg.sha512",
+        "package-icon.png",
+        "polly.7.2.4.nupkg.sha512",
         "polly.nuspec"
       ]
     },
@@ -18330,10 +18403,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Testcontainers/3.3.0": {
-      "sha512": "PNl479gZH7U54sGzQKM9MhAt8eos678gsNOlu/MMc0qecTAYBGronT0GGsBwaJtrsMGqD5bQr6ylcmRI+HwAtw==",
+    "Testcontainers/3.4.0": {
+      "sha512": "zAQOLMxrxlfD8zYiLOgbZmXqGSr2h/ng+IRBfmFe/027sEZSaiS4Oo1W5wv+xtDLSlGyRORkkT1TSSudyFJ5hg==",
       "type": "package",
-      "path": "testcontainers/3.3.0",
+      "path": "testcontainers/3.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -18345,27 +18418,8 @@
         "lib/netstandard2.0/Testcontainers.xml",
         "lib/netstandard2.1/Testcontainers.dll",
         "lib/netstandard2.1/Testcontainers.xml",
-        "testcontainers.3.3.0.nupkg.sha512",
+        "testcontainers.3.4.0.nupkg.sha512",
         "testcontainers.nuspec"
-      ]
-    },
-    "Testcontainers.Elasticsearch/3.3.0": {
-      "sha512": "jrMXnv79At9Cb0lHWNxE/k5wwFpiSWX9VrQhcKLWPq9MENss9VlbofGah5/LpQGq6CTbqWnH0p1ZMbDIoaNaBw==",
-      "type": "package",
-      "path": "testcontainers.elasticsearch/3.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "README.md",
-        "docs/banner.png",
-        "docs/logo.png",
-        "lib/netstandard2.0/Testcontainers.Elasticsearch.dll",
-        "lib/netstandard2.0/Testcontainers.Elasticsearch.xml",
-        "lib/netstandard2.1/Testcontainers.Elasticsearch.dll",
-        "lib/netstandard2.1/Testcontainers.Elasticsearch.xml",
-        "testcontainers.elasticsearch.3.3.0.nupkg.sha512",
-        "testcontainers.elasticsearch.nuspec"
       ]
     },
     "xunit/2.5.0": {
@@ -18572,6 +18626,11 @@
       "type": "project",
       "path": "../../src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
       "msbuildProject": "../../src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj"
+    },
+    "TechMastery.MarketPlace.Tests.Emulators/1.0.0": {
+      "type": "project",
+      "path": "../TechMastery.MarketPlace.Emulators/TechMastery.MarketPlace.Tests.Emulators.csproj",
+      "msbuildProject": "../TechMastery.MarketPlace.Emulators/TechMastery.MarketPlace.Tests.Emulators.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -18588,8 +18647,7 @@
       "Shouldly >= 4.2.1",
       "TechMastery.MarketPlace.Api >= 1.0.0",
       "TechMastery.MarketPlace.Application >= 1.0.0",
-      "Testcontainers >= 3.3.0",
-      "Testcontainers.Elasticsearch >= 3.3.0",
+      "TechMastery.MarketPlace.Tests.Emulators >= 1.0.0",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.5.0",
       "xunit.runner.visualstudio >= 2.5.0"
@@ -18625,6 +18683,9 @@
             },
             "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
               "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+            },
+            "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Emulators/TechMastery.MarketPlace.Tests.Emulators.csproj": {
+              "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Emulators/TechMastery.MarketPlace.Tests.Emulators.csproj"
             }
           }
         }
@@ -18680,14 +18741,6 @@
           "Shouldly": {
             "target": "Package",
             "version": "[4.2.1, )"
-          },
-          "Testcontainers": {
-            "target": "Package",
-            "version": "[3.3.0, )"
-          },
-          "Testcontainers.Elasticsearch": {
-            "target": "Package",
-            "version": "[3.3.0, )"
           },
           "coverlet.collector": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
