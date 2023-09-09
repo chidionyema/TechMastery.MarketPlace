@@ -1,0 +1,26 @@
+# modules/key_vault/main.tf
+resource "azurerm_key_vault" "keyvault" {
+  name                = "your-key-vault-name"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  sku_name            = "standard"
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = module.aks_cluster.aks_managed_identity_object_id
+
+    secret_permissions = [
+      "get",
+    ]
+  }
+
+  tags = {
+    environment = "production"
+  }
+}
+
+output "key_vault_id" {
+  value = azurerm_key_vault.keyvault.id
+}

@@ -1,0 +1,9 @@
+{
+  "TechMastery.MarketPlace.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Api",
+  "TechMastery.MarketPlace.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Application",
+  "TechMastery.Marketplace.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Domain",
+  "TechMastery.MarketPlace.Identity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Identity",
+  "TechMastery.MarketPlace.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Infrastructure",
+  "TechMastery.MarketPlace.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Persistence",
+  "TechMastery.MarketPlace.Persistence.IntegrationTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/asp-dot-net-core-6-clean-architecture\/09\/demos\/Demos\/GloboTicket.TicketManagement.Persistence.IntegrationTests"
+}

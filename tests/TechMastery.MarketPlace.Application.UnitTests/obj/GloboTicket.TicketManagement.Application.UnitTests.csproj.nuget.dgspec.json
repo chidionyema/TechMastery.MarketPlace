@@ -1,0 +1,107 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application.UnitTests/GloboTicket.TicketManagement.Application.UnitTests.csproj": {}
+  },
+  "projects": {
+    "/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application.UnitTests/GloboTicket.TicketManagement.Application.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application.UnitTests/GloboTicket.TicketManagement.Application.UnitTests.csproj",
+        "projectName": "GloboTicket.TicketManagement.Application.UnitTests",
+        "projectPath": "/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application.UnitTests/GloboTicket.TicketManagement.Application.UnitTests.csproj",
+        "packagesPath": "/Users/chidionyema/.nuget/packages/",
+        "outputPath": "/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application.UnitTests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.3, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "Shouldly": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

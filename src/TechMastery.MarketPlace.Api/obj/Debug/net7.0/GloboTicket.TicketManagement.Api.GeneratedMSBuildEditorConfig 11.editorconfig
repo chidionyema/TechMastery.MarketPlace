@@ -1,0 +1,17 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GloboTicket.TicketManagement.Api
+build_property.RootNamespace = GloboTicket.TicketManagement.Api
+build_property.ProjectDir = /Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Api/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Api
+build_property._RazorSourceGeneratorDebug = 

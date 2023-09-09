@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+		<PackageReference Include="FluentValidation" Version="11.7.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+		<!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />-->
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+		<PackageReference Include="System.Security.Claims" Version="4.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+		<PackageReference Include="Polly" Version="7.2.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Features\ProductListing\" />
+	  <None Remove="Features\ProductListing\Commands\" />
+	  <None Remove="Features\ProductListing\Queries\" />
+	  <None Remove="Microsoft.AspNetCore.Http" />
+	  <None Remove="Services\" />
+	  <None Remove="Azure.Storage.Blobs" />
+	  <None Remove="Microsoft.Extensions.Configuration" />
+	  <None Remove="System.Security.Claims" />
+	  <None Remove="Features\ProductListing\Queries\GetBestSelling\GetBestSelling\" />
+	  <None Remove="Features\ProductListing\Queries\GetLatest\" />
+	  <None Remove="Features\ProductListing\Queries\GetLatest %28copy%29\" />
+	  <None Remove="Features\ProductListing\Queries\GetByCategory %28copy%29\" />
+	  <None Remove="Features\ProductListing\ViewModels\" />
+	  <None Remove="Models\Search\" />
+	  <None Remove="Features\Checkout\" />
+	  <None Remove="Models\Payment\" />
+	  <None Remove="Models\Payment\Stripe\" />
+	  <None Remove="Features\Checkout\Commands\" />
+	  <None Remove="Features\ProductListing\Dto\" />
+	  <None Remove="Features\Checkout\Dto\" />
+	  <None Remove="Features\Checkout\Queries\" />
+	  <None Remove="Features\Checkout\ViewModel\" />
+	  <None Remove="Features\ProductListing\Queries\GetByCategory\" />
+	  <None Remove="BackgroundServices\" />
+	  <None Remove="Options\" />
+	  <None Remove="Contracts\Messaging\" />
+	  <None Remove="Features\Catgegory\" />
+	  <None Remove="Features\Order\" />
+	  <None Remove="Features\Catgegory\Queries\" />
+	  <None Remove="Features\Catgegory\ViewModel\" />
+	  <None Remove="Validators\" />
+	  <None Remove="Messages\Payment\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	  <Folder Include="Features\ProductListing\" />
+	  <Folder Include="Features\ProductListing\Commands\" />
+	  <Folder Include="Features\ProductListing\Queries\" />
+	  <Folder Include="Features\ProductListing\Queries\GetLatest\" />
+	  <Folder Include="Features\ProductListing\ViewModels\" />
+	  <Folder Include="Models\Search\" />
+	  <Folder Include="Features\Checkout\" />
+	  <Folder Include="Models\Payment\" />
+	  <Folder Include="Models\Payment\Stripe\" />
+	  <Folder Include="Features\Checkout\Commands\" />
+	  <Folder Include="Features\ProductListing\Dto\" />
+	  <Folder Include="Features\Checkout\Dto\" />
+	  <Folder Include="Features\Checkout\Queries\" />
+	  <Folder Include="Features\Checkout\ViewModel\" />
+	  <Folder Include="Features\ProductListing\Queries\GetByCategory\" />
+	  <Folder Include="BackgroundServices\" />
+	  <Folder Include="Options\" />
+	  <Folder Include="Contracts\Messaging\" />
+	  <Folder Include="Features\Catgegory\" />
+	  <Folder Include="Features\Order\" />
+	  <Folder Include="Features\Catgegory\Queries\" />
+	  <Folder Include="Features\Catgegory\ViewModel\" />
+	  <Folder Include="Validators\" />
+	  <Folder Include="Messages\Payment\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj" />
+	</ItemGroup>
+</Project>

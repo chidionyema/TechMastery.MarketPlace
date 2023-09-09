@@ -1,0 +1,18 @@
+output "resource_group_name" {
+  value = var.resource_group_name
+}
+
+# Define output values for each module
+output "network_outputs" {
+  value = module.network.output_values
+}
+
+output "app_services_outputs" {
+  value = module.app_services.output_values
+}
+
+output "database_outputs" {
+  value = module.database.output_values
+}
+
+# Other output values...

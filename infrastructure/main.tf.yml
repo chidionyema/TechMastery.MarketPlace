@@ -1,0 +1,55 @@
+terraform {
+  required_version = ">= 0.13"
+}
+
+provider "azurerm" {
+  features {}
+}
+
+# Load environment-specific variables
+locals {
+  env_vars = {
+    dev        = "dev.tfvars"
+    staging    = "staging.tfvars"
+    production = "production.tfvars"
+  }
+}
+
+locals {
+  current_env = terraform.workspace
+  env_file    = local.env_vars[local.current_env]
+}
+
+# Load environment-specific variables from the selected .tfvars file
+variable "resource_group_name" {}
+variable "location" {}
+variable "aks_cluster_name" {}
+
+locals {
+  env_vars = yamldecode(file(local.env_file))
+
+  resource_group_name = local.env_vars.resource_group_name
+  location            = local.env_vars.location
+  aks_cluster_name    = local.env_vars.aks_cluster_name
+}
+
+# Modules
+module "aks" {
+  source            = "./modules/aks"
+  resource_group_name = local.resource_group_name
+  location           = local.location
+  aks_cluster_name   = local.aks_cluster_name
+}
+
+module "key_vault" {
+  source              = "./modules/key_vault"
+  resource_group_name = local.resource_group_name
+  location            = local.location
+}
+
+module "blob_storage" {
+  source                = "./modules/blob_storage"
+  resource_group_name   = local.resource_group_name
+  location              = local.location
+  storage_account_name = "${local.aks_cluster_name}storage"
+}

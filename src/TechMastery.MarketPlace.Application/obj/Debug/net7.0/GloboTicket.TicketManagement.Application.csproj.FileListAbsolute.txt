@@ -1,0 +1,15 @@
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/bin/Debug/net7.0/GloboTicket.TicketManagement.Application.deps.json
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/bin/Debug/net7.0/GloboTicket.TicketManagement.Application.dll
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/bin/Debug/net7.0/GloboTicket.TicketManagement.Application.pdb
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/bin/Debug/net7.0/GloboTicket.TicketManagement.Domain.dll
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/bin/Debug/net7.0/GloboTicket.TicketManagement.Domain.pdb
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.AssemblyInfo.cs
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.csproj.CopyComplete
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.dll
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/refint/GloboTicket.TicketManagement.Application.dll
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/GloboTicket.TicketManagement.Application.pdb
+/Users/chidionyema/Documents/asp-dot-net-core-6-clean-architecture/09/demos/Demos/GloboTicket.TicketManagement.Application/obj/Debug/net7.0/ref/GloboTicket.TicketManagement.Application.dll

@@ -1,0 +1,66 @@
+name: Deploy to AKS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build, Test, and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0' # Update to the desired .NET Core version
+
+      - name: Build and Test .NET Core app
+        run: dotnet build --configuration Release
+        # Add additional steps for running tests if applicable
+
+      - name: Publish .NET Core app
+        run: dotnet publish -c Release -o ./publish
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and Push Docker image
+        run: |
+          docker buildx create --use
+          docker buildx build --platform linux/amd64 -t your-aks-app-image:latest .
+          docker buildx imagetools inspect your-aks-app-image:latest
+
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push your-aks-app-image:latest
+
+  deploy:
+    name: Deploy to AKS
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up AKS credentials
+        uses: azure/aks-set-context@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          cluster-name: YourAKSClusterName
+          resource-group: YourResourceGroupName
+
+      - name: Deploy to AKS
+        run: kubectl apply -f ./kubernetes-deployment.yaml
+
+  monitor:
+    name: Monitor Deployment
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for Deployment to be Ready
+        run: kubectl rollout status deployment/your-deployment-name -n your-namespace-name
+
+      # Add additional steps for monitoring and verification (e.g., smoke tests, health checks)

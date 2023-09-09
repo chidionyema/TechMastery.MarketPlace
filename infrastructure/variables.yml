@@ -1,0 +1,18 @@
+variable "resource_group_name" {
+  description = "Name of the resource group."
+}
+
+# Define input variables for each module
+variable "network_inputs" {
+  description = "Input variables for the network module."
+}
+
+variable "app_services_inputs" {
+  description = "Input variables for the app_services module."
+}
+
+variable "database_inputs" {
+  description = "Input variables for the database module."
+}
+
+# Other input variables...

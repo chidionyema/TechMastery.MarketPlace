@@ -1,0 +1,17 @@
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Infrastructure.deps.json
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Infrastructure.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Infrastructure.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Application.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Application.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/bin/Release/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.csproj.CopyComplete
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/refint/TechMastery.MarketPlace.Infrastructure.dll
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/TechMastery.MarketPlace.Infrastructure.pdb
+/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/Release/net7.0/ref/TechMastery.MarketPlace.Infrastructure.dll

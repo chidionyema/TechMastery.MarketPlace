@@ -1,0 +1,196 @@
+﻿<Properties StartupConfiguration="{9C8709A2-1088-4D60-8853-9BA7E589311B}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.src.API.TechMastery.MarketPlace.Api PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Search/ProductSearchServiceTests.cs" relfile="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Search/ProductSearchServiceTests.cs" line="16" column="1" />
+      <Breakpoint file="/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/BlobEmulatorFixture.cs" relfile="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/BlobEmulatorFixture.cs" line="27" column="1" />
+      <Breakpoint file="/Users/chidionyema/Documents/code/TechWarehouse/tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/BlobEmulatorFixture.cs" relfile="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/BlobEmulatorFixture.cs" line="12" column="1" />
+      <Breakpoint file="/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/StartupExtensions.cs" relfile="src/TechMastery.MarketPlace.Api/StartupExtensions.cs" line="83" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>src/TechMastery.Messaging/TechMastery.Messaging.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.Workbench ActiveDocument="tests/TechMastery.MarketPlace.Emulators/ElasticSearchFixture.cs">
+    <Files>
+      <File FileName="src/TechMastery.MarketPlace.Identity/Services/AuthenticationService.cs" Line="215" Column="14" IsPinned="True" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/MessagePublisher.cs" Line="15" Column="55" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Base/DockerContainerManager.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Repository/ProductRepositoryTests.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Base/TestContainerManager.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/DockerSqlDatabaseUtilities.cs" Line="6" Column="26" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/BlobStorageServiceTests.cs" Line="21" Column="11" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Payment/StripePaymentServiceTests.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Search/ProductSearchServiceTests.cs" Line="18" Column="10" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Blob/AzureBlobStorageProvider.cs" Line="20" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/appsettings.test.json" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Search/ProductSearchService.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Search/SearchRequest.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Commands/Create/AddListingCommandHandler.cs" Line="77" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Features/ProductListing/Commands/Create/AddProductHandlerTests.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Product.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductDependency.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Search/ProductSearch.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/ApplicationServiceRegistration.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/InfrastructureServiceRegistration.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Usings.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Payments/StripePaymentService.cs" Line="59" Column="9" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Mail/EmailService.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Api/StartupExtensions.cs" Line="82" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/PersistenceServiceRegistration.cs" Line="20" Column="31" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/ApplicationDbContext.cs" Line="42" Column="62" />
+      <File FileName="src/TechMastery.MarketPlace.Api/appsettings.json" Line="21" Column="35" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Program.cs" Line="42" Column="10" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/ProductController.cs" Line="61" Column="10" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Blob/AwsS3StorageProvider.cs" Line="19" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Checkout/Commands/AddUpdateCartHandler.cs" Line="13" Column="29" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Orders/Commands/CreateOrderHandler.cs" Line="89" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Features/Checkout/Commands/AddItemToCartHandlerTests.cs" Line="6" Column="64" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Options/AzureBlobStorageOptions.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Features/Orders/Commands/CreateOrderHandlerTests.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Fakes/FakeMessagePublisher.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Base/ApplicationTestFixture.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/OptionsWrapper.cs" Line="6" Column="20" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/DatabaseContextHealthCheck.cs" Line="18" Column="14" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/MessagingServiceRegistration.cs" Line="136" Column="75" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/IdentityDbContextFactory.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/IdentityServiceExtensions.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/IdentityDbContextHealthCheck.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Options/StripeOptions.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Infrastructure/Options/StorageOptions.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/HealthChecks/RabbitMqHealthCheck.cs" Line="29" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/HealthChecks/AmazonSqsHealthCheck.cs" Line="11" Column="6" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/ApplicationDbContextFactory.cs" Line="29" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/BusControlConfigurator.cs" Line="47" Column="64" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Authentication/AuthenticationResponse.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Consumers/OrderPlacedConsumer.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Consumers/ProductAddedConsumer.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/IdentityDbContext.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Identity/IAuthenticationService.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Authentication/RegistrationRequest.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Models/ApplicationUser.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Authentication/ApplicationUser.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Services/GooglePayload.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Services/FacebookPayload.cs" />
+      <File FileName="../../../.nuget/packages/facebook/7.0.6/readme.txt" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Authentication/JwtSettings.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Identity/ISocialAuthenticator.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Services/GoogleAuthenticator.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Services/FacebookAuthenticator.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Dto/CategoryDto.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Dto/ProductAssetDto.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Dto/ProductArtifactTypeDto.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/BlobController.cs" Line="20" Column="20" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/OrderController.cs" Line="65" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Fakes/FakeBlobStorageService.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Infrastructure/IStorageProvider.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Orders/Commands/ProcessOrderHandler.cs" Line="88" Column="53" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/CategoryController.cs" Line="18" Column="52" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Queries/GetByCategory/GetProductsByCategoryQueryHandler.cs" Line="11" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductArtifactType.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/CategoryDependency.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Dto/ProductDependencyDto.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/CategoryDataSeeder.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Commands/Create/AddOrUpdateListing.cs" Line="18" Column="36" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Builders/AddOrUpdateListingCommandBuilder.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Category.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Dependency.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Contributor.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Contribution.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductDownloadHistory.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductOwner.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Review.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductVersionHistory.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ShoppingCart.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ShoppingCartStatus.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/ProductTag.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/CartItem.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Domain/Entities/Order.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Builders/CategoryBuilder.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.API.IntegrationTests/Repository/ProductListingRepositoryTests.cs" Line="30" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Options/MessagingSystemsOptions.cs" Line="13" Column="2" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Options/RabbitMqOptions.cs" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/HealthChecks/AzureServiceBusHealthCheck.cs" Line="24" Column="10" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Options/AzureServiceBusOptions.cs" />
+      <File FileName="tests/TechMastery.MarketPlace.Application.UnitTests/Builders/AddItemToCartCommandBuilder.cs" Line="15" Column="25" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/AccountController.cs" Line="32" Column="49" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Models/Authentication/RegistrationResponse.cs" />
+      <File FileName="../../../.microsoft/usersecrets/a192741b-9ea8-4519-b8d5-df2f83c8851d/secrets.json" Line="103" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Api/appsettings.Development.json" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/CartItemRepository.cs" Line="7" Column="51" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/CategoryRepository.cs" Line="25" Column="28" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/ProductRepository.cs" Line="15" Column="44" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/BaseRepository.cs" Line="91" Column="45" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/IAsyncRepository.cs" Line="19" Column="114" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/ICartItemRepository.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/IOrderRepository.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/IProductRepository.cs" Line="4" Column="50" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/QueryOptions.cs" Line="7" Column="44" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/IQueryOptions.cs" Line="12" Column="8" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Queries/GetLatest/GetLatestProductsQueryHandler.cs" Line="27" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Queries/GetBestSelling/GetBestSellingProductsQueryHandler.cs" Line="11" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/ProductListing/Queries/GetBySubCategory/GetProductsBySubCategoryQueryHandler.cs" Line="13" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/BackgroundServices/BlobFolderStructureService.cs" Line="28" Column="14" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/ICategoryRepository.cs" Line="6" Column="54" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/OrderRepository.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Orders/Queries/GetByCartId/GetByCartIdHandler.cs" Line="63" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Orders/Queries/GetByOrderId/GetByOrderIdHandler.cs" Line="43" Column="42" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/ShoppingCartController.cs" Line="54" Column="14" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Checkout/Commands/DeleteCartItemHandler.cs" Line="32" Column="81" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Checkout/Commands/UpdateCartItemHandler.cs" Line="11" Column="6" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Checkout/Queries/GetShoppingCartQuery.cs" Line="46" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Middleware/MiddlewareExtensions.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Middleware/ExceptionHandlerMiddleware.cs" Line="19" Column="10" />
+      <File FileName="src/TechMastery.MarketPlace.Persistence/Repositories/ShoppingCartRepository.cs" Line="23" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Messaging/MessagePublisherIntegrationTests.cs" Line="19" Column="70" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Contracts/Persistence/IShoppingCartRepository.cs" Line="8" Column="33" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Catgegory/ViewModel/CategoryListVm.cs" Line="1" Column="1" />
+      <File FileName="src/TechMastery.MarketPlace.Api/Controllers/PaymentController.cs" Line="16" Column="11" />
+      <File FileName="src/TechMastery.MarketPlace.Application/Features/Checkout/Queries/GetShoppingCartByUserIdQuery.cs" Line="1" Column="15" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Blob/S3StorageProviderTests.cs" Line="27" Column="18" />
+      <File FileName="tests/TechMastery.MarketPlace.Infrastructure.IntegrationTests/Messaging/MessagePublisherSQSIntegrationTests.cs" Line="28" Column="31" />
+      <File FileName="src/TechMastery.MarketPlace.Messaging/Options/SqsOptions.cs" Line="6" Column="50" />
+      <File FileName="src/TechMastery.MarketPlace.Identity/Migrations/20230821121716_InitialCreate.cs" Line="93" Column="72" />
+      <File FileName="tests/TechMastery.MarketPlace.API.IntegrationTests/Base/ApiIntegrationTestFixture.cs" Line="5" Column="15" />
+      <File FileName="tests/TechMastery.MarketPlace.API.IntegrationTests/Base/CustomWebApplicationFactory.cs" Line="12" Column="14" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/BlobEmulatorFixture.cs" Line="1" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/DbEmulatorFixture.cs" Line="2" Column="37" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/DockerContainerManager.cs" Line="4" Column="50" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/DockerSqlDatabaseUtilities.cs" Line="8" Column="11" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/MockS3Fixture.cs" Line="1" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/MockSQSFixture.cs" Line="34" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/RabbitMQFixture.cs" Line="2" Column="23" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/StripeTestContext.cs" Line="2" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/TestContainerManager.cs" Line="1" Column="1" />
+      <File FileName="tests/TechMastery.MarketPlace.Emulators/ElasticSearchFixture.cs" Line="1" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TechMastery.MarketPlace" expanded="True">
+            <Node name="src" expanded="True">
+              <Node name="API" expanded="True" />
+              <Node name="Messaging" expanded="True" />
+            </Node>
+            <Node name="test" expanded="True">
+              <Node name="TechMastery.MarketPlace.API.IntegrationTests" expanded="True">
+                <Node name="Dependencies" expanded="True" />
+                <Node name="Base" expanded="True" />
+                <Node name="Repository" expanded="True" />
+              </Node>
+              <Node name="TechMastery.MarketPlace.Tests.Emulators" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="TechMastery.MarketPlace" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
