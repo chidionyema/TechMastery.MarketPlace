@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using TechMastery.Messaging.Consumers;
+using TechMastery.Messaging;
 
-namespace TechMastery.MarketPlace.Application.Contracts.Messaging
+namespace TechMastery.Messaging
 {
     public class BusControlConfigurator
     {
@@ -33,7 +33,7 @@ namespace TechMastery.MarketPlace.Application.Contracts.Messaging
 
         private IBusControl ConfigureAzureServiceBus()
         {
-            var connectionString = _messagingSystemsOptions.AzureServiceBus.ConnectionString;
+            var connectionString = _messagingSystemsOptions.AzureServiceBus?.ConnectionString;
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new InvalidOperationException("Azure Service Bus connection string is missing or invalid.");
 

@@ -27,7 +27,8 @@
           "Serilog": "3.0.1",
           "Serilog.Extensions.Logging": "7.0.0",
           "Stripe.net": "41.27.0",
-          "TechMastery.MarketPlace.Application": "1.0.0"
+          "TechMastery.MarketPlace.Application": "1.0.0",
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0"
         },
         "runtime": {
           "TechMastery.MarketPlace.Infrastructure.dll": {}
@@ -1663,6 +1664,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "FluentValidation": "11.7.1",
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
+          "MassTransit": "8.0.16",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -1672,15 +1674,31 @@
           "Polly": "7.2.4",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "7.0.3",
-          "TechMastery.MarketPlace.Domain": "1.0.0"
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0",
+          "TechMastery.MarketPlace.Domain": "1.0.0",
+          "TechMastery.MarketPlace.Persistence.Contracts": "1.0.0"
         },
         "runtime": {
           "TechMastery.MarketPlace.Application.dll": {}
         }
       },
+      "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+        "runtime": {
+          "TechMastery.MarketPlace.Application.Contracts.dll": {}
+        }
+      },
       "TechMastery.MarketPlace.Domain/1.0.0": {
         "runtime": {
           "TechMastery.MarketPlace.Domain.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
+        "dependencies": {
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0",
+          "TechMastery.MarketPlace.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Persistence.Contracts.dll": {}
         }
       }
     }
@@ -2704,7 +2722,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "TechMastery.MarketPlace.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

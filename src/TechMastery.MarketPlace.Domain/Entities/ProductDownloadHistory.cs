@@ -3,7 +3,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {	
 	public class ProductArtifactDownloadHistory : AuditableEntity
 	{
-		public Guid ProductDownloadId { get; protected set; }
+		public Guid Id { get; protected set; }
 		public Guid ProductListingId { get; private set; }
 		public Product? ProductListing { get; private set; }
 		public Guid ProductArtifactId { get; private set; }

@@ -1,0 +1,12 @@
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.deps.json
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Applcation.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Applcation.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Applcation.Contracts.dll

@@ -1,6 +1,7 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
+﻿
 using TechMastery.MarketPlace.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Persistence.Repositories
 {

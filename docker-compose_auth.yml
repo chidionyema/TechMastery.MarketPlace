@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+
+  usermanagement-service:
+    container_name: usermanagement-service
+    build:
+      context: ${PROJECT_PATH}
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:
+      - ${CERT_DIR}:/var/app/certs
+    networks:
+      - mynetwork
+
+  secure-service:
+    container_name: secure-service
+    build:
+      context: ${SECURE_PROJECT_PATH}
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+      - "5003:5003"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:
+      - ${CERT_DIR}:/var/app/certs
+    networks:
+      - mynetwork
+
+volumes:
+  db-data:
+
+networks:
+  mynetwork:

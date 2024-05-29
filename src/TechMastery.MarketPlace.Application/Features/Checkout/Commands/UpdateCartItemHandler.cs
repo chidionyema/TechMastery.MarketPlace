@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
+﻿
 using MediatR;
 using Microsoft.Extensions.Logging;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Exceptions;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
 {
@@ -44,7 +42,7 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
             cartItem.UpdateQuantity(request.Quantity);
             await _cartItemRepository.UpdateAsync(cartItem);
 
-            _logger.LogInformation("Updated cart item. CartItemId: {CartItemId}", cartItem.CartItemId);
+            _logger.LogInformation("Updated cart item. CartItemId: {CartItemId}", cartItem.Id);
             return Unit.Value;
         }
     }

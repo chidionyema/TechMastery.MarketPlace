@@ -1,11 +1,10 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace TechMastery.Messaging.Consumers
+namespace TechMastery.Messaging
 {
     internal static class RabbitMqConfigurator
     {
-        public static void Configure(IServiceCollection services, RabbitMqOptions options)
+        public static void Configure(IServiceCollection services, RabbitMqOptions options, params Type[] consumerTypes)
         {
             services.AddMassTransit(configure =>
             {
@@ -18,7 +17,7 @@ namespace TechMastery.Messaging.Consumers
                         h.Password(options.Password);
                     });
 
-                    ConsumerConfigurator.Configure(cfg, options.QueueName!);
+                    ConsumerConfigurator.Configure(cfg, options.QueueName!, consumerTypes);
                 });
             });
         }

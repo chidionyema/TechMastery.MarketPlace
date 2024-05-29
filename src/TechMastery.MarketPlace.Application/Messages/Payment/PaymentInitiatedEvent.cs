@@ -6,7 +6,7 @@ namespace TechMastery.MarketPlace.Application.Messages.Payment
     {
         public Guid OrderId { get; set; }
         public decimal PaymentAmount { get; set; }
-        public PaymentInfo PaymentInfo { get; set; }
+        public PaymentInfo? PaymentInfo { get; set; }
     }
 
 }

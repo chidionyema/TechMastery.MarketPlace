@@ -24,7 +24,6 @@ namespace TechMastery.MarketPlace.Tests.Emulators
             var dockerClient = GetDockerClient();
             var freePort = GetFreePort();
 
-            // This call ensures that the latest SQL Server Docker image is pulled
             await dockerClient.Images.CreateImageAsync(new ImagesCreateParameters
             {
                 FromImage = $"{DB_IMAGE}:{DB_IMAGE_TAG}"

@@ -20,7 +20,7 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Dto
                 throw new ArgumentNullException(nameof(cartItem));
             }
 
-            CartItemId = cartItem.CartItemId;
+            CartItemId = cartItem.Id;
             CartId = cartItem.ShoppingCartId;
             ProductId = cartItem.ProductId;
             Price = cartItem.Price;

@@ -1,0 +1,12 @@
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.deps.json
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Application.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Application.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.csproj.AssemblyReference.cache

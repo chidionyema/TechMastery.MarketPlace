@@ -2,13 +2,10 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using TechMastery.MarketPlace.Application.Contracts.Infrastructure;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Messages.Payment;
 using TechMastery.MarketPlace.Application.Models.Payment;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Domain.Entities;
 
 namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
@@ -56,7 +53,7 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
                 MessageType = assemblyQualifiedName,
                 Payload = JsonSerializer.Serialize(new PaymentInitiatedEvent
                 {
-                    OrderId = order.OrderId,
+                    OrderId = order.Id,
                     PaymentInfo = command.PaymentInfo,
                     PaymentAmount = order.OrderTotal
                 })

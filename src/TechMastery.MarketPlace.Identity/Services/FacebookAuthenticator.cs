@@ -1,6 +1,5 @@
 ﻿using System;
 using Facebook;
-using Microsoft.Extensions.Logging;
 using TechMastery.MarketPlace.Application.Contracts.Identity;
 using TechMastery.MarketPlace.Application.Models.Authentication;
 
@@ -14,9 +13,6 @@ namespace TechMastery.MarketPlace.Identity.Services
         public FacebookAuthenticator()
         {
             _facebookClient = new FacebookClient();
-
-            // Initialize your App Access Token here.
-            // However, it's strongly recommended to get this token dynamically from a secure source or configuration.
             _appAccessToken = "YOUR_APP_ID|YOUR_APP_SECRET";
         }
 

@@ -1,0 +1,9 @@
+{
+  "TechMastery.MarketPlace.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Applcation.Contracts",
+  "TechMastery.MarketPlace.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Application",
+  "TechMastery.MarketPlace.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Domain",
+  "TechMastery.MarketPlace.Messaging.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Messaging.Contracts",
+  "TechMastery.MarketPlace.Messaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Messaging",
+  "TechMastery.MarketPlace.Persistence.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Persistence.Contracts",
+  "TechMastery.UsermanagementService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.UsermanagementService"
+}

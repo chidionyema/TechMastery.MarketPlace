@@ -1,8 +1,6 @@
 ﻿using MediatR;
-using System.Threading.Tasks;
-using System.Threading;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Features.Orders.ViewModel;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Domain.Entities;
 
 namespace TechMastery.MarketPlace.Application.Features.Orders.Queries
@@ -42,7 +40,7 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Queries
         {
             var orderVm = new OrderListVm
             {
-                OrderId = order.OrderId,
+                OrderId = order.Id,
                 UserId = order.UserId,
                 OrderStatus = order.OrderStatus,
                 OrderPlaced = order.OrderPlaced,

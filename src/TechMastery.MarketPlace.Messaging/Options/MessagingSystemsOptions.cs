@@ -1,4 +1,4 @@
-﻿namespace TechMastery.Messaging.Consumers
+﻿namespace TechMastery.Messaging
 {
     public class MessagingSystemsOptions
     {

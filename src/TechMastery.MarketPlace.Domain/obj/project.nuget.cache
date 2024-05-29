@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "svcsA+eYWmC5fHdOZQyMko6QN4I2NsZQgUynDTqsxYCF70lyU+2OlymngUF+qxg956Jz8akzEoR9hlvPJtKXzQ==",
+  "dgSpecHash": "WRfGKff7V5sVli0uyRO+Qd4J9qshQsCb6zn9H+SExs5TlH5RSxYeBv0w72Cz/cGY4uOWKxzlHIMKXMDbQK1Jag==",
   "success": true,
-  "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+  "projectFilePath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

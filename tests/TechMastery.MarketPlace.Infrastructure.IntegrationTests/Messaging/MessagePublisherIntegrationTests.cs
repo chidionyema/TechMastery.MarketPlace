@@ -1,10 +1,8 @@
 using Microsoft.Extensions.Logging;
 using Moq;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using TechMastery.MarketPlace.Application.Messaging;
-using TechMastery.MarketPlace.Infrastructure.IntegrationTests;
 using TechMastery.MarketPlace.Tests.Emulators;
-using TechMastery.Messaging.Consumers;
+using TechMastery.Messaging;
 namespace TechMastery.MarketPlace.Application.IntegrationTests
 {
     [Collection("RabbitMQCollection")]
@@ -43,7 +41,7 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests
             };
 
             // Act
-            await _messagePublisher.PublishAsync(message, QueueName);
+            await _messagePublisher.PublishAsync(message, QueueName, CancellationToken.None);
 
             // Assert
             var receivedMessage = _rabbitMQFixture.GetMessageFromQueue(QueueName);

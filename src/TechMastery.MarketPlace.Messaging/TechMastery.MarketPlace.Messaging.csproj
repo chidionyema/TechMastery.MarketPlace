@@ -16,20 +16,21 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="MassTransit" Version="8.0.16" />
     <PackageReference Include="Polly" Version="7.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Consumers\" />
     <None Remove="HealthChecks\" />
     <None Remove="Options\" />
     <None Remove="MessageBusConfiguration\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Consumers\" />
     <Folder Include="HealthChecks\" />
     <Folder Include="Options\" />
     <Folder Include="MessageBusConfiguration\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
+    <ProjectReference Include="..\TechMastery.MarketPlace.Applcation.Contracts\TechMastery.MarketPlace.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

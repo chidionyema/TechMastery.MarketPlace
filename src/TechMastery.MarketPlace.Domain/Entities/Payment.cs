@@ -1,27 +1,14 @@
-﻿using System;
-using TechMastery.MarketPlace.Domain.Common;
+﻿using TechMastery.MarketPlace.Domain.Common;
 
 namespace TechMastery.MarketPlace.Domain.Entities
 {
-    public enum PaymentStatusEnum
-    {
-        Pending,
-        Completed,
-        Failed,
-        Refunded,
-        Disputed,
-        Successful
-    }
-
     public class Payment : AuditableEntity
     {
-        private Guid orderId;
-        private decimal orderTotal;
-
-        public Guid PaymentId { get; protected set; }
+        private Guid? orderId;
+        private decimal? orderTotal;
         public Guid SaleTransactionId { get; private set; }
         public decimal Amount { get; private set; }
-        public string PaymentProviderId { get; private set; } // e.g., transaction ID from Stripe/PayPal
+        public string? PaymentProviderId { get; private set; } // e.g., transaction ID from Stripe/PayPal
         public PaymentStatusEnum Status { get; private set; }
 
         public Payment(Guid saleTransactionId, decimal amount, string paymentProviderId)
@@ -46,7 +33,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
 
         public Payment(Guid paymentId, Guid orderId)
         {
-            PaymentId = paymentId;
+            Id = paymentId;
             this.orderId = orderId;
         }
 

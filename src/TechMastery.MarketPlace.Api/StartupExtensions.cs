@@ -2,12 +2,13 @@
 using TechMastery.MarketPlace.Application;
 using TechMastery.MarketPlace.Application.Contracts;
 using TechMastery.MarketPlace.Application.Services;
-using TechMastery.MarketPlace.Identity;
 using TechMastery.MarketPlace.Infrastructure;
+using TechMastery.Messaging;
 using TechMastery.MarketPlace.Persistence;
-using TechMastery.Messaging.Consumers;
 using TechMastery.MarketPlace.Api.Middleware;
 using TechMastery.MarketPlace.Api.Utility;
+using Stripe;
+
 namespace TechMastery.MarketPlace.Api
 {
     public static class StartupExtensions
@@ -54,8 +55,11 @@ namespace TechMastery.MarketPlace.Api
         /// </summary>
         private static void AddCoreServices(WebApplicationBuilder builder)
         {
-            builder.Services.AddHealthChecks();
+       
             var config = builder.Configuration;
+
+            builder.Services.AddHealthChecks()
+         .AddCheck("basic", new BasicHealthCheck());
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigins",
@@ -79,8 +83,12 @@ namespace TechMastery.MarketPlace.Api
             builder.Services.AddElasticsearchClient(builder.Configuration);
             builder.Services.AddStorageProvider(builder.Configuration, StorageProviderType.AzureBlobStorage);
             builder.Services.AddPersistenceServices(builder.Configuration);
-            builder.Services.AddIdentityServices(builder.Configuration);
-            builder.Services.AddMessagingServices(builder.Configuration);
+
+            builder.Services.AddMessagingServices(builder.Configuration, typeof(PaymentInitiatedConsumer),
+            typeof(PaymentCompletedConsumer),
+            typeof(ProductAddedConsumer),
+            typeof(OrderPlacedConsumer));
+
             builder.Services.AddStripePaymentService(builder.Configuration);
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
             builder.Services.AddHttpContextAccessor();

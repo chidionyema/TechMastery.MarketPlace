@@ -1,5 +1,4 @@
-﻿using System;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
+﻿using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Messaging
 {
@@ -8,7 +7,7 @@ namespace TechMastery.MarketPlace.Application.Messaging
         public Guid MessageId { get; set; }
         public DateTime Timestamp { get; set; }
         public Guid ProductId { get; set; }
-        public string ProductName { get; set; }
+        public string ProductName { get; set; } = string.Empty;
         public decimal Price { get; set; }
     }
 }

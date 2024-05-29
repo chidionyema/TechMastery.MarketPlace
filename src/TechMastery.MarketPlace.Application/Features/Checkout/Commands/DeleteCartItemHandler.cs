@@ -1,8 +1,8 @@
 ﻿using System;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Exceptions;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Domain.Entities;
 
 namespace TechMastery.MarketPlace.Application.Features.Checkout.Commands
@@ -37,7 +37,7 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Commands
 
                 await _cartItemRepository.DeleteAsync(cartItem);
 
-                _logger.LogInformation("Successfully deleted cart item. CartItemId: {CartItemId}", cartItem.CartItemId);
+                _logger.LogInformation("Successfully deleted cart item. CartItemId: {CartItemId}", cartItem.Id);
                 return Unit.Value;
             }
             catch (Exception ex)

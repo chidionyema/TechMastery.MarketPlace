@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/TechMastery.MarketPlace.Api.props" />
+</Project>

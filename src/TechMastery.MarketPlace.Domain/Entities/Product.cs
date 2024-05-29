@@ -4,15 +4,17 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class Product : AuditableEntity
     {
-        private readonly List<Contribution> _contributions = new List<Contribution>();
-        private readonly List<ProductTag> _tags = new List<ProductTag>();
-        private readonly List<ProductArtifact> _artifacts = new List<ProductArtifact>();
-        private readonly List<ProductLicense> _licenses = new List<ProductLicense>();
-        private readonly List<ProductDependency> _dependencies = new List<ProductDependency>();
-        private readonly List<ProductReview> _reviews = new List<ProductReview>();
-        private readonly List<ProductArtifactDownloadHistory> _downloads = new List<ProductArtifactDownloadHistory>();
-        private readonly List<Order> _orders = new List<Order>();
-        private readonly List<SaleTransaction> _sales = new List<SaleTransaction>();
+        private readonly List<Contribution> _contributions = new();
+        private readonly List<ProductTag> _tags = new();
+        private readonly List<ProductArtifact> _artifacts = new();
+        private readonly List<ProductLicense> _licenses = new();
+        private readonly List<ProductReview> _reviews = new();
+        private readonly List<ProductArtifactDownloadHistory> _downloads = new();
+        private readonly List<Order> _orders = new();
+        private readonly List<SaleTransaction> _sales = new();
+        public ICollection<ProductLanguage> ProductLanguages { get; set; } = new List<ProductLanguage>();
+        public ICollection<ProductFramework> ProductFrameworks { get; set; } = new List<ProductFramework>();
+        public ICollection<ProductPlatform> ProductPlatforms { get; set; } = new List<ProductPlatform>();
 
         public Product(Guid categoryId, string name, string description, string demoURL, decimal price,
                        string license, string owner, string purpose)
@@ -24,13 +26,11 @@ namespace TechMastery.MarketPlace.Domain.Entities
             Purpose = purpose;
             Status = ProductStatusEnum.NewlyListed;
         }
-
-        public Guid ProductId { get; private set; }
         public Guid CategoryId { get; private set; }
-        public Category Category { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string DemoURL { get; private set; }
+        public Category? Category { get; private set; }
+        public string? Name { get; private set; }
+        public string? Description { get; private set; }
+        public string? DemoURL { get; private set; }
         public decimal Price { get; private set; }
         public string License { get; private set; }
         public string Owner { get; private set; }
@@ -41,7 +41,6 @@ namespace TechMastery.MarketPlace.Domain.Entities
         public IReadOnlyCollection<ProductTag> Tags => _tags.AsReadOnly();
         public IReadOnlyCollection<ProductArtifact> Artifacts => _artifacts.AsReadOnly();
         public IReadOnlyCollection<ProductLicense> Licenses => _licenses.AsReadOnly();
-        public IReadOnlyCollection<ProductDependency> Dependencies => _dependencies.AsReadOnly();
         public IReadOnlyCollection<ProductReview> Reviews => _reviews.AsReadOnly();
         public IReadOnlyCollection<ProductArtifactDownloadHistory> Downloads => _downloads.AsReadOnly();
         public IReadOnlyCollection<Order> Orders => _orders.AsReadOnly();
@@ -57,10 +56,11 @@ namespace TechMastery.MarketPlace.Domain.Entities
             {
                 throw new ArgumentException("Description cannot be empty.", nameof(description));
             }
+            /*
             if (string.IsNullOrWhiteSpace(demoURL))
             {
                 throw new ArgumentException("Demo URL cannot be empty.", nameof(demoURL));
-            }
+            }*/
             if (price <= 0)
             {
                 throw new ArgumentException("Price must be greater than zero.", nameof(price));
@@ -70,27 +70,6 @@ namespace TechMastery.MarketPlace.Domain.Entities
             Description = description;
             DemoURL = demoURL;
             Price = price;
-        }
-
-        public void AddDependency(ProductDependency dependency)
-        {
-            if (dependency == null)
-            {
-                throw new ArgumentNullException(nameof(dependency));
-            }
-
-            _dependencies.Add(dependency);
-        }
-
-        public void UpdateDependencies(IEnumerable<ProductDependency> updatedDependencies)
-        {
-            if (updatedDependencies == null)
-            {
-                throw new ArgumentNullException(nameof(updatedDependencies));
-            }
-
-            _dependencies.Clear();
-            _dependencies.AddRange(updatedDependencies);
         }
 
         public void AddTag(ProductTag tag)
@@ -246,32 +225,13 @@ namespace TechMastery.MarketPlace.Domain.Entities
 
         public bool IsTransient()
         {
-            return ProductId == Guid.Empty;
+            return Id == Guid.Empty;
         }
         public void ClearTags()
         {
             _tags.Clear();
         }
 
-        public void ClearDependencies()
-        {
-            _dependencies.Clear();
-        }
-
-        public void RemoveDependency(ProductDependency dependencyToRemove)
-        {
-            if (dependencyToRemove == null)
-            {
-                throw new ArgumentNullException(nameof(dependencyToRemove), "The dependency to remove cannot be null.");
-            }
-
-            if (!Dependencies.Contains(dependencyToRemove))
-            {
-                throw new InvalidOperationException("The specified dependency does not exist in the product.");
-            }
-
-            _dependencies.Remove(dependencyToRemove);
-        }
 
         public void SetName(string name)
         {
@@ -292,5 +252,53 @@ namespace TechMastery.MarketPlace.Domain.Entities
 
             Description = description;
         }
+    }
+
+    public class Language : AuditableEntity
+    {
+        
+        public string Name { get; set; } = string.Empty;
+        public string Version { get; set; } = string.Empty;
+    }
+
+    public class Framework : AuditableEntity
+    {
+        
+        public string Name { get; set; } = string.Empty;
+        public string Version { get; set; } = string.Empty;
+    }
+
+    public class Platform : AuditableEntity
+    {
+      
+        public string Name { get; set; } = string.Empty;
+        public string Version { get; set; } = string.Empty;
+    }
+
+    public class ProductLanguage : AuditableEntity
+    {
+        public Guid ProductId { get; set; }
+        public Guid LanguageId { get; set; }
+        public string Version { get; set; } = string.Empty;
+        public Product? Product { get; set; }
+        public Language? Language { get; set; }
+    }
+
+    public class ProductFramework : AuditableEntity
+    {
+        public Guid ProductId { get; set; }
+        public Guid FrameworkId { get; set; }
+        public string Version { get; set; } = string.Empty;
+        public Product? Product { get; set; }
+        public Framework? Framework { get; set; }
+    }
+
+    public class ProductPlatform : AuditableEntity
+    {
+        public Guid? ProductId { get; set; } 
+        public Guid PlatformId { get; set; }
+        public string Version { get; set; } = string.Empty;
+        public Product? Product { get; set; }
+        public Platform? Platform { get; set; }
     }
 }

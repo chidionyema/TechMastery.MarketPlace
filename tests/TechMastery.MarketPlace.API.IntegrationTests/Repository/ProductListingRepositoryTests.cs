@@ -24,7 +24,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
         {
             // Arrange
             var productListing = _fixture.Build<Domain.Entities.Product>()
-                .Without(pl => pl.ProductId)
+                .Without(pl => pl.Id)
                 .Create();
 
             // Act
@@ -32,7 +32,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
 
             // Assert
             Assert.NotNull(createdProductListing);
-            Assert.NotEqual(Guid.Empty, createdProductListing.ProductId);
+            Assert.NotEqual(Guid.Empty, createdProductListing.Id);
             // Perform additional assertions
 
         }
@@ -45,7 +45,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
             await _repository.AddAsync(existingProductListing);
 
             // Fetch the existing entity from the database
-            var retrievedProductListing = await _repository.GetByIdAsync(existingProductListing.ProductId);
+            var retrievedProductListing = await _repository.GetByIdAsync(existingProductListing.Id);
 
             // Apply the updates to the retrieved entity
             retrievedProductListing?.SetName("Updated Product Listing");
@@ -56,7 +56,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
             await _repository.UpdateAsync(retrievedProductListing!);
 
             // Assert
-            var updatedProductListing = await _repository.GetByIdAsync(existingProductListing.ProductId);
+            var updatedProductListing = await _repository.GetByIdAsync(existingProductListing.Id);
             Assert.NotNull(updatedProductListing);
             Assert.Equal("Updated Product Listing", updatedProductListing.Name);
             Assert.Equal("Updated description", updatedProductListing.Description);
@@ -72,7 +72,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
             await _repository.AddAsync(productListing);
 
             // Act
-            var retrievedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var retrievedProductListing = await _repository.GetByIdAsync(productListing.Id);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
@@ -88,7 +88,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
             await _repository.AddAsync(productListing);
 
             // Act
-            var retrievedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var retrievedProductListing = await _repository.GetByIdAsync(productListing.Id);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
@@ -107,7 +107,7 @@ namespace TechMastery.MarketPlace.API.IntegrationTests
             await _repository.DeleteAsync(productListing);
 
             // Assert
-            var deletedProductListing = await _repository.GetByIdAsync(productListing.ProductId);
+            var deletedProductListing = await _repository.GetByIdAsync(productListing.Id);
             Assert.Null(deletedProductListing);
             // Perform additional assertions
         }

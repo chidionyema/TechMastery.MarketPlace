@@ -10,3 +10,15 @@
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/refint/TechMastery.MarketPlace.Domain.dll
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.pdb
 /Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/ref/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/bin/Release/net7.0/TechMastery.MarketPlace.Domain.deps.json
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/bin/Release/net7.0/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/bin/Release/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/refint/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/Release/net7.0/ref/TechMastery.MarketPlace.Domain.dll

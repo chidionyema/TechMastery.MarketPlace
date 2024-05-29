@@ -1,11 +1,10 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace TechMastery.Messaging.Consumers
+namespace TechMastery.Messaging
 {
     internal static class SqsConfigurator
     {
-        public static void Configure(IServiceCollection services, SqsOptions options)
+        public static void Configure(IServiceCollection services, SqsOptions options, params Type[] consumerTypes)
         {
             services.AddMassTransit(configure =>
             {
@@ -17,7 +16,7 @@ namespace TechMastery.Messaging.Consumers
                         h.SecretKey(options.SecretKey);
                     });
 
-                    ConsumerConfigurator.Configure(cfg, options.ServiceUrl!);
+                    ConsumerConfigurator.Configure(cfg, options.ServiceUrl!, consumerTypes);
                 });
             });
         }

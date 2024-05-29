@@ -2,7 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TechMastery.MarketPlace.Application.Contracts;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Persistence;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Application.Services;
 using TechMastery.MarketPlace.Persistence.Repositories;
 
@@ -27,6 +28,8 @@ namespace TechMastery.MarketPlace.Persistence
 
             // Validate configuration and retrieve connection string
             var connectionString = configuration.GetConnectionString("TechMasteryMarketPlaceConnectionString");
+            
+
             if (string.IsNullOrWhiteSpace(connectionString))
             {
                 throw new ArgumentException("Connection string is missing or empty.", nameof(connectionString));

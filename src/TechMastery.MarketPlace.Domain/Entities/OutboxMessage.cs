@@ -1,13 +1,12 @@
-﻿using System;
+﻿using TechMastery.MarketPlace.Domain.Common;
+
 namespace TechMastery.MarketPlace.Domain.Entities
 {
-    public class OutboxMessage
+    public class OutboxMessage : AuditableEntity
     {
-        public Guid Id { get; set; }
         public Guid CorrelationId { get; set; }
-        public string MessageType { get; set; }
-        public string Payload { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public string MessageType { get; set; } = string.Empty;
+        public string Payload { get; set; } = string.Empty;
         public DateTime? ProcessedDate { get; set; }
         public DateTime? LockedAt { get; set; }
     }

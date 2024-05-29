@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/TechMastery.MarketPlace.Application.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TechMastery.MarketPlace.Application.Contracts.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/TechMastery.MarketPlace.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TechMastery.MarketPlace.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj",
+      "msbuildProject": "../TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
+    },
+    "TechMastery.MarketPlace.Domain/1.0.0": {
+      "type": "project",
+      "path": "../TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+      "msbuildProject": "../TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "TechMastery.MarketPlace.Application.Contracts >= 1.0.0",
+      "TechMastery.MarketPlace.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/chidionyema/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj",
+      "projectName": "TechMastery.MarketPlace.Persistence.Contracts",
+      "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj",
+      "packagesPath": "/Users/chidionyema/.nuget/packages/",
+      "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+              "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
+            },
+            "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+              "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

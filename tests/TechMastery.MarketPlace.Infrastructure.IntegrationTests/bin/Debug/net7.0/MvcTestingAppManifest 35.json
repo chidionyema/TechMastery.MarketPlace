@@ -1,0 +1,12 @@
+{
+  "TechMastery.MarketPlace.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Api",
+  "TechMastery.MarketPlace.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Applcation.Contracts",
+  "TechMastery.MarketPlace.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Application",
+  "TechMastery.MarketPlace.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Domain",
+  "TechMastery.MarketPlace.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Infrastructure",
+  "TechMastery.MarketPlace.Messaging.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Messaging.Contracts",
+  "TechMastery.MarketPlace.Messaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Messaging",
+  "TechMastery.MarketPlace.Persistence.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Persistence.Contracts",
+  "TechMastery.MarketPlace.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/src\/TechMastery.MarketPlace.Persistence",
+  "TechMastery.MarketPlace.Tests.Emulators, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/chidionyema\/Documents\/code\/TechMastery.MarketPlace\/tests\/TechMastery.MarketPlace.Emulators"
+}

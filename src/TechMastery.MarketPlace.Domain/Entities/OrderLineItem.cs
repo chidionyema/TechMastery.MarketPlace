@@ -4,7 +4,6 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class OrderLineItem : AuditableEntity
     {
-        public Guid OrderLineItemId { get; protected set; }
         public decimal UnitPrice { get; set; }
         public string? ProductName { get; set; }
         public string? Description { get; set; }

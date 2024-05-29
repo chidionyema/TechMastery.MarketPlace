@@ -45,5 +45,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Applcation.Contracts\TechMastery.MarketPlace.Application.Contracts.csproj" />
 	</ItemGroup>
 </Project>

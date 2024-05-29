@@ -29,13 +29,17 @@ namespace TechMastery.MarketPlace.Api
         private static WebApplication InitializeApplication(WebApplicationBuilder builder)
         {
             builder.Host.UseSerilog();
+            builder.Services.AddHealthChecks()
+                .AddCheck<BasicHealthCheck>("my_health_check");
             var app = ConfigureApplicationServices(builder);
 
             RegisterMiddlewares(app);
+
             ConfigureHealthChecks(app, builder.Configuration);
 
             return app;
         }
+
 
         private static WebApplication ConfigureApplicationServices(WebApplicationBuilder builder)
         {
@@ -51,40 +55,46 @@ namespace TechMastery.MarketPlace.Api
 
         private static void ConfigureHealthChecks(WebApplication app, IConfiguration configuration)
         {
-            var rabbitMqHost = configuration["MessagingSystems:RabbitMQ:Host"];
-            Log.Information($"Loaded RabbitMQ Host: {rabbitMqHost}");
-
-            app.MapHealthChecks("/health", new HealthCheckOptions
+            app.MapHealthChecks("/healthz", new HealthCheckOptions
             {
-                ResponseWriter = WriteHealthCheckResponseAsync,
-                Predicate = _ => true,
-                ResultStatusCodes =
+                Predicate = _ => true, // Include all registered health checks.
+                ResponseWriter = (context, report) =>
                 {
-                    [HealthStatus.Healthy] = StatusCodes.Status200OK,
-                    [HealthStatus.Degraded] = StatusCodes.Status200OK,
-                    [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+                    try
+                    {
+                        var response = new
+                        {
+                            Status = report.Status.ToString(),
+                            Checks = report.Entries.ToDictionary(
+                                e => e.Key,
+                                e => e.Value.Status.ToString()
+                            )
+                        };
+                        context.Response.ContentType = "application/json";
+                        return context.Response.WriteAsync(JsonSerializer.Serialize(response));
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the exception for debugging purposes
+                      //  _logger.LogError(ex, "Error in health check response generation");
+                        context.Response.ContentType = "application/json";
+                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                        return context.Response.WriteAsync("Internal Server Error");
+                    }
                 }
             });
         }
+    }
 
-        private static Task WriteHealthCheckResponseAsync(HttpContext context, HealthReport report)
+
+
+    public class BasicHealthCheck : IHealthCheck
+    {
+        public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
-            context.Response.ContentType = "application/json";
-
-            var response = new
-            {
-                Status = report.Status.ToString(),
-                Checks = report.Entries.Select(entry => new
-                {
-                    Name = entry.Key,
-                    Status = entry.Value.Status.ToString(),
-                    Description = entry.Value.Description
-                })
-            };
-
-            var jsonResponse = JsonSerializer.Serialize(response, new JsonSerializerOptions { WriteIndented = true });
-
-            return context.Response.WriteAsync(jsonResponse);
+            // In this simple example, always return "Healthy" regardless of actual conditions.
+            return Task.FromResult(HealthCheckResult.Healthy("Always healthy"));
         }
     }
+
 }

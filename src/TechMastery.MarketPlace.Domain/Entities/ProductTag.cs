@@ -7,6 +7,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
         public ProductTag()
         {
         }
+
         public ProductTag (string tagName)
         {
             Name = tagName;

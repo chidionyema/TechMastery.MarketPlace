@@ -4,7 +4,6 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class Contribution : AuditableEntity
     {
-        public Guid ContributionId { get; protected set; }
         public Guid ProductId { get; set; }
         public Product? Product { get; set; }
         public Guid ContributorId { get; set; }

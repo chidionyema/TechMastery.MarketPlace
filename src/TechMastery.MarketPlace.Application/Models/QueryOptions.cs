@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Models
 {

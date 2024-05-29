@@ -1,4 +1,5 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
+﻿
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Application.Models;
 using TechMastery.MarketPlace.Domain.Entities;
 

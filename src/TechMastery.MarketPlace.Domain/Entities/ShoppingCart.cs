@@ -7,7 +7,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
     /// </summary>
     public class ShoppingCart : AuditableEntity
     {
-        public Guid ShoppingCartId { get; private set; }
+        public Guid Id { get; private set; }
         public Guid UserId { get; private set; }
         public ShoppingCartStatus Status { get; private set; }
 
@@ -18,7 +18,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
         {
             ValidateGuid(userId, nameof(userId));
 
-            ShoppingCartId = Guid.NewGuid();
+            Id = Guid.NewGuid();
             UserId = userId;
             Status = ShoppingCartStatus.Pending;
         }
@@ -27,7 +27,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
         {
             ValidateGuid(cartId, nameof(cartId));
 
-            ShoppingCartId = cartId;
+            Id = cartId;
         }
 
         public void AddItem(Guid productId, int quantity, decimal price)
@@ -43,7 +43,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
             }
             else
             {
-                var newItem = CartItem.Create(productId, price, quantity, ShoppingCartId);
+                var newItem = CartItem.Create(productId, price, quantity, Id);
                 _items.Add(newItem);
             }
         }

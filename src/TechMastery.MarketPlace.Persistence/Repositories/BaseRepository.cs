@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using TechMastery.MarketPlace.Application.Contracts;
+using TechMastery.MarketPlace.Domain.Common;
 
 namespace TechMastery.MarketPlace.Persistence.Repositories
 {
-    public class BaseRepository<T> : IAsyncRepository<T> where T : class
+    public class BaseRepository<T> : IAsyncRepository<T> where T : class, IEntityWithGuid
     {
         protected readonly ApplicationDbContext _dbContext;
         protected readonly DbSet<T> _dbSet;
@@ -23,6 +25,20 @@ namespace TechMastery.MarketPlace.Persistence.Repositories
         public virtual async ValueTask<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             return await _dbSet.FindAsync(new object[] { id }, cancellationToken);
+        }
+
+
+        /// <summary>
+        /// Retrieves multiple entities by their unique identifiers.
+        /// </summary>
+        /// <param name="ids">The unique identifiers of the entities.</param>
+        /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the list of entities found.</returns>
+        public async Task<IReadOnlyList<T>> GetManyByIdAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
+        {
+            var idList = ids.ToList();
+            // Directly use the Id property for querying
+            return await _dbSet.AsNoTracking().Where(entity => idList.Contains(entity.Id)).ToListAsync(cancellationToken);
         }
 
         /// <summary>

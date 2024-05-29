@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Moq;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
 using TechMastery.MarketPlace.Application.Messaging;
 using TechMastery.MarketPlace.Tests.Emulators;
-using TechMastery.Messaging.Consumers;
+using TechMastery.Messaging;
 namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests.Messaging
 {
     [Collection("MockSQSCollection")]
@@ -46,7 +43,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests.Messaging
             };
 
             // Act
-            await _messagePublisher.PublishAsync(message, QueueName);
+            await _messagePublisher.PublishAsync(message, QueueName, CancellationToken.None);
 
             // Assert
             // You'll need to use the AWS SDK for .NET to fetch the message from LocalStack's SQS to assert.

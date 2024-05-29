@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.Checkout.ViewModels;
-
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 namespace TechMastery.MarketPlace.Application.Features.Checkout.Queries
 {
     public class GetShoppingCartByUserIdQuery : IRequest<ShoppingCartVm>

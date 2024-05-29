@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+        "runtime": {
+          "TechMastery.MarketPlace.Application.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

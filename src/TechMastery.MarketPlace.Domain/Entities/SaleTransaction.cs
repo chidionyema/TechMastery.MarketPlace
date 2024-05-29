@@ -5,7 +5,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class SaleTransaction : AuditableEntity
     {
-        public Guid SaleTransactionId { get; protected set; }
+        public Guid Id { get; protected set; }
         public Guid OrderId { get; private set; }
         public int ProductId { get; private set; }
         public DateTime TransactionDate { get; private set; }

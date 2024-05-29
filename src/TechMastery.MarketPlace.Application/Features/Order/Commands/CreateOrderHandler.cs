@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Application.Exceptions;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 {
@@ -34,8 +34,8 @@ namespace TechMastery.MarketPlace.Application.Features.Orders.Commands
 
             await UpdateShoppingCartAndPersistOrderAsync(shoppingCart, orderFromCart);
 
-            _logger.LogInformation("Order created successfully with OrderId: {OrderId}", orderFromCart.OrderId);
-            return orderFromCart.OrderId;
+            _logger.LogInformation("Order created successfully with OrderId: {OrderId}", orderFromCart.Id);
+            return orderFromCart.Id;
         }
 
         private void ValidateCommand(CreateOrderFromCart command)

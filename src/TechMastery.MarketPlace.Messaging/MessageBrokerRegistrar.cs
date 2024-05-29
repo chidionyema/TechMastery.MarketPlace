@@ -1,30 +1,30 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace TechMastery.Messaging.Consumers
+namespace TechMastery.Messaging
 {
     internal static class MessageBrokerRegistrar
     {
-        public static void RegisterMessageBrokers(IServiceCollection services, MessagingSystemsOptions options)
+        public static void RegisterMessageBrokers(IServiceCollection services, MessagingSystemsOptions options, params Type[] consumerTypes)
         {
             if (options.EnableAzureServiceBus)
             {
                 ValidateAzureServiceBusOptions(options.AzureServiceBus!);
                 services.AddHealthChecks().AddCheck<AzureServiceBusHealthCheck>("AzureServiceBusHealthCheck");
-                AzureServiceBusConfigurator.Configure(services, options.AzureServiceBus!);
+                AzureServiceBusConfigurator.Configure(services, options.AzureServiceBus!, consumerTypes);
             }
 
-            if (options.EnableSqs)
+            else if (options.EnableSqs)
             {
                 ValidateSqsOptions(options.SqsOptions!);
                 services.AddHealthChecks().AddCheck<AmazonSqsHealthCheck>("AmazonSqsHealthCheck");
-                SqsConfigurator.Configure(services, options.SqsOptions!);
+                SqsConfigurator.Configure(services, options.SqsOptions!, consumerTypes);
             }
 
-            if (options.EnableRabbitMq)
+            else if (options.EnableRabbitMq)
             {
                 ValidateRabbitMqOptions(options.RabbitMq!);
                 services.AddHealthChecks().AddCheck<RabbitMqHealthCheck>("RabbitMqHealthCheck");
-                RabbitMqConfigurator.Configure(services, options.RabbitMq!);
+                RabbitMqConfigurator.Configure(services, options.RabbitMq!, consumerTypes);
             }
         }
 

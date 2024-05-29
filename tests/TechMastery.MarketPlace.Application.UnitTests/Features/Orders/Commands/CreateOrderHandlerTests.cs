@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.Orders.Commands;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Application.Tests.Integration;
 using TechMastery.MarketPlace.Domain.Entities;
 
@@ -47,7 +47,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
 
             var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
 
-            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.Id };
 
             // Act
             var orderId = await handler.Handle(command, CancellationToken.None);
@@ -75,7 +75,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
             var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
-            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.Id };
 
             // Act
             var orderId = await handler.Handle(command, CancellationToken.None);
@@ -105,13 +105,13 @@ namespace TechMastery.MarketPlace.Application.Tests.Features.Orders.Commands
             await _shoppingCartRepository.AddAsync(shoppingCart);
 
             var handler = new CreateOrderFromCartHandler(_shoppingCartRepository, _orderRepository, _mockLogger.Object);
-            var command = new CreateOrderFromCart { CartId = shoppingCart.ShoppingCartId };
+            var command = new CreateOrderFromCart { CartId = shoppingCart.Id };
 
             // Act
             await handler.Handle(command, CancellationToken.None);
 
             // Assert
-            var updatedShoppingCart = await _shoppingCartRepository.GetByIdAsync(shoppingCart.ShoppingCartId);
+            var updatedShoppingCart = await _shoppingCartRepository.GetByIdAsync(shoppingCart.Id);
             Assert.Equal(ShoppingCartStatus.InOrderState, updatedShoppingCart?.Status);
         }
 

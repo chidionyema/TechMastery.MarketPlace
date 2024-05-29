@@ -1,5 +1,6 @@
 ﻿using MediatR;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProductsList
 {

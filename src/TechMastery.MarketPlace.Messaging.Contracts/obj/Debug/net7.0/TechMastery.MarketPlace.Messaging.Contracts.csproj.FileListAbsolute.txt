@@ -1,0 +1,12 @@
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.deps.json
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Messaging.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Messaging.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging.Contracts/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Messaging.Contracts.dll

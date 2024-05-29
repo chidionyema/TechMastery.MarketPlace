@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj": {}
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj": {}
   },
   "projects": {
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj",
         "projectName": "TechMastery.MarketPlace.Api",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api/TechMastery.MarketPlace.Api.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Api/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -20,27 +20,33 @@
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.306/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "/usr/local/share/dotnet/sdk/7.0.313/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
               },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
               },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
               },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj"
               },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj"
               }
             }
           }
@@ -129,18 +135,71 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
-        "projectName": "TechMastery.MarketPlace.Application",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj",
+        "projectName": "TechMastery.MarketPlace.Application.Contracts",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
+        "projectName": "TechMastery.MarketPlace.Application",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj",
+        "packagesPath": "/Users/chidionyema/.nuget/packages/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -155,8 +214,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj"
               }
             }
           }
@@ -186,6 +251,10 @@
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[11.6.0, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[7.3.1, )"
             },
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -240,18 +309,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
         "projectName": "TechMastery.MarketPlace.Domain",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -293,127 +362,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
-        "projectName": "TechMastery.MarketPlace.Identity",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/TechMastery.MarketPlace.Identity.csproj",
-        "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Identity/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net7.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
-            "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
-          "dependencies": {
-            "Facebook": {
-              "target": "Package",
-              "version": "[7.0.6, )"
-            },
-            "Google.Apis.Auth": {
-              "target": "Package",
-              "version": "[1.61.0, )"
-            },
-            "Microsoft.AspNetCore.Authentication.Facebook": {
-              "target": "Package",
-              "version": "[7.0.10, )"
-            },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[7.0.9, )"
-            },
-            "Microsoft.Extensions.Options.ConfigurationExtensions": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Microsoft.extensions.dependencyinjection": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[7.0.4, )"
-            },
-            "System.IdentityModel.Tokens.Jwt": {
-              "target": "Package",
-              "version": "[6.32.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
         "projectName": "TechMastery.MarketPlace.Infrastructure",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -428,8 +388,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
               }
             }
           }
@@ -537,18 +500,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
         "projectName": "TechMastery.MarketPlace.Messaging",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/TechMastery.MarketPlace.Messaging.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Messaging/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Messaging/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -563,8 +526,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
               }
             }
           }
@@ -594,6 +557,18 @@
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[8.0.16, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Polly": {
               "target": "Package",
@@ -632,18 +607,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
-        "projectName": "TechMastery.MarketPlace.Persistence",
-        "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj",
+        "projectName": "TechMastery.MarketPlace.Persistence.Contracts",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj",
         "packagesPath": "/Users/chidionyema/.nuget/packages/",
-        "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Persistence/obj/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -658,11 +633,74 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Applcation.Contracts/TechMastery.MarketPlace.Application.Contracts.csproj"
               },
-              "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
-                "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
+        "projectName": "TechMastery.MarketPlace.Persistence",
+        "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/TechMastery.MarketPlace.Persistence.csproj",
+        "packagesPath": "/Users/chidionyema/.nuget/packages/",
+        "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Application/TechMastery.MarketPlace.Application.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj"
+              },
+              "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj": {
+                "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/TechMastery.MarketPlace.Persistence.Contracts.csproj"
               }
             }
           }
@@ -732,7 +770,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
         }
       }
     }

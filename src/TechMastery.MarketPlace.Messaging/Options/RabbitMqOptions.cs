@@ -1,10 +1,10 @@
-﻿namespace TechMastery.Messaging.Consumers
+﻿namespace TechMastery.Messaging
 {
     public class RabbitMqOptions
     {
-        public string? Host { get; set; }
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-        public string? QueueName { get; set; }
+        public string Host { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string QueueName { get; set; } = string.Empty;
     }
 }

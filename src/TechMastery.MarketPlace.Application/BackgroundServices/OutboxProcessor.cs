@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Polly;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Contracts;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 using TechMastery.MarketPlace.Domain.Entities;
 
 public class OutboxProcessor

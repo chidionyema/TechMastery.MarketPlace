@@ -36,7 +36,7 @@
 	  <PackageReference Include="NEST" Version="7.17.5" />
 	  <PackageReference Include="Stripe.net" Version="41.27.0" />
 	  <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
-	  <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+	  <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>

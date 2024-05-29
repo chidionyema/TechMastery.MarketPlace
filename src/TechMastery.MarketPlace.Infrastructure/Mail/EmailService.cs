@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Infrastructure.Mail
 {
@@ -45,12 +46,12 @@ namespace TechMastery.MarketPlace.Infrastructure.Mail
             return false;
         }
 
-        public Task SendDownloadLinkEmailAsync(object orderEmail, object sasUrl)
+        public Task SendDownloadLinkEmailAsync(string orderEmail, string sasUrl)
         {
             throw new NotImplementedException();
         }
 
-        public Task SendPaymentConfirmationEmailAsync(object customerEmail)
+        public Task SendPaymentConfirmationEmailAsync(string customerEmail)
         {
             throw new NotImplementedException();
         }

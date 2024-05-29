@@ -21,6 +21,7 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 		<PackageReference Include="Polly" Version="7.2.4" />
+		<PackageReference Include="MassTransit" Version="7.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -49,13 +50,14 @@
 	  <None Remove="Features\ProductListing\Queries\GetByCategory\" />
 	  <None Remove="BackgroundServices\" />
 	  <None Remove="Options\" />
-	  <None Remove="Contracts\Messaging\" />
 	  <None Remove="Features\Catgegory\" />
 	  <None Remove="Features\Order\" />
 	  <None Remove="Features\Catgegory\Queries\" />
 	  <None Remove="Features\Catgegory\ViewModel\" />
 	  <None Remove="Validators\" />
 	  <None Remove="Messages\Payment\" />
+	  <None Remove="MessageConsumers\" />
+	  <None Remove="Contracts\Persistence\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Services\" />
@@ -76,15 +78,18 @@
 	  <Folder Include="Features\ProductListing\Queries\GetByCategory\" />
 	  <Folder Include="BackgroundServices\" />
 	  <Folder Include="Options\" />
-	  <Folder Include="Contracts\Messaging\" />
 	  <Folder Include="Features\Catgegory\" />
 	  <Folder Include="Features\Order\" />
 	  <Folder Include="Features\Catgegory\Queries\" />
 	  <Folder Include="Features\Catgegory\ViewModel\" />
 	  <Folder Include="Validators\" />
 	  <Folder Include="Messages\Payment\" />
+	  <Folder Include="MessageConsumers\" />
+	  <Folder Include="Contracts\Persistence\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Applcation.Contracts\TechMastery.MarketPlace.Application.Contracts.csproj" />
+	  <ProjectReference Include="..\TechMastery.MarketPlace.Persistence.Contracts\TechMastery.MarketPlace.Persistence.Contracts.csproj" />
 	</ItemGroup>
 </Project>

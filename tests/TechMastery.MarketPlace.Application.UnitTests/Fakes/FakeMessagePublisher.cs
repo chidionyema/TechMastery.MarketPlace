@@ -1,5 +1,5 @@
 ﻿using Moq;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
+using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Application.IntegrationTests.Fakes
 {
@@ -12,7 +12,7 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests.Fakes
             _mock = new Mock<IMessagePublisher>();
         }
 
-        public async Task PublishAsync<TMessage>(TMessage message, string queueName) where TMessage : class, IMessage
+        public async Task PublishAsync<TMessage>(TMessage message, string queueName, CancellationToken ca) where TMessage : class, IMessage
         {
             // Log the message being published
             Console.WriteLine($"Fake MessagePublisher: Message published to {queueName}");
@@ -25,7 +25,7 @@ namespace TechMastery.MarketPlace.Application.IntegrationTests.Fakes
         public void SetupPublishAsync<TMessage>(Action<TMessage, string> action)
             where TMessage : class, IMessage
         {
-            _mock.Setup(publisher => publisher.PublishAsync(It.IsAny<TMessage>(), It.IsAny<string>()))
+            _mock.Setup(publisher => publisher.PublishAsync(It.IsAny<TMessage>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
                  .Callback<TMessage, string>((message, queueName) => action(message, queueName))
                  .Returns(Task.CompletedTask);
         }

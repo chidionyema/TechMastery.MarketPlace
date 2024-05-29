@@ -34,19 +34,25 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\TechMastery.MarketPlace.Identity\TechMastery.MarketPlace.Identity.csproj">
+		<ProjectReference Include="..\TechMastery.MarketPlace.Messaging\TechMastery.MarketPlace.Messaging.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
-		<ProjectReference Include="..\TechMastery.MarketPlace.Infrastructure\TechMastery.MarketPlace.Infrastructure.csproj">
+		<ProjectReference Include="..\TechMastery.MarketPlace.Persistence.Contracts\TechMastery.MarketPlace.Persistence.Contracts.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
 		<ProjectReference Include="..\TechMastery.MarketPlace.Persistence\TechMastery.MarketPlace.Persistence.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
+		<ProjectReference Include="..\TechMastery.MarketPlace.Applcation.Contracts\TechMastery.MarketPlace.Application.Contracts.csproj">
+		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+		</ProjectReference>
 		<ProjectReference Include="..\TechMastery.MarketPlace.Application\TechMastery.MarketPlace.Application.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
-		<ProjectReference Include="..\TechMastery.MarketPlace.Messaging\TechMastery.MarketPlace.Messaging.csproj">
+		<ProjectReference Include="..\TechMastery.MarketPlace.Infrastructure\TechMastery.MarketPlace.Infrastructure.csproj">
+		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+		</ProjectReference>
+		<ProjectReference Include="..\TechMastery.MarketPlace.Domain\TechMastery.MarketPlace.Domain.csproj">
 		  <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
 		</ProjectReference>
 	</ItemGroup>

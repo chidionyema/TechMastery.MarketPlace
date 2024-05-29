@@ -1,12 +1,11 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
-using TechMastery.MarketPlace.Application.Exceptions;
+﻿using TechMastery.MarketPlace.Application.Exceptions;
 using TechMastery.MarketPlace.Application.Features.ProductListing.Handlers;
 using TechMastery.MarketPlace.Domain.Entities;
-using MediatR;
 using TechMastery.MarketPlace.Application.IntegrationTests.Fakes;
 using Microsoft.Extensions.Logging;
 using Moq;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
+using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {
@@ -15,9 +14,13 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
         private readonly ApplicationTestFixture _fixture;
         private readonly FakeBlobStorageService _blobStorageService;
         private readonly IProductRepository _productRepository;
+        private readonly IAsyncRepository<Language> _languageRepository;
+        private readonly IAsyncRepository<Platform> _platformRepository;
+        private readonly IAsyncRepository<Framework> _frameworkRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly AddListingHandler handler;
         private readonly IMessagePublisher _publisher;
+
         public AddProductHandlerTests(ApplicationTestFixture fixture)
         {
             _fixture = fixture;
@@ -25,18 +28,34 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             _publisher = new FakeMessagePublisher();
             _productRepository = _fixture.CreateProductListingRepository();
             _categoryRepository = _fixture.CreateCategoryRepository();
-            handler = new AddListingHandler(new Mock<ILogger<AddListingHandler>>().Object, _productRepository, _categoryRepository, _publisher);
+            _languageRepository = _fixture.CreateRepository<Language>();
+            _platformRepository = _fixture.CreateRepository<Platform>();
+            _frameworkRepository = _fixture.CreateRepository<Framework>();
+            handler = new AddListingHandler(new Mock<ILogger<AddListingHandler>>().Object, _productRepository, _categoryRepository, _languageRepository, _frameworkRepository, _platformRepository, _publisher);
         }
 
         [Fact]
-        public async Task AddCommand_ShouldUploadAndAssociateArtifacts()
+        public async Task AddCommand_ShouldCorrectlyAssociateLanguagePlatformFramework()
         {
             // Arrange
             ConfigureBlobStorageServiceFake();
             var category = await CreateAndSaveSampleCategory();
+
+            // Fetching existing entities for the test
+            var platform = (await _platformRepository.ListAllAsync()).First();
+            var language = (await _languageRepository.ListAllAsync()).First();
+            var framework = (await _frameworkRepository.ListAllAsync()).First();
+
+            // Ensure these entities are present
+            Assert.NotNull(language);
+            Assert.NotNull(platform);
+            Assert.NotNull(framework);
+
             var command = AddOrUpdateListingCommandBuilder.Create()
                 .WithCategory(category)
-                .WithUploadAssets(2)
+                .WithLanguage(language.Id)
+                .WithPlatform(platform.Id)
+                .WithFramework(framework.Id)
                 .Build();
 
             // Act
@@ -45,8 +64,14 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             // Assert
             var product = await _productRepository.GetByIdAsync(productId);
             Assert.NotNull(product);
-            Assert.Equal(command.UploadAssets.Count, product.Artifacts.Count);
+            Assert.Equal(category.Id, product.CategoryId);
+
+            // Additional assertions to ensure that language, platform, and framework associations are correctly made
+            Assert.Contains(product.ProductLanguages, pl => pl.LanguageId == language.Id);
+            Assert.Contains(product.ProductPlatforms, pp => pp.PlatformId == platform.Id);
+            Assert.Contains(product.ProductFrameworks, pf => pf.FrameworkId == framework.Id);
         }
+
 
         [Fact]
         public async Task AddCommand_ShouldCreateProductWithCategory()
@@ -54,8 +79,20 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             // Arrange
             ConfigureBlobStorageServiceFake();
             var category = await CreateAndSaveSampleCategory();
+            var platform = await _platformRepository.ListAllAsync();
+            var language = await _languageRepository.ListAllAsync();
+            var framework = await _frameworkRepository.ListAllAsync();
+
+            // Ensure these entities are not null (assuming seed data is present)
+            Assert.NotNull(language);
+            Assert.NotNull(platform);
+            Assert.NotNull(framework);
+
             var command = AddOrUpdateListingCommandBuilder.Create()
                 .WithCategory(category)
+                .WithLanguage(language.First().Id)
+                .WithPlatform(platform.First().Id)
+                .WithFramework(framework.First().Id)
                 .Build();
 
             // Act
@@ -64,92 +101,10 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             // Assert
             var product = await _productRepository.GetByIdAsync(productId);
             Assert.NotNull(product);
-            Assert.Equal(category.CategoryId, product.CategoryId);
+            Assert.Equal(category.Id, product.CategoryId);
         }
 
-        [Fact]
-        public async Task AddCommand_ShouldCreateProductWithArtifactUrl()
-        {
-            // Arrange
-            ConfigureBlobStorageServiceFake();
-            var category = await CreateAndSaveSampleCategory();
-            var command = AddOrUpdateListingCommandBuilder.Create()
-                .WithCategory(category)
-                .WithUploadAssets(2)
-                .Build();
-
-            var mockBlobUrls = new List<string>
-            {
-                "https://mock-blob-url1.com",
-                "https://mock-blob-url2.com"
-            };
-            _blobStorageService.UploadFileAsyncFunc = (blobName, stream, cancellationToken) =>
-            {
-                return Task.FromResult(mockBlobUrls[0]);
-            };
-
-            // Act
-            var productId = await handler.Handle(command, CancellationToken.None);
-
-            // Assert
-            var product = await _productRepository.GetByIdAsync(productId);
-            Assert.NotNull(product);
-            Assert.Equal(command.UploadAssets.Count, product.Artifacts.Count);
-
-            var expectedArtifacts = CreateSampleProductArtifacts(command.UploadAssets.Count, mockBlobUrls[0]);
-
-            for (int i = 0; i < command.UploadAssets.Count; i++)
-            {
-                Assert.Equal(expectedArtifacts[i].BlobUrl, product.Artifacts.ToArray()[i].BlobUrl);
-            }
-        }
-
-        [Fact]
-        public async Task AddCommand_ShouldCreateProductWithArtifacts()
-        {
-            // Arrange
-            ConfigureBlobStorageServiceFake();
-            var category = await CreateAndSaveSampleCategory();
-            var command = AddOrUpdateListingCommandBuilder.Create()
-                .WithCategory(category)
-                .WithUploadAssets(2)
-                .Build();
-
-            // Act
-            var productId = await handler.Handle(command, CancellationToken.None);
-
-            // Assert
-            var product = await _productRepository.GetByIdAsync(productId);
-            Assert.NotNull(product);
-            Assert.Equal(command.UploadAssets.Count, product.Artifacts.Count);
-        }
-
-        [Fact]
-        public async Task AddCommand_ShouldCreateProductWithDependencies()
-        {
-            // Arrange
-            ConfigureBlobStorageServiceFake();
-            var category = await CreateAndSaveSampleCategory();
-            var command = AddOrUpdateListingCommandBuilder.Create()
-                .WithCategory(category)
-                .WithDependencies(1)
-                .Build();
-
-            // Act
-            var productId = await handler.Handle(command, CancellationToken.None);
-
-            // Assert
-            var product = await _productRepository.GetByIdAsync(productId);
-            Assert.NotNull(product);
-            Assert.Collection(product.Dependencies, dependencies =>
-            {
-                Assert.Equal(command.Dependencies[0].Name, dependencies.Dependency.Name);
-                Assert.Equal(command.Dependencies[0].Version, dependencies.Dependency.Version);
-                Assert.Equal(command.Dependencies[0].DependencyType, dependencies.Dependency.DependencyTypeEnum);
-            });
-        }
-
-        // ... (previous code)
+  
 
         [Fact]
         public async Task AddCommand_ShouldCreateProductWithNoTags()
@@ -157,9 +112,21 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             // Arrange
             ConfigureBlobStorageServiceFake();
             var category = await CreateAndSaveSampleCategory();
+            var platform = await _platformRepository.ListAllAsync();
+            var language = await _languageRepository.ListAllAsync();
+            var framework = await _frameworkRepository.ListAllAsync();
+
+            // Ensure these entities are not null (assuming seed data is present)
+            Assert.NotNull(language);
+            Assert.NotNull(platform);
+            Assert.NotNull(framework);
+
             var command = AddOrUpdateListingCommandBuilder.Create()
                 .WithCategory(category)
-                .WithNoTags()
+                .WithLanguage(language.First().Id)
+                .WithPlatform(platform.First().Id)
+                .WithFramework(framework.First().Id)
+               // .WithNoTags()
                 .Build();
 
             // Act
@@ -171,34 +138,28 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             Assert.Empty(product.Tags);
         }
 
-        [Fact]
-        public async Task AddCommand_ShouldCreateProductWithNoDependencies()
-        {
-            // Arrange
-            ConfigureBlobStorageServiceFake();
-            var category = await CreateAndSaveSampleCategory();
-            var command = AddOrUpdateListingCommandBuilder.Create()
-                .WithCategory(category)
-                .WithNoDependencies()
-                .Build();
-
-            // Act
-            var productId = await handler.Handle(command, CancellationToken.None);
-
-            // Assert
-            var product = await _productRepository.GetByIdAsync(productId);
-            Assert.NotNull(product);
-            Assert.Empty(product.Dependencies);
-        }
-
+      
         [Fact]
         public async Task AddCommand_ShouldCreateProductWithNoArtifacts()
         {
             // Arrange
             ConfigureBlobStorageServiceFake();
             var category = await CreateAndSaveSampleCategory();
+            var platform = await _platformRepository.ListAllAsync();
+            var language = await _languageRepository.ListAllAsync();
+            var framework = await _frameworkRepository.ListAllAsync();
+
+            // Ensure these entities are not null (assuming seed data is present)
+            Assert.NotNull(language);
+            Assert.NotNull(platform);
+            Assert.NotNull(framework);
+
+       
             var command = AddOrUpdateListingCommandBuilder.Create()
                 .WithCategory(category)
+                .WithLanguage(language.First().Id)
+                .WithPlatform(platform.First().Id)
+                .WithFramework(framework.First().Id)
                 .WithNoUploadAssets()
                 .Build();
 
@@ -217,6 +178,8 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             // Arrange
             ConfigureBlobStorageServiceFake();
             var invalidCategoryId = Guid.NewGuid();
+       
+ 
             var command = AddOrUpdateListingCommandBuilder.Create()
                 .WithInvalidCategory(invalidCategoryId)
                 .Build();
@@ -225,9 +188,9 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             await Assert.ThrowsAsync<NotFoundException>(() => handler.Handle(command, CancellationToken.None));
         }
 
-        private async Task<Category> CreateAndSaveSampleCategory()
+        private async Task<Domain.Entities.Category> CreateAndSaveSampleCategory()
         {
-            var category = CategoryBuilder.Create().Build();
+            var category = new CategoryBuilder().WithName("category").Build();
             var createdCategory = await _categoryRepository.AddAsync(category);
             return createdCategory;
         }

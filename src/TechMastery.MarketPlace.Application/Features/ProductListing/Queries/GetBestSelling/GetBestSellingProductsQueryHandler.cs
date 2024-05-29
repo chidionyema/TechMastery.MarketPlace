@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Application.Models;
-using TechMastery.MarketPlace.Domain.Entities; // Make sure to import your entity namespace
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Features.Product.Queries.GetProductsList
 {

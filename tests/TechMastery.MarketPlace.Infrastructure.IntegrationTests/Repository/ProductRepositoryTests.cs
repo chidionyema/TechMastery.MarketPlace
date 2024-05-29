@@ -23,11 +23,10 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         public async Task AddProductListing_ShouldInsertProductListingWithComplexRelationships()
         {
             // Arrange
-           var categoryId = Guid.NewGuid();
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
 
-            var product = new Product(category.CategoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+            var product = new Product(category.Id, "Test Product", "Test Description", "demo.com", 100.0m,
                 "Test License", "Test Owner", "Test Purpose");
 
             // Act
@@ -35,7 +34,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
 
             // Assert
             Assert.NotNull(createdProductListing);
-            Assert.NotEqual(Guid.Empty, createdProductListing.ProductId);
+            Assert.NotEqual(Guid.Empty, createdProductListing.Id);
             // Perform additional assertions
         }
 
@@ -43,16 +42,15 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         public async Task UpdateProductListing_ShouldUpdateProductListingAndRelationships()
         {
             // Arrange
-            var categoryId = Guid.NewGuid();
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
 
-            var existingProductListing = new Product(category.CategoryId, "Existing Product", "Existing Description", "demo.com", 100.0m,
+            var existingProductListing = new Product(category.Id, "Existing Product", "Existing Description", "demo.com", 100.0m,
                 "Existing License", "Existing", "Existing Purpose");
             await _productRepository.AddAsync(existingProductListing);
 
             // Fetch the existing entity from the database
-            var retrievedProductListing = await _productRepository.GetByIdAsync(existingProductListing.ProductId);
+            var retrievedProductListing = await _productRepository.GetByIdAsync(existingProductListing.Id);
 
             // Apply the updates to the retrieved entity
             retrievedProductListing.SetName("Updated Product Listing");
@@ -63,7 +61,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             await _productRepository.UpdateAsync(retrievedProductListing);
 
             // Assert
-            var updatedProductListing = await _productRepository.GetByIdAsync(existingProductListing.ProductId);
+            var updatedProductListing = await _productRepository.GetByIdAsync(existingProductListing.Id);
             Assert.NotNull(updatedProductListing);
             Assert.Equal("Updated Product Listing", updatedProductListing.Name);
             Assert.Equal("Updated description", updatedProductListing.Description);
@@ -74,16 +72,15 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
         public async Task GetProductListingById_ShouldReturnCorrectProductListing()
         {
             // Arrange
-            var categoryId = Guid.NewGuid();
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
 
-            var product = new Product(category.CategoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+            var product = new Product(category.Id, "Test Product", "Test Description", "demo.com", 100.0m,
                 "Test License", "Test Owner", "Test Purpose");
             await _productRepository.AddAsync(product);
 
             // Act
-            var retrievedProductListing = await _productRepository.GetByIdAsync(product.ProductId);
+            var retrievedProductListing = await _productRepository.GetByIdAsync(product.Id);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
@@ -98,12 +95,12 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
 
-            var product = new Product(category.CategoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+            var product = new Product(category.Id, "Test Product", "Test Description", "demo.com", 100.0m,
                 "Test License", "Test Owner1", "Test Purpose");
             await _productRepository.AddAsync(product);
 
             // Act
-            var retrievedProductListing = await _productRepository.GetByIdAsync(product.ProductId);
+            var retrievedProductListing = await _productRepository.GetByIdAsync(product.Id);
 
             // Assert
             Assert.NotNull(retrievedProductListing);
@@ -118,7 +115,7 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
 
-            var product = new Product(category.CategoryId, "Test Product", "Test Description", "demo.com", 100.0m,
+            var product = new Product(category.Id, "Test Product", "Test Description", "demo.com", 100.0m,
                 "Test License", "Test Owner2", "Test Purpose");
             await _productRepository.AddAsync(product);
 
@@ -126,24 +123,22 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             await _productRepository.DeleteAsync(product);
 
             // Assert
-            var deletedProductListing = await _productRepository.GetByIdAsync(product.ProductId);
+            var deletedProductListing = await _productRepository.GetByIdAsync(product.Id);
             Assert.Null(deletedProductListing);
-            // Perform additional assertions
         }
 
         [Fact]
         public async Task GetAllProductListings_ShouldReturnAllProductListings()
         {
             // Arrange
-            var categoryId = Guid.NewGuid();
             var category = new Category("Test Category");
             await _categoryRepository.AddAsync(category);
             
-            var product1 = new Product(category.CategoryId, "Test Product 1", "Test Description 1", "demo1.com", 100.0m,
+            var product1 = new Product(category.Id, "Test Product 1", "Test Description 1", "demo1.com", 100.0m,
                 "Test License 1", "Test Owner 3", "Test Purpose 1");
             await _productRepository.AddAsync(product1);
 
-            var product2 = new Product(category.CategoryId, "Test Product 2", "Test Description 2", "demo2.com", 200.0m,
+            var product2 = new Product(category.Id, "Test Product 2", "Test Description 2", "demo2.com", 200.0m,
                 "Test License 2", "Test Owner 4", "Test Purpose 2");
             await _productRepository.AddAsync(product2);
 
@@ -155,10 +150,6 @@ namespace TechMastery.MarketPlace.Infrastructure.IntegrationTests
             Assert.Equal(2, productListings.Count());
             // Perform additional assertions
         }
-
-        // Additional tests for querying, pagination, sorting, etc.
-
-        // teardown
 
     }
 }

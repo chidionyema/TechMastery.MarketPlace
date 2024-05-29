@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http.Internal;
-using TechMastery.MarketPlace.Application.DataTransferObjects;
-using TechMastery.MarketPlace.Application.Features.ProductListing.DataTransferObjects;
+﻿using TechMastery.MarketPlace.Application.DataTransferObjects;
 using TechMastery.MarketPlace.Application.Features.ProductListing.Dto;
 using TechMastery.MarketPlace.Application.Features.ProductListing.Handlers;
 using TechMastery.MarketPlace.Domain.Entities;
@@ -12,7 +8,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
     // Builder for AddOrUpdateListing command
     internal class AddOrUpdateListingCommandBuilder
     {
-        private AddListingCommand _command = new AddListingCommand();
+        private AddListingCommand _command = new("product name", "product desc", 1.0m, 1.0m, new CategoryDto());
 
         internal static AddOrUpdateListingCommandBuilder Create()
         {
@@ -21,9 +17,28 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
 
         internal AddOrUpdateListingCommandBuilder WithCategory(Category category)
         {
-            _command = _command with { Category = new CategoryDto { CategoryId = category.CategoryId, Name = category.Name } };
+            _command = _command with { Category = new CategoryDto { CategoryId = category.Id, Name = category.Name } };
             return this;
         }
+
+        internal AddOrUpdateListingCommandBuilder WithLanguage(Guid languageId)
+        {
+            _command = _command with { LanguageIds = new List<Guid> { languageId} };
+            return this;
+        }
+
+        internal AddOrUpdateListingCommandBuilder WithFramework(Guid frameworkId)
+        {
+            _command = _command with { FrameworkIds = new List<Guid> { frameworkId } };
+            return this;
+        }
+
+        internal AddOrUpdateListingCommandBuilder WithPlatform(Guid platformId)
+        {
+            _command = _command with { PlatformIds = new List<Guid> { platformId } };
+            return this;
+        }
+
 
         internal AddOrUpdateListingCommandBuilder WithUploadAssets(int count)
         {
@@ -40,34 +55,11 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
             return this;
         }
 
-        internal AddOrUpdateListingCommandBuilder WithDependencies(int count)
-        {
-            var dependencies = new List<ProductDependencyDto>();
-            for (int i = 0; i < count; i++)
-            {
-                dependencies.Add(new ProductDependencyDto
-                {
-                    Name = $"Dependency {i + 1}",
-                    Version = $"{i + 1}.0",
-                    DependencyType = (DependencyTypeEnum)new Random().Next(1, Enum.GetValues(typeof(DependencyTypeEnum)).Length)
-                });
-            }
-            _command = _command with { Dependencies = dependencies };
-            return this;
-        }
-
         internal AddOrUpdateListingCommandBuilder WithNoTags()
         {
             _command = _command with { Tags = null };
             return this;
         }
-
-        internal AddOrUpdateListingCommandBuilder WithNoDependencies()
-        {
-            _command = _command with { Dependencies = null };
-            return this;
-        }
-
         internal AddOrUpdateListingCommandBuilder WithNoUploadAssets()
         {
             _command = _command with { UploadAssets = null };
@@ -82,6 +74,7 @@ namespace TechMastery.MarketPlace.Application.Tests.Integration
 
         internal AddListingCommand Build()
         {
+
             return _command;
         }
     }

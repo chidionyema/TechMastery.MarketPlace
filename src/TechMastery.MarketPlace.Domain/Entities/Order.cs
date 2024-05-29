@@ -1,13 +1,9 @@
 ﻿using TechMastery.MarketPlace.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class Order : AuditableEntity
     {
-        public Guid OrderId { get; private set; }
         public Guid UserId { get; private set; }
         public decimal OrderTotal => CalculateOrderTotal();
         public OrderStatus OrderStatus { get; private set; }

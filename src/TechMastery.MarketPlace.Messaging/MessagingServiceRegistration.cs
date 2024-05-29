@@ -2,14 +2,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using TechMastery.MarketPlace.Application.Contracts.Messaging;
+using TechMastery.MarketPlace.Application.Contracts;
 
-namespace TechMastery.Messaging.Consumers
+namespace TechMastery.Messaging
 {
     public static class MessagingServiceRegistration
     {
-        public static IServiceCollection AddMessagingServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddMessagingServices(this IServiceCollection services, IConfiguration configuration, params Type[] consumerTypes)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
@@ -20,7 +19,7 @@ namespace TechMastery.Messaging.Consumers
             var serviceProvider = services.BuildServiceProvider();
             var messagingSystemsOptions = serviceProvider.GetRequiredService<IOptions<MessagingSystemsOptions>>().Value;
 
-            MessageBrokerRegistrar.RegisterMessageBrokers(services, messagingSystemsOptions);
+            MessageBrokerRegistrar.RegisterMessageBrokers(services, messagingSystemsOptions, consumerTypes);
 
             services.AddSingleton(provider =>
             {

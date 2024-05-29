@@ -1,0 +1,17 @@
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.deps.json
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Domain.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/bin/Debug/net7.0/TechMastery.MarketPlace.Application.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.csproj.AssemblyReference.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.AssemblyInfoInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.AssemblyInfo.cs
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.csproj.CoreCompileInputs.cache
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.csproj.CopyComplete
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/refint/TechMastery.MarketPlace.Persistence.Contracts.dll
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/TechMastery.MarketPlace.Persistence.Contracts.pdb
+/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Persistence.Contracts/obj/Debug/net7.0/ref/TechMastery.MarketPlace.Persistence.Contracts.dll

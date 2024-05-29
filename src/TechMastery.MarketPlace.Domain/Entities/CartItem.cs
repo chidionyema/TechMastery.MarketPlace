@@ -4,7 +4,6 @@ namespace TechMastery.MarketPlace.Domain.Entities
 {
     public class CartItem : AuditableEntity
     {
-        public Guid CartItemId { get; private set; }
         public Guid ShoppingCartId { get; private set; }       
         public Guid ProductId { get; private set; }
         public string? ProductName { get; private set; }
@@ -12,8 +11,7 @@ namespace TechMastery.MarketPlace.Domain.Entities
         public int Quantity { get; private set; }
 
         public CartItem(Guid productId, decimal price, int quantity, Guid shoppingCartId)
-        {       
-            CartItemId = Guid.NewGuid();
+        {
             ProductId = productId;
             Quantity = quantity;
             Price = price;

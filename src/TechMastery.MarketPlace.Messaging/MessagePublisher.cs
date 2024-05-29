@@ -1,10 +1,10 @@
-﻿using System.Text;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
+using TechMastery.MarketPlace.Application.Contracts;
 
-namespace TechMastery.MarketPlace.Application.Contracts.Messaging
+namespace TechMastery.Messaging
 {
     public class MessagePublisher : IMessagePublisher, IDisposable
     {
@@ -45,8 +45,7 @@ namespace TechMastery.MarketPlace.Application.Contracts.Messaging
             }
         }
 
-
-        public async Task PublishAsync<TMessage>(TMessage message, string queueName) where TMessage : class, IMessage
+        public async Task PublishAsync<TMessage>(TMessage message, string queueName, CancellationToken token) where TMessage : class, IMessage
         {
             if (message == null)
                 throw new ArgumentNullException(nameof(message));

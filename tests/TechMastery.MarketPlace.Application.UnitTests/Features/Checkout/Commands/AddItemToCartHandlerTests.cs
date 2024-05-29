@@ -1,8 +1,8 @@
-﻿using TechMastery.MarketPlace.Application.Contracts.Persistence;
-using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
+﻿using TechMastery.MarketPlace.Application.Features.Checkout.Handlers;
 using Microsoft.Extensions.Logging;
 using Moq;
 using TechMastery.MarketPlace.Application.Validators;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Tests.Integration
 {

@@ -2,8 +2,8 @@
 
 public class BlobEmulatorFixture : IAsyncLifetime
 {
-    private TestContainerManager _containerManager;
-    private string _containerId;
+    private TestContainerManager? _containerManager;
+    private string? _containerId;
 
     public async Task InitializeAsync()
     {
@@ -27,7 +27,7 @@ public class BlobEmulatorFixture : IAsyncLifetime
 
     public async Task DisposeAsync()
     {
-        await _containerManager.StopAndRemoveContainerAsync(_containerId);
+        await _containerManager!.StopAndRemoveContainerAsync(_containerId!);
     }
 
     public string GetBlobEmulatorConnectionString()

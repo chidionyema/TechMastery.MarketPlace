@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
 using TechMastery.MarketPlace.Domain.Entities;
 using TechMastery.MarketPlace.Application.Features.Checkout.Dto;
 using FluentValidation;
 using TechMastery.MarketPlace.Application.Exceptions;
 using ValidationException = TechMastery.MarketPlace.Application.Exceptions.ValidationException;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
 
 namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
 {
@@ -54,11 +54,11 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
             ValidateCartItem(command.CartItem);
 
             var shoppingCart = await GetOrCreateShoppingCartAsync(command.UserId);
-            var newCartItem = new CartItem(command.CartItem.ProductId, command.CartItem.Price, command.CartItem.Quantity, shoppingCart.ShoppingCartId);
+            var newCartItem = new CartItem(command.CartItem.ProductId, command.CartItem.Price, command.CartItem.Quantity, shoppingCart.Id);
             await _cartItemRepository.AddAsync(newCartItem);
 
-            _logger.LogInformation("Added new cart item. CartItemId: {CartItemId}", newCartItem.CartItemId);
-            return newCartItem.CartItemId;
+            _logger.LogInformation("Added new cart item. CartItemId: {CartItemId}", newCartItem.Id);
+            return newCartItem.Id;
         }
 
         private void ValidateCartItem(CartItemDto cartItem)
@@ -75,7 +75,7 @@ namespace TechMastery.MarketPlace.Application.Features.Checkout.Handlers
         private async Task<ShoppingCart> GetOrCreateShoppingCartAsync(Guid userId)
         {
             var shoppingCart = await _shoppingCartRepository.GetByUserIdAsync(userId) ?? new ShoppingCart(userId);
-            if (shoppingCart.ShoppingCartId == Guid.Empty)
+            if (shoppingCart.Id == Guid.Empty)
             {
                 _logger.LogInformation("Creating new shopping cart. userId: {userId}", userId);
                 await _shoppingCartRepository.AddAsync(shoppingCart);

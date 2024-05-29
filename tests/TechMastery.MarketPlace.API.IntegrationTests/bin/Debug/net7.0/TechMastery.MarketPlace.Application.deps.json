@@ -12,15 +12,19 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "FluentValidation": "11.7.1",
           "FluentValidation.DependencyInjectionExtensions": "11.6.0",
+          "MassTransit": "7.3.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Hosting": "7.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Polly": "7.2.4",
           "System.Security.Claims": "4.3.0",
           "System.Text.Json": "7.0.3",
-          "TechMastery.MarketPlace.Domain": "1.0.0"
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0",
+          "TechMastery.MarketPlace.Domain": "1.0.0",
+          "TechMastery.MarketPlace.Persistence.Contracts": "1.0.0"
         },
         "runtime": {
           "TechMastery.MarketPlace.Application.dll": {}
@@ -49,6 +53,17 @@
           }
         }
       },
+      "Automatonymous/5.1.3": {
+        "dependencies": {
+          "GreenPipes": "4.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Automatonymous.dll": {
+            "assemblyVersion": "5.1.3.0",
+            "fileVersion": "5.1.3.0"
+          }
+        }
+      },
       "FluentValidation/11.7.1": {
         "runtime": {
           "lib/net7.0/FluentValidation.dll": {
@@ -66,6 +81,40 @@
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.6.0.0"
+          }
+        }
+      },
+      "GreenPipes/4.0.1": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "System.Reflection.Emit": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/GreenPipes.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        }
+      },
+      "MassTransit/7.3.1": {
+        "dependencies": {
+          "Automatonymous": "5.1.3",
+          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "NewId": "3.0.3",
+          "Newtonsoft.Json": "12.0.1",
+          "Newtonsoft.Json.Bson": "1.0.2",
+          "System.Diagnostics.DiagnosticSource": "7.0.1",
+          "System.Reflection.Emit": "4.7.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
+          "System.Text.Json": "7.0.3",
+          "System.Threading.Channels": "4.7.1",
+          "System.ValueTuple": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MassTransit.dll": {
+            "assemblyVersion": "7.3.1.0",
+            "fileVersion": "7.3.1.0"
           }
         }
       },
@@ -300,6 +349,14 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
           }
         }
       },
@@ -692,6 +749,41 @@
           "System.Security.Principal.Windows": "4.5.0"
         }
       },
+      "NewId/3.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/NewId.dll": {
+            "assemblyVersion": "3.0.3.0",
+            "fileVersion": "3.0.3.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
+          }
+        }
+      },
+      "Newtonsoft.Json.Bson/1.0.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.2.22727"
+          }
+        }
+      },
+      "Polly/7.2.4": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.4.982"
+          }
+        }
+      },
       "System.Buffers/4.5.0": {},
       "System.Collections/4.3.0": {
         "dependencies": {
@@ -749,6 +841,8 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Reflection.Emit/4.7.0": {},
+      "System.Reflection.Emit.Lightweight/4.7.0": {},
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -861,6 +955,7 @@
           "System.Text.Encodings.Web": "7.0.0"
         }
       },
+      "System.Threading.Channels/4.7.1": {},
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -868,9 +963,24 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.ValueTuple/4.5.0": {},
+      "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+        "runtime": {
+          "TechMastery.MarketPlace.Application.Contracts.dll": {}
+        }
+      },
       "TechMastery.MarketPlace.Domain/1.0.0": {
         "runtime": {
           "TechMastery.MarketPlace.Domain.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
+        "dependencies": {
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0",
+          "TechMastery.MarketPlace.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Persistence.Contracts.dll": {}
         }
       }
     }
@@ -895,6 +1005,13 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/12.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512"
     },
+    "Automatonymous/5.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7B0upgJUTJ7fIwFjGEIxOMVJTxqBPyjtnua5i+VyClvHJd31t64SPIm4nhYxI7PF4afmvv5a3dtFCz1W1tQc0A==",
+      "path": "automatonymous/5.1.3",
+      "hashPath": "automatonymous.5.1.3.nupkg.sha512"
+    },
     "FluentValidation/11.7.1": {
       "type": "package",
       "serviceable": true,
@@ -908,6 +1025,20 @@
       "sha512": "sha512-3jyyy5VMzKsdGNzfBKtEYX3fd3YzSSzd7JEq7uJcqjqqkoCexT4khgTlNT8upXOeU6mT1MSW7H7OjvUG9W1bRw==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.6.0",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.6.0.nupkg.sha512"
+    },
+    "GreenPipes/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nc90y7DAhj8isRbqioVQF3/ExztBZSXRrRoplZvEjckNFC5wP1r+ssfsgl8BptWdQrnMdgkOYhQ6EnHetyFW1Q==",
+      "path": "greenpipes/4.0.1",
+      "hashPath": "greenpipes.4.0.1.nupkg.sha512"
+    },
+    "MassTransit/7.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMOmC1ucSpgpW1M7ewQIw2Jf/d0lC4sx5LdUU5CSuFhlw4L7hssAB/glrbwvYZB9B90ZYvLJB8JLV1K/xhHBMA==",
+      "path": "masstransit/7.3.1",
+      "hashPath": "masstransit.7.3.1.nupkg.sha512"
     },
     "MediatR/11.0.0": {
       "type": "package",
@@ -1041,6 +1172,13 @@
       "sha512": "sha512-9ErxAAKaDzxXASB/b5uLEkLgUWv1QbeVxyJYEHQwMaxXOeFFVkQxiq8RyfVcifLU7NR0QY0p3acqx4ZpYfhHDg==",
       "path": "microsoft.aspnetcore.webutilities/2.2.0",
       "hashPath": "microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W8DPQjkMScOMTtJbPwmPyj9c3zYSFGawDW3jwlBOOsnY+EzZFLgNQ/UMkK35JmkNOVPdCyPr2Tw7Vv9N+KA3ZQ==",
+      "path": "microsoft.bcl.asyncinterfaces/5.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -1273,6 +1411,34 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
+    "NewId/3.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-72cBqYQ+pZpsfuTerhi5Q/ZkfK81s/Dkz2u0WNytirWVLktUm6sy4mRNepM+DL1AB0V61QlYesZHDf0wlmMU5A==",
+      "path": "newid/3.0.3",
+      "hashPath": "newid.3.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json.Bson/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+      "path": "newtonsoft.json.bson/1.0.2",
+      "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
+    },
+    "Polly/7.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bw00Ck5sh6ekduDE3mnCo1ohzuad946uslCDEENu3091+6UKnBuKLo4e+yaNcCzXxOZCXWY2gV4a35+K1d4LDA==",
+      "path": "polly/7.2.4",
+      "hashPath": "polly.7.2.4.nupkg.sha512"
+    },
     "System.Buffers/4.5.0": {
       "type": "package",
       "serviceable": true,
@@ -1328,6 +1494,20 @@
       "sha512": "sha512-KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
       "path": "system.reflection/4.3.0",
       "hashPath": "system.reflection.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VR4kk8XLKebQ4MZuKuIni/7oh+QGFmZW3qORd1GvBq/8026OpW501SzT/oypwiQl4TvT8ErnReh/NzY9u+C6wQ==",
+      "path": "system.reflection.emit/4.7.0",
+      "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.Lightweight/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
     },
     "System.Reflection.Primitives/4.3.0": {
       "type": "package",
@@ -1434,6 +1614,13 @@
       "path": "system.text.json/7.0.3",
       "hashPath": "system.text.json.7.0.3.nupkg.sha512"
     },
+    "System.Threading.Channels/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6akRtHK/wab3246t4p5v3HQrtQk8LboOt5T4dtpNgsp3zvDeM4/Gx8V12t0h+c/W9/enUrilk8n6EQqdQorZAA==",
+      "path": "system.threading.channels/4.7.1",
+      "hashPath": "system.threading.channels.4.7.1.nupkg.sha512"
+    },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1441,7 +1628,24 @@
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
     },
+    "System.ValueTuple/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "path": "system.valuetuple/4.5.0",
+      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "TechMastery.MarketPlace.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

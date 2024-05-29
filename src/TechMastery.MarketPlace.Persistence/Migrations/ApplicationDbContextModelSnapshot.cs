@@ -24,22 +24,50 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("ProductProductTag", b =>
                 {
-                    b.Property<Guid>("ProductListingsProductId")
+                    b.Property<Guid>("ProductListingsId")
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("TagsTagId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ProductListingsProductId", "TagsTagId");
+                    b.HasKey("ProductListingsId", "TagsTagId");
 
                     b.HasIndex("TagsTagId");
 
                     b.ToTable("ProductProductTag");
                 });
 
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ArchivedOutboxMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CorrelationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("MessageType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ProcessedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ArchivedOutboxMessages");
+                });
+
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.CartItem", b =>
                 {
-                    b.Property<Guid>("CartItemId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -70,7 +98,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("CartItemId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -79,7 +107,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Category", b =>
                 {
-                    b.Property<Guid>("CategoryId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -102,7 +130,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid?>("ParentCategoryId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ParentCategoryId");
 
@@ -111,60 +139,27 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = new Guid("60dff8dd-8efb-4b8f-94d7-e56c472c8601"),
-                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9350),
+                            Id = new Guid("9e83d6dd-8746-4cf1-b3f2-adb2e872ca83"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5990),
                             Name = "Web"
                         },
                         new
                         {
-                            CategoryId = new Guid("8efe24a1-fa4f-4a66-92f2-a9b68f274561"),
-                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9370),
+                            Id = new Guid("7f2b9300-95d8-4a30-9930-28a31aff7d74"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5990),
                             Name = "Devops"
                         },
                         new
                         {
-                            CategoryId = new Guid("d6d63abf-0e58-4c3c-bb1a-946170d75ac2"),
-                            CreatedDate = new DateTime(2023, 8, 21, 12, 18, 50, 639, DateTimeKind.Utc).AddTicks(9370),
-                            Name = "AI"
+                            Id = new Guid("7cdc42da-e3d6-4795-aa8c-8fb55eacbddd"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5990),
+                            Name = "AI/ML"
                         });
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.CategoryDependency", b =>
-                {
-                    b.Property<Guid>("CategoryDependencyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("DependencyId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("CategoryDependencyId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("DependencyId");
-
-                    b.ToTable("CategoryDependencies");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Contribution", b =>
                 {
-                    b.Property<Guid>("ContributionId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -189,7 +184,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<decimal>("SharePercentage")
                         .HasColumnType("numeric");
 
-                    b.HasKey("ContributionId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ContributorId");
 
@@ -200,7 +195,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Contributor", b =>
                 {
-                    b.Property<Guid>("ContributorId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -222,14 +217,14 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ContributorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Contributors");
                 });
 
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Dependency", b =>
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Framework", b =>
                 {
-                    b.Property<Guid>("DependencyId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -238,12 +233,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("DependencyTypeEnum")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("DependencyTypeId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -259,54 +248,77 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("DependencyId");
-
-                    b.HasIndex("DependencyTypeId");
-
-                    b.ToTable("Dependencies");
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.DependencyType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
-                    b.ToTable("DependencyTypes");
+                    b.ToTable("Frameworks");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Name = "Framework"
+                            Id = new Guid("ffe1cf7f-8a78-4997-a657-ae96b63d7fe3"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5910),
+                            Name = ".NET Core",
+                            Version = "3.1"
                         },
                         new
                         {
-                            Id = 2,
-                            Name = "Platform"
+                            Id = new Guid("d3eb5a02-34f5-4186-bb0f-75aeb6ead11b"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5920),
+                            Name = "React",
+                            Version = "16.13.1"
+                        });
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Language", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3489f832-7d05-419e-aa14-a44637b63e5f"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5810),
+                            Name = "C#",
+                            Version = ""
                         },
                         new
                         {
-                            Id = 3,
-                            Name = "Tool"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Language"
+                            Id = new Guid("b3522427-e816-4f32-b248-1e906be3972e"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5810),
+                            Name = "JavaScript",
+                            Version = ""
                         });
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Order", b =>
                 {
-                    b.Property<Guid>("OrderId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -349,7 +361,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
@@ -358,7 +370,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.OrderLineItem", b =>
                 {
-                    b.Property<Guid>("OrderLineItemId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -392,7 +404,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("numeric");
 
-                    b.HasKey("OrderLineItemId");
+                    b.HasKey("Id");
 
                     b.HasIndex("OrderId");
 
@@ -401,9 +413,204 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.ToTable("OrderLineItems");
                 });
 
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.OutboxMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CorrelationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("LockedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("MessageType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Payload")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ProcessedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutboxMessages");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Payment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("PaymentProviderId")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("SaleTransactionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.PaymentStatus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int>("StatusEnum")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b968d573-a7be-414c-be4a-559c0d4df52e"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5570),
+                            Name = "Pending",
+                            StatusEnum = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("410c5964-ec24-4669-9d7d-668666a10b9e"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5670),
+                            Name = "Completed",
+                            StatusEnum = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("dc96fcd9-c517-4fbf-b4b3-867a55842572"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5670),
+                            Name = "Failed",
+                            StatusEnum = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("7cdd786a-e61a-4841-9a5a-c80b6c0518d6"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5680),
+                            Name = "Refunded",
+                            StatusEnum = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("7ce711a4-b7b3-4cd2-bd3f-8f7704980a51"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5680),
+                            Name = "Disputed",
+                            StatusEnum = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("22c19cf7-10bb-4c22-88b6-647c44559553"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5680),
+                            Name = "Successful",
+                            StatusEnum = 0
+                        });
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Platform", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Platforms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cd78acba-b6dd-4e21-89c0-d584519e1308"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5940),
+                            Name = "Windows",
+                            Version = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("93a5b0a8-3ca1-4b13-a5d2-e51e00a8f702"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 649, DateTimeKind.Utc).AddTicks(5940),
+                            Name = "Linux",
+                            Version = ""
+                        });
+                });
+
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Product", b =>
                 {
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -417,11 +624,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DemoURL")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("LastModifiedBy")
@@ -435,7 +640,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Owner")
@@ -452,7 +656,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -461,7 +665,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductArtifact", b =>
                 {
-                    b.Property<Guid>("ProductArtifactId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -493,7 +697,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ProductArtifactId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
@@ -502,7 +706,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductArtifactDownloadHistory", b =>
                 {
-                    b.Property<Guid>("ProductDownloadId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -530,7 +734,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("ProductListingId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ProductDownloadId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductArtifactId");
 
@@ -539,10 +743,12 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.ToTable("ProductDownloadHistory");
                 });
 
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductDependency", b =>
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductFramework", b =>
                 {
-                    b.Property<Guid>("ProductDependencyId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("FrameworkId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("CreatedBy")
@@ -551,7 +757,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("DependencyId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
                     b.Property<string>("LastModifiedBy")
@@ -560,21 +766,54 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ProductId", "FrameworkId");
+
+                    b.HasIndex("FrameworkId");
+
+                    b.ToTable("ProductFrameworks");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLanguage", b =>
+                {
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ProductDependencyId");
+                    b.Property<Guid>("LanguageId")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("DependencyId");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
 
-                    b.HasIndex("ProductId");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.ToTable("ProductDependencies");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ProductId", "LanguageId");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("ProductLanguages");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLicense", b =>
                 {
-                    b.Property<Guid>("ProductLicenseId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -596,11 +835,45 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid?>("ProductId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ProductLicenseId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductLicenses");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductPlatform", b =>
+                {
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("PlatformId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ProductId", "PlatformId");
+
+                    b.HasIndex("PlatformId");
+
+                    b.ToTable("ProductPlatforms");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductReview", b =>
@@ -617,6 +890,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -642,11 +918,21 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductStatus", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -661,19 +947,22 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("b812da0b-39cd-408a-a02e-a1f7cb9a15f5"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 648, DateTimeKind.Utc).AddTicks(5860),
                             Name = "NewlyListed",
                             StatusEnum = 0
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("627b19ec-6555-43e6-b1d9-873756abf18f"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 648, DateTimeKind.Utc).AddTicks(5930),
                             Name = "InReview",
                             StatusEnum = 0
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("d2cfb1f6-714e-4ba7-aa51-c0f0965a4555"),
+                            CreatedDate = new DateTime(2024, 3, 27, 20, 34, 49, 648, DateTimeKind.Utc).AddTicks(5930),
                             Name = "ReadyForSale",
                             StatusEnum = 0
                         });
@@ -690,6 +979,9 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("text");
@@ -726,6 +1018,10 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("PaymentId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
@@ -740,8 +1036,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
                     b.HasIndex("ProductId1");
 
                     b.ToTable("SaleTransactions");
@@ -749,7 +1043,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ShoppingCart", b =>
                 {
-                    b.Property<Guid>("ShoppingCartId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -771,7 +1065,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ShoppingCartId");
+                    b.HasKey("Id");
 
                     b.ToTable("ShoppingCarts");
                 });
@@ -780,7 +1074,7 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                 {
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", null)
                         .WithMany()
-                        .HasForeignKey("ProductListingsProductId")
+                        .HasForeignKey("ProductListingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -809,25 +1103,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.CategoryDependency", b =>
-                {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Category", "Category")
-                        .WithMany("Dependencies")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Dependency", "Dependency")
-                        .WithMany()
-                        .HasForeignKey("DependencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Dependency");
-                });
-
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Contribution", b =>
                 {
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Contributor", "Contributor")
@@ -845,17 +1120,6 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Navigation("Contributor");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Dependency", b =>
-                {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.DependencyType", "DependencyType")
-                        .WithMany()
-                        .HasForeignKey("DependencyTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DependencyType");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Order", b =>
@@ -919,21 +1183,40 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.Navigation("ProductListing");
                 });
 
-            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductDependency", b =>
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductFramework", b =>
                 {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Dependency", "Dependency")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Framework", "Framework")
                         .WithMany()
-                        .HasForeignKey("DependencyId")
+                        .HasForeignKey("FrameworkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
-                        .WithMany("Dependencies")
+                        .WithMany("ProductFrameworks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Dependency");
+                    b.Navigation("Framework");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductLanguage", b =>
+                {
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Language", "Language")
+                        .WithMany()
+                        .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
+                        .WithMany("ProductLanguages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
 
                     b.Navigation("Product");
                 });
@@ -943,6 +1226,25 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
                     b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", null)
                         .WithMany("Licenses")
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductPlatform", b =>
+                {
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Platform", "Platform")
+                        .WithMany()
+                        .HasForeignKey("PlatformId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
+                        .WithMany("ProductPlatforms")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Platform");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.ProductReview", b =>
@@ -958,25 +1260,13 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.SaleTransaction", b =>
                 {
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", "Product")
+                    b.HasOne("TechMastery.MarketPlace.Domain.Entities.Product", null)
                         .WithMany("Sales")
                         .HasForeignKey("ProductId1");
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("TechMastery.MarketPlace.Domain.Entities.Category", b =>
                 {
-                    b.Navigation("Dependencies");
-
                     b.Navigation("SubCategories");
                 });
 
@@ -996,13 +1286,17 @@ namespace TechMastery.MarketPlace.Persistence.Migrations
 
                     b.Navigation("Contributions");
 
-                    b.Navigation("Dependencies");
-
                     b.Navigation("Downloads");
 
                     b.Navigation("Licenses");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("ProductFrameworks");
+
+                    b.Navigation("ProductLanguages");
+
+                    b.Navigation("ProductPlatforms");
 
                     b.Navigation("Reviews");
 

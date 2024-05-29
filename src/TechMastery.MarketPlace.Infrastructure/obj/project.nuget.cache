@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J7xVYek8EnvzneGfWUAAslJHbFn4JwrOf9J3zJ6JJi6OB9vMS4FLd16DTjrfevmBd+25rIUknLuhGYxvtf15IA==",
+  "dgSpecHash": "SAe9okUj3jpWTlu6hgfCcy6DR6s7yqbcqFYhupfVz44bKPhyO9H402dGbvd+2JnyfUyShSWrsi5k7ZUL6ddw2g==",
   "success": true,
-  "projectFilePath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
+  "projectFilePath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Infrastructure/TechMastery.MarketPlace.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/chidionyema/.nuget/packages/aspnetcore.healthchecks.elasticsearch/7.0.0/aspnetcore.healthchecks.elasticsearch.7.0.0.nupkg.sha512",
     "/Users/chidionyema/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",

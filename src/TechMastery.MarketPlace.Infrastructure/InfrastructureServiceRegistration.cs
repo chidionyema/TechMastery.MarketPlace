@@ -12,6 +12,7 @@ using TechMastery.MarketPlace.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 using Stripe.Tax;
 using Stripe;
+using TechMastery.MarketPlace.Application.Contracts;
 
 namespace TechMastery.MarketPlace.Infrastructure
 {

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace TechMastery.Messaging.Consumers
+namespace TechMastery.Messaging
 {
     static class LoggingConfigurator
     {

@@ -1,0 +1,47 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
+        "dependencies": {
+          "TechMastery.MarketPlace.Application.Contracts": "1.0.0",
+          "TechMastery.MarketPlace.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TechMastery.MarketPlace.Persistence.Contracts.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+        "runtime": {
+          "TechMastery.MarketPlace.Application.Contracts.dll": {}
+        }
+      },
+      "TechMastery.MarketPlace.Domain/1.0.0": {
+        "runtime": {
+          "TechMastery.MarketPlace.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TechMastery.MarketPlace.Persistence.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Application.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TechMastery.MarketPlace.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

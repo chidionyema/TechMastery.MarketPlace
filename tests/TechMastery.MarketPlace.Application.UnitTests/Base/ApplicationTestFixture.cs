@@ -2,7 +2,11 @@
 using TechMastery.MarketPlace.Persistence;
 using TechMastery.MarketPlace.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using TechMastery.MarketPlace.Application.Contracts.Persistence;
+using TechMastery.MarketPlace.Application.Persistence.Contracts;
+using Polly;
+using TechMastery.MarketPlace.Application.Contracts;
+using TechMastery.MarketPlace.Domain.Entities;
+using TechMastery.MarketPlace.Domain.Common;
 
 public class ApplicationTestFixture : IDisposable
 {
@@ -19,6 +23,12 @@ public class ApplicationTestFixture : IDisposable
 
         _dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
         _dbContext.Database.Migrate();
+    }
+
+
+    internal IAsyncRepository<T> CreateRepository<T>() where T : AuditableEntity
+    {
+        return new BaseRepository<T>(_dbContext);
     }
 
     internal IShoppingCartRepository CreateCartRepository()

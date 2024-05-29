@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.Marketplace.Domain.csproj",
-      "projectName": "TechMastery.Marketplace.Domain",
-      "projectPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/TechMastery.Marketplace.Domain.csproj",
+      "projectUniqueName": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
+      "projectName": "TechMastery.MarketPlace.Domain",
+      "projectPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/TechMastery.MarketPlace.Domain.csproj",
       "packagesPath": "/Users/chidionyema/.nuget/packages/",
-      "outputPath": "/Users/chidionyema/Documents/code/TechWarehouse/src/TechMastery.MarketPlace.Domain/obj/",
+      "outputPath": "/Users/chidionyema/Documents/code/TechMastery.MarketPlace/src/TechMastery.MarketPlace.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chidionyema/.nuget/NuGet/NuGet.Config"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.313/RuntimeIdentifierGraph.json"
       }
     }
   }
